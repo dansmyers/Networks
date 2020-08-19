@@ -122,12 +122,12 @@ at least the next year and others will choose to make a large-scale transition t
 
 | Sprint       | Topic                           | Start  |   End  | Deliverable     |
 | -------------|---------------------------------|--------|--------|-----------------|
-| 1            | Python and Descriptive Statistics | 9/14     | 9/30       | Campus Connections |
-| 2            | Probability              |  9/30    |  10/14     | Hermione Granger and the Distributions of Probability    |
-| 3            | Monte Carlo           |   10/14   |  10/28      | Casino Royale    |
-| 4            | Continuous Distributions   | 10/28   |  11/11  | Queueing Simulators    |
-| 5            | Discrete Event Simulation   |   11/11  | 12/2   | Happiest Place on Earth? |
-| 6            | Markov Chains               |   12/2  |  12/18  | Predictive Text Generation |
+| 1            | Start-up: Networking Fundamentals + Front-End Web Dev  | 9/14     | 9/30       | Educational Plagiarism |
+| 2            | Physical and Link Layers + More Front-End            |  9/30    |  10/14     | Hipster Restaurant Menu Generator  |
+| 3            | IP + Back-End          |   10/14   |  10/28      |   |
+| 4            | TCP and Application Layers   | 10/28   |  11/11  | DIY Web Server (feat. C Sockets)|
+| 5            | Security and Cryptography   |   11/11  | 12/2   |  |
+| 6            | Additional Topics    |   12/2  |  12/18  |  |
 
 ### Other Important Dates
 
