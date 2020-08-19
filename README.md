@@ -124,10 +124,10 @@ at least the next year and others will choose to make a large-scale transition t
 | -------------|---------------------------------|--------|--------|-----------------|
 | 1            | Start-up: Networking Fundamentals + Front-End Web Dev  | 9/14     | 9/30       | Educational Plagiarism |
 | 2            | Physical and Link Layers + More Front-End            |  9/30    |  10/14     | Hipster Restaurant Menu Generator  |
-| 3            | IP + Back-End          |   10/14   |  10/28      |   |
-| 4            | TCP and Application Layers   | 10/28   |  11/11  | DIY Web Server (feat. C Sockets)|
-| 5            | Security and Cryptography   |   11/11  | 12/2   |  |
-| 6            | Additional Topics    |   12/2  |  12/18  |  |
+| 3            | IP + Back-End          |   10/14   |  10/28      | Flashcards ver. 1.0   |
+| 4            | TCP and Application Layers   | 10/28   |  11/11  | DIY Web Server (feat. C Sockets) |
+| 5            | Security and Cryptography   |   11/11  | 12/2   | Flashcards ver. 2.0  |
+| 6            | Additional Topics    |   12/2  |  12/18  | Flashcards ver. 3.0 |
 
 ### Other Important Dates
 
