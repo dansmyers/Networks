@@ -65,5 +65,29 @@ but you should be able to explain why they exist and what purpose they serve in 
 
 ## Resources
 
+### Networking Fundamentals
+
+There's a bit of a paradox with learning about networking: *in order to understand the design of networks, you first must understand the design of networks*. What I mean (I think), is that understanding the details of network architecture becomes much easier if you have a high-level holistic overview of how a modern network is put together from top to bottom. Therefore, our main goal in this unit is giving you that top level view of all the parts of a network. This will also allow you to get some more insight into protocols that you have probably heard about, but may not have studied in detail before.
+
+Start with my notes in the `Notes` directory giving you an overview of the 7-layer model.
+
+Next, watch [this video](https://www.youtube.com/watch?v=kCuyS7ihr_E), which does a good job explaining the connection between the OSI 7-layer reference model and the TCP/IP
+Internet architecture. The video does include an extensive list of different protocols that exist at each level: you don't need to memorize these.
+
+After that, you can look at [Chapter 1.3 in the Peterson and Davie text](https://book.systemsapproach.org/foundation/architecture.html). The 7-layer model is introduced about halfway through the chapter. I suggest starting there, then backing up a little bit to read the beginning of the chapter, which is more abstract. What you want to emphasize in your reading is how the common protocols of the modern Internet (TCP, IP, etc.) map to the layers of the reference model.
+
+## Network Performance
+
+Read [Chapter 1.5 of Peterson and Davie](https://book.systemsapproach.org/foundation/performance.html). As you read, focus on the following questions:
+
+- What is the difference between throughput and latency?
+
+- What determines link bandwidth? What determines latency?
+
+- How do you calculate the transfer time for a file of a given size on a link with a given bandwidth and latency?
+
+You'll get the chance to practice these calculations on the deliverable assignment and there will also be a calculation question on the quiz.
+
+## Front-End Web Development
 
 
