@@ -90,4 +90,17 @@ You'll get the chance to practice these calculations on the deliverable assignme
 
 ## Front-End Web Development
 
+Your goal in this unit is to create static web pages using HTML, CSS, and the Bootstrap framework.
 
+Start by working through the lab in the `Notes` directory. It will show you to create a simple web page, style it, and serve it from Mimir. Nothing in this lab should be particularly difficult.
+
+Next, take a look at [CSS Basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics) from the Mozilla developer network. You don't have to do their specific examples, but pay attention to the concepts of CSS rulesets, selectors, and the idea of CSS elements as boxes stacked on top of boxes with margins and padding.
+
+I've given you an example showing how to use class and id selectors in the `Notes` directory.
+
+Finally, you want to look at how to use Bootstrap to create grid-based layouts. Bootstrap requires you to add a lot of extra markup to your pages, but makes it easy to create clean layouts that would be hard to make with default CSS. It will also automatically reconfigure your layout to work on smaller windows, which is important when designing pages that look good on both desktops and mobile devices.
+
+Start with my Bootstrap notes in the `Notes` directory, then take a look at [this article](https://uxplanet.org/how-the-bootstrap-4-grid-works-a1b04703a3b7). The second half of the article goes into more detail about auto layouts and wrapping that are not important for now. Focus on implementing the basic Bootstrap grid with a
+container, one or more rows, and columns within the rows.
+
+## Plan and Tips
