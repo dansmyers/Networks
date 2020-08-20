@@ -55,13 +55,13 @@ but you should be able to explain why they exist and what purpose they serve in 
 
 - The concepts of **network bandwidth** (also called throughput) and **latency**. Be able to the transmission time of a file given the bandwidth and latency of a link.
 
-- Be able to create basic web pages using HTML and serve them on Mimir.
+- Be able to create **basic web pages using HTML** and serve them on Mimir.
 
-- Be able to apply CSS styling to page elements using a `<style>` block. Be able to style standard typographical elements like page colors, fonts, font sizes, and text alignment.
+- Be able to apply **CSS styling** to page elements using a `<style>` block. Be able to style standard typographical elements like page colors, fonts, font sizes, and text alignment.
 
-- Be able to give ids and class labels to page elements and apply CSS styling to those indvidual ids or classes.
+- Be able to give **ids and class labels** to page elements and apply CSS styling to those indvidual ids or classes.
 
-- Use the Bootstrap framework to create responsive pages with grid-based layouts. Understand Bootstrap's row and 12-column model of the page.
+- Use the **Bootstrap** framework to create responsive pages with grid-based layouts. Understand Bootstrap's row and 12-column model of the page.
 
 ## Resources
 
