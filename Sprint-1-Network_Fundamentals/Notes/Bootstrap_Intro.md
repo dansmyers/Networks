@@ -5,7 +5,8 @@
 Boostrap was originally developed by Mark Otto and Jacob Thornton at Twitter and was released as an open-source framework in 2011.
 
 Bootstrap's main us is creating responsive, grid-based layouts. It provides convenient tools for dividing your page up into a layout of rows and columns and can automatically
-adjust the layout based on the size of the viewing window, which is important for creating mobile-first sites.
+adjust the layout based on the size of the viewing window, which is important for creating mobile-first sites. The framework also includes a set of style defaults that are 
+better than your browser's bare HTML.
 
 ## Basic Bootstrap Layout
 
@@ -193,6 +194,16 @@ If you spend some time reading other Bootstrap documents, you'll learn that ther
 how to automatically space your columns in many cases, which can simplify how you declare your columns. For now, I recommend manually allocated all twelve units in each row
 while you're getting comfortable with the layout rules.
 
+
 ## More Practice
 
 Take a look at `hokusai.html`, which shows off a few more features. Load it into Mimir, view it with `srv`, then experiment with modifying it.
+
+### Responsive Layouts
+
+Once you have the page up and running, experiment with changing the size of your browser. You should see the page content automatically shrink, then stack as the window gets smaller.
+
+Bootstrap lets you control how the stacking behavior takes effect by adding size information to the column labels. In the `hokusai.html` file, you'll see columns labeled
+with classes like `col-lg-8`. Here, the `lg` controls when the stacking behavior kicks in: specifically, it indicates that Bootstrap should start to stack the columns when the viewing window is smaller than 992 pixels, which is what Bootstrap considers to be "large". There are also `md`, `sm`, and other versions of the column classes that turn on stacking at different window sizes.
+
+You don't need to memorize anything about the stacking behavior or the window sizes, but simply take comfort in knowing that it's one thing you can control in these turbulent times.
