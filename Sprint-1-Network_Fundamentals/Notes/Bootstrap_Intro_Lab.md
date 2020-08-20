@@ -61,8 +61,7 @@ Let's start by pointing out a few important things in this example.
 
 ### CDN Links
 
-There is a link to the bootstrap CSS stylesheet in the `<head>` section. Similarly, there are three required JavaScript files being loaded at the bottom of `<body>`. You don't
-need to do anything with any of these lines.
+There is a link to the bootstrap CSS stylesheet in the `<head>` section. Similarly, there are three required JavaScript files being loaded at the bottom of `<body>`. Any HTML file you create that uses Bootstrap will contain these links at the same locations.
 
 It's possible to setup your project so that the required files are hosted locally, rather than being loaded from a remote CDN site,
 but we're going to stick with the link-based setup for now.
