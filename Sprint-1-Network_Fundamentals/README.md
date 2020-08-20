@@ -59,7 +59,7 @@ but you should be able to explain why they exist and what purpose they serve in 
 
 - Be able to apply **CSS styling** to page elements using a `<style>` block. Be able to style standard typographical elements like page colors, fonts, font sizes, and text alignment.
 
-- Be able to give **ids and class labels** to page elements and apply CSS styling to those indvidual ids or classes.
+- Be able to give **ids and class labels** to page elements and use them for CSS styling.
 
 - Use the **Bootstrap** framework to create responsive pages with grid-based layouts. Understand Bootstrap's row and 12-column model of the page.
 
