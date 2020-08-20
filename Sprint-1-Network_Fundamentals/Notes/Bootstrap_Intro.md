@@ -89,7 +89,110 @@ As you lay out the page, you're going to create additional rows and columns, dis
 container `<div>`.
 
 
+### Rows and Columns
 
+Bootstrap models the page as a series of one or more **rows**, with each row subdivided into **columns**.
 
+Here is the core content from the example above:
 
+```
+        <!-- All Bootstrap content must be enclosed in a container div -->
+        <div class="container">
+            
+            <!-- The container must contain one or more row divs -->
+            <div class="row">
+            
+                <div class="col-6">
+                    This is the left column.
+                </div>   <!-- /col-6 -->  
+                
+                <div class="col-6">
+                    This is the right column.
+                </div>   <!-- /col-6 -->  
+                
+            </div> <!-- /row -->
+            
+        </div> <!-- /container -->
 
+```
+
+Inside the top-level container is a `<div>` with the class `row`. Inside that `<div>` are two columns, both with the class label `col-6`.
+
+### The Twelve Columns
+
+Bootstrap subdivides each row into **twelve equally spaced column units**. You can create column combinations that span any subset of the twelve column units.
+In the example above, each column is labeled `col-6`: the two columns each span six of the twelve units and divide the page in half.
+
+```
+                          Full row spans 12 units
+ -------------------------------------------------------------------------
+|                                                                         |
+v                                                                         v
+ ------------------------------------ ------------------------------------
+|                                    |                                    |
+|               col-6                |               col-6                |
+|                                    |                                    |
+ ------------------------------------ ------------------------------------
+```
+
+You can use any combination of `col` classes to divide the row in any way that you want. For example, three four-unit columns will split the row into
+thirds:
+
+```
+ ------------------------ ------------------------ ------------------------
+|                        |                        |                        |
+|         col-4          |         col-4          |         col-4          |
+|                        |                        |                        |
+ ------------------------ ------------------------ ------------------------
+```
+
+Creating unequal-width columns is useful:
+
+```
+ ------------------------------------------------- ------------------------
+|                                                 |                        |
+|                     col-8                       |         col-4          |
+|                                                 |                        |
+ ------------------------------------------------- ------------------------
+```
+
+Spanning all twelve units fills the entire row:
+
+```
+ --------------------------------------------------------------------------
+|                                                                          |
+|                                 col-12                                   |
+|                                                                          |
+ --------------------------------------------------------------------------
+```
+
+### Practice
+
+Go back to your example on Mimir and edit the columns to create some different combinations.
+
+Once you have tried two columns, and a third `<div>` (make sure it's within the row) and experiment with three-column layouts.
+
+## Important Layout Rules (How to Not Screw Everything Up)
+
+There are four layout rules that you must remember **and never violate** or terrible things will happen:
+
+1. Everything must go into one top-level container `<div>`.
+
+2. The only things that can be within the container are one or more rows.
+
+3. Each row must contain one or more columns that span a total of twelve units.
+
+4. The actual page content must only be placed within columns. 
+
+Most Bootstrap layout errors are caused by violating the `container -> row -> column -> content` nesting rules. In particular, if you try to place page content outside of the
+`container -> row -> column` structure, it will probably look like it's hanging in space, disconnected from the rest of the page layout.
+
+**A super common error** is to put content in a row without declaring a column. You'd think this should work, but it doesn't.
+
+If you spend some time reading other Bootstrap documents, you'll learn that there are cases where these rules can be relaxed. Notably, Bootstrap is smart enough to figure out
+how to automatically space your columns in many cases, which can simplify how you declare your columns. For now, I recommend manually allocated all twelve units in each row
+while you're getting comfortable with the layout rules.
+
+## More Practice
+
+Take a look at `hokusai.html`, which shows off a few more features. Load it into Mimir, view it with `srv`, then experiment with modifying it.
