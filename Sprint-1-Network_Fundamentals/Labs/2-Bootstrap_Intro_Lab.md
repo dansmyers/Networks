@@ -4,7 +4,7 @@
 
 Boostrap was originally developed by Mark Otto and Jacob Thornton at Twitter and was released as an open-source framework in 2011.
 
-Bootstrap's main us is creating responsive, grid-based layouts. It provides convenient tools for dividing your page up into a layout of rows and columns and can automatically
+Bootstrap's main use is creating responsive, grid-based layouts. It provides convenient tools for dividing your page up into a layout of rows and columns and can automatically
 adjust the layout based on the size of the viewing window, which is important for creating mobile-first sites. The framework also includes a set of style defaults that are 
 better than your browser's bare HTML.
 
