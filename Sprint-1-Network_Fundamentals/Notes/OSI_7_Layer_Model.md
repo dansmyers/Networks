@@ -29,7 +29,7 @@ For our purposes, layers 5 and 6 are not that important and tend to be lumped in
 
 | Layer       | Name        | Purpose     | Examples |
 | ----------- | ----------- | ----------- | ----------- |
-| 7      | Application       | Protocols used by with user-level applications            | HTTP, FTP, SMTP, SSH |
+| 7      | Application       | Protocols used by user-level applications            | HTTP, FTP, SMTP, SSH |
 | 6      | Presentation      | Preparing user-level data for transmission by lower layers            | Compression and encryption |
 | 5      | Session      | Managing and maintaining context for long-running communication sessions            | Timing and ordering of packets in streaming media |
 | 4      | Transport       | Providing reliable end-to-end communication           | TCP |
