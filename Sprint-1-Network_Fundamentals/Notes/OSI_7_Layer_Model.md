@@ -148,13 +148,19 @@ most important transport layer protocol is **TCP, the Transmission Control Proto
 
 - TCP provides a measure of reliability to ensure that data actually gets transmitted and also provies some rules to stop links from becoming too congested.
 
-Here's an updated view of the OSI model that compares it to the TCP/IP-based stack of the modern Internet:
+Here's another view of the OSI model that compares it to the TCP/IP-based stack of the modern Internet:
 
 <img src="https://miro.medium.com/max/1190/1*hUb4hQKbQkw4fo8wkcAO-w.gif" width="50%" />
 
 ([Source: this article by Ian Ames](https://medium.com/software-engineering-roundup/tcp-ip-protocol-suite-ec7ed4888d5d))
  
 ### Layer 7: the Application Layer
+
+TCP/IP is, as the old-timers might say, the cat's pajamas.
+
+<img src="https://pyxis.nymag.com/v1/imgs/334/5a2/3fe5b39b2e8b77f58a64bdb7142db46b96-15-state-department-cat-picture.2x.rsquare.w700.jpg" width="50%" />
+
+(Source: ["State Department Accidentally Sends Out Very Good Photo of Cat in Pajamas"](https://www.thecut.com/2018/10/state-department-accidentally-sends-out-cat-pajama-photo.html)
 
 ### Layers 5 and 6: the Session and Presentation Layers
 
