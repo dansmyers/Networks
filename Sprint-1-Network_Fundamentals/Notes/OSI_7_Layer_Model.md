@@ -1,5 +1,7 @@
 # The OSI 7-Layer Model of Networking
 
+## Overview
+
 <img src="https://vignette.wikia.nocookie.net/tacobell/images/c/cf/Pdp_7_layer_burrito.jpg/revision/latest?cb=20100905052511" width="50%" />
 
 The OSI 7-layer model is arguably the most common **reference model** of computer network architecture. OSI stands for "Open Standards Initiative" and the model was introduced
