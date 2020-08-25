@@ -134,14 +134,26 @@ into the Internet without needing to rework the implementation of IP. It's popul
 
 IP has many virtues, including scalability and support for heterogeneous local networks, but it does not care about performance. In fact, the designers of IP decided that the
 protocol would make **no performance guarantees whatsoever**, including no assurances that data sent over IP would even be dellivered to its intended destination. It's common
-to say that IP provides **best effort** service; it will do the best it can to deliver data, but no promises are made or implied.
+to say that IP provides **best effort** service; it will do the best it can to deliver your data, but no promises are made or implied.
 
 (Aside: this might seem like a strange decision, but remember that one of the core design goals of IP was to run over anything. You can't make detailed guarantees about
 performance or reliability if you want to be able to run over any potentially low-quality link.)
 
+Therefore, it's common to pair IP with a higher-level protocol that provides **end-to-end connectivity** and ensures reliable transmission. In the modern Internet, the
+most important transport layer protocol is **TCP, the Transmission Control Protocol**.
 
+**TCP/IP is the heart of the Internet**.
 
+- IP provides a system of addressing and routing that allows hosts anywhere in the world to communicate with each other.
 
+- TCP provides a measure of reliability to ensure that data actually gets transmitted and also provies some rules to stop links from becoming too congested.
+
+Here's an updated view of the OSI model that compares it to the TCP/IP-based stack of the modern Internet:
+
+<img src="https://miro.medium.com/max/1190/1*hUb4hQKbQkw4fo8wkcAO-w.gif" width="50%" />
+
+([Source: this article by Ian Ames](https://medium.com/software-engineering-roundup/tcp-ip-protocol-suite-ec7ed4888d5d))
+ 
 ### Layer 7: the Application Layer
 
 ### Layers 5 and 6: the Session and Presentation Layers
