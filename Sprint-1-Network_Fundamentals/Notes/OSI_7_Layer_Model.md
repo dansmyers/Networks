@@ -8,7 +8,7 @@ The OSI 7-layer model is arguably the most common **reference model** of compute
 in the early 1980's as part of an project led by the International Organization for Standards (ISO). (This should serve as an introduction to two ideas that will keep coming up 
 in this course: first, standards are really important in the networking world and second, acronyms are even more important).
 
-The OSI model is not a real guideline for building networks. Rather, as a reference model, it provides an **abstract description** of the different features that must be implemented to construct a practical network. We're interested in the OSI model for three reasons:
+The OSI model is not a real guideline for building networks. Rather, it provides an **abstract description** of the different features that must be implemented to construct a practical network. We're interested in the OSI model for three reasons:
 
 1. It gives you a holistic overview of how networks are implemented. If you start by understanding the entire model at a high level, you'll be better prepared to dig into the details of the protocols at each level. 
 
@@ -34,7 +34,7 @@ For our purposes, layers 5 and 6 are not that important and tend to be lumped in
 | 5      | Session      | Managing and maintaining context for long-running communication sessions            | Timing and ordering of packets in streaming media |
 | 4      | Transport       | Providing reliable end-to-end communication           | TCP |
 | 3      | Internetwork       | Addressing and routing to transmit data between networks at global scale           | IP |
-| 2      | Link       | Managing shared access to a communication link            | Ethernet, 802.11 (wi-fi), Bluetooth, cellular |
+| 2      | Link       | Managing shared access to a communication link            | Ethernet, Wi-Fi, Bluetooth, 5G|
 | 1      | Physical       | Transmitting bits on physical links            | Encoding, error correction|
 
 
@@ -118,7 +118,7 @@ To go bigger, we need to ability to send data **between networks**.
 An **internetwork** is a collection of multiple local networks. The prefix *inter-* has the meaning of *between*, like how the interstate highways connect between different states. You're already familiar with one internetwork: the big capital-I global Internet, which connects millions of different local networks all around the world. It's possible, though, to build internetworks that aren't connected to the big Internet; the military and government agencies, for example, all manage their own internets to share
 classified information.
 
-There is one main layer 3 protocol: **IP, the Internet Protocol**. IP was originally designed in the 1970s to solve the problem of transmitting data between local networks of
+There is one main layer 3 protocol: **IP, the Internet Protocol**. IP was originally designed in the 1970's to solve the problem of transmitting data between local networks of
 many different types, at global scale.
 
 IP gets involved when one host wants to send data to another that isn't on its immediate local network. For example, when you make a
