@@ -167,7 +167,9 @@ TCP/IP is, as the old-timers might say, the cat's pajamas.
 
 However, all of the work at Layers 1-4 is really just building a mechanism for shoving data between hosts and around the world. **Now we can have some fun**. Layer 7 is all of the user-facing application protocols that are used to implement that actual services we build on top of the lower-level networking protocols.
 
-Here, *protocol* refers to an agreed upon way for hosts to exchange requests and format responses. For example, your web browser uses the **Hypertext Transfer Protocol** (HTTP)
+Here, *protocol* refers to an agreed upon way for hosts to exchange requests and format responses.
+
+For example, your web browser uses the **Hypertext Transfer Protocol** (HTTP)
 to fetch pages from web servers. HTTP describes the format for web page requests, what information will be exchanged in each request, how the page data should be encoded, and a
 bunch of other stuff like codes for common errors (you've probably seen a 404 error message before: that's the HTTP error code for when a page can't be found). It will turn
 out, a little later in the course, that HTTP can be harnessed to exchange all kinds of information other than web pages, which makes it an important building block for
@@ -184,10 +186,14 @@ There are all kinds of other application-layer protocols. Here are a few commonl
 | DNS | Domain Name System | Maps human-readable website names (like github.com) to their underlying IP addresses |
 
 
-
-
-
-
 ### Layers 5 and 6: the Session and Presentation Layers
 
-## Encapsulation
+Layers 5 and 6 are not that important from our perspective because they tend to get lumped together with Layer 7 as part of the overall implementation of a user-facing
+application. In the original OSI model, the vision was that the Presentation and Session layers would play a role in connecting user-level applications to the lower-level
+part of the networking stack.
+
+The **Presentation layer**  takes application data and do any additonal work required to prepare it for transmission. In practice, **compression** and **encryption** are the two most important activites associated with this layer. This could also include transforming data between encoding formats if necessary.
+
+The **Session layer** helps applications maintain context when exchanging a series of messages with the same server. One example is video conferencing or streaming media, where
+it's necessary to carefully coordinate the sequencing and timing of each data transmission to give a good user experience. In practice, the session layer isn't really a 
+stand-alone protocol and it tends to get lumped in as an implementation detail with either the application or the transport layer.
