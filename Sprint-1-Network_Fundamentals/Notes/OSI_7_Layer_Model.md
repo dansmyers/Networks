@@ -1,6 +1,6 @@
 # The OSI 7-Layer Model of Networking
 
-## Overview
+## Introduction
 
 <img src="https://vignette.wikia.nocookie.net/tacobell/images/c/cf/Pdp_7_layer_burrito.jpg/revision/latest?cb=20100905052511" width="50%" />
 
@@ -19,6 +19,9 @@ standard part of the field.
 
 ## The Layers
 
+### Overview
+
+
 This table (similar to the one in [the Wikipedia article](https://en.wikipedia.org/wiki/OSI_model)) shows the seven layers. The convention is to number the bottom layer (Physical) as Layer 1 and the top layer (Applications) as layer 7.
 
 For our purposes, layers 5 and 6 are not that important and tend to be lumped in with layer 7.
@@ -35,8 +38,6 @@ For our purposes, layers 5 and 6 are not that important and tend to be lumped in
 | 1      | Physical       | Transmitting bits on physical links            | Encoding, error correction|
 
 
-
-### Overview
 
 ### Layer 1: the Physical Layer
 
