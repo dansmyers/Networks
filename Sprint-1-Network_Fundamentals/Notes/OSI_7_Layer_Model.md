@@ -99,7 +99,7 @@ Suppose both hosts A and B try to transmit to the base station at the same time.
 Well, the radio signals might interfere with each other, resulting in a garbled transmission arriving at the base station. You've experienced this is you've ever listened to the
 radio on a long drive and passed through the point where two stations broadcasting on the same frequency overlapped.
 
-Layer 2, the Link layer, is all about solving the problem of allowing multiple hosts to share access to the same underlying communication medium. The Wi-Fi standard solves this
+Link layer protocols solve the problem of allowing multiple hosts to **share access** to the same underlying communication medium. The Wi-Fi standard solves this
 problem for radio links, by putting some rules in place that allow hosts to transmit without causing unacceptable interference.
 
 Other important protocols at the link layer include Ethernet for wired links (very common in datacenters and campus networks), Bluetooth for small devices, and the various
