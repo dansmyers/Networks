@@ -116,14 +116,16 @@ An **internetwork** is a collection of multiple local networks. The prefix *inte
 classified information.
 
 There is one main layer 3 protocol: **IP, the Internet Protocol**. IP was originally designed in the 1970s to solve the problem of transmitting data between local networks of
-many different types, at global scale. IP gets involved when one host wants to send data to another that isn't on its immediate local network. For example, when you make a
+many different types, at global scale.
+
+IP gets involved when one host wants to send data to another that isn't on its immediate local network. For example, when you make a
 web search request, you have to send your query to a data center managed by the search engine company, where your request can be processed. Once an answer is obtained, a
 host in the data center will send a formatted response back to you. Both of those steps might require traversing thousands of miles of links joining together dozens
 of different networks.
 
 We're going to spend most of our time on two of IP's features:
 
-- **Addressing**: if I want to send a request to another host on the Internet, how do I know where that host is located? IP provides the system of **IP addresses** which allow a (potentially) unique identifier for every host on the Internet. You're probably familiar with IP addresses displayed in a form like 172.217.2.142.
+- **Addressing**: if I want to send a request to another host on the Internet, how do I know where that host is located? **IP addresses** allow a (potentially) unique identifier for every host on the Internet. You're probably familiar with IP addresses displayed as four numbers, like 172.217.2.142.
 
 - **Routing**: if I want to send data around the global Internet, how do I find a path from a starting point to a destination IP address? This is complicated, because the Internet is in constant flux as links and hosts join, go down, or become congested. The Internet is **decentralized** &ndash; there is no single view or entity that has global 
 knowledge of every host and link &ndash; so successful routing has to be based on only limited information.
