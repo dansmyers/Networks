@@ -82,7 +82,7 @@ as well as a introduction to error correcting codes.
 
 ### Layer 2: the Link Layer
 
-Consider a typical wireless network, with a number of hosts (like your laptops) all communicating via radio links with a base station.
+Consider a wireless network, with a number of hosts (like your laptops) all communicating via radio links with a base station.
 
 ```
                                o              o 
@@ -92,6 +92,9 @@ Consider a typical wireless network, with a number of hosts (like your laptops) 
 |   Computer A   |~~~~~~~~~~~~|  Base station  |~~~~~~~~~~~~|   Computer B   |
 |                |            |                |            |                |
  ----------------              ----------------              ----------------
+ 
+ 
+ ~~~~~ squiggles ~~~~~ mean radio waves
 ```
 
 Suppose both hosts A and B try to transmit to the base station at the same time. What might happen?
