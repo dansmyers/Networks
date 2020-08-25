@@ -172,9 +172,16 @@ TCP/IP is, as the old-timers might say, the cat's pajamas.
 
 (Source: ["State Department Accidentally Sends Out Very Good Photo of Cat in Pajamas"](https://www.thecut.com/2018/10/state-department-accidentally-sends-out-cat-pajama-photo.html))
 
-However, all of the work at Layers 1-4 is really just building a mechanism for shoving data between hosts and around the world. **Now we can have some fun**. Layer 7 is all of the user-facing application protocols that are used to implement that actual services we build on top of the lower-level networking protocols.
+However, all of the work at Layers 1-4 is really just building a mechanism for shoving data between hosts and around the world. **Now we can have some fun**. Layer 7 is all of the user-facing application protocols that are used to implement that actual services we build on top of the lower-level networking protocols. Like, I don't know, how about:
 
-Here, *protocol* refers to an agreed upon way for hosts to exchange requests and format responses.
+- E-mail
+- Online games
+- Cloud services
+- Streaming media
+- Video conferencing
+- The entire freaking World-Wide Web
+
+Here, **protocol** refers to an agreed upon way for hosts to exchange requests and format responses.
 
 For example, your web browser uses the **Hypertext Transfer Protocol** (HTTP)
 to fetch pages from web servers. HTTP describes the format for web page requests, what information will be exchanged in each request, how the page data should be encoded, and a
@@ -186,11 +193,13 @@ There are all kinds of other application-layer protocols. Here are a few commonl
 
 | Protocol | Full Name | Purpose |
 | -------- | --------- | ------- |
-| FTP |File Transfer Protoocl | Fetching files from a server |
+| HTTP | Hypertext Transfer Protocol |  |
+| FTP |File Transfer Protoocl | Downloading files from a server |
 | SMTP | Simple Mail Transfer Protocol | E-mail |
 | SSH | Secure Shell | Secure log-in to a remote server |
 | DHCP | Dynamic Host Configuration Protocol | Automatically assign your computer a new IP address when you join a network |
 | DNS | Domain Name System | Maps human-readable website names (like github.com) to their underlying IP addresses |
+| Bitcoin | The protocol that describes communications in the Bitcoin network | Fake Internet money | 
 
 
 ### Layers 5 and 6: the Session and Presentation Layers
