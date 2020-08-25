@@ -31,7 +31,7 @@ For our purposes, layers 5 and 6 are not that important and tend to be lumped in
 | ----------- | ----------- | ----------- | ----------- |
 | 7      | Application       | Protocols used by with user-level applications            | HTTP, FTP, SMTP, SSH |
 | 6      | Presentation      | Preparing user-level data for transmission by lower layers            | Compression and encryption |
-| 5      | Session      | Managing and maintaing context for long-running communication sessions            | A web page that makes multiple requests to the same servers |
+| 5      | Session      | Managing and maintaining context for long-running communication sessions            | Timing and ordering of packets in streaming media |
 | 4      | Transport       | Providing reliable end-to-end communication           | TCP |
 | 3      | Internetwork       | Addressing and routing to transmit data between networks at global scale           | IP |
 | 2      | Link       | Managing shared access to a communication link            | Ethernet, 802.11 (wi-fi), Bluetooth, cellular |
