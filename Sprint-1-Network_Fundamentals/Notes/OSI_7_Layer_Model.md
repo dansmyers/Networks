@@ -17,6 +17,23 @@ standard part of the field.
 
 ## The Layers
 
+This table (similar to the one in [the Wikipedia article](https://en.wikipedia.org/wiki/OSI_model)) shows the seven layers. The convention is to number the bottom layer (Physical) as Layer 1 and the top layer (Applications) as layer 7.
+
+For our purposes, layers 5 and 6 are not that important and tend to be lumped in with layer 7.
+
+
+| Layer       | Name        | Purpose     | Examples |
+| ----------- | ----------- | ----------- | ----------- |
+| 7      | Application       | Protocols used by with user-level applications            | HTTTP, FTP, SMTP, SSH |
+| 6      | Presentation      | Preparing user-level data for transmission by lower layers            | Compression and encryption |
+| 5      | Session      | Managing and maintaing context for long-running communication sessions            | A web page that makes multiple requests to the same servers |
+| 4      | Transport       | Providing reliable end-to-end communication           | TCP |
+| 3      | Internetwork       | Addressing and routing to transmit data between networks at global scale           | IP |
+| 2      | Data link       | Managing shared access to a communication link            | Ethernet, 802.11 (wi-fi), Bluetooth, cellular |
+| 1      | Physical       | Transmitting bits on physical links            | Encoding, error correction|
+
+
+
 ### Overview
 
 ### Layer 1: the Physical Layer
