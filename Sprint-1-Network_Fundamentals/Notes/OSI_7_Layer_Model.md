@@ -59,11 +59,13 @@ For any type of link that we might choose to use for a direct connection, a few 
 First, we need a way to transmit bits over the link. **In a computer network, everything that's being transmitted is ultimately just sequences of bits**.
 The exact way to do this depends on the nature of the link and its enginering implementation. For example, wired links typically transmit bits by controlling
 the voltage on the wire, radio links can manipulate the strength of the radio transmission, and fiber optics control the strength of a laser pulse on the
-optical cable. We're not going to worry about the details of how link transmissions are actually implemented, except to say that a lot of fundamental physics
+optical cable. 
+
+We're not going to worry about the details of how link transmissions are actually implemented, except to say that a lot of fundamental physics
 and engineering goes in to making it possible. For example, if you choose to use a radio-based link, you have to make decisions about the transmitter and
 receiver designs, frequency bands to transmit on, power levels, and all kinds of other considerations.
 
-Physical-layer transmissions are also vulnerable to noise and data corruption For example, electrical interference on a wire can easily lead to **bit flips**, where
+Second, Physical-layer transmissions are also vulnerable to noise and data corruption For example, electrical interference on a wire can easily lead to **bit flips**, where
 a received bit has the opposite value that it should have (a bit that should be 0 is read as 1, and vice-versa).
 
 To protect against these kinds of errors, it's common to embed an **error correcting code** (ECC) within a transmission. The ECC is a few extra bits (sometimes just one bit)
