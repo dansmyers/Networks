@@ -99,8 +99,8 @@ Consider a wireless network, with a number of hosts (like your laptops) all comm
 
 Suppose both hosts A and B try to transmit to the base station at the same time. What might happen?
 
-Well, the radio signals might interfere with each other, resulting in a garbled transmission arriving at the base station. You've experienced this is you've ever listened to the
-radio on a long drive and passed through the point where two stations broadcasting on the same frequency overlapped.
+Well, the radio signals might interfere with each other, resulting in a garbled transmission arriving at the base station. You've experienced this if you've ever listened to the
+radio on a long drive and passed through the area where two stations broadcasting on the same frequency overlap with each other.
 
 Link layer protocols solve the problem of allowing multiple hosts to **share access** to the same underlying communication medium. The Wi-Fi standard solves this
 problem for radio links, by putting some rules in place that allow hosts to transmit without causing unacceptable interference.
