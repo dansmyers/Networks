@@ -172,7 +172,7 @@ TCP/IP is, as the old-timers might say, the cat's pajamas.
 
 (Source: ["State Department Accidentally Sends Out Very Good Photo of Cat in Pajamas"](https://www.thecut.com/2018/10/state-department-accidentally-sends-out-cat-pajama-photo.html))
 
-However, all of the work at Layers 1-4 is really just building a mechanism for shoving data between hosts and around the world. **Now we can have some fun**. Layer 7 is all of the user-facing application protocols that are used to implement that actual services we build on top of the lower-level networking protocols. Like, I don't know, how about:
+However, all of the work at Layers 1-4 is really just building a mechanism for shoving data between hosts and around the world. **Now we can have some fun**. Layer 7 is all of the user-facing application protocols that are used to implement that actual services we build on top of the lower-level networking protocols. Like, how about:
 
 - E-mail
 - Online games
