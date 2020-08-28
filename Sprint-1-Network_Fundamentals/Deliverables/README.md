@@ -20,7 +20,7 @@ Here's how you do it:
 
 1. Pick any well-known startup-like company: Uber, Airbnb, Instacart, Bytedance (Tik-Tok), Casper, SpaceX.
 
-2. Pick anything else that exists.
+2. Pick anything else that exists. Literally anything.
 
 3. Put the two together.
 
@@ -28,7 +28,7 @@ Airbnb for pools? [Swimply](https://swimply.com/). RVs? [RVShare](https://rvshar
 
 Uber for moving? [Dolly](https://dolly.com/uber-for-moving/) For haicuts? [Shortcut](https://www.getshortcut.co/).
 
-The possibilities are endless!
+The possibilities are endless! Compare to ["Die Hard" on an X](https://tvtropes.org/pmwiki/pmwiki.php/Main/DieHardOnAnX) (warning: TV Tropes link).
 
 
 
