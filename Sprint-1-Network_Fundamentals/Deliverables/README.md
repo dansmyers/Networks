@@ -8,7 +8,11 @@ Edit this section to include a statement of the Honor Code.
 
 List the other members of your team here.
 
-## 
+## Submission Instructions
+
+
+## Performance
+
 
 
 
@@ -36,11 +40,21 @@ Once you've got your startup idea, all you need to do is create a landing page t
 
 Here's what I want you to do for this project:
 
-- Create your own startup concept. It can be as serious or silly as you want, but follow the *X for Y* format.
+- Create your own startup concept. It can be as serious or ridiculous as you want, but follow the *X for Y* format.
 
 - Build your startup's front page using Bootstrap and CSS styling. To give you some guidance, I want you to **use an existing company's webpage as the template for yours**. You can pick any page as long as it follows the Bootstrap-style row-and-column layout. Create a Bootstrap layout that mimics the one for your target page and use CSS to give it a similar look and feel.
 
-- Write all of your HTML and CSS by hand.
+- Write all of your HTML and CSS by hand in one file. Don't use a pre-built template.
+
+- You don't need to implement any advanced features like navbars, video, or forms. If you are using rows, columns, headers, color and font styling, and some images, you should have a good result.
+
+### Example Starting Points
+
+[Clare](https://www.clare.com/): paint for millenials!
+
+[Butcher Box](https://www.butcherbox.com/): meat for millenials!
+
+
 
 
 ### Disclaimer
@@ -51,8 +65,10 @@ However, there is a long tradition of building skills by studying the work of pr
 
 ### Tips
 
-- Spend some time looking at different pages before you choose one.
+- Spend some time looking at different example pages before you choose one.
 
 - You don't have to recreate complex graphics, charts, or figures. Replace them with any placeholder or fair-use image that you want to use.
 
-- 
+- You can use the "View Source" feature of your web browser to look at the source code for a page. You'll probably find that most commercial pages are loaded up with analytics and tracking scripts and use templates rather than raw Bootstrap code, so you might not be able to get much from them, but you can always check.
+
+- The [Bootstrap examples] page shows off a bunch of different Bootstrap features in minimal templates. In particular, you might find a use for the "Pricing" template, which shows how to use cards.
