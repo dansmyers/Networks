@@ -1,4 +1,4 @@
-# The OSI 7-Layer Model of Networking
+# The OSI Model of Networking and the Architecture of the Internet
 
 ## Introduction
 
@@ -156,7 +156,7 @@ most important transport layer protocol is **TCP, the Transmission Control Proto
 
 - IP provides a system of addressing and routing that allows hosts anywhere in the world to communicate with each other.
 
-- TCP provides a measure of reliability to ensure that data actually gets transmitted and also provies some rules to stop links from becoming too congested.
+- TCP provides a measure of reliability to ensure that data actually gets transmitted and also provides some rules to stop links from becoming too congested.
 
 Here's another view of the OSI model that compares it to the TCP/IP-based stack of the modern Internet:
 
