@@ -193,7 +193,7 @@ There are all kinds of other application-layer protocols. Here are a few commonl
 
 | Protocol | Full Name | Purpose |
 | -------- | --------- | ------- |
-| HTTP | Hypertext Transfer Protocol |  |
+| HTTP | Hypertext Transfer Protocol | Fetch web pages from web servers, enable client/server information exchange |
 | FTP |File Transfer Protoocl | Downloading files from a server |
 | SMTP | Simple Mail Transfer Protocol | E-mail |
 | SSH | Secure Shell | Secure log-in to a remote server |
