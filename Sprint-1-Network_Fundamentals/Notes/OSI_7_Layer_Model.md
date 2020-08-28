@@ -128,7 +128,7 @@ of different networks.
 
 We're going to spend most of our time on two of IP's features:
 
-- **Addressing**: if I want to send a request to another host on the Internet, how do I know where that host is located? **IP addresses** allow a (potentially) unique identifier for every host on the Internet. You're probably familiar with IP addresses displayed as four numbers, like 172.217.2.142.
+- **Addressing**: if I want to send a request to another host on the Internet, how do I know where that host is located? **IP addresses** allow a (potentially) unique identifier for every host on the Internet. You're probably familiar with IP addresses displayed as four numbers, like 172.217.2.142. We'll talk about how IP addresses have evolved over time as the Internet has grown.
 
 - **Routing**: if I want to send data around the global Internet, how do I find a path from a starting point to a destination IP address? This is complicated, because the Internet is in constant flux as links and hosts join, go down, or become congested. The Internet is **decentralized** &ndash; there is no single view or entity that has global 
 knowledge of every host and link &ndash; so successful routing has to be based on only limited information.
