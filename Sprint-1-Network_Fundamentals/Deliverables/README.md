@@ -63,6 +63,8 @@ Here's what I want you to do for this project:
 
 - [Anchor](https://anchor.fm/): Radio for millenials!
 
+- [The Bootstrap homepage](https://getbootstrap.com/)
+
 These are all more complicated than what you will likely create for your own site, but they will give you examples of the look and feel you should be going for. You can easily poke around the web and find more sites.
 
 ### Disclaimer
@@ -73,10 +75,18 @@ However, there is a long tradition of building skills by studying the work of pr
 
 ### Tips
 
-- Spend some time looking at different example pages before you choose one.
+- **This is intended to be a creative project that requires experimentation and figuring things out on your own**. You **will** need to spend time searching the Internet to learn how to create the effects that you want. This is deliberate: using documentation and figuring out answers to your own questions is an important part of web development.
+
+- Start early! You'll need time to experiment.
+
+- Look at lots of different example pages.
+
+- Build incrementally. Check each change you make to see if it produces the effect you want.
+
+- Start with simple ideas and then make them more complex. It's okay, for example, to use placeholders or dummy text while you get the layout refined.
 
 - You don't have to recreate complex graphics, charts, or figures. Replace them with any placeholder or fair-use image that you want to use.
 
 - You can use the "View Source" feature of your web browser to look at the source code for a page. You'll probably find that most commercial pages are loaded up with analytics and tracking scripts and use templates rather than raw Bootstrap code, so you might not be able to get much from them, but you can always check.
 
-- The [Bootstrap examples] page shows off a bunch of different Bootstrap features in minimal templates. In particular, you might find a use for the "Pricing" template, which shows how to use cards.
+- The [Bootstrap examples] page shows off a bunch of different Bootstrap features in minimal templates. In particular, you might find a use for the "Pricing" template, which shows how to use cards. Look at the "Jumbotron" for an example of creating a huge callout at the top of the page.
