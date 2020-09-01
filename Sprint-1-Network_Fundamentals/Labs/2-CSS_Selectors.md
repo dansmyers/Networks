@@ -95,8 +95,10 @@ h2 {
 }
 ```
 
-What if you want to make the top-level heading bigger? You could adjust the `font-size` property specified in the `<body>`, but that would scale all fonts in the document, not
-only the top-level heading.
+### Setting More Specific Rules
+
+What if you want to make the top-level heading bigger? You could adjust the `font-size` property specified in the `body` rule, but that would scale all fonts in the document, 
+not only the top-level heading.
 
 You can set another value of `font-size` in an `h1` rule:
 
@@ -107,7 +109,7 @@ h1 {
 ```
 
 **The browser always applies the most specific set of rules for each page element**. In this case, it will use the `<h1>` font size for top-level titles and the general `<body>`
-font size everywhere else.
+font size everywhere else. Experiment with changing the two font sizes and observing the effects of your choices.
 
 
 ## Using `id` Selectors
