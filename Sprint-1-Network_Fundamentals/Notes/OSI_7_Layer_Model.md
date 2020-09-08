@@ -69,7 +69,7 @@ and engineering goes in to making it possible. For example, if you choose to use
 receiver designs, frequency bands to transmit on, power levels, and all kinds of other considerations.
 
 Second, Physical-layer transmissions are also vulnerable to noise and data corruption For example, electrical interference on a wire can easily lead to **bit flips**, where
-a received bit has the opposite value that it should have (a bit that should be 0 is read as 1, and vice-versa).
+a received bit has the opposite value that it should have (a bit that should be 0 is read as 1, or vice-versa).
 
 To protect against these kinds of errors, it's common to embed an **error correcting code** (ECC) within a transmission. The ECC is a few extra bits (sometimes just one bit)
 that can be used to determine if the received data is correct, or was possibly corrupted during transmission. Simple ECCs might allow the receiver to detect if one or a few bits 
