@@ -26,11 +26,19 @@ focus on getting into the rhythm of Scrumage and developing good working habits 
 Complete the four problems in `Deliverables`. Remember that you may work freely with the members of your team and you may use any resources that you find helpful to
 complete the project. **Please list the names of you collaborators in the project document**.
 
-***ADD SUBMISSION INSTRUCTIONS***.
-
 The quiz and reflective write-up will be done **online** on **Wednesday, September 30**, which will also be the release day for the next sprint's material. The quiz will be 
 **individual** (not team) but will be **open everything**: you can use the sprint resources, your notes, and online resources. Remember to abide by the Honor Code 
 and ask me if you have questions about what is an acceptable resource!
+
+## Submission Instructions
+
+- Fork this repo (dansmyers/Networks) using the "Fork" button on the repo homepage. Forking creates a copy of the repo under your own GitHub account.
+
+- Do your work, uploading your files into your repo.
+
+- Submit a pull request to me using the "Pull Request" button on the front page of your repo. The pull request will create an entry that allows me to review your new files.
+
+- I'll use the pull request commenting feature to provide feedback on your work.
 
 ## Learning Outcomes
 
