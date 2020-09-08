@@ -23,7 +23,7 @@ if you have questions that are too in-depth to handle over Slack.
 
 I will plan to be generally available for WebEx appointments on
 
-- Mondays, Wednesdays, and Fridays from 1:30 to 3:00
+- Mondays, Wednesdays, and Fridays from 2:30 to 3:30
 - Tuesdays and Thursdays from 10:00 to 12:00
 
 ## Official Course Description
@@ -288,85 +288,5 @@ against any student who violates the Honor Code by purchasing plagiarized soluti
 
 ## Official Syllabus Statements
 
-### Accessibility Services
-Rollins	College	is	committed	to	equal	access	and	inclusion	for	all	students,	faculty	
-and	staff.	 The	Rehabilitation	Act	of	1973	and	the	Americans	with	Disabilities	Act	of	
-1990	create	a	foundation	of	legal	obligations	to	provide	an	accessible	educational	
-environment	that	does	not	discriminate	against	persons	with	disabilities.	It	is	the	
-spirit	of	these	laws	that guides	the	college	toward	expanding	access	in	all	courses	
-and	programs,	utilizing	innovative	instructional	design,	and	identifying	and	
-removing	barriers	whenever	possible.
+Links to the full list of syllabus policy statements are [available here](https://rpublic.rollins.edu/sites/ASCPS/SitePages/Syllabi%20Statements.aspx).
 
-If	you	are	a	person	with	a	disability	and	anticipate	needing	any	type	of	academic	
-accommodations	in	order	to	fully	participate	in	your	classes,	please	contact	the	
-Office	of	Accessibility	Services,	located	on	the	first	floor	of	the	Olin	Library,	as	soon	
-as	possible. You	are	encouraged	to	schedule	a	Welcome	Meeting	by	filling	out	
-the “First	Time	Users” form	on	the	website: https://www.rollins.edu/accessibilityservices and/or	reach	out	by	phone	or	email: 407-975-6463 or Access@Rollins.edu.
-
-All	test-taking	accommodations	requested	for	this	course	must	first	be	approved	
-through	the	Office	of	Accessibility	Services (OAS)	and	scheduled	online	through	
-Accommodate at	least	72	hours	before	the	exam.	Official	accommodation	letters	
-must	be	received	by	and	discussed	with	the	faculty	in	advance.	 There	will	be	no	
-exceptions	given	unless	previously	approved	by	the	OAS with	documentation	of	the	
-emergency	situation.	We	highly	recommend	making	all	testing	accommodations	at	
-the	beginning	of	the	semester.	OAS staff	are	available	to	assist	with	this	process.
-
-### Citation	Expectations
-As	per	the	Academic	Honor	Code,	plagiarism	is	defined	as	“Offering the words, facts,
-or ideas of another person as your own in any academic exercise.” In	order	to	avoid	
-plagiarism,	all	students	are	expected	to	use	proper	citation	norms.	For	our	course,	
-all	assignments	will	use	[faculty	choice	- MLA,	Chicago,	APA,	etc]	citation	style.	
-
-### Absences	– Religious	Holidays	and/or	Campus	Business
-The	professor	will	accommodate	a	reasonable	number	of	excused	absences	for	
-religious	holidays	and	official	off-campus	college	business	such	as	academic	
-conference	presentations	and	athletic	competitions.	However,	per	the	College’s	
-policy	on	excused	absences	
-(http://www.rollins.edu/catalogue/academic_regulations.html#class-attendance),	
-students	must	discuss	with	the	professor	the	dates	of	the	anticipated	absences	no	
-later	than	the	last	day	of	the	drop	period.	Students	must	present	to	their	professor	
-written	evidence	of	the	anticipated	absences	and	discuss	with	him/her	how	and	
-when	make-up	work	should	be	completed	prior	to	missing	the	class.	Students	
-should	not	expect	to	receive	allowance	for	excused	absences	if	they	do	not	meet	
-with	the	professor	beforehand	and	clarify	the	dates	as	necessary.	Absences	will	be	
-addressed	by	the	faculty	member	in	accordance	with	his/her	attendance	policy.	The	
-professor	retains	the	right	to	determine	what	would	be	considered	to	be	a	
-reasonable	number	of	absences	(excused	or	otherwise)	for	the	course.	A	student	
-will	not	fail	a	course	because	the	number	of	religious	observances	and/or	college	
-business	absences	exceed	the	number	of	absences	allowed,	except	if	excessive	
-absences	make	it	impossible	to	fulfill	the	expectations	of	the	course.	The	student’s	
-class	participation	grade	in	the	course,	though,	may	still	be	affected.
-
-### Credit	Hour	Statement	for	Rollins	Courses
-This	course	is	a	four-credit-hour	course	that	meets	three	hours	per	week.	The	value	
-of four	credit	hours	results,	in	part,	from	work	expected	of	enrolled	students	both	
-inside	and	outside	the	classroom. Rollins	faculty	require	that	students	average	at	
-least	2	½	hours	of	outside	work	for	every	hour	of	scheduled	class	time. In	this	
-course,	the	additional	outside-of-class	expectations	are	self-directed learning and
-substantial team-based projects.
-
-### Recording	Device Use
-In	order	to	protect	the	integrity	of	the	classroom	experience,	the	use	of	recording	
-devices	is	limited	to	either	the	expressed	permission	of	the	faculty	member	or	with	
-proper	documentation	from	the	Office	of	Accessibility	Services. Information	about	
-accommodations	through	Accessibility	Services	can	be	found	at	
-http://www.rollins.edu/accessibility-services/.	Recording	without	the	proper	
-authorization	is	considered	a	violation	of	the	Rollins	Code of	Community	Standards.
-
-### Title	IX	Statement
-Rollins	College	is	committed	to	making	its	campus	a	safe	place	for	students.	If	you	
-tell	any	of	your	faculty	about	sexual	misconduct	involving	members	of	the	campus	
-community,	your	professors are	required	to	report	this	information	to	the	Title	IX	
-Coordinator.	Your	faculty	member	can	help	connect	you	with	the	Title	IX	
-Coordinator,	(TitleIX@rollins.edu or	407.691.1773).	You	will	be	provided with	
-information,	resources	and	support.	If	you	would	prefer	to	speak	to	someone	on	
-campus	confidentially,	please	call	the	Wellness	Center	at	407.628.6340.	They	are	not	
-required	to	report	any	information	you	share	with	the	Title	IX	Coordinator.
-Misconduct	under	Title	IX	includes	gender-based	discrimination	and	harassment,	
-sexual	harassment,	sexual	violence	including	fondling	and	assault,	sexual	
-coercion/force,	sexual-based	communication,	sexual	exploitation,	interpersonal	
-violence	including	dating	and	domestic	violence,	stalking,	complicity	and	retaliation.	
-Everyone	is	protected	under	the	following	protected	statuses:	sex	(including	
-pregnancy),	gender,	gender	identity	(including	transgender	status),	gender	
-expression,	and	sexual	orientation.	For	information,	
-visit https://www.rollins.edu/sexual-misconduct/
