@@ -2,7 +2,7 @@
 
 ## Introduction
 
-<img src="https://vignette.wikia.nocookie.net/tacobell/images/c/cf/Pdp_7_layer_burrito.jpg/revision/latest?cb=20100905052511" width="50%" />
+<img src="https://vignette.wikia.nocookie.net/tacobell/images/c/cf/Pdp_7_layer_burrito.jpg/revision/latest?cb=20100905052511" width="40%" />
 
 The OSI 7-layer model is arguably the most common **reference model** of computer network architecture. OSI stands for "Open Standards Initiative" and the model was introduced
 in the early 1980's as part of an project led by the International Organization for Standards (ISO). (This should serve as an introduction to two ideas that will keep coming up 
@@ -166,7 +166,7 @@ Here's another view of the OSI model that compares it to the TCP/IP-based stack 
 
 TCP/IP is, as the old-timers might say, the cat's pajamas.
 
-<img src="https://pyxis.nymag.com/v1/imgs/334/5a2/3fe5b39b2e8b77f58a64bdb7142db46b96-15-state-department-cat-picture.2x.rsquare.w700.jpg" width="50%" />
+<img src="https://pyxis.nymag.com/v1/imgs/334/5a2/3fe5b39b2e8b77f58a64bdb7142db46b96-15-state-department-cat-picture.2x.rsquare.w700.jpg" width="40%" />
 
 (Source: ["State Department Accidentally Sends Out Very Good Photo of Cat in Pajamas"](https://www.thecut.com/2018/10/state-department-accidentally-sends-out-cat-pajama-photo.html))
 
