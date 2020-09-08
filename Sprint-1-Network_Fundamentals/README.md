@@ -112,3 +112,14 @@ Start with my Bootstrap notes in the `Notes` directory, then take a look at [thi
 container, one or more rows, and columns within the rows.
 
 ## Plan and Tips
+
+- **Week 1**: Start working on the front-end development material. We will go through examples in class. Your first goal shoud be to complete the initial lab on HTML and
+CSS, then move on to using selectors. Read the notes on the 7-layer model and watch a few videos if you need to.
+
+- **Week 2**: Complete the Bootstrap practice lab, then begin working on your web page project. Review the material on network performance and complete the homework problems.
+
+- **Week 3 before the quiz**: Finish your web page.
+
+- **Don't wait until the last minute**! You won't have time to finish everything if you wait until right before the deadline.
+
+- Remember that you can work with your teammates and use any web resources that you find helpful.
