@@ -147,8 +147,6 @@ to say that IP provides **best effort** service; it will do the best it can to d
 (Aside: this might seem like a strange decision, but remember that one of the core design goals of IP was to run over anything. You can't make detailed guarantees about
 performance or reliability if you want to be able to run over any potentially low-quality link.)
 
-<img src="https://memestatic.fjcdn.com/pictures/Delicious_130432_6330799.jpg" width="50%" />
-
 Therefore, it's common to pair IP with a higher-level protocol that provides **end-to-end connectivity** and ensures reliable transmission. In the modern Internet, the
 most important transport layer protocol is **TCP, the Transmission Control Protocol**.
 
