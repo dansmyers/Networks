@@ -197,7 +197,7 @@ There are all kinds of other application-layer protocols. Here are a few commonl
 | SSH | Secure Shell | Secure log-in to a remote server |
 | DHCP | Dynamic Host Configuration Protocol | Automatically assign your computer a new IP address when you join a network |
 | DNS | Domain Name System | Maps human-readable website names (like github.com) to their underlying IP addresses |
-| Bitcoin | The protocol that describes communications in the Bitcoin network | Fake Internet money | 
+| Dogecoin | The protocol that describes communications in the Dogecoin network | Fake Internet meme money | 
 
 
 ### Layers 5 and 6: the Session and Presentation Layers
