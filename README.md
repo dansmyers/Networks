@@ -252,6 +252,13 @@ the fact.
 
 **Canvas and GitHub** Most of the course material will be distributed through GitHub. We'll use Canvas to keep track of grades, announcements, and a few other things.
 
+## Late Work
+
+Late work is only accepted in the case of unusual extenuating circumstances, such as a sudden illness. Work for other classes or part-time jobs does not count as extenuating. 
+You are responsible for submitting work on time, in the required format, and using the correct submission procedure.
+
+Please speak with me as soon as possible if you have concerns about your ability to meet a deadline so we can discuss options.
+
 ## Policies for Virtual Attendance
 
 When meeting virtually, it's important to maintain an atmosphere that's conducive to learning and comparable to an in-person class. In that spirit, I respectfully request
@@ -268,23 +275,6 @@ the following:
 ## Necessary and Proper Clause
 
 I will make every effort to adhere to the topics and schedule described in this syllabus. However, I reserve the right to make changes for the good of the course.
-
-
-## Honor Code
-Membership in the student body of Rollins College carries with it an obligation, and requires a commitment, to act with honor in all things. The student commitment to uphold the values of honor--honesty, trust, respect, fairness, and responsibility--particularly manifests itself in two public aspects of student life. First, as part of the admission process to the College, students agree to commit themselves to the Honor Code. Then, as part of the matriculation process during Orientation, students sign a more detailed pledge to uphold the Honor Code and to conduct themselves honorably in all their activities, both academic and social, as a Rollins student. A student signature on the following pledge is a binding commitment by the student that lasts for his or her entire tenure at Rollins College:
-
-> The development of the virtues of Honor and Integrity are integral to a Rollins College education and to membership in the Rollins College community. Therefore, I, a student of Rollins College, pledge to show my commitment to these virtues by abstaining from any lying, cheating, or plagiarism in my academic endeavors and by behaving responsibly, respectfully and honorably in my social life and in my relationships with others. This pledge is reinforced every time a student submits work for academic credit as his/her own. Students shall add to the paper, quiz, test, lab report, etc., the handwritten signed statement:
->
-> **“On my honor, I have not given, nor received, nor witnessed any unauthorized assistance on this work.”**
->
-
-Material submitted electronically should contain the pledge; submission implies signing the pledge.
-
-## How Do I Interpret the Honor Code?
-In the context of this class, my interpretation of the Honor Code pledge is that the work you submit for every assignment shall be your own original creation. This means that any item you submit must be written by you and you alone, or in an assigned group project by your group alone. Copying a complete solution from fellow class members, previous class members, books, or the Internet is a violation of this policy and will constitute academic misconduct.
-
-The use of online homework help sites such as Chegg or non-Rollins-approved tutors is **explicitly and brutally forbidden**. I will pursue the maximum possible penalty
-against any student who violates the Honor Code by purchasing plagiarized solutions to assignments.
 
 ## Official Syllabus Statements
 
