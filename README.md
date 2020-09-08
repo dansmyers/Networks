@@ -45,6 +45,8 @@ At the end of this course, you will be able to:
 There is one text: *Computer Networks: a Systems Approach* by Peterson
 and Davie. It is now available **free** on the web at https://book.systemsapproach.org/.
 
+We will use [Mimir](https://www.mimirhq.com/) for programming. It is free for the 2020-21 academic year.
+
 ## Scrumage
 
 ### What?
