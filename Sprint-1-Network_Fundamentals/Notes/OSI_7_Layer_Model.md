@@ -22,7 +22,7 @@ standard part of the field.
 ### Overview
 
 
-This table (similar to the one in [the Wikipedia article](https://en.wikipedia.org/wiki/OSI_model)) shows the seven layers. The convention is to number the bottom layer (Physical) as Layer 1 and the top layer (Applications) as layer 7.
+This table (similar to the one in [the Wikipedia article](https://en.wikipedia.org/wiki/OSI_model)) shows the seven layers. The convention is to number the bottom layer (Physical) as layer 1 and the top layer (Applications) as layer 7.
 
 For our purposes, layers 5 and 6 are not that important and tend to be lumped in with layer 7.
 
