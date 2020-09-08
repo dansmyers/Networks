@@ -103,7 +103,7 @@ Well, the radio signals might interfere with each other, resulting in a garbled 
 radio on a long drive and passed through the area where two stations broadcasting on the same frequency overlap with each other.
 
 Link layer protocols solve the problem of allowing multiple hosts to **share access** to the same underlying communication medium. The Wi-Fi standard solves this
-problem for radio links, by putting some rules in place that allow hosts to transmit without causing unacceptable interference.
+problem for radio links by introducing rules that allow hosts to transmit without causing unacceptable interference.
 
 Other important protocols at the link layer include Ethernet for wired links (very common in datacenters and campus networks), Bluetooth for small devices, and the various
 cellular protocols: 4G, LTE, 5G, etc.
