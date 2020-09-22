@@ -32,7 +32,7 @@ Give an estimate of the expected time required to transmit the file from the sou
 
 ### Part 3
 
-Repeat the example from Part 2, but now assume that there is a total of 512 KB of data queued and waiting to transmit at the second link at the moment that the 1 MB file arrives there. The entire 512 MB must transmit before our 1 MB file can be sent on the second link.
+Repeat the example from Part 2, but now assume that there is a total of 512 KB of data queued and waiting to transmit at the second link at the moment that the 1 MB file arrives there. The entire 512 KB must transmit before our 1 MB file can be sent on the second link.
 
 What is the complete estimated time &ndash; including transmission times, latency, and queueing delays &ndash; required to send the file now?
 
