@@ -26,7 +26,11 @@ for the data to transit from the source to the destination
 
 ### Part 1 Solution
 
+Converting Mbits to Mbytes: (80 Mbits / 1 sec) * (1 Mbyte / 8 Mbits) = 10 Mbytes/sec
 
+Expected time to send a 1 Mbyte file: 1 Mbyte / 10 Mbyte/sec = 100 ms
+
+**Total expected time required to transmit a 1 Mbyte file from source to destination:** 100 ms + 20 ms = **120 ms**
 
 ### Part 2
 
