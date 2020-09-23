@@ -2,11 +2,11 @@
 
 ## Honor Code
 
-Edit this section to include a statement of the Honor Code.
+“On my honor, I have not given, nor received, nor witnessed any unauthorized assistance on this work.”
 
 ## Team Members
 
-List the other members of your team here.
+Alex Wehr
 
 ## Submission Instructions
 
@@ -23,6 +23,10 @@ Hint: Bits vs. bytes!
 
 Hint II: Think about both the time to put the data on the link and the time
 for the data to transit from the source to the destination
+
+### Part 1 Solution
+
+
 
 ### Part 2
 
