@@ -38,6 +38,19 @@ Suppose that you want to transmit the same 1 MB file to a destination that requi
 
 Give an estimate of the expected time required to transmit the file from the source to its destination.
 
+### Part 2 Solution
+
+Converting Mbits to Mbytes on the *first* link: (80 Mbits / 1 sec) * (1 Mbyte / 8 Mbits) = 10 Mbytes/sec
+
+Converting Mbits to Mbytes on the *second* link: (60 Mbits / 1 sec) * (1 Mbyte / 8 Mbits) = 7.5 Mbytes/sec
+
+Expected time to send a 1 Mbyte file on the *first* link: 1 Mbyte / 10 Mbyte/sec = 100 ms
+
+Expected time to send a 1 Mbyte file on the *second* link: 1 Mbyte / 7.5 Mbyte/sec = 133 ms
+
+**Total expected time required to transmit a 1 Mbyte file from source to destination with both links:** 100 ms + 133 ms + 20 ms = **253 ms**
+
+
 ### Part 3
 
 Repeat the example from Part 2, but now assume that there is a total of 512 KB of data queued and waiting to transmit at the second link at the moment that the 1 MB file arrives there. The entire 512 MB must transmit before our 1 MB file can be sent on the second link.
