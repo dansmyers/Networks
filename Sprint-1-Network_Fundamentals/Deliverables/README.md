@@ -8,9 +8,6 @@ Edit this section to include a statement of the Honor Code.
 
 List the other members of your team here.
 
-## Submission Instructions
-
-
 ## Performance
 
 ### Part 1
