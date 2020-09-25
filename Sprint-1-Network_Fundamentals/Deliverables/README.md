@@ -2,11 +2,11 @@
 
 ## Honor Code
 
-
+"On my honor, I have not given, nor received, nor witnessed any unauthorized assistance on this work."
 
 ## Team Members
 
-Oliver, Griffin, Randall
+Griffin, Oliver, Randall
 
 ## Performance
 
