@@ -99,4 +99,4 @@ However, there is a long tradition of building skills by studying the work of pr
 
 - You can use the "View Source" feature of your web browser to look at the source code for a page. You'll probably find that most commercial pages are loaded up with analytics and tracking scripts and use templates rather than raw Bootstrap code, so you might not be able to get much from them, but you can always check.
 
-- The [Bootstrap examples] page shows off a bunch of different Bootstrap features in minimal templates. In particular, you might find a use for the "Pricing" template, which shows how to use cards. Look at the "Jumbotron" for an example of creating a huge callout at the top of the page.
+- The [Bootstrap examples](https://getbootstrap.com/docs/4.0/examples/) page shows off a bunch of different Bootstrap features in minimal templates. In particular, you might find a use for the "Pricing" template, which shows how to use cards. Look at the "Jumbotron" for an example of creating a huge callout at the top of the page.
