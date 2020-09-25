@@ -1,0 +1,49 @@
+Part 1:
+
+	Time to get on the link (bandwidth) = file size / bandwidth 
+
+	megabytes to bits: 1MegaBit = 8 * 1MegaByte
+
+	2 ** 20 = number of bits in 1 megabyte 8 * (2 ** 20) bits
+
+	file size = (in bits) 8 * (2 ** 20) / 80 * (2 ** 20) (seconds) = 1/10 of a second = 100ms (ms = milliseconds)
+
+	Travel time on the wire = latency 
+
+	RTT (round trip time) = 20ms
+	one way latency = 20ms / 2 = 10ms 
+
+	Total time = 10ms + 100ms = 
+
+	110ms of travel time
+
+Part 2:
+
+	Total travel time = time to get on the first wire + time to get on the second wire + time traveled on the wires
+
+	time on the first wire:
+		100ms (calculated in part 1)
+
+	time on the second wire:
+
+		time to get onto the wire (bandwidth) = file size / bandwidth
+	
+		file size = 1mbyte = 8 * (2 ** 20) bits 
+		bandwidth = 60 * (2 ** 20) bits/sec 
+	
+		8(2 ** 20) / 60(2 ** 20) = 2/15 of a second 2000/15ms or 133.3ms 
+	
+		time to get onto the second wire = 133.3 milliseconds 
+	
+	latency:
+		RTT (round trip time) = 20ms
+		one way latency = (RTT)/ 2 
+		20ms/2 = 10ms 
+	
+	Total travel time:
+		100ms + 133.3ms + 10ms = 
+		
+		243.3ms of travel time 
+	
+Part 3:
+	
