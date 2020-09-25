@@ -6,7 +6,7 @@
 
 ## Team Members
 
-Griffin, Lee, Oliver
+Oliver, Griffin, Randall
 
 ## Performance
 
