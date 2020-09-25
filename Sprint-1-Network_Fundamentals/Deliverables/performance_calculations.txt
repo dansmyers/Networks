@@ -81,4 +81,3 @@ There is also a latency for this data, which would equal the RTT/4 since the dat
 
 total time = 315 ms
 
-
