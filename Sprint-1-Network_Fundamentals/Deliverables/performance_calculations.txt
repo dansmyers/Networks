@@ -1,0 +1,64 @@
+"""
+	Collaborated with Griffin, Lee, Oliver
+	
+"""
+Part 1:
+
+File size/bandwidth
+
+1 MB/ (80 Mb/s) = ( 8 * 2^20 bits)/ (80 * 2^20 bits/sec)
+
+Now flip the 2nd fraction to cancel out the units
+
+(8 * 2^20 bits) * [( 1 sec)/ 80 * 2^20 bits)]
+
+Cancel out bits and you are left with seconds. The 2^20 values cancel and 8/80 reduces to 1/10 or .10
+
+(8 * 2^20 bits) * [( 1 sec)/ 80 * 2^20 bits)] = .1 sec or 100 ms 
+
+Total time = RTT + time to get data copied onto wire
+
+RTT needs to be divided by 2 since we only want one way latency
+
+total time = (20/2) ms  + 100 ms = 110 ms
+
+110 ms is the total amount of required to transmit the data from the sender to the destination
+
+
+"""
+
+"""
+
+Part 2:
+
+This time we are traversing two links so we need to do the following calculation to get the total time for transmission
+
+total time = (time to get data on first link) + (time to get data on 2nd link) + RTT/2
+
+first link is given from the first problem
+
+time to get data on first link = 100 ms
+
+Now do the second link:
+
+[(8 * 2^20 bits)/ (60 * 2^20 bits/s)]
+
+Flip the fractions and cancel out units to get seconds. The 2^20 also cancel and you are left with 8/60
+
+8/60 = 2/15 
+
+2/15 seconds to ms is 133.33 ms
+
+Back to the origianl function for total time:
+
+total time = 100 + 133.33 + (20/2)
+
+total time = 243.33 ms
+
+"""
+
+"""
+
+
+
+
