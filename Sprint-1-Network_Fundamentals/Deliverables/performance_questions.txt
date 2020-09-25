@@ -28,8 +28,10 @@ Part 2:
 
 		time to get onto the wire (bandwidth) = file size / bandwidth
 	
-		file size = 1Mbyte = 8 * (2 ** 20) bits 
-		bandwidth = 60 * (2 ** 20) bits/sec 
+		file size = 1Mbyte = 8 * (2 ** 20) bits
+		file size = 1mbyte = 8 * (2 ** 20) bits
+	    added part 1 and 2 of performance questions
+		bandwidth = 60 * (2 ** 20) bits/sec
 	
 		8(2 ** 20) / 60(2 ** 20) = 2/15 of a second 2000/15ms or 133.3ms 
 	
@@ -49,13 +51,13 @@ Part 3:
 	
 	Total travel time = time to get on the first wire + time to travel the first wire + time of the queued
 	data to get on the second wire + time for the queued data to tavel the second wire + time for the data
-	to get on the second wire + time for the data to travel the second wire 
+	to get on the second wire + time for the data to travel the second wire
 	
 	time for the data to get on and travel the first and second wires = 243.3ms (calculated from part 2)
+
+	(512 * 8) * (2 ** 10) = number of bits in the second file
 	
-	(512 * 8) * (2 ** 10) = number of bits in the second file 
-	
-	time to get on the wire = file size / bandwidth 
+	time to get on the wire = file size / bandwidth
 	
 	4096 * (2 ** 10) / 60( 2 ** 20) = .067 sec or 67ms
 	
@@ -65,15 +67,6 @@ Part 3:
 	
 	= the 512KB file will take 72ms to complety tranfer along the second wire 
 	
-	total travel time = 243.3ms + 72ms = 
+	total travel time = 243.3ms + 72ms =
 	
 	315.3ms of travel time
-	
-	
-	
-	
-	
-	
-	
-	
-	
