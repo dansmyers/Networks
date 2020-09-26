@@ -56,7 +56,7 @@ Expected time to send a 1 Mbyte file on the *second* link: 1,050,000 bytes / (7,
 
 Converting the round-trip latency to one-way latency: round-trip latency / 2 = 20 ms / 2 = 10 ms
 
-**Total expected time required to transmit a 1 Mbyte file from source to destination with both links:** 105 ms + 140 ms + 10 ms = **255 ms**
+**Total expected time required to transmit a 1 Mbyte file from source to destination with both links:** 105 ms + 140 ms + 10 ms + 10 ms = **265 ms**
 
 
 ### Part 3
