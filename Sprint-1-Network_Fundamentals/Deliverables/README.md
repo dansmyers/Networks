@@ -26,11 +26,15 @@ for the data to transit from the source to the destination
 
 ### Part 1 Solution
 
-Converting Mbits to Mbytes: (80 Mbits / 1 sec) * (1 Mbyte / 8 Mbits) = 10 Mbytes/sec
+Converting link upload rate: 80 Mbits / sec = 80,000,000 bits / sec = 80,000,000 bits / sec * (1 byte / 8 bits) = 10,000,000 bytes / sec
 
-Expected time to send a 1 Mbyte file: 1 Mbyte / 10 Mbyte/sec = 100 ms
+Converting 1 Mbyte file: 1 Mbyte = 1 * 2<sup>20</sup> bytes = 1,050,000 bytes
 
-**Total expected time required to transmit a 1 Mbyte file from source to destination:** 100 ms + 20 ms = **120 ms**
+Expected time to upload 1 Mbyte file: File size / bandwidth = 1,050,000 bytes / (10,000,000 bytes / sec) = 0.105 sec = 105 ms
+
+Converting the round-trip latency to one-way latency: round-trip latency / 2 = 20 ms / 2 = 10 ms
+
+**Total expected time required to transmit a 1 Mbyte file from source to destination:** 105 ms + 10 ms = **115 ms**
 
 ### Part 2
 
@@ -40,15 +44,19 @@ Give an estimate of the expected time required to transmit the file from the sou
 
 ### Part 2 Solution
 
-Converting Mbits to Mbytes on the *first* link: (80 Mbits / 1 sec) * (1 Mbyte / 8 Mbits) = 10 Mbytes/sec
+Converting Mbits to Mbytes on the *first* link: 80 Mbits / sec = 80,000,000 bits / sec = 80,000,000 bits / sec * (1 byte / 8 bits) = 10,000,000 bytes / sec
 
-Converting Mbits to Mbytes on the *second* link: (60 Mbits / 1 sec) * (1 Mbyte / 8 Mbits) = 7.5 Mbytes/sec
+Converting Mbits to Mbytes on the *second* link: 60 Mbits / 1 sec = 60,000,000 bits / sec = 60,000,000 bits / sec * (1 byte / 8 bits) = 7,500,000 bytes / sec
 
-Expected time to send a 1 Mbyte file on the *first* link: 1 Mbyte / 10 Mbyte/sec = 100 ms
+Converting 1 Mbyte file: 1 Mbyte = 1 * 2<sup>20</sup> bytes = 1,050,000 bytes
 
-Expected time to send a 1 Mbyte file on the *second* link: 1 Mbyte / 7.5 Mbyte/sec = 133 ms
+Expected time to send a 1 Mbyte file on the *first* link: 1,050,000 bytes / (10,000,000 bytes / sec) = 105 ms 
 
-**Total expected time required to transmit a 1 Mbyte file from source to destination with both links:** 100 ms + 133 ms + 20 ms = **253 ms**
+Expected time to send a 1 Mbyte file on the *second* link: 1,050,000 bytes / (7,500,000 bytes / sec) = 140 ms
+
+Converting the round-trip latency to one-way latency: round-trip latency / 2 = 20 ms / 2 = 10 ms
+
+**Total expected time required to transmit a 1 Mbyte file from source to destination with both links:** 105 ms + 140 ms + 10 ms = **255 ms**
 
 
 ### Part 3
