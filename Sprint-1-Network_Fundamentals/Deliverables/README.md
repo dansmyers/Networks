@@ -21,6 +21,8 @@ Hint: Bits vs. bytes!
 Hint II: Think about both the time to put the data on the link and the time
 for the data to transit from the source to the destination
 
+Answer: Approximently 0.127 seconds
+
 ### Part 2
 
 Suppose that you want to transmit the same 1 MB file to a destination that requires traversing two links. The complete round-trip time is still 20 ms. The first link transmits at a rate of 80 Mbits/sec and the second transmits at 60 Mbits/sec.
