@@ -12,6 +12,11 @@
         
         <style> 
         
+            img
+            {
+            width:100%;
+            }
+        
             /* Class labels must be prefixed with .
             in CSS style rules */
             .light {
@@ -65,18 +70,26 @@
               top: 70%;
               left: 50%;
               transform: translate(-50%, -50%);
-              font-size: 350%;
+              font-size: 3.1vw;
               color: white;
             }
             
             /* Centered subtitle text */
             .centered-sub {
               position: absolute;
-              top: 80%;
+              top: 77%;
               left: 50%;
               transform: translate(-50%, -50%);
-              font-size: 300%;
+              font-size: 2.1vw;
               color: white;
+            }
+            
+            /* Centered search bar */
+            .centered-search {
+              position: absolute;
+              top: 85%;
+              left: 50%;
+              transform: translate(-50%, -50%);
             }
             
             /* Default subheading text */
@@ -145,6 +158,10 @@
                   <div class="bottom-right">Bottom Right</div>
                   <div class="centered-main"><b>Book Hotels On Other Planets</b></div>
                   <div class="centered-sub">Get there at light speed</div>
+                  <!-- Search form -->
+                  <div class="active-cyan-4 mb-4 centered-search w-50">
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                  </div>
                 </div>   <!-- /col-12 -->  
                 
                 
