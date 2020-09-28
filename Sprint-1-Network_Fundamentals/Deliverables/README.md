@@ -4,9 +4,11 @@
 
 Edit this section to include a statement of the Honor Code.
 
+On my honor I have not given, nor received, nor witnessed any unauthorized help on this work"
+
 ## Team Members
 
-List the other members of your team here.
+Eric, Jaysa, Kyle and Nikola
 
 ## Performance
 
