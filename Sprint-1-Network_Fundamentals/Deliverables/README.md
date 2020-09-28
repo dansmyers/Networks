@@ -7,7 +7,9 @@
 
 ## Team Members
 
-List the other members of your team here.
+Nathaly Espinosa Teran
+Cameron DeLone
+Jenny Goldsher
 
 ## Performance
 
