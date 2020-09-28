@@ -1,0 +1,19 @@
+Part 1:
+(1MB/80mbps) + 10ms
+(100ms) + 10ms
+
+110ms
+
+Part 2:
+(1MB/60mbps)
+130ms
+130+100+10
+
+240ms
+
+Part 3:
+512KB/60mbps
+700ms
+700+240
+
+940ms
