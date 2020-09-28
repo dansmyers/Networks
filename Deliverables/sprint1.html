@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+    
+    <head>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
+        <style> 
+        
+            /* Class labels must be prefixed with .
+            in CSS style rules */
+            .light {
+                background-color: #FAFAFA;
+                color: #222222;
+            }
+            
+            .dark {
+                background-color: #222222;
+                color: #FAFAFA;
+            }
+            
+            /* Container holding the image and the text */
+            .container {
+              position: relative;
+              text-align: center;
+              color: white;
+            }
+            
+            /* Bottom left text */
+            .bottom-left {
+              position: absolute;
+              bottom: 8px;
+              left: 16px;
+            }
+            
+            /* Top left text */
+            .top-left {
+              position: absolute;
+              top: 8px;
+              left: 16px;
+            }
+            
+            /* Top right text */
+            .top-right {
+              position: absolute;
+              top: 8px;
+              right: 16px;
+            }
+            
+            /* Bottom right text */
+            .bottom-right {
+              position: absolute;
+              bottom: 8px;
+              right: 16px;
+            }
+            
+            /* Centered main text */
+            .centered-main {
+              position: absolute;
+              top: 70%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              font-size: 350%;
+              color: white;
+            }
+            
+            /* Centered subtitle text */
+            .centered-sub {
+              position: absolute;
+              top: 80%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              font-size: 300%;
+              color: white;
+            }
+            
+            /* Default subheading text */
+            .col-lg-12 {
+                color: darkslategray;
+            }
+            
+            /* Acts as a buffer between top Background and rest of rows */
+            .top-buffer { 
+                margin-top: 40px; 
+            }
+            
+            .destinations {
+                width: 200px; /* You can set the dimensions to whatever you want */
+                height: 200px;
+                object-fit: cover;
+            }
+            
+            .line-divide-short {
+                <hr style="width:50%">
+            }
+            
+            p {
+                font-size: 20px;
+            }
+                    
+        </style>
+        
+    </head>
+   
+    <body>
+
+        <!-- All Bootstrap content must be enclosed in a container div -->
+        
+        <!-- Every must follow the container -> row -> col -> content ordering. Putting content outside of that structure will result in BAD STUFF. --> 
+        
+        <!-- Jumbotron is a big header for the top of the page -->
+        <!-- text-center centers the text, bg-light makes the background light gray -->
+        <!--
+        <div class="jumbotron text-center has-bg-img">
+            <div class="container">
+                <h1 class="display-4">
+                    <i>Rent a Spaceship</i>
+                </h1>
+                
+                <h2 class="display-4">
+                    Get there at light speed
+                </h2>
+            </div>
+        </div> -->
+        
+        <!-- Fluid container to allow BG to expand entire width of screen -->
+        <div class="container-fluid no-padding">
+            
+            <!-- The container must contain one or more row divs -->
+            <!-- Top Level BG image -->
+            <div class="row">
+            
+                <!-- The row is divided into 12 units -->
+                <!-- Span 6 of 12 units with col -6 -->
+                <div class="col-lg-12">
+                <img src="images/bg_space.jpg" alt="space-bg" style="width:100%;">
+                  <div class="bottom-left">Bottom Left</div>
+                  <div class="top-left">Top Left</div>
+                  <div class="top-right">Top Right</div>
+                  <div class="bottom-right">Bottom Right</div>
+                  <div class="centered-main"><b>Book Hotels On Other Planets</b></div>
+                  <div class="centered-sub">Get there at light speed</div>
+                </div>   <!-- /col-12 -->  
+                
+                
+            </div> <!-- /row -->
+            
+            
+            
+        </div> <!-- /container -->
+        
+        <div class="container">
+        <!-- The container must contain one or more row divs -->
+            <div class="row top-buffer"> 
+            
+                <!-- The row is divided into 12 units -->
+                <!-- Span 6 of 12 units with col -6 -->
+                <div class="col-lg-12">
+                    <h2>
+                        <b>Popular Destinations</b>
+                        <hr />
+                    </h2>
+                </div>   <!-- /col-12 -->  
+                
+            </div> <!-- /row -->
+            
+            <div class="row top-buffer no-gutters"> 
+            
+                <div class="col-lg-4 destinations">
+                    <img src="images/img-venus.jpg" alt="venus" style="width:100%;">
+                </div> 
+                
+                <div class="col-lg-4 destinations">
+                    <img src="images/img-marsandearth.jpg" alt="mars" style="width:100%;">
+                </div> 
+                
+                <div class="col-lg-4 destinations">
+                    <img src="images/img-blackhole.jpg" alt="blackhole" style="width:100%;">
+                </div> 
+            
+            </div> <!-- /row -->
+            
+            <div class="row top-buffer"> 
+            
+                <div class="col-lg-12">
+                    <h2>
+                        <b>Universally-acclaimed space tourism</b>
+                        <hr />
+                    </h2>
+                </div>   <!-- /col-12 -->  
+            
+            </div> <!-- /row -->
+            
+        </div> <!-- /container -->
+        
+        <!-- Fluid container to allow BG to expand entire width of screen -->
+        <div class="container-fluid no-padding">
+            
+            <!-- The container must contain one or more row divs -->
+            <!-- Top Level BG image -->
+            <div class="row align-items-center no-gutters">
+            
+                <!-- The row is divided into 12 units -->
+                <!-- Span 6 of 12 units with col -6 -->
+                <div class="col-lg-6">
+                    <img src="images/img-mountainworld.jpg" alt="space-bg" style="width:100%;">
+                </div>   <!-- /col-12 --> 
+                
+                <div class="col-lg-6 text-center">
+                    <h2>
+                        <b>Explore the oceans of Europa</b>
+                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+                        <hr style="width:25%; border-color: blue">
+                        <p>Concerned over environmental conditions? No worries.</p> 
+                        <p>We give each patron a custom-fitted spacesuit
+                        <p>built for any situation!</p>
+                    </h2>
+                </div>   <!-- /col-12 --> 
+                
+            </div> <!-- /row -->
+            
+            <div class="row align-items-center no-gutters">
+                                
+                <div class="col-lg-6 text-center">
+                    <h2>
+                        <b>Meet other lifeforms</b>
+                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+                        <hr style="width:25%; border-color: blue">
+                        <p>Want to take a break from humanity?</p> 
+                        <p>Feel free to visit any of the over 62,000,000
+                        <p>alien worlds inside our galaxy!</p>
+                    </h2>
+                </div>   <!-- /col-12 --> 
+            
+                <!-- The row is divided into 12 units -->
+                <!-- Span 6 of 12 units with col -6 -->
+                <div class="col-lg-6">
+                    <img src="images/img-anotherworld.jpg" alt="space-bg" style="width:100%;">
+                </div>   <!-- /col-12 --> 
+
+                
+            </div> <!-- /row -->
+            
+            <div class="row align-items-center no-gutters">
+            
+                <!-- The row is divided into 12 units -->
+                <!-- Span 6 of 12 units with col -6 -->
+                <div class="col-lg-6">
+                    <img src="images/img-asteroid.jpg" alt="space-bg" style="width:100%;">
+                </div>   <!-- /col-12 --> 
+                
+                <div class="col-lg-6 text-center">
+                    <h2>
+                        <b>Observe asteroid mining</b>
+                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+                        <hr style="width:25%; border-color: blue">
+                        <p>Curious about how we get our resources?</p> 
+                        <p>Get a first hand look at our mining process!
+                    </h2>
+                </div>   <!-- /col-12 --> 
+                
+            </div> <!-- /row -->
+            
+            
+        </div> <!-- /container -->
+        
+        <!-- JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+    
+</html>
