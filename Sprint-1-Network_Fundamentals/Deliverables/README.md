@@ -2,8 +2,7 @@
 
 ## Honor Code
 
-Edit this section to include a statement of the Honor Code.
-
+Honor Code
 ## Team Members
 
 List the other members of your team here.
