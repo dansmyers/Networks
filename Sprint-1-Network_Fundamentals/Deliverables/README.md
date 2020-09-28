@@ -21,7 +21,9 @@ Hint: Bits vs. bytes!
 Hint II: Think about both the time to put the data on the link and the time
 for the data to transit from the source to the destination
 
-Answer: Approximently 0.127 seconds
+# Answer: 
+(8 Mbits / 80 Mbits/sec) = 0.1 sec = 100 ms
+100ms + 10 ms = 110 ms
 
 ### Part 2
 
@@ -29,13 +31,20 @@ Suppose that you want to transmit the same 1 MB file to a destination that requi
 
 Give an estimate of the expected time required to transmit the file from the source to its destination.
 
-Answer: Approximently 0.2936 seconds
+# Answer: 
+(8 Mbits / 60 Mbits/sec) = 0.1333 sec = 133.3 ms
+133.3 ms + 110 ms = 243.3 ms
 
 ### Part 3
 
 Repeat the example from Part 2, but now assume that there is a total of 512 KB of data queued and waiting to transmit at the second link at the moment that the 1 MB file arrives there. The entire 512 KB must transmit before our 1 MB file can be sent on the second link.
 
 What is the complete estimated time &ndash; including transmission times, latency, and queueing delays &ndash; required to send the file now?
+
+# Answer:
+512 KB = 4.096 Mbits
+(4.096 Mbits / 60 Mbits/sec) = 0.06826 sec = 68.26 ms
+68.26 ms + 243.3 ms = 311.59 ms
 
 ## Educational Plagiarism
 
