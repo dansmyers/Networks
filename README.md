@@ -1,7 +1,7 @@
 # CMS 450 &ndash; Networks
 
 ## Fall 2020 Syllabus
-
+Cool
 ## Who? Where?
 
 Dan S. Myers (Dr. Myers)  
