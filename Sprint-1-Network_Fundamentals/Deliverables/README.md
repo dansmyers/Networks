@@ -2,11 +2,9 @@
 
 ## Honor Code
 
-Edit this section to include a statement of the Honor Code.
-
+On my honor I have not given, received, or witnessed any unauthorized assistance on this work
 ## Team Members
-
-List the other members of your team here.
+Cameron, Samuel, Jenny
 
 ## Performance
 
