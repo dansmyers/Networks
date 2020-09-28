@@ -29,6 +29,8 @@ Suppose that you want to transmit the same 1 MB file to a destination that requi
 
 Give an estimate of the expected time required to transmit the file from the source to its destination.
 
+Answer: Approximently 0.2936 seconds
+
 ### Part 3
 
 Repeat the example from Part 2, but now assume that there is a total of 512 KB of data queued and waiting to transmit at the second link at the moment that the 1 MB file arrives there. The entire 512 KB must transmit before our 1 MB file can be sent on the second link.
