@@ -59,6 +59,26 @@ total time = 243.33 ms
 
 """
 
+Part 3:
 
+We will take the answer from part 2 and add on the total time it takes for the queued data to reach the destination. 
+
+Queue data is 512 KB and the time to get on the 2nd link is 60 Mbps
+
+512 KB = 8 * 512 * 2^10 bits
+
+(4096 * 2^10 bits) / (60 * 2^20 bits/sec) = 
+
+(68.2667/ 2^10 ) sec = .0667 sec
+
+.0667 sec = 66.67 ms
+
+There is also a latency for this data, which would equal the RTT/4 since the data starts on the 2nd link and would only traverse 1/4th of the total roundtrip distance from the sender to the destination.
+
+66.67 ms + 5 = 71.67 ms
+
+243.33 + 71.67 = 315 ms
+
+total time = 315 ms
 
 
