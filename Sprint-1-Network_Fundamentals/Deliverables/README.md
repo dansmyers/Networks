@@ -2,11 +2,11 @@
 
 ## Honor Code
 
-Edit this section to include a statement of the Honor Code.
+“On my honor, I have not given, nor received, nor witnessed any unauthorized assistance on this work.”
+-- Kyle Major
 
 ## Team Members
-
-List the other members of your team here.
+Nikola Vuckovik, Jaysa Ramirez, Eric Grimm
 
 ## Performance
 
