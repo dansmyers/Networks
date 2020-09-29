@@ -6,7 +6,7 @@ On my honor, I have not given, nor received, nor witnessed any unauthorized assi
 
 ## Team Members
 
-Griffin, Jacob, Lee
+Oliver (me), Griffin, Jacob, Lee
 
 ## Performance
 
