@@ -6,7 +6,7 @@
 
 ## Team Members
 
-List the other members of your team here.
+Randy, Oliver, Griffin, Jacob
 
 ## Performance
 
