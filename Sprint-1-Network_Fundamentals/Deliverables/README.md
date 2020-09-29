@@ -38,7 +38,7 @@ Give an estimate of the expected time required to transmit the file from the sou
 
 1 Mb = 8 mb
 
-(8 mb / 80 mb) sec = 0.1 sec * 1000 sec/ms = 100 ms      (8 mb / 60 mb) sec = 0.133 sec * 1000 sec/ms = 133 ms
+(8 mb / 80 mb) sec = 0.1 sec * 1000 ms/sec = 100 ms      (8 mb / 60 mb) sec = 0.133 sec * 1000 sec/ms = 133 ms
 
 100 ms + 133 ms + (20/2) ms = 243 ms
 
