@@ -51,9 +51,9 @@ What is the complete estimated time &ndash; including transmission times, latenc
 
 512 Kb = .512 Mb * 8 mb/Mb = 4.096 mb
 
-(4.096 / 60 mb) sec = 0.06826 sec * 1000 ms/sec = 68.26 ms
+(4.096 / 60 mb) sec = 0.06826 sec * 1000 ms/sec = 68.26 ms + 5 ms (for movement on the one line) = 73.26 ms
 
-100 ms + 68.26 ms + 133 ms + 10 ms = 311.26 ms
+100 ms + 73.26 ms + 133 ms + 10 ms = 316.26 ms
 
 
 ## Educational Plagiarism
