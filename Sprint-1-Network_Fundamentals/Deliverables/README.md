@@ -1,12 +1,11 @@
 # Sprint 1 &ndash; Deliverables
 
 ## Honor Code
-
-Edit this section to include a statement of the Honor Code.
+AHC- Jenny Goldsher
 
 ## Team Members
 I made an edit here
-List the other members of your team here.
+Cameron, Sam, Nathaly
 
 ## Performance
 
@@ -21,17 +20,38 @@ Hint: Bits vs. bytes!
 Hint II: Think about both the time to put the data on the link and the time
 for the data to transit from the source to the destination
 
+Answer: 110ms
+
+10ms - half of the RTT latency
+time to load onto link = 1MByte/80Mbitspersec, 1MByte = 8Mbits, filesize/bandwidth = 8Mbits/80mbitspersec = 1/10sec = 100ms
+10ms + 100ms = 110ms
+
 ### Part 2
 
 Suppose that you want to transmit the same 1 MB file to a destination that requires traversing two links. The complete round-trip time is still 20 ms. The first link transmits at a rate of 80 Mbits/sec and the second transmits at 60 Mbits/sec.
 
 Give an estimate of the expected time required to transmit the file from the source to its destination.
 
+Again, 1MB = 8Mbits
+20ms = RTT - in this case use entire RTT because things get sent on both ends
+1st filesize/bw = 8Mbits/80Mbitspersec = 100ms
+2nd filesize/bw = 8Mbits/60Mbitspersec = 133.3repeatedms
+20ms + 100ms + 133.3 repeated ms = 253.333 (repeated) ms
+
 ### Part 3
 
 Repeat the example from Part 2, but now assume that there is a total of 512 KB of data queued and waiting to transmit at the second link at the moment that the 1 MB file arrives there. The entire 512 KB must transmit before our 1 MB file can be sent on the second link.
 
 What is the complete estimated time &ndash; including transmission times, latency, and queueing delays &ndash; required to send the file now?
+
+Load onto link 1 = 8Mbits/80Mbitspersec = 100ms
+latency file one to destination = 10ms
+que wait time (load file in queue onto link) = 512KB/60Mbitspersec = 4.096Mbits/60Mbitssec = 68.3ms
+latency file from queue to desination = 10ms
+load file 2 onto link = 8Mbit/60Mbitspersec = 133.3repeated ms
+latency file 2 = 10ms
+
+total = 10ms + 100ms + 68.3ms + 10ms + 133.3r ms + 10ms = 331.6ms
 
 ## Educational Plagiarism
 
