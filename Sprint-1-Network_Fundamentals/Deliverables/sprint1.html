@@ -29,53 +29,11 @@
                 color: #FAFAFA;
             }
             
-            .smokegrey {
-                background-color: #F7F7F7;
-            }
-            
             /* Container holding the image and the text */
             .container {
               position: relative;
               text-align: center;
               color: white;
-            }
-            
-            /* Bottom left text */
-            .bottom-left {
-              position: absolute;
-              bottom: 8px;
-              left: 16px;
-            }
-            
-            /* Top left text */
-            .top-left {
-              position: absolute;
-              top: 8px;
-              left: 16px;
-            }
-            
-            /* Top right text */
-            .top-right {
-              position: absolute;
-              top: 8px;
-              right: 16px;
-            }
-            
-            /* Top NavBar */
-            .top-center {
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              font-size: 1vw;
-              color: white;
-            }
-            
-            /* Bottom right text */
-            .bottom-right {
-              position: absolute;
-              bottom: 8px;
-              right: 16px;
             }
             
             /* Centered main text */
@@ -155,52 +113,30 @@
    
     <body>
 
-        <!-- All Bootstrap content must be enclosed in a container div -->
-        
-        <!-- Every must follow the container -> row -> col -> content ordering. Putting content outside of that structure will result in BAD STUFF. --> 
-        
-        <!-- Jumbotron is a big header for the top of the page -->
-        <!-- text-center centers the text, bg-light makes the background light gray -->
-        <!--
-        <div class="jumbotron text-center has-bg-img">
-            <div class="container">
-                <h1 class="display-4">
-                    <i>Rent a Spaceship</i>
-                </h1>
-                
-                <h2 class="display-4">
-                    Get there at light speed
-                </h2>
-            </div>
-        </div> -->
-        
         <!-- Fluid container to allow BG to expand entire width of screen -->
-        <div class="bg-img">
-            <div class="container-fluid no-padding">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="display-3 text-left" style="color: #F7F7F7">
-                            <b>Plan It</b>
-                        </h1>
-                      <div class="centered-main"><b>Book Hotels On Other Planets</b></div>
-                      <div class="centered-sub">Get there faster than light speed</div>
-                      <!-- Search form -->
-                      <div class="active-cyan-4 mb-4 centered-search w-50">
-                        <input class="form-control" type="text" placeholder="Search for a celestial body" aria-label="Search">
-                      </div>
-                      <div class="centered-search-icon">
-                          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-                              <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-                          </svg>
-                      </div>
-                    </div>   <!-- /col-12 -->  
-                    
-                </div> <!-- /row -->
+        <div class="container-fluid no-padding bg-img">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="display-3 text-left" style="color: #F7F7F7">
+                        <b>Plan It</b>
+                    </h1>
+                  <div class="centered-main"><b>Book Hotels On Other Planets</b></div>
+                  <div class="centered-sub">Get there faster than light speed</div>
+                  <!-- Search form -->
+                  <div class="active-cyan-4 mb-4 centered-search w-50">
+                    <input class="form-control" type="text" placeholder="Search for a celestial body" aria-label="Search">
+                  </div>
+                  <div class="centered-search-icon">
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                          <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                      </svg>
+                  </div>
+                </div>   <!-- /col-12 -->  
                 
-            </div> <!-- /container -->
-        </div>
-        
+            </div> <!-- /row -->
+        </div> <!-- /container -->
+
         <div class="container">
         <!-- The container must contain one or more row divs -->
             <div class="row top-buffer"> 
