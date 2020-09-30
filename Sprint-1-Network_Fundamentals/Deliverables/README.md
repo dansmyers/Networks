@@ -6,7 +6,7 @@ On my honor, I have not given, nor received, nor witnessed any unauthorized assi
 
 ## Team Members
 
-List the other members of your team here.
+Nathaly Espinosa Teran, Cameron DeLone, Samuel Solomon, Jenny Goldsher
 
 ## Performance
 
