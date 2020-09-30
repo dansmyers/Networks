@@ -1,11 +1,10 @@
 # Sprint 1 &ndash; Deliverables
 
 ## Honor Code
-
-Honor Code
+On my honor, I have not given, nor received, nor witnessed any unauthorized assistance on this work.
 ## Team Members
+Nitish Jagdev, Ryan King, Mohamed
 
-List the other members of your team here.
 
 ## Performance
 
@@ -14,7 +13,7 @@ List the other members of your team here.
 Suppose you have a link capable of sending data at 80 Mbits/sec. The expected round-trip latency of the link (that is, the time for a sender to transmit a frame across the link and then receive a response back) is 20 ms. What is the total expected time required to transmit a 1 Mbyte file from a source host to a destination at the other end of the link?
 
 You may assume that the 80 Mbits/sec link rate is defined to be 80 * 2<sup>20</sup> bits per second.
-
+110ms
 Hint: Bits vs. bytes!
 
 Hint II: Think about both the time to put the data on the link and the time
@@ -25,7 +24,7 @@ for the data to transit from the source to the destination
 Suppose that you want to transmit the same 1 MB file to a destination that requires traversing two links. The complete round-trip time is still 20 ms. The first link transmits at a rate of 80 Mbits/sec and the second transmits at 60 Mbits/sec.
 
 Give an estimate of the expected time required to transmit the file from the source to its destination.
-
+244 ms
 ### Part 3
 
 Repeat the example from Part 2, but now assume that there is a total of 512 KB of data queued and waiting to transmit at the second link at the moment that the 1 MB file arrives there. The entire 512 KB must transmit before our 1 MB file can be sent on the second link.
