@@ -2,11 +2,11 @@
 
 ## Honor Code
 
-Edit this section to include a statement of the Honor Code.
+On my honor I have not given, recieved, or witnessed unauthorized assistance on this work.
 
 ## Team Members
 
-List the other members of your team here.
+Nitish, Mohammed, Miguel
 
 ## Performance
 
@@ -21,17 +21,38 @@ Hint: Bits vs. bytes!
 Hint II: Think about both the time to put the data on the link and the time
 for the data to transit from the source to the destination
 
+Answer:
+
+(8x2^20) / (80x2^20) +.020 = .1 + .020
+
+120 milliseconds
+
+
 ### Part 2
 
 Suppose that you want to transmit the same 1 MB file to a destination that requires traversing two links. The complete round-trip time is still 20 ms. The first link transmits at a rate of 80 Mbits/sec and the second transmits at 60 Mbits/sec.
 
 Give an estimate of the expected time required to transmit the file from the source to its destination.
 
+Answer:
+
+(8x2^20) / (80x2^20) + (8x20^2) / (60x2^20) = .100 + .133 + .020 = .253
+
+253 milliseconds
+
 ### Part 3
 
 Repeat the example from Part 2, but now assume that there is a total of 512 KB of data queued and waiting to transmit at the second link at the moment that the 1 MB file arrives there. The entire 512 KB must transmit before our 1 MB file can be sent on the second link.
 
 What is the complete estimated time &ndash; including transmission times, latency, and queueing delays &ndash; required to send the file now?
+
+Answer:
+
+(8x2^20) / (80x2^20) + (4x2^20) / (60x2^20) + (8x20^2) / (60x2^20) = .100 + .066 + .133 + .020 = .319
+
+319 milliseconds
+
+
 
 ## Educational Plagiarism
 
