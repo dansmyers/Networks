@@ -2,7 +2,7 @@
 
 ## Honor Code
 
-Edit this section to include a statement of the Honor Code.
+On my honor, I have not recieved, nor witnessed, nor given and unauthorized assitance on this assignment. 
 
 ## Team Members
 Jay Jiranek and Cameron Reeves
@@ -20,17 +20,42 @@ Hint: Bits vs. bytes!
 Hint II: Think about both the time to put the data on the link and the time
 for the data to transit from the source to the destination
 
+FileSize:
+1Mbyte(2^20 * 8) = 8388608 bits
+Bandwidth:
+2^20 x 80 = 83886080
+Latency:
+20ms = .01 sec
+
+(8388608 / 83886080) + .01 sec = .11 sec
+
 ### Part 2
 
 Suppose that you want to transmit the same 1 MB file to a destination that requires traversing two links. The complete round-trip time is still 20 ms. The first link transmits at a rate of 80 Mbits/sec and the second transmits at 60 Mbits/sec.
 
 Give an estimate of the expected time required to transmit the file from the source to its destination.
 
+FileSize:
+1Mbyte(2^20 * 8) = 8388608 bits
+
+Latency:
+10ms = .01 sec
+
+bandwidth:
+2^20 * 60 = 62914560
+@^20 * 80 = 83886080
+
+((8388608 / 83886080) + (8388608 / 62914560)) + .01 = .2434 sec
+
 ### Part 3
 
 Repeat the example from Part 2, but now assume that there is a total of 512 KB of data queued and waiting to transmit at the second link at the moment that the 1 MB file arrives there. The entire 512 KB must transmit before our 1 MB file can be sent on the second link.
 
 What is the complete estimated time &ndash; including transmission times, latency, and queueing delays &ndash; required to send the file now?
+
+512 KB = 4194304
+4194304 / 62914560 = .0667 sec
+.2434 + .0667 = .3101
 
 ## Educational Plagiarism
 
