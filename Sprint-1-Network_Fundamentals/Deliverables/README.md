@@ -3,7 +3,7 @@
 ## Honor Code
 On my honor, I have not given, nor received, nor witnessed any unauthorized assistance on this work.
 ## Team Members
-Nitish Jagdev, Ryan King, Mohamed
+Nitish Jagdev
 
 
 ## Performance
