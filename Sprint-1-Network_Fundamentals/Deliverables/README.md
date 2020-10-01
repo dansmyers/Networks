@@ -38,10 +38,13 @@ Let's make your own startup!
 Here's how you do it:
 
 1. Pick any well-known startup-like company: Uber, Airbnb, Instacart, Bytedance (Tik-Tok), Casper, Warby Parker, SpaceX.
+- Tinder
 
 2. Pick anything else that exists. Literally anything.
+- Animals
 
 3. Put the two together.
+- Apps for animals who are available for adoption and persons who are looking to adopt
 
 Airbnb for pools? [Swimply](https://swimply.com/). For RVs? [RVShare](https://rvshare.com/rv/airbnb-for-rvs). Uber for moving? [Dolly](https://dolly.com/uber-for-moving/). For haircuts? [Shortcut](https://www.getshortcut.co/). Warby Parker for shaving? [Harry's](https://www.harrys.com/en/us). The possibilities are endless! Compare to ["Die Hard" on an X](https://tvtropes.org/pmwiki/pmwiki.php/Main/DieHardOnAnX).
 
