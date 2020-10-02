@@ -1,5 +1,7 @@
 # Challenge Project: Incremental Game
 
+## Due December 11 (one week before the end of classes)
+
 <img src="https://www.decisionproblem.com/paperclips/title.png" width="33%"/>
 
 *You are an AI tasked with manufacturing as many paperclips as possible. It turns out that the Universe can be made into **a lot** of paperclips.*
@@ -15,6 +17,7 @@ irresistable. Or maybe it's just a [Skinner Box](https://en.wikipedia.org/wiki/O
 In this project, you're going to use front-end techniques to **build your own clicker game**. I've given you some code, described below, to help you get started, but everything
 that you need is a straightforward application of the front-end techniques we've used in Sprints 1 and 2. After doing this project, you should feel very good about using
 DOM manipulation techniques in a moderately large front-end web app. This project will also force you to think about how to manage a larger HTML/CSS/JS code base.
+
 
 ## Details
 
@@ -46,6 +49,11 @@ you have to balance your wood and iron production to keep the numbers going up. 
 or harder in different seasons. *Universal Paperclips* actually changes the goal and mechanics of the game as you advance through different phases. 
 [Clicker Heroes](https://www.clickerheroes.com/) has boss battles.
 
+
+## Grading
+
+If your game meets the specs you'll receive **1 point** towards your final grade. This is the equivalent of a quiz or a deliverable assignment and will raise your grade
+by **one part of one letter** (e.g., B to B+).
 
 ## Getting Started
 
