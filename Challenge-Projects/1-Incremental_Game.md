@@ -41,8 +41,8 @@ don't have to implement ascensions.
   
   Many games have more than one resource and introduce dependencies between them: you might start off chopping wood, then unlock the ability to burn wood to smelt iron, but now
 you have to balance your wood and iron production to keep the numbers going up. [Kittens Game] has a time mechanic: the years advance as you play and some activities are easier 
-or harder in different seasons. *Universal Paperclips* actually changes the goal and mechanics of the game as you advance through different phases. [Clicker Heroes]
-(https://www.clickerheroes.com/) has boss battles.
+or harder in different seasons. *Universal Paperclips* actually changes the goal and mechanics of the game as you advance through different phases. 
+[Clicker Heroes](https://www.clickerheroes.com/) has boss battles.
 
 
 
