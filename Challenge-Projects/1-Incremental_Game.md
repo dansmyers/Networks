@@ -50,7 +50,7 @@ or harder in different seasons. *Universal Paperclips* actually changes the goal
 ## Getting Started
 
 <img src="https://upload.wikimedia.org/wikipedia/en/0/0e/Adventure-capitalist-theres-a-new-iphone-game-that-lets-you-play-a-startup-investor-and-apple-keeps-promoting-it.png"
-width="33%" \>
+width="33%" />
 
 ### Reference
 
