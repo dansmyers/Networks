@@ -21,6 +21,8 @@ DOM manipulation techniques in a moderately large front-end web app. This projec
 
 ## Details
 
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTaNOoReFLBts1n8mJHOEnbxQaipZodpcq41Q&usqp=CAU" width="33%" />
+
 If you aren't familiar with the genre, start by playing Cookie Clicker. I'll see you in 7-10 days.
 
 Okay, welcome back.
