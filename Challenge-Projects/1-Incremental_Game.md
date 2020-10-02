@@ -1,8 +1,8 @@
 # Challenge Project: Incremental Game
 
-<img src="https://www.decisionproblem.com/paperclips/title.png" width="50%"/>
+<img src="https://www.decisionproblem.com/paperclips/title.png" width="33%"/>
 
-*You are an AI tasked with manufacturing as many paperclips as possible. It turns out that the Universe can make a lot of paperclips.*
+*You are an AI tasked with manufacturing as many paperclips as possible. It turns out that the Universe can make **a lot** of paperclips.*
 
 ## Overview
 
