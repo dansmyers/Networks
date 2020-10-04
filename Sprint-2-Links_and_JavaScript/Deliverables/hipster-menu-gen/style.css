@@ -1,0 +1,44 @@
+
+    body {
+      font-family: Lucida, serif;
+      font-size: 14pt;
+    }
+
+    h1 {
+      text-align: center;
+      font-variant: small-caps;
+      font-size: 36pt;
+      font-family: Georgia, serif;
+      margin-bottom: 4rem;
+      background-color: white;
+      border-style: solid;
+    }
+
+    h2 {
+      font-variant: small-caps;
+      font-size: 22pt;
+      margin-bottom: 2rem;
+      font-family: Georgia, serif;
+      font-style: italic;
+    }
+    .menu{
+      margin:50px 0;
+      background-color: #e74c3c;
+      border-style: solid;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .name {
+      float: left;
+    }
+
+    .price {
+      float: right;
+    }
+
+    .clear {
+      clear: both;
+    }
