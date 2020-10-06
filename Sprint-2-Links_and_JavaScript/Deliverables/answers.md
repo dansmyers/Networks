@@ -25,5 +25,6 @@
 the MAC address uniquely identifies which device is which on a local network. Each packet needs to have your MAC address as the destination, so it knows where to go. The physical MAC address is stored, or burned, on the NIC's ROM chip. 
 
 # links to smoot and menu site:
-https://samjsolomon.github.io/Smoot_converter
+https://samjsolomon.github.io/smoot_converter
+
 https://samjsolomon.github.io/Hipster_menu_generator/
