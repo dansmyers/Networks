@@ -18,15 +18,32 @@ Suppose you want to transmit the following 32-bit sequence:
 
 Determine the extra bits you would need to transmit if you chose to use a two-dimensional parity algorithm. Use a four row by eight column matrix.
 
+10111110  0
+11101111  1
+11001010  0
+11111110  1
+
+01100101  0
+
+
+Final Transmission:
+101111100 111011111 110010100 111111101 011001010
+
+
 ## Link-Layer Protocols
 
 The Ethernet protocol allows multiple hosts to share a connection to one physical link. Explain briefly how Ethernet manages access to the link to ensure that simultaneous transmissions from multiple hosts do not interfere with each other.
 
 Describe at least two factors that make collision avoidance more challenging in 802.11 networks than in multiple-access wired Ethernets. How is collision avoidance implemented in wireless networks?
+The Ethernet Protocol (CSMA/CD) uses a collision detection approach rather than a collision avoidance approach. In this approach, hosts are not to send data on the link if they detect activity. If there is a collision, hosts are to stop transmission immediately and send a 32-bit jam sequence to let whoever is listening know there is a collision. This tells other hosts that what is being transmitted is not what was meant to be sent. From there, hosts have a randomized waiting time which is a multiple of 51.s micro seconds and then retry. If there is another collision, they can retry up to 16 times as a park of exponential back-off. The max wait-time doubles after each failure. 
+
+Two things that make collision avoidance more difficult in Wifi (802.11) are the Hidden Node Problem, and the inability to listen during transmission. The Hidden Node Problem exemplifies that certain hosts do not uniquely overlap with other hosts, but only share overlap involving a third host. This means they cannot sense each other’s transmissions and can only collide at the middle host. 
 
 ## MAC Addresses
 
 Explain the significance of media access control (MAC) addresses in link-layer networks. How is a device's MAC address set?
+
+A device’s MAC address is a unique 32-bit identifier. It is assigned to an ethernet host by the manufacturer when the network card is made. As it relates to link-layer networks, this allows hosts to both identify the source MAC address on a transmission as well as the destination MAC address. 
 
 ## Smoot Converter
 
