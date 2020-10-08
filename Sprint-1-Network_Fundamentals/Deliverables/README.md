@@ -21,7 +21,12 @@ Hint: Bits vs. bytes!
 Hint II: Think about both the time to put the data on the link and the time
 for the data to transit from the source to the destination
 
-115.3 ms
+80 Mbit/s = 80 * 2<sup>20</sup> b/s = 80 * 1048576 = 83886080 b/s
+1 MB = 1000000 * 8 = 8000000
+
+8000000 bits / 83886080 b/s = 0.0954s = 95.4ms
+
+95.4ms + 20ms = 115.4ms
 
 ### Part 2
 
@@ -29,7 +34,9 @@ Suppose that you want to transmit the same 1 MB file to a destination that requi
 
 Give an estimate of the expected time required to transmit the file from the source to its destination.
 
-167.2 ms
+60 Mbit/s = 60 * 2<sup>20</sup> b/s = 62914560
+8000000 / 62914560 b/s = 0.127s = 127ms
+127 + (20*2) = 167ms
 
 ### Part 3
 
@@ -37,7 +44,9 @@ Repeat the example from Part 2, but now assume that there is a total of 512 KB o
 
 What is the complete estimated time &ndash; including transmission times, latency, and queueing delays &ndash; required to send the file now?
 
-175.3 ms
+512KB = 512000
+512000 / 62914560 = 0.008s = 8ms
+167 + 8 + 20 = 195ms
 
 ## Educational Plagiarism
 
