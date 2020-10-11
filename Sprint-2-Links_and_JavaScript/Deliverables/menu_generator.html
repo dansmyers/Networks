@@ -162,85 +162,64 @@
             return choice;
           }
             
-          function generateMeal() {
-            let result = choose(appAdjectives) + ' ';
-            result += choose(appIngredients) + ' ';
-            result += choose(appPreparations);
+          function generateMeal(type) {
+            let result = '';
+            
+            if (type === "app") {
+                result += choose(appAdjectives) + ' ';
+                result += choose(appIngredients) + ' ';
+                result += choose(appPreparations);
+            } else if (type === "main"){
+                result += choose(mainAdjectives) + ' ';
+                result += choose(mainIngredients) + ' ';
+                result += choose(mainPreparations);
+            } else {
+                result += choose(desAdjectives) + ' ';
+                result += choose(desIngredients) + ' ';
+                result += choose(desPreparations);
+            }
                 
             return result;
           }
             
           function generateMeals() {
-            for (let i = 0; i < 3; i++) {
-              
-              // Generate a random item and price
-              let result = generateMeal();
-              let price = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
-                  
-              // Insert the new item into the appetizers div
-              //
-              // Basic strategy: use DOM functions to make a new
-              // node representing the new menu item, then add it
-              // into the existing DOM at the correct position
-                    
-              // Get a reference to the appetizers div
-              let section = document.getElementById('appetizers');
-                    
-              // Create a new <p> node
-              let para = document.createElement('p');
-                    
-              // Set the internal contents of the new <p> node
-              // to hold the randomized menu item
-              //
-              // The name and price go in <span> tags with classes that
-              // will style them to be aligned left and right respectively
-              para.innerHTML = '<span class="name">' + result + '</span>';
-              para.innerHTML += '<span class="price">' + price + '</span>';
-              
-              // The last piece of HTML makes an empty div with a
-              // special clear setting that undoes the left and right
-              // floating on the previous line
-              //
-              // This is required to position the next line properly
-              para.innerHTML += '<div class="clear"></div>'
-    
-              // Append the new <p> node to the list of appetizers
-              section.appendChild(para);
-            }
             
-            // For main courses
+            // Test for encapsulation
             for (let i = 0; i < 3; i++) {
-              let result = generateMeal();
-              let price = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
+              let appResult = generateMeal("app");
+              let mainResult = generateMeal("main");
+              let desResult = generateMeal("des");
               
-              let section = document.getElementById('main_courses');
+              let appPrice = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
+              let mainPrice = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
+              let desPrice = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
               
-              let para = document.createElement('p');
+              let appSection = document.getElementById('appetizers');
+              let mainSection = document.getElementById('main_courses');
+              let desSection = document.getElementById('desserts');
               
-              para.innerHTML = '<span class="name">' + result + '</span>';
-              para.innerHTML += '<span class="price">' + price + '</span>';
+              let appPara = document.createElement('p');
+              let mainPara = document.createElement('p');
+              let desPara = document.createElement('p');
               
-              para.innerHTML += '<div class="clear"></div>'
+              appPara.innerHTML = '<span class="name">' + appResult + '</span>';
+              appPara.innerHTML += '<span class="price">' + appPrice + '</span>';
               
-              section.appendChild(para);
+              mainPara.innerHTML = '<span class="name">' + mainResult + '</span>';
+              mainPara.innerHTML += '<span class="price">' + mainPrice + '</span>';
+              
+              desPara.innerHTML = '<span class="name">' + desResult + '</span>';
+              desPara.innerHTML += '<span class="price">' + desPrice + '</span>';
+              
+              appPara.innerHTML += '<div class="clear"></div>'
+              mainPara.innerHTML += '<div class="clear"></div>'
+              desPara.innerHTML += '<div class="clear"></div>'
+              
+              appSection.appendChild(appPara);
+              mainSection.appendChild(mainPara);
+              desSection.appendChild(desPara);
             }
-            
-            // For desserts
-            for (let i = 0; i < 3; i++) {
-              let result = generateMeal();
-              let price = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
-              
-              let section = document.getElementById('desserts');
-              
-              let para = document.createElement('p');
-              
-              para.innerHTML = '<span class="name">' + result + '</span>';
-              para.innerHTML += '<span class="price">' + price + '</span>';
-              
-              para.innerHTML += '<div class="clear"></div>'
-              
-              section.appendChild(para);
-            }
+
           }
          
           function main() {
