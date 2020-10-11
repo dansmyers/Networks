@@ -32,10 +32,108 @@
                         <b>Smoot Converter</b>
                         <hr />
                     </h1>
+                </div>   <!-- /col-12 --> 
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>
+                        <b>Converter</b>
+                        <hr />
+                    </h2>
                 </div>   <!-- /col-12 -->  
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-3">
+                    <h3>
+                        <label for="units">Choose a unit to convert from:</label>
+    
+                        <select name="units" id="units">
+                            <option value="feet">Feet</option>
+                            <option value="smoots">Smoots</option>
+                        </select>
+                    </h3>
+                </div>   <!-- /col-3 -->  
+                
+                <div class="col-lg-3">
+                    <h3>
+                        <input type="text" placeholder="value" id="input">
+                    </h3>
+                </div>   <!-- /col-3 -->  
+                
+                <div class="col-lg-3">
+                    <h3>
+                        <button id="button" onclick="getChoice()">Convert</button>
+                    </h3>
+                </div>   <!-- /col-3 -->  
+                
+                <div class="col-lg-3" id="output" style="font-size: 32px">
+                    <h3>
+                        
+                    </h3>
+                </div>   <!-- /col-3 -->  
                 
             </div> <!-- /row -->
-        </div>
+            
+        <!-- Output div -->
+        <!--
+        <div id="output"></div>
+        </div> 
+        -->
+        
+        
+        
+        <!-- Scripts go at the end of the body -->
+        <script>
+            // everything in this block is JavaScript
+            
+            function getChoice() {
+                
+                // Get the user's choice from the input box
+                //
+                // document.getElementById returns a reference
+                // to a page element given its name
+                let choice = document.getElementById("units");
+                let units = choice.value;
+                
+                let input = document.getElementById("input");
+                let amount = input.value;
+                
+                // Write a message to the output div
+                // visually on the webpage
+                // document.getElementById("output").innerHTML = units;
+                
+                alert("You chose to convert from " + units);
+                
+                if (units === "smoots") {
+                    console.log("you got smoots boy");
+                    smootsToFeet(amount);
+                } else {
+                    console.log("nah you got feets girl");
+                    feetToSmoots(amount);
+                }
+            }
+            
+            function feetToSmoots(feetVal) {
+                
+                let result = feetVal / 5.58333333;
+                
+                document.getElementById("output").innerHTML = result.toFixed(2) + " smoots plus or minus one ear";
+                
+                console.log(result);
+            }
+            
+            function smootsToFeet(smootVal) {
+                
+                let result = smootVal * 5.58333333;
+                
+                document.getElementById("output").innerHTML = result.toFixed(2) + " feet plus or minus one ear";
+                
+                console.log(result);
+            }
+            
+        </script>
     </body>
 
 </html>
