@@ -2,7 +2,7 @@
 
 ## Honor Code
 
-Edit this section to include a statement of the Honor Code.
+AHC-JG
 
 ## Team Members
 
@@ -37,7 +37,7 @@ The Ethernet protocol allows multiple hosts to share a connection to one physica
 Describe at least two factors that make collision avoidance more challenging in 802.11 networks than in multiple-access wired Ethernets. How is collision avoidance implemented in wireless networks?
 The Ethernet Protocol (CSMA/CD) uses a collision detection approach rather than a collision avoidance approach. In this approach, hosts are not to send data on the link if they detect activity. If there is a collision, hosts are to stop transmission immediately and send a 32-bit jam sequence to let whoever is listening know there is a collision. This tells other hosts that what is being transmitted is not what was meant to be sent. From there, hosts have a randomized waiting time which is a multiple of 51.s micro seconds and then retry. If there is another collision, they can retry up to 16 times as a park of exponential back-off. The max wait-time doubles after each failure. 
 
-Two things that make collision avoidance more difficult in Wifi (802.11) are the Hidden Node Problem, and the inability to listen during transmission. The Hidden Node Problem exemplifies that certain hosts do not uniquely overlap with other hosts, but only share overlap involving a third host. This means they cannot sense each other’s transmissions and can only collide at the middle host. 
+Two things that make collision avoidance more difficult in Wifi (802.11) are the Hidden Node Problem, and dependence on power. The Hidden Node Problem exemplifies that certain hosts do not uniquely overlap with other hosts, but only share overlap involving a third host. This means they cannot sense each other’s transmissions and can only collide at the middle host. As far as a dependence on power, since most users who are on a wireless network are power dependent (mobile phones, tablets, computers, etc.). This limits the power emission for a particular device on a given frequency. 
 
 ## MAC Addresses
 
