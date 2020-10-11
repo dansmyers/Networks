@@ -117,6 +117,32 @@
                                  'ominous', 'non-euclidean', 'carbonized', 'spectral',
                                  'argyle', 'korean bbq', 'cilantro-lime', 'oblique',
                                  'ketchuped', 'curried', 'inverted', 'digitized'];
+                                 
+          let mainIngredients = ['sea scallop', 'reindeer', 'chicken bone', 'haricots vertes',
+                                  'langoustine', 'ham', 'cuttlefish', 'kale', 'pommes',
+                                  'aubergine', 'bone marrow', 'rocket'];
+                                 
+          let mainPreparations = ['globules', 'cubes', 'granules', 'pasta', 'risotto',
+                                   'sashimi', 'crunchwrap', 'snowcone', 'tacos', 
+                                   'mist', 'hash', 'wellington', 'mush', 'graupel'];
+                                  
+          let mainAdjectives = ['eldritch', 'frightened', 'farm-to-table', 'sea-salt',
+                                 'ominous', 'non-euclidean', 'carbonized', 'spectral',
+                                 'argyle', 'korean bbq', 'cilantro-lime', 'oblique',
+                                 'ketchuped', 'curried', 'inverted', 'digitized'];
+                                 
+          let desIngredients = ['sea scallop', 'reindeer', 'chicken bone', 'haricots vertes',
+                                  'langoustine', 'ham', 'cuttlefish', 'kale', 'pommes',
+                                  'aubergine', 'bone marrow', 'rocket'];
+                                 
+          let desPreparations = ['globules', 'cubes', 'granules', 'pasta', 'risotto',
+                                   'sashimi', 'crunchwrap', 'snowcone', 'tacos', 
+                                   'mist', 'hash', 'wellington', 'mush', 'graupel'];
+                                  
+          let desAdjectives = ['eldritch', 'frightened', 'farm-to-table', 'sea-salt',
+                                 'ominous', 'non-euclidean', 'carbonized', 'spectral',
+                                 'argyle', 'korean bbq', 'cilantro-lime', 'oblique',
+                                 'ketchuped', 'curried', 'inverted', 'digitized'];
                           
           const MAX_APP_PRICE = 20;
                        
@@ -136,7 +162,7 @@
             return choice;
           }
             
-          function generateAppetizer() {
+          function generateMeal() {
             let result = choose(appAdjectives) + ' ';
             result += choose(appIngredients) + ' ';
             result += choose(appPreparations);
@@ -144,11 +170,11 @@
             return result;
           }
             
-          function generateAppetizers() {
+          function generateMeals() {
             for (let i = 0; i < 3; i++) {
               
               // Generate a random item and price
-              let result = generateAppetizer();
+              let result = generateMeal();
               let price = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
                   
               // Insert the new item into the appetizers div
@@ -181,10 +207,44 @@
               // Append the new <p> node to the list of appetizers
               section.appendChild(para);
             }
-          }
             
+            // For main courses
+            for (let i = 0; i < 3; i++) {
+              let result = generateMeal();
+              let price = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
+              
+              let section = document.getElementById('main_courses');
+              
+              let para = document.createElement('p');
+              
+              para.innerHTML = '<span class="name">' + result + '</span>';
+              para.innerHTML += '<span class="price">' + price + '</span>';
+              
+              para.innerHTML += '<div class="clear"></div>'
+              
+              section.appendChild(para);
+            }
+            
+            // For desserts
+            for (let i = 0; i < 3; i++) {
+              let result = generateMeal();
+              let price = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
+              
+              let section = document.getElementById('desserts');
+              
+              let para = document.createElement('p');
+              
+              para.innerHTML = '<span class="name">' + result + '</span>';
+              para.innerHTML += '<span class="price">' + price + '</span>';
+              
+              para.innerHTML += '<div class="clear"></div>'
+              
+              section.appendChild(para);
+            }
+          }
+         
           function main() {
-            generateAppetizers();
+            generateMeals();
           }
             
           // The onload property sets a function that will run once
