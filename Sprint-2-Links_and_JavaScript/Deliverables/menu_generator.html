@@ -117,6 +117,22 @@
                                  'ominous', 'non-euclidean', 'carbonized', 'spectral',
                                  'argyle', 'korean bbq', 'cilantro-lime', 'oblique',
                                  'ketchuped', 'curried', 'inverted', 'digitized'];
+                                 
+          let mainIngredients = ["chicken", "beef", "salmon", "kingfish",
+        						  "roastbeef", "ham", "bacon", "cheese",
+        						  "pork chop", "hamburger"];
+          
+          let mainPreparations = ["sandwich", "fillet", "stir fry", "spaghetti", 
+                                  "Lettuce Wraps", "with apples and sweet potatoes", 
+                                  "curry", "stroganoff with ground beef", "pasta"];
+          
+          let mainAdjectives = ["bitter", "brackish", "briny", "caustic", "delectable", "divine", "dulcet", "Flavored", "fruty"];
+          
+          let dessertIngredients = ["choclate", "penaut butter", "mousse", "frozen banana", "vanilla meringue", "shortbread", "pecan caramel", "buleberry tart"];
+          
+          let dessertPreparations = ["cake", "ice-cream", "souflet", "sliced", "iced", "mint bathed"];
+          
+          let dessertAdjectives = ["Gamy", "Gustatory", "delicious", "Juicy", "Luscious", "Mellow", "pickled", "Nectarous", "pungent"];
                           
           const MAX_APP_PRICE = 20;
                        
@@ -142,6 +158,24 @@
             result += choose(appPreparations);
                 
             return result;
+          }
+          
+          function generateMainCourse()
+          {
+          	let result = choose(mainAdjectives) + " ";
+          	result += choose(mainPreparations) + " ";
+          	result += choose(mainPreparations) + " ";
+          	
+          	return result;
+          }
+          
+          function generateDessert()
+          {
+          	let result = choose(dessertAdjectives) + " ";
+          	result += choose(dessertPreparations) + " ";
+          	result += choose(dessertPreparations) + " ";
+          	
+          	return result;
           }
             
           function generateAppetizers() {
@@ -182,9 +216,91 @@
               section.appendChild(para);
             }
           }
+          
+          function generateMainCourses()
+          {
+          	for (let i = 0; i < 3; i++) {
+              
+              // Generate a random item and price
+              let result = generateMainCourse();
+              let price = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
+                  
+              // Insert the new item into the appetizers div
+              //
+              // Basic strategy: use DOM functions to make a new
+              // node representing the new menu item, then add it
+              // into the existing DOM at the correct position
+                    
+              // Get a reference to the appetizers div
+              let section = document.getElementById('main_courses');
+                    
+              // Create a new <p> node
+              let para = document.createElement('p');
+                    
+              // Set the internal contents of the new <p> node
+              // to hold the randomized menu item
+              //
+              // The name and price go in <span> tags with classes that
+              // will style them to be aligned left and right respectively
+              para.innerHTML = '<span class="name">' + result + '</span>';
+              para.innerHTML += '<span class="price">' + price + '</span>';
+              
+              // The last piece of HTML makes an empty div with a
+              // special clear setting that undoes the left and right
+              // floating on the previous line
+              //
+              // This is required to position the next line properly
+              para.innerHTML += '<div class="clear"></div>'
+    
+              // Append the new <p> node to the list of appetizers
+              section.appendChild(para);
+            }
+          }
+          
+          function generateDesserts()
+          {
+          	          	for (let i = 0; i < 3; i++) {
+              
+              // Generate a random item and price
+              let result = generateDessert();
+              let price = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
+                  
+              // Insert the new item into the appetizers div
+              //
+              // Basic strategy: use DOM functions to make a new
+              // node representing the new menu item, then add it
+              // into the existing DOM at the correct position
+                    
+              // Get a reference to the appetizers div
+              let section = document.getElementById('desserts');
+                    
+              // Create a new <p> node
+              let para = document.createElement('p');
+                    
+              // Set the internal contents of the new <p> node
+              // to hold the randomized menu item
+              //
+              // The name and price go in <span> tags with classes that
+              // will style them to be aligned left and right respectively
+              para.innerHTML = '<span class="name">' + result + '</span>';
+              para.innerHTML += '<span class="price">' + price + '</span>';
+              
+              // The last piece of HTML makes an empty div with a
+              // special clear setting that undoes the left and right
+              // floating on the previous line
+              //
+              // This is required to position the next line properly
+              para.innerHTML += '<div class="clear"></div>'
+    
+              // Append the new <p> node to the list of appetizers
+              section.appendChild(para);
+            }
+          }
             
           function main() {
             generateAppetizers();
+            generateMainCourses();
+            generateDesserts();
           }
             
           // The onload property sets a function that will run once
