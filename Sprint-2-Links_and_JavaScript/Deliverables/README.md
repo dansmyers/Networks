@@ -18,6 +18,8 @@ Suppose you want to transmit the following 32-bit sequence:
 
 Determine the extra bits you would need to transmit if you chose to use a two-dimensional parity algorithm. Use a four row by eight column matrix.
 
+### Answer
+
 ## Link-Layer Protocols
 
 The Ethernet protocol allows multiple hosts to share a connection to one physical link. Explain briefly how Ethernet manages access to the link to ensure that simultaneous transmissions from multiple hosts do not interfere with each other.
