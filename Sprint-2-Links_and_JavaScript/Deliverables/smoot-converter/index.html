@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Smoot Converter</title>
+  <!-- Bootstrap CSS -->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+            <!-- Title -->
+         <div class="row">
+            <div class="col-12 title">
+                       <h1 class="box">Smoot Converter</h3>
+                </div>
+         </div> <!-- /row -->
+
+
+       <div class="row">
+
+           <div class="col-lg-6">
+               <img src="https://www.larsondesigngroup.com/wp-content/uploads/2014/08/Understanding-the-Smoot-960x600.jpg" alt="">
+           </div>   <!-- /col-6 -->
+
+           <div class="col-lg-6">
+             <div class="form-wrapper">
+
+               <form action="#">
+                 <div class="form-items">
+                   <input type="number" step=".01" id="userInput" name="number" placeholder="number">
+                   <select name="conversion" id="conversion">
+                     <option value="to-smoot" id="to-smoot">feet to smoot</option>
+                     <option value="to-feet" id="to-feet">smoot to feet</option>
+                   </select>
+                   <button id="submit" value="CONVERT" class=" btn-info">convert</button>
+                 </div>
+               </form>
+               <div class="result">
+                 <p id="result"></p>
+               </div>
+
+
+             </div>
+           </div>   <!-- /col-6 -->
+
+       </div> <!-- /row -->
+
+   </div> <!-- /container -->
+
+
+  <!-- JS, Popper.js, and jQuery -->
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+</html>
