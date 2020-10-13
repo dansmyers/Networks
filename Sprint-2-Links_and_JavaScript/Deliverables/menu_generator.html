@@ -21,8 +21,8 @@
             h1 {
               text-align: center;
               font-variant: small-caps;
-              font-size: 36pt;
-              font-family: Georgia, serif;
+              font-size: 45pt;
+              font-family: 'Luminari', fantasy;
               margin-bottom: 8rem;
             }
             
@@ -30,7 +30,12 @@
               font-variant: small-caps;
               font-size: 22pt;
               margin-bottom: 2rem;
-              font-family: Georgia, serif;
+              font-family: 'Luminari', fantasy;
+            }
+            
+            hr {
+              border-color: black;
+              border-top: 3px solid;
             }
             
             .section {
@@ -49,6 +54,11 @@
               clear: both;
             }
             
+            .side {
+            	background-image: url("fancy-photo-clip-art-background-backgrounds.jpg");
+            	height: 1100px;
+            }
+            
         </style>
     </head>
     
@@ -57,7 +67,7 @@
     <body>
       
         <!-- Recall: all Bootstrap content must be enclosed in a container div -->
-        <div class="container">
+        <div class="container-fluid">
     
             <!-- Container is made of a series of rows -->
             <!-- Each row is conceptually divided into 12 units -->
@@ -67,29 +77,36 @@
             <div class="row">
                   
                 <!-- Empty 3-unit column on the left side of the page -->
-                <div class="col-md-3"> </div>
+                <div class="col-md-3 side"> </div>
         
                 <!-- col-md-6 makes a column that spans all 6 units -->
                 <!-- Covers the middle half of the page -->
                 <div class="col-md-6">
-                    <h1 id="restaurant_name">The Yellow Sign</h1>
+                    <h1 id="restaurant_name">The Rouxse</h1>
                     
                     <h2>Appetizers</h2>
+                    <hr>
                     <div class="section" id="appetizers"></div>
                     <div style="clear: both;"></div>
                     
+                   
+                    
                     <h2>Main Courses</h2>
+                    <hr>
                     <div class="section" id="main_courses"></div>
                     <div style="clear: both;"></div>
+                    
+          
 
                     <h2>Desserts</h2>
+                    <hr>
                     <div class="section" id="desserts"></div>
                     <div style="clear: both;"></div>
                                       
                 </div>   <!-- /col-md-12 -->  
             
                 <!-- Empty 3-unit column on the right side of the page -->
-                <div class="col-md-3"> </div>
+                <div class="col-md-3 side"> </div>
         
             </div> <!-- /row -->
     
@@ -117,8 +134,38 @@
                                  'ominous', 'non-euclidean', 'carbonized', 'spectral',
                                  'argyle', 'korean bbq', 'cilantro-lime', 'oblique',
                                  'ketchuped', 'curried', 'inverted', 'digitized'];
+                                 
+          let mainIngredients = ['pork tenderloin', 'quail', 'ostrich eggs', 'alaskan salmon', 
+        						   'mongolian beef', 'gator tail', 'cactus', 'stuffed peppers',
+        						   'chicken liver', 'sturgeon caviar', 'oxtail', 'pork shoulder'];
+		  
+		  let mainPreparations = ['confit', 'tartare', 'amuse-bouche', 'chiffonade', 'sous vide',
+								   'etoufee', 'creole', 'mirepoix', 'emulsion', 'omakase', 'gremolata',
+								   'meuniere', 'pizza', 'bolognese', 'linguine', 'pad thai', 'enchiladas'];
+		  
+		  let mainAdjectives = ['foraged', 'harvested', 'locally grown', 'sumptuous', 'toothsome', 
+								'deconstructed', 'hand-selected', 'market', 'artisanal', 
+								'crafted', 'curated', 'succulent', 'fork-tender'];
+		 
+		  let dessertIngredients = ['chocolate', 'vanilla', 'matcha', 'sweet corn', 'buttermilk',
+									'vietnamese coffee', 'goat cheese', 'oolong tea', 'tutti frutti',
+									'chai', 'lavender honey', 'cayenne chocolate', 'caramel corn'];
+									
+		  let dessertAdjectives = ['frosted', 'triple-layer', 'double-layer', 'frozen', 'mouthwatering',
+								   'molten', 'buttered', 'caramelized', 'sinful', 'gooey',
+								   'guilt-free', 'lip-smacking', 'homemade', 'authentic'];
+								   
+		  let dessertPreparations = ['ice cream', 'cheesecake', 'mochi', 'bananas foster', 'lava cake',
+									 'fried ice cream', 'doughnuts', 'churros', 'cupcake', 
+									 'milkshake', 'smoothie', 'shaved ice', 'brookie'];
+        						   
                           
           const MAX_APP_PRICE = 20;
+          const MIN_APP_PRICE = 20;
+          const MAX_MAIN_PRICE = 75;
+          const MIN_MAIN_PRICE = 20;
+          const MAX_DESSERT_PRICE = 15;
+          const MIN_DESSERT_PRICE = 5;
                        
           function choose(arr) {
               
@@ -176,15 +223,79 @@
               // floating on the previous line
               //
               // This is required to position the next line properly
-              para.innerHTML += '<div class="clear"></div>'
+              para.innerHTML += '<div class="clear"></div>';
     
               // Append the new <p> node to the list of appetizers
               section.appendChild(para);
             }
           }
+          
+          // Main Course functions
+          
+          function generateMainCourse() {
+          	let result = choose(mainAdjectives) + ' ';
+          	result += choose(mainIngredients) + ' ';
+          	result += choose(mainPreparations);
+          	return result;
+          }
+          
+          function generateMainCourses() {
+          	
+          	for(let i = 0; i < 8; i++) {
+          		
+          		// generate random item and its price. Price can be any amount between the max and min price but in this case the min is inclusive and the max is exclusive
+          		let result = generateMainCourse();
+          		let price = Math.floor(Math.random() * (MAX_MAIN_PRICE - MIN_MAIN_PRICE)) + MIN_MAIN_PRICE;
+          		
+          		// insert item into main course div
+          		let section = document.getElementById("main_courses");
+          		let para = document.createElement('p');
+          		
+          		// Set internal contents of the <p> node
+          		para.innerHTML = '<span class="name">' + result + '</span>';
+          		para.innerHTML += '<span class="price">' + price + '</span>';
+          		
+          		// Quick fix to position lines properly
+          		
+          		para.innerHTML += '<div class="clear"></div>';
+          		
+          		section.appendChild(para);
+          	}
+          }
+          
+          // Dessert functions
+         
+          function generateDessert() {
+          	let result = choose(dessertAdjectives) + ' ';
+          	result += choose(dessertIngredients) + ' ';
+          	result += choose(dessertPreparations);
+          	return result;
+          }
+          
+          function generateDesserts() {
+          	
+          	for(let i = 0; i < 4; i++) {
+          		
+          		let result = generateDessert();
+          		let price = Math.floor(Math.random() * (MAX_DESSERT_PRICE - MIN_DESSERT_PRICE)) + MIN_DESSERT_PRICE;
+          		
+          		let section = document.getElementById("desserts");
+          		let para = document.createElement('p');
+          		
+          		para.innerHTML = '<span class="name">' + result + '</span>';
+          		para.innerHTML += '<span class="price">' + price + '</span>';
+          		
+          		para.innerHTML += '<div class="clear"></div>';
+          		
+          		section.appendChild(para);
+          		
+          	}
+          }
             
           function main() {
             generateAppetizers();
+            generateMainCourses();
+            generateDesserts();
           }
             
           // The onload property sets a function that will run once

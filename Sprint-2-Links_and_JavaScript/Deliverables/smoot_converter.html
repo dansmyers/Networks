@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+	
+	<head>
+		
+		<style>
+			
+			#output {
+				font-weight: bold;
+				font-size: 1.5em;
+			}
+			
+			
+		</style>
+		
+		
+		
+	</head>
+	
+	<body>
+		
+		<h1>Smoot Converter</h1>
+		
+		<!-- Label and Select tags -->
+		
+		<label for="Conversions">Choose your desired conversion:</label>
+		
+		<select name="Conversions" id="Conversions">
+			
+			<option value="Smoots-to-Feet">Smoots-to-Feet</option>
+			<option value="Feet-to-Smoots">Feet-to-Smoots</option>
+			
+			
+		</select>
+		
+		<!-- Input -->
+		
+		<br>
+		
+		<label for="measurement">Input Value:</label>
+		
+		
+		<input type="text" id="measurement"/>
+		<button id="button" onclick="convertValue()">Convert</button>
+		
+		
+		<!-- Output -->
+		
+		<div id="output"></div>
+		
+		<!-- JS Script -->
+		
+		<script>
+		
+			'use strict';
+			
+			function convertValue() {
+				
+				// Save conversion type and value given by the user
+				
+				let inputConv = document.getElementById("Conversions");
+				let conversion = inputConv.value;
+				let inputVal = document.getElementById("measurement");
+				let value = inputVal.value;
+				
+				
+				if(conversion === "Smoots-to-Feet") {
+					value = value * (67/12);
+					document.getElementById("output").innerHTML= value.toFixed(2) + " Ft, plus or minus one ear";
+				}
+				if(conversion === "Feet-to-Smoots") {
+					value = value / (67/12);
+					document.getElementById("output").innerHTML= value.toFixed(2) + " Smoots, plus or minus one ear";
+				}
+				
+			}
+			
+			
+			
+			
+		</script>
+		
+		
+		
+		
+		
+		
+		
+	</body>
+	
+	
+	
+	
+</html>
