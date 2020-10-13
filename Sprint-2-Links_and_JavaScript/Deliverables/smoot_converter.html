@@ -1,0 +1,122 @@
+<!doctype html>
+
+<html>
+    <head>
+        <title> Smoot Converter </title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
+        <style>
+            body {
+               background-image: url(https://alum.mit.edu/sites/default/files/styles/article_desktop/public/images/SMOOT.jpg?itok=jMC7rC_T);
+                background-size: cover;
+            }
+            
+            .white {
+                background-color: #FFFFFF;
+                color: #000000;               
+            }
+            
+            .gray {
+                background-color: #606060;
+                color: #000000;
+                font-weight: bold;
+            }
+            
+            .gradientToBottom {
+                background: linear-gradient(to bottom, #d3d3d3 0%, #666699 100%);
+            }
+            
+            .gradientToTop {
+                background: linear-gradient(to top, #d3d3d3 0%, #666699 100%);
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="container">
+            <div class="row"> <p><br><br><br><br></p> </div>
+            
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8 gradientToBottom text-center">
+                    <h1><b> Welcome to the Smoot Converter! </b></h1>
+                    
+                    <p><b><i><br>
+                        Select your conversion from either feet-to-Smoots or Smoots-to-feet below.
+                    </i><br></b></p>
+                    
+
+                </div>
+                <div class="col-2"></div>
+            </div>
+            
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-1 gradientToTop"></div>
+                <div class="col-6 gradientToTop text-center">
+                    <select name="conversionSelection" id="conversionType" class="text-center center">
+                        <option value=""> --Select a conversion-- </option>
+                        <option value="SmootToFeet"> Smoot-to-Feet </option>
+                        <option value="FeetToSmoot"> Feet-to-Smoot </option>
+                    </select>
+                    
+                    <br><br>
+                    
+                    <input type="text" id="conversionData" />
+                    
+                    <button id="button" onclick="convert()">
+                        Convert!
+                    </button>
+                </div>    
+                <div class="col-1 gradientToTop"></div>
+                <div class="col-2"></div>
+            </div>
+            
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-2 gradientToBottom"></div>
+                <div class="col-4 gradientToBottom">
+                    <!-- Output div -->
+                    <br>
+                    <div id="output" class="text-center white">
+                        <br>
+                    </div>
+                    <br>
+                </div>
+                <div class="col-2 gradientToBottom"></div>
+                <div class="col-2"></div>
+            </div>
+            
+        </div>
+        
+        <script>
+            function convert()
+            {
+                let conversionType = document.getElementById("conversionType").value;
+                let data = document.getElementById("conversionData").value;
+                let convertedData = 0;
+                
+                if (conversionType == "SmootToFeet")
+                {
+                    convertedData = data * 5.583;
+                    convertedData = convertedData.toFixed(2);
+                    output = convertedData + " feet plus or minus one ear."
+                }
+                else if (conversionType == "FeetToSmoot")
+                {
+                    convertedData = data / 5.583;
+                    convertedData = convertedData.toFixed(2);
+                    output = convertedData + " Smoot(s) plus or minus one ear."
+                }
+                
+                document.getElementById("output").innerHTML = output;
+                console.log(output);
+            }
+
+        </script>
+    </body>
+</html>
