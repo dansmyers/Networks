@@ -1,0 +1,29 @@
+body{
+  background: rgb(190,190,193);
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+
+}
+
+img{
+  width: 100%;
+}
+
+select {
+    width: 150px;
+    height: 30px;
+}
+
+
+.box{
+  border-style: solid;
+  padding: 20px 0;
+}
+.title{
+  font-weight: bolder;
+  padding: 10%;
+}
+
+.form-wrapper{
+padding: 150px 0;
+}
