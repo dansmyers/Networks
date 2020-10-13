@@ -2,7 +2,7 @@
 
 ## Honor Code
 
-"On my honor, I have not given, nor received, nor witnessed any unauthorized assistance on this work."
+"On my honor, I have not given, nor received, nor witnessed any unauthorized assistance on this work." - Eric Grimm
 
 ## Team Members
 
