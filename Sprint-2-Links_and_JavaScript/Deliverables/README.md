@@ -2,12 +2,10 @@
 
 ## Honor Code
 
-Edit this section to include a statement of the Honor Code.
-
+“On my honor, I have not given, nor received, nor witnessed any unauthorized assistance on this work.”
+Samuel Solomon
 ## Team Members
-
-List the other members of your team here.
-
+-Worked Alone
 ## Parity
 
 Suppose you want to transmit the following 32-bit sequence:
