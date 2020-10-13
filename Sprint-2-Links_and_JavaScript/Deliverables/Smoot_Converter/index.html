@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+    
+    <head>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        
+        <title>Smoot Converter</title>
+        
+        <style>
+            
+            h1{
+                font-size: 55px;
+            }
+            
+            h3{
+                font-size: 26px;
+            }
+            
+            
+        </style>
+        
+    </head>
+   
+    <body>
+
+        <!-- Recall: all Bootstrap content must be enclosed in a container div -->
+        <div class="container">
+            
+            <div class="jumbotron text-center">
+                <h1>Smoot Converter</h1>
+                <h3>This tool converts from feet to Smoots ± one ear and Smoots to feet ± one ear. One Smoot is 5 feet, 7 inches.</h3>
+            </div>
+            
+            
+            <!-- Container is made of a series of rows -->
+            <div class="row">
+                
+                <!-- Each row is divided into 12 units -->
+                <!-- col-md-12 makes a column that spans all 12 units -->
+                <div class="col-md-12 text-center">
+                    
+                    <select name="conversion" id="select-box">
+                         <option value="feet-to-smoot">Feet to Smoot</option>
+                          <option value="smoot-to-feet">Smoot to Feet</option>
+                        </select>
+                    
+                    <!-- Declare a text input box -->
+                    <input type="text" id="text-input" />
+                    
+                    <!-- Declare a button -->
+                    <button id="button" onclick="convert()">Convert</button>
+                    
+                </div>   <!-- /col-md-12 -->  
+                
+            </div> <!-- /row -->
+            
+            <div class = "row p-3">
+                
+                <div class="col-md-12 text-center">
+                    
+                    <div id="response-region"></div>
+                    
+                </div>
+                
+            </div>
+            
+        </div> <!-- /container -->
+        
+        <script>
+            
+            'use strict';
+            
+            function convert(){
+                
+                // get input number
+                let input = document.getElementById("text-input");
+                let number = input.value;
+                
+                // get what is in the selctoin box
+                let selected = document.getElementById("select-box");
+                let type = selected.value;
+                
+                // convert from feet to smoot
+                if(type === "feet-to-smoot"){
+                    number = number/5.5833;
+                    let n = number.toFixed(2);
+                    
+                    let responseRegion = document.getElementById("response-region");
+                    responseRegion.innerHTML = n + " plus or minus one ear";
+                }
+                
+                // convert from smoot to feet
+                else{
+                    number = number*5.5833;
+                    let n = number.toFixed(2);
+                    
+                    let responseRegion = document.getElementById("response-region");
+                    responseRegion.innerHTML = n + " plus or minus one ear";
+                }
+            }
+            
+            
+        </script>
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </body>
+    
+</html>
