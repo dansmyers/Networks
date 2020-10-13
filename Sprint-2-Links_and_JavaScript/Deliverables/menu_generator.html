@@ -123,7 +123,7 @@
         
                 <!-- col-md-6 makes a column that spans all 6 units -->
                 <!-- Covers the middle half of the page -->
-                <div class="col-md-6">
+                <div class="col-md-5">
                     
                     
                     <h2>Appetizers</h2>
@@ -136,7 +136,11 @@
 
                 </div>   <!-- /col-md-12 -->  
                 
-                <div class="col-md-6">
+                <div class="col-md-2">
+                    <!-- empty col for spacing -->
+                </div>
+                
+                <div class="col-md-5">
                     
                     <h2>Main Courses</h2>
                     <div class="section" id="main_courses"></div>
@@ -163,14 +167,14 @@
           let appIngredients = ['leaf', 'tomato', 'pepper', 'egg', 'carrot', 'sesame oil', 'flour', 'rock salt', 'fungus', 'onion', 'fillet',
                                 'miso'];
                                  
-          let appPreparations = ['noodles', 'tofu', 'rice', 'caviar', 'fries', 'chicken', 'salad', 'peas'];
+          let appPreparations = ['noodles', 'tofu', 'apple', 'caviar', 'fries', 'chicken', 'salad', 'peas'];
                                   
-          let appAdjectives = ['healthy', 'cowboy', 'old', 'stamina', 'mixed', 'mellow', 'filling', 
+          let appAdjectives = ['healthy', 'cowboy', 'stamina', 'mixed', 'mellow', 'filling', 
                                 'stylish', 'light', 'hot', 'picnic', 'rainbow', 'sweet', 'smooth', 'rough',
                                 'special', 'rich', 'pinky', 'painful', 'divine', 'burning', 'greatest', 'mottled',
-                                'old', 'three day', 'chaos', 'peaceful', 'curious', 'manly', 'earthly', 'acerbic'];
+                                'old', 'three day', 'chaotic', 'peaceful', 'curious', 'manly', 'earthly', 'acerbic'];
                                  
-          let mainIngredients = ['whitefish', 'poultry', 'bone', 'miso', 'rice', 'steak', 'eggs', 'fish', 'bird'];
+          let mainIngredients = ['whitefish', 'poultry', 'bone', 'skin', 'rice', 'steak', 'eggs', 'fish', 'duck', 'turtle'];
                                  
           let mainPreparations = ['risotto', 'omelet', 'hotpot', 'stew', 'soup', 'curry', 'plate', 'bowl', 'mishmash', 'mixture', 'concatanation', 'combination'];
                                   
@@ -179,11 +183,11 @@
                                  'prickly', 'milled', 'fresh', 'tri-colored',
                                  'marbled', 'flaky', 'crisp', 'dirty', 'gummy', 'sharp'];
                                  
-          let desIngredients = ['milk', 'starberry', 'syrup', 'bagel', 'egg', 'powder'];
+          let desIngredients = ['milk', 'starberry', 'syrup', 'bagel', 'strawberry', 'powder'];
                                  
-          let desPreparations = ['shortcake', 'ice cream', 'purple hearts', 'bagel', 'macchiato', 'punch', 'chiffon cake'];
+          let desPreparations = ['shortcake', 'ice cream', 'purple hearts', 'macchiato', 'punch', 'chiffon cake'];
                                   
-          let desAdjectives = ['hearty', 'assorted', 'globby', 'clear', 'honey', 'healthy', 'southern', 'fluffy', ];
+          let desAdjectives = ['hearty', 'assorted', 'globby', 'clear', 'honey', 'unhealthy', 'southern', 'fluffy', ];
                           
           const MAX_APP_PRICE = 20;
                        
@@ -262,6 +266,7 @@
               section.appendChild(para);
             }
             
+            // For main Courses
             for (let i = 0; i < 10; i++) {
               let result = generateMeal("main");
               let price = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
@@ -278,6 +283,7 @@
               section.appendChild(para);
             }
             
+            // for desserts
             for (let i = 0; i < 6; i++) {
               let result = generateMeal("des");
               let price = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
