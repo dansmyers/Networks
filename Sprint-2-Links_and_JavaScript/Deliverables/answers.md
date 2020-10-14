@@ -12,6 +12,8 @@
          -----------------------------
          0 1 1 0 0 1 0 1 |     0 <---- parity of the column parities
         column parities
+        
+13 extra bits
 
 # link layer protocol
 
