@@ -59,6 +59,10 @@
             	height: 1100px;
             }
             
+            .img-hor {
+            	transform: rotateY(180deg);
+            }
+            
         </style>
     </head>
     
@@ -106,7 +110,7 @@
                 </div>   <!-- /col-md-12 -->  
             
                 <!-- Empty 3-unit column on the right side of the page -->
-                <div class="col-md-3 side"> </div>
+                <div class="col-md-3 side img-hor"> </div>
         
             </div> <!-- /row -->
     
@@ -146,6 +150,10 @@
 		  let mainAdjectives = ['foraged', 'harvested', 'locally grown', 'sumptuous', 'toothsome', 
 								'deconstructed', 'hand-selected', 'market', 'artisanal', 
 								'crafted', 'curated', 'succulent', 'fork-tender'];
+		  
+		  let mainSides = ['couscous salad', 'baked polenta', 'kale casserole', 'squash gratin',
+						   'kimchi salad', 'cabbage slaw', 'mashed cauliflower', 'white bean gratin',
+						   'cider-glazed brussel sprouts', 'rosemary roasted potatoes', 'balsamic sweet potatoes'];
 		 
 		  let dessertIngredients = ['chocolate', 'vanilla', 'matcha', 'sweet corn', 'buttermilk',
 									'vietnamese coffee', 'goat cheese', 'oolong tea', 'tutti frutti',
@@ -158,6 +166,10 @@
 		  let dessertPreparations = ['ice cream', 'cheesecake', 'mochi', 'bananas foster', 'lava cake',
 									 'fried ice cream', 'doughnuts', 'churros', 'cupcake', 
 									 'milkshake', 'smoothie', 'shaved ice', 'brookie'];
+									 
+		  let dessertSauces = ['crème anglaise', 'sabayon', 'caramel sauce','sugar glaze',
+							   'fruit preserve glaze', 'fruit coulis', 'chocolate ganache', 
+							   'chocolate sauce', 'oreo hot fudge sauce', 'praline sauce'];
         						   
                           
           const MAX_APP_PRICE = 20;
@@ -236,6 +248,7 @@
           	let result = choose(mainAdjectives) + ' ';
           	result += choose(mainIngredients) + ' ';
           	result += choose(mainPreparations);
+          	result += ' with ' + choose(mainSides);
           	return result;
           }
           
@@ -269,6 +282,7 @@
           	let result = choose(dessertAdjectives) + ' ';
           	result += choose(dessertIngredients) + ' ';
           	result += choose(dessertPreparations);
+          	result += ' with ' + choose(dessertSauces);
           	return result;
           }
           
