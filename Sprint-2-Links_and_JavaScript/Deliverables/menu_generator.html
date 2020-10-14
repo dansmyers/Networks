@@ -176,18 +176,15 @@
                                  
           let mainIngredients = ['whitefish', 'poultry', 'bone', 'skin', 'rice', 'steak', 'eggs', 'fish', 'duck', 'turtle'];
                                  
-          let mainPreparations = ['risotto', 'omelet', 'hotpot', 'stew', 'soup', 'curry', 'plate', 'bowl', 'mishmash', 'mixture', 'concatanation', 'combination'];
+          let mainNumber = ['1337', '420', '777', '444', '404', ' 3.1415926', '2.7182', '1.6180', '6.626068 x 10^-34', '6.0221515 x 10^23', '186,282', '6.67300 x 10^-11'];
                                   
-          let mainAdjectives = ['tender', 'vintage', 'juicy', 'lucky',
-                                 'curative', 'ironbone', 'black', 'red',
-                                 'prickly', 'milled', 'fresh', 'tri-colored',
-                                 'marbled', 'flaky', 'crisp', 'dirty', 'gummy', 'sharp'];
+          let mainAddress = ['broadway', 'belrose', 'washington', 'beetlejuice', 'florida', 'africa', 'north america', 'antartica', 'new zealand', 'norway'];
                                  
-          let desIngredients = ['milk', 'starberry', 'syrup', 'bagel', 'strawberry', 'powder'];
+          let desNoun = ['milk', 'starberry', 'syrup', 'bagel', 'strawberry', 'powder'];
                                  
-          let desPreparations = ['shortcake', 'ice cream', 'purple hearts', 'macchiato', 'punch', 'chiffon cake'];
+          let desPlanets = ['pluto', 'neptune', 'uranus', 'jupiter', 'saturn', 'mars', 'earth', 'venus', 'mercury'];
                                   
-          let desAdjectives = ['hearty', 'assorted', 'globby', 'clear', 'honey', 'unhealthy', 'southern', 'fluffy', ];
+          let desJewels = ['diamond', 'sapphire', 'amethyst', 'opal', 'amber', 'tourmaline', 'ruby'];
                           
           const MAX_APP_PRICE = 20;
                        
@@ -215,13 +212,13 @@
                 result += choose(appIngredients) + ' ';
                 result += choose(appPreparations);
             } else if (type === "main"){
-                result += choose(mainAdjectives) + ' ';
-                result += choose(mainIngredients) + ' ';
-                result += choose(mainPreparations);
+                result += choose(mainAddress) + ' ';
+                result += choose(mainNumber) + ' ';
+                result += choose(mainIngredients);
             } else {
-                result += choose(desAdjectives) + ' ';
-                result += choose(desIngredients) + ' ';
-                result += choose(desPreparations);
+                result += choose(desPlanets) + ' ';
+                result += choose(desJewels) + ' ';
+                result += choose(desNoun);
             }
                 
             return result;
