@@ -17,12 +17,14 @@ Suppose you want to transmit the following 32-bit sequence:
 ```
 
 Determine the extra bits you would need to transmit if you chose to use a two-dimensional parity algorithm. Use a four row by eight column matrix.
+
+```
             row parities
 1011 1110 |  1
 1110 1111 |  1
 1100 1010 |  0
 1111 1110 |  1 
----------------
+
 0110 0101 |  1  Parity of the column parties
 
              Calculated   |  Received
@@ -32,6 +34,7 @@ Determine the extra bits you would need to transmit if you chose to use a two-di
 1111 1110 |  1            |   1
 1000 0000 |  1  Calculated| 
 0110 0101                 |  Received 
+```
 
 ## Link-Layer Protocols
 
