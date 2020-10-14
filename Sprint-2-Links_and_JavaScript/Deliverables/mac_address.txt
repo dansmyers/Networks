@@ -1,1 +1,5 @@
 Explain the significance of media access control (MAC) addresses in link-layer networks. How is a device's MAC address set?
+
+Media access control is an important compontnet to local access netowrks. They specifiy a unique identifier that is sent with every message that tells the adapters on the network who that message is ment for. If the adaptor is connected to the host with the correct MAC address then the adapter will transmit that message to the host. Otherwise the adapter will not transmit the message. Through this process only the host the data is ment for will recieve the data sent.
+
+The MAC address is set when the manufactor creates a new device. The MAC address is burned into the devices ROM. To ensure that all devices have a unique MAC address every manufactor will be provided with a unique prefix that they are required to use and then will choose a unique suffux. This ensures that all devices will have a unique mac address regardless of who creates the device. 
