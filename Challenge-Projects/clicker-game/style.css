@@ -1,0 +1,76 @@
+body {
+    font-size: 15pt;
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #F5F5F5;
+
+}
+.upgrade-block{
+  background-color: lightgrey;
+  padding: 20px;
+  border-radius: 4%;
+}
+/* Change upgrade blocks when the user mouses over them */
+.upgrade-block:hover {
+    color: #0275d8;  /* Bootstrap primary blue */
+    cursor: pointer;  /* Make mouse into a finger */
+
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.small-text {
+    font-size: .85em;
+}
+
+#achievements {
+    height: 250px;
+}
+
+
+#click{
+width:100%;
+}
+
+.hidden{
+  visibility: hidden;
+}
+
+#laser-img{
+  width: 100px;
+}
+
+
+.bg{
+background-image: url("https://media4.giphy.com/media/5T06ftQWtCMy0XFaaI/giphy.gif?cid=ecf05e47yv80dfgg75sopm8lkici77jwq75ipzibbri76sfg&rid=giphy.gif");
+background-size: cover;
+background-repeat: no-repeat;
+
+}
+
+.end-screen{
+visibility: visible;
+border-radius: 10px;
+background-color: rgba(47,214,255,0.8);
+position: fixed;
+width: 500px;
+height: 400px;
+font-size: 20px;
+top: .5%;
+left: 50%;
+
+margin-left: -250px; /* Negative half of width. */
+}
+
+.end-screen-text{
+  font-size:20px;
+  margin-top: 5px;
+  padding: 5px;
+  border-style: solid;
+
+}

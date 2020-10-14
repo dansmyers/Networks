@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cat Clicker</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container" id="container">
+
+    <!-- Main row-->
+    <div class="row mt-5">
+
+      <div class="col-sm-4 border border-dark">
+        <h1 class="text-center">Crazy Cat Clicker</h1>
+        <p id="intro-msg" class="text-center">Pet (click) the cat to get started!</p>
+        <img onclick="changeNumber(clickIncrement)" id="click" src="https://i.dlpng.com/static/png/7008187_preview.png" alt="">
+        <h1  class="text-center"><span id="number">0</span> Purrs</h1>
+        </img>
+      </div> <!-- /col 1 -->
+
+
+      <div class="col-sm-8  border border-dark ">
+        <!-- Row of Resources and Store -->
+        <div class="row">
+          <!-- resource counts -->
+          <div class="col-lg-6 ">
+            <h3>Resources</h3>
+            <div>
+              Petting strength: <span id="num-pet-strength">1</span>
+            </div>
+            <div>
+              Autopetters: <span id="num-autopetters">0</span>
+            </div>
+            <div id="catnip-counter" class="hidden">
+              Catnip: <span id="num-catnip">0</span>
+            </div>
+            <div class="hidden"id="laser-pointer-counter">
+              Laser produced purrs: <span id="num-laser-pointers">0</span>
+            </div>
+            <div >
+              <img id="laser-img" class="hidden"onclick="changeNumber(laserPointerIncrement)" src="https://img2.pngio.com/laser-pointer-png-picture-1979427-laser-pointer-png-laser-pointer-png-512_512.png" alt="">
+            </div>
+          </div><!-- /resource counts -->
+
+          <!-- Upgrades column -->
+          <div class="col-lg-6">
+            <h3>Store</h3>
+
+            <!-- autopetter block -->
+            <div class="upgrade-block" id="autopetter" onclick="buyAutopetter()">
+              <span class="float-left">Autopetter</span>
+              <span class="float-right" id="autopetter-cost">10</span>
+              <div class="clear"></div> <!-- Required to reset float positioning -->
+              <br />
+              <span class="small-text">Pets cat once per second</span>
+            </div>
+
+            <!-- stronger pets -->
+            <div class="upgrade-block mt-3" id="stronger-pets" onclick="buyStrongerPets()">
+              <span class="float-left">Stronger pets</span>
+              <span class="float-right" id="stronger-pets-cost">100</span>
+              <div class="clear"></div> <!-- Required to reset float positioning -->
+              <br />
+              <span class="small-text">Double purrs per your pet</span>
+            </div>
+
+            <!-- catnip -->
+            <div class="upgrade-block mt-3 hidden" id="catnip" onclick="buyCatnip()">
+              <span class="float-left">Catnip</span>
+              <span class="float-right" id="catnip-cost">500</span>
+              <div class="clear"></div> <!-- Required to reset float positioning -->
+              <br />
+              <span class="small-text">Produces 5 purrs a second</span>
+            </div>
+
+            <!-- laser pointer -->
+            <div class="upgrade-block mt-3 hidden" id="laser-pointer" onclick="buyLaserPointer()">
+              <span class="float-left">Laser Pointer</span>
+              <span class="float-right" id="laser-pointer-cost">1000</span>
+              <div class="clear"></div> <!-- Required to reset float positioning -->
+
+              <br />
+              <span class="small-text">Each click to the laser pointer produces <span id="laser-pointer-strength">10</span> purrs</span>
+            </div>
+
+            <!-- adoption -->
+            <div class="upgrade-block mt-3 mb-3 hidden" id="adopt" onclick="adoptCat()">
+              <span class="float-left">Adopt cat</span>
+              <span class="float-right" id="adoption-cost">5000</span>
+              <div class="clear"></div> <!-- Required to reset float positioning -->
+              <br />
+              <span class="small-text"> Adopt the cat and win the game</span>
+            </div>
+
+
+          </div><!-- /Upgrades column -->
+        </div><!-- /Row of Resources and Store -->
+      </div><!-- /col 2-->
+
+    </div> <!-- /main row -->
+
+    <!-- Log and achievements row-->
+    <div class="row mt-5" id="achievement-box">
+      <div class="col-lg-12 small-text" id="achievements">
+        <p id="achievement-text">This is your log of achievements:</p>
+      </div>
+    </div> <!-- /row -->
+
+  </div> <!-- /container -->
+
+
+  <!-- JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
