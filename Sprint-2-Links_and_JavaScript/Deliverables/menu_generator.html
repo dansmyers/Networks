@@ -159,8 +159,8 @@
                                  'argyle', 'korean bbq', 'cilantro-lime', 'oblique',
                                  'ketchuped', 'curried', 'inverted', 'digitized'];
                                  
-          let mainIngredients = ['turkey', 'chicken', 'snapper', 'fish', 'pork', 'rice',
-                                    'cheese', 'kale'];
+          let mainIngredients = ['turkey', 'chicken', 'snapper', 'mixed fish', 'pork', 'rice',
+                                    'cheese', 'kale', 'grouper', 'beef', 'steak', 'soy'];
           
           let mainPreparations = ['burger', 'chips', 'salad', 'sandwich', 'casserole',
                                     'toast', 'stir fry'];
@@ -168,11 +168,9 @@
           let mainAdjectives = ['hot-off-the-grill', 'fried', 'vegan', 'gluten-free',
                                 'meatless', 'grass-fed', 'french', 'trendy'];
           
-          let dessIngredients = ['cheese', 'chocolate', 'vanilla', 'strawberry'];
+          let dessIngredients = ['cheese', 'chocolate', 'vanilla', 'strawberry', 'cranberry'];
           
           let dessPreparations = ['cake', 'sorbet', 'muffin', 'toast', 'crisps'];
-          
-          let dessAdjectives = ['whipped', 'caked', 'chocolate-drizzled', 'iced'];
                           
           const MAX_APP_PRICE = 20;
           const MAX_MAIN_PRICE = 35;
@@ -205,14 +203,14 @@
           function generateMainCourse() {
             let result = choose(mainAdjectives) + ' ';
             result += choose(mainIngredients) + ' ';
+            result += 'and ' + choose(mainIngredients) + ' ';
             result += choose(mainPreparations);
                 
             return result;
           }
           
           function generateDessert() {
-            let result = choose(dessAdjectives) + ' ';
-            result += choose(dessIngredients) + ' ';
+            let result = choose(dessIngredients) + ' ';
             result += choose(dessPreparations);
                 
             return result;
