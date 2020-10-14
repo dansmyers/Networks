@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+    
+    <head>
+        
+        <!-- required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
+        <style>
+            
+            p {
+                text-align: center;
+                font-family: Courier;
+            }
+            
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 70%;
+            }
+            
+            .oliver {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 40%;
+            }
+            
+            .prompt {
+                font-family: "Courier New";
+                font-weight: bold;
+                text-align: center;
+                font-size: 16px;
+                padding-bottom: 25px;
+            }
+            
+            .btn1 {
+                background-color: #FFB921;
+                border: none;
+                color: dark;
+                padding: 15px 32px;
+                text-align: center;
+                font-family: "Arial";
+                font-weight: bold;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+            }
+            
+            .btn2 {
+                background-color: #FFD52B;
+                border: none;
+                color: dark;
+                padding: 15px 32px;
+                text-align: center;
+                font-family: "Arial";
+                font-weight: bold;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+            }
+            
+            .section {
+              margin-bottom: 3rem;
+            }
+            
+            .answer {
+              float: center;
+            }
+            
+            .output {
+                text-align: center;
+                font-family: "Helvetica";
+                font-weight: bold;
+                font-size: 25px;
+                padding-top: 20px;
+            }
+            
+        </style>
+        
+        
+    </head>
+    
+    
+    <body>
+        
+        <div class="container">
+            
+            <!-- first row: smoot header -->
+            <div class="row">
+                
+                <!-- smoot lines -->
+                <div class="col-lg-12">
+                    
+                    <p>
+                        <img src="smoot-lines.png" class="center">
+                    </p>
+                    
+                </div>
+                
+            </div>
+            
+            <!-- second row: page title -->
+            <div class="row">
+                
+                <!-- title: smoot -->
+                <div class="col-lg-12">
+                    
+                    <p>
+                        <img src="OliverSmoot.png" class="oliver">
+                    </p>
+                    
+                </div>
+                
+            </div>
+            
+            
+            <!-- third row: prompt with input box -->
+            <div class="row">
+                
+                <div class="col-lg-12 prompt">
+                    
+                    <p>Enter a value to be converted:</p>
+                    <input type="number" id="input-value"/>
+                    
+                </div>
+                
+            </div>
+            
+            <!-- fourth row: conversion buttons -->
+            <div class="row">
+                
+                <div class="col-lg-12" style="text-align: center;">
+                    
+                    <button class="btn1" id="toSmoots" onclick="toSmoots()">feet to smoots</button>
+                    <button class="btn2" id="toFeet" onclick="toFeet()">smoots to feet</button>
+                    
+                </div>
+                
+            </div>
+            
+            <!-- fifth row: output -->
+            <div class="row">
+                
+                <div class="col-lg-12 center">
+                    
+                    <p id="answer"></p>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <script>
+            
+            "use strict";
+            
+            function toSmoots() {
+                // get the value from the input box
+                let input = document.getElementById("input-value");
+                let value = input.value;
+                
+                // conversion
+                let conversion = value * 0.179104;
+                
+                // format output
+                let output = conversion.toFixed(2);
+                
+                document.getElementById("answer").innerHTML = output + " smoots plus or minus one ear.";
+            }
+            
+            function toFeet() {
+                // get the value from the input box
+                let input = document.getElementById("input-value");
+                let value = input.value;
+                
+                // conversion
+                let conversion = value / 0.179104;
+                
+                // format output
+                let output = conversion.toFixed(2);
+                
+                document.getElementById("answer").innerHTML = output + " feet plus or minus one ear.";
+            }
+            
+        </script>
+        
+        
+        
+        
+        
+        <!-- JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        
+        
+        
+    </body>
+    
+</html>
