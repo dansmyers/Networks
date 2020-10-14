@@ -72,7 +72,7 @@
                 <!-- col-md-6 makes a column that spans all 6 units -->
                 <!-- Covers the middle half of the page -->
                 <div class="col-md-6">
-                    <h1 id="restaurant_name">The Yellow Sign</h1>
+                    <h1 id="restaurant_name">The Hipster Supreme</h1>
                     
                     <h2>Appetizers</h2>
                     <div class="section" id="appetizers"></div>
@@ -128,11 +128,17 @@
           
           let mainAdjectives = ["bitter", "brackish", "briny", "caustic", "delectable", "divine", "dulcet", "Flavored", "fruty"];
           
+          let mainSoups = ["with cranberry soup", "with chicken noodle soup", "with beet soup", "with pea soup", "with one pot soup", 
+          "with leek soup", "with miso soup", "with hunk soup", "with cold cabbage soup"];
+          
           let dessertIngredients = ["choclate", "penaut butter", "mousse", "frozen banana", "vanilla meringue", "shortbread", "pecan caramel", "buleberry tart"];
           
           let dessertPreparations = ["cake", "ice-cream", "souflet", "sliced", "iced", "mint bathed"];
           
           let dessertAdjectives = ["Gamy", "Gustatory", "delicious", "Juicy", "Luscious", "Mellow", "pickled", "Nectarous", "pungent"];
+          
+          let dessertBeverage = ["con leche", "con wiskey irlandes", "con tequila", "con cafe", "con fresca", "con spicy bbq pollo", "con enchaladas",
+          "con chili", "con salsa", "con queso"];
                           
           const MAX_APP_PRICE = 20;
                        
@@ -165,6 +171,7 @@
           	let result = choose(mainAdjectives) + " ";
           	result += choose(mainPreparations) + " ";
           	result += choose(mainPreparations) + " ";
+          	result += choose(mainSoups);
           	
           	return result;
           }
@@ -174,6 +181,7 @@
           	let result = choose(dessertAdjectives) + " ";
           	result += choose(dessertPreparations) + " ";
           	result += choose(dessertPreparations) + " ";
+          	result += choose(dessertBeverage);
           	
           	return result;
           }
