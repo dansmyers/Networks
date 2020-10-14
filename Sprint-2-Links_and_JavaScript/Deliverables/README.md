@@ -26,6 +26,11 @@ Determine the extra bits you would need to transmit if you chose to use a two-di
 01100101  0
 
 
+row bits = 0101
+column bits = 01100101
+r/c bit = 0
+
+
 Final Transmission:
 101111100 111011111 110010100 111111101 011001010
 
