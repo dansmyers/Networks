@@ -2,11 +2,11 @@
 
 ## Honor Code
 
-Edit this section to include a statement of the Honor Code.
+"On my honor, I have not given, nor received, nor witnessed any unauthorized assistance on this work"
 
 ## Team Members
 
-List the other members of your team here.
+N/A
 
 ## Parity
 
@@ -17,12 +17,29 @@ Suppose you want to transmit the following 32-bit sequence:
 ```
 
 Determine the extra bits you would need to transmit if you chose to use a two-dimensional parity algorithm. Use a four row by eight column matrix.
+            row parities
+1011 1110 |  1
+1110 1111 |  1
+1100 1010 |  0
+1111 1110 |  1 
+---------------
+0110 0101 |  1  Parity of the column parties
+
+             Calculated   |  Received
+0011 1110 |  0            |   1
+1110 1111 |  1            |   1
+1100 1010 |  1            |   0
+1111 1110 |  1            |   1
+1000 0000 |  1  Calculated| 
+0110 0101                 |  Received 
 
 ## Link-Layer Protocols
 
 The Ethernet protocol allows multiple hosts to share a connection to one physical link. Explain briefly how Ethernet manages access to the link to ensure that simultaneous transmissions from multiple hosts do not interfere with each other.
 
 Describe at least two factors that make collision avoidance more challenging in 802.11 networks than in multiple-access wired Ethernets. How is collision avoidance implemented in wireless networks?
+
+
 
 ## MAC Addresses
 
