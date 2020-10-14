@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+    
+    <head>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+        <!-- Custom CSS styling -->        
+        <style>
+        
+            h1 {
+              text-align: center;
+              font-variant: small-caps;
+              font-size: 36pt;
+              font-family: "Arial Black", Gadget, sans-serif
+              margin-bottom: 8rem;
+            }         
+          
+        </style>
+        
+    </head>
+   
+    <body>
+
+        <!-- All Bootstrap content must be enclosed in a container div -->
+        <div class="container">
+            <div class="row">
+                  
+                <!-- Empty 3-unit column on the left side of the page -->
+                <div class="col-md-3"> </div>
+        
+                <!-- col-md-6 makes a column that spans all 6 units -->
+                <!-- Covers the middle half of the page -->
+                <div class="col-md-6">
+                    <h1 id="pagename">The Smoot Way</h1>
+                </div>   <!-- /col-md-6 -->  
+            
+                <!-- Empty 3-unit column on the right side of the page -->
+                <div class="col-md-3"> </div>            
+            </div>   <!-- /col-md-12 -->  
+            
+            <br>
+            
+            <div class="row">
+                  
+                <!-- Empty 3-unit column on the left side of the page -->
+                <div class="col-md-3"> </div>
+        
+                <!-- col-md-6 makes a column that spans all 6 units -->
+                <!-- Covers the middle half of the page -->
+                <div class="col-md-6">
+                    <p>A smoot is a unit of distance (or "length", as physical scientists say) used for measuring the Harvard Bridge. It is named after an MIT fraternity pledge at Lambda Chi Alpha fraternity, Oliver R. Smoot (class of 1962). In October of 1958, fellow students helped Mr. Smoot measure the length of the bridge by placing him end to end and marking the increments. Oliver was a top student at MIT and went on to run NIST, the National Institute of Standards and Technology. The smoot is equal to his height (five feet and seven inches -- 1.70 m), and the bridge's length was measured to be "364.4 smoots plus one ear".</p>
+                </div>   <!-- /col-md-6 -->  
+            
+                <!-- Empty 3-unit column on the right side of the page -->
+                <div class="col-md-3"> </div>            
+            </div>   <!-- /col-md-12 -->  
+            
+            <br>
+          
+            <div>
+                <label for="choice">Choose a conversion:</label>
+                <select name="choice" id="choice">
+                  <option value="feet-smoot">Feet-To-Smoots</option>
+                  <option value="smoot-feet">Smoot-To-Feet</option>
+                </select>
+            </div>  
+            <div>
+              <input type="text" id="inputfield">
+              <button onclick="calculate()">Calculate</button>
+            </div>
+            <br>
+            <div>
+              <p id="answer"></p>
+            </div>  
+            
+        </div> <!-- /container -->
+        
+        <!-- JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        
+        <script>
+          
+          function calculate(){
+            let var1 = parseFloat(document.getElementById('inputfield').value);
+            let var2 = (document.getElementById('choice').value);
+            if (var2 === "feet-smoot") {
+              var1 /= 5.5833333333;
+              let var3 = var1.toFixed(2);
+              if (var3 === 1) {
+                document.getElementById("answer").innerHTML = var3 + " smoot plus or minus one ear";
+              } else {
+                document.getElementById("answer").innerHTML = var3 + " smoots plus or minus one ear";
+              } 
+            } else {
+              var1 *= 5.5833333333;
+              let var3 = var1.toFixed(2);
+              if (var3 === 1) {
+                document.getElementById("answer").innerHTML = var3 + " foot plus or minus one ear";
+              } else {
+                document.getElementById("answer").innerHTML = var3 + " feet plus or minus one ear";
+              }               
+            }    
+          };
+          
+        </script>
+        
+    </body>
+    
+</html>

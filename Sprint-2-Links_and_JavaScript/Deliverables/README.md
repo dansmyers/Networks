@@ -2,11 +2,11 @@
 
 ## Honor Code
 
-Edit this section to include a statement of the Honor Code.
+“On my honor, I have not given, nor received, nor witnessed any unauthorized assistance on this work."
 
 ## Team Members
 
-List the other members of your team here.
+Randy, Oliver, Griffin, Jacob
 
 ## Parity
 
@@ -18,15 +18,48 @@ Suppose you want to transmit the following 32-bit sequence:
 
 Determine the extra bits you would need to transmit if you chose to use a two-dimensional parity algorithm. Use a four row by eight column matrix.
 
+```
+You would just need to add an outside layer to the matrix.  So it would just be 4 + 8 for 12
+extra bits.
+
+Example:
+1011 1110  X
+1110 1111  X
+1100 1010  X
+1111 1110  X
+
+XXXX XXXX
+```
+
 ## Link-Layer Protocols
 
 The Ethernet protocol allows multiple hosts to share a connection to one physical link. Explain briefly how Ethernet manages access to the link to ensure that simultaneous transmissions from multiple hosts do not interfere with each other.
 
 Describe at least two factors that make collision avoidance more challenging in 802.11 networks than in multiple-access wired Ethernets. How is collision avoidance implemented in wireless networks?
 
+```
+If a host has a frame to send and it takes the line is idle, then it sends immediately.  If 
+the line is busy, wait for it to become idle, then transmit immediately.
+
+802.11 networks have problems by not being able to listen during transmission, and some nodes
+can see other a node without being able to sense each other.  This is called the hidden node
+problem.
+
+Collision avoidance is implemented by ACK in wireless networks.  This has a sender send out
+an ARK to the receiver that it wants to send.  The receiver responds and lets them know they
+are ready to receive.  This lets others in the area know not to send right then.
+```
+
 ## MAC Addresses
 
 Explain the significance of media access control (MAC) addresses in link-layer networks. How is a device's MAC address set?
+
+```
+The MAC address is very important.  It is the unique identifier for a host on the network.
+Because of broadcast protocol, the MAC address lets the other hosts know if the information
+is for them or to ignore.  The MAC address is set by the manufacturer by burning the 48 bits
+into the ROM on the ethernet card.
+```
 
 ## Smoot Converter
 
