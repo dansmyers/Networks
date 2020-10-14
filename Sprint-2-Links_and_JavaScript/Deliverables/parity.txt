@@ -24,4 +24,4 @@ Answer:
 ---------------------------
 Parity: 0110 0101 |  0
 
-These are the extra bits you would need to transmit for a two-dimensional parity algorithm. 
+There are 13 extra bits you would need to transmit for a two-dimensional parity algorithm. 
