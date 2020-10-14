@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+    <style>
+        body{
+            text-align: center;
+            font-family: monospace;
+        }
+        #page-header{
+            background: black;
+            color: white;
+        }
+        #result-box{
+            background: #afafaf;
+            color: #3f3f3f;
+        }
+        #result-value{
+            font-size: 2em;
+            color: black;
+        }
+        #result-unit{
+            color: black;
+        }
+    </style>
+    <script>
+        function smootConvert(){
+            var isInputSmoot = document.getElementById('convert-choice').value;
+            var input = document.getElementById('inputnum').value;
+            document.getElementById('input-value').innerHTML = input.toString() + (isInputSmoot ? " Smoots = " : " feet = ");
+            var output = (isInputSmoot ? (input * (5 + (7 / 12))) : (input / (5 + (7 / 12)))).toFixed(3);
+            document.getElementById('result-value').innerHTML = output;
+            document.getElementById('result-unit').innerHTML = (isInputSmoot ? " feet" : " Smoots, plus or minus one εar");
+        }
+    </script>
+</head>
+<body>
+    <div class="container-fluid" id="page-header">
+        <h1>Smoot Converter</h1>
+    </div>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col">
+                <p>
+                    <input type="number" id="inputnum" name="inputnum" placeholder="Enter a number">
+                    <select name="conversion" id="convert-choice">
+                        <option value="">Feet -> Smoot</option>
+                        <option value="foo">Smoot -> Feet</option>
+                    </select><br>
+                    <button id="convert-btn" onclick="smootConvert()">CONVERT</button>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" id="result-box">
+                <p><span id="input-value">1 Smoot = </span><span id="result-value">5.583</span><span id="result-unit"> feet</span></p>
+            </div>
+        </div>
+    </div>
+</body>
