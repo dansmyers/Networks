@@ -1,0 +1,1 @@
+Explain the significance of media access control (MAC) addresses in link-layer networks. How is a device's MAC address set?
