@@ -33,7 +33,7 @@ Determine the extra bits you would need to transmit if you chose to use a two-di
 1100 1010 |  1            |   0
 1111 1110 |  1            |   1
 1000 0000 |  1  Calculated| 
-0110 0101                 |  Received 
+0110 0101                 |   0 Received 
 ```
 
 ## Link-Layer Protocols
