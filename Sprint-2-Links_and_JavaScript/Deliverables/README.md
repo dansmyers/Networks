@@ -43,7 +43,7 @@ Two things that make collision avoidance more difficult in Wifi (802.11) are the
 
 Explain the significance of media access control (MAC) addresses in link-layer networks. How is a device's MAC address set?
 
-A device’s MAC address is a unique 32-bit identifier. It is assigned to an ethernet host by the manufacturer when the network card is made. As it relates to link-layer networks, this allows hosts to both identify the source MAC address on a transmission as well as the destination MAC address. 
+A device’s MAC address is a unique 48-bit identifier. It is assigned to an ethernet host by the manufacturer when the network card is made. As it relates to link-layer networks, this allows hosts to both identify the source MAC address on a transmission as well as the destination MAC address. 
 
 ## Smoot Converter
 
