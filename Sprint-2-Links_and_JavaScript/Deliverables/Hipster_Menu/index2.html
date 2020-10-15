@@ -95,8 +95,7 @@
         
     </div>
 
-<!--</div> -->
-<!-- /container -->
+</div> <!-- /container -->
 <!-- For Bootstrap -->
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -121,10 +120,6 @@
     let entreeIngredients = ['kale','arugala','quinoa','couscous','veal','lamb','filet','prime rib','walleye','rainbow trout','crab','lobster tail','NY strip', 'beyond meat','squid','chicken','duck','sweet bread'];
     
     let entreePreparations = ['gnocchi','cake','tar tar','bowl','wrap','open face sandwich','toast','stew','chili','blob','circles','diamonds','medallions','crust'];
-    
-    let entreeSideAdjectives = ['antioxident-rich','seductive','dauting','local','garnished','boiled','buttered','lavished','crusty','decadent','fun-loving','rakish','low-sodium','beaten'];
-    
-    let entreeSides = ['potato skins','fries','veggie morsels','zucchini noodles','lo mein','pesto elbows','red rice','cucumber slices','bell pepper pits','edamame shells','green beans','corn husks','beets','onion grass','garlic cloves'];
     
     // desserts
     let dessertAdjectives = ['sinful','sexy','devious','lucious','indulgent','slippery','wet','singed','burned','toasty','tossed','sensual','caramelized'];
@@ -162,9 +157,6 @@
         let result = choose(entreeAdjectives) + ' ';
         result += choose(entreeIngredients) + ' ';
         result += choose(entreePreparations);
-        result += ' with ';
-        result += choose(entreeSideAdjectives) + ' ';
-        result += choose(entreeSides);
         return result;
     }
     
@@ -208,7 +200,7 @@
     }
     
     function generateEntrees() {
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 8; i++) {
         // Generate a random item and price
             let result = generateEntree();
             let price = Math.floor(Math.random() * (MAX_ENT_PRICE - 90)) + 90;
