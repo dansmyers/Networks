@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+    <head>
+        <!-- Boostrap stylesheets -->
+      
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+    
+        <!-- Custom CSS styling -->
+        <style>
+        
+            body {
+              font-family: Lucida, serif;
+              font-size: 14pt;
+            }
+          
+            h1 {
+              text-align: center;
+              font-variant: small-caps;
+              font-size: 18pt;
+              font-family: Georgia, serif;
+              margin-bottom: 8rem;
+            }
+            
+            h2 {
+              font-variant: small-caps;
+              font-size: 22pt;
+              margin-bottom: 2rem;
+              font-family: Georgia, serif;
+            }
+            
+            .section {
+              margin-bottom: 3rem;
+            }
+            
+            .name {
+              float: left;
+            }
+            
+            .price {
+              float: right;
+            }
+
+            .clear {
+              clear: both;
+            }
+            
+            .center {
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 40%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+            
+            .no-outline {
+                border-width:0px;
+                border:none;
+            }
+                        
+        </style>
+    </head>
+    
+    
+    
+    <body>
+      
+        <!-- Recall: all Bootstrap content must be enclosed in a container div -->
+        <div class="container">
+    
+            <!-- Container is made of a series of rows -->
+            <!-- Each row is conceptually divided into 12 units -->
+            
+            <!-- Columns can span any subset of those 12 units -->
+
+            <div class="row">
+                  
+                <!-- Empty 3-unit column on the left side of the page -->
+                <div class="col-md-4" style="padding: 10em 0em 0em 0em"> 
+                </div>
+        
+                <!-- col-md-6 makes a column that spans all 6 units -->
+                <!-- Covers the middle half of the page -->
+                <div class="col-md-4" style="padding: 5em 0em 0em 0em">
+                    
+                    <label for="conType">Conversion Type:</label>
+
+                    <select name="conType" id="conType">
+                        <option value="fts">Feet to Smoots</option>
+                        <option value="stf">Smoots to Feet</option>
+                    </select>
+                                        
+                                      
+                </div>   <!-- /col-md-12 -->  
+            
+                <!-- Empty 3-unit column on the right side of the page -->
+                <div class="col-md-4" style="padding: 10em 0em 0em 0em"> 
+                
+                </div>
+        
+            </div> <!-- /row -->
+            
+            <div class="row">
+                  
+                <!-- Empty 3-unit column on the left side of the page -->
+                <div class="col-md-4" style="padding: 0em 0em 0em 0em"> 
+                
+                    <h3>Value to Convert:</h3>
+                    <input type="number" style="text-align: center" id="numToCon">
+                    
+                    
+                </div>
+        
+                <!-- col-md-6 makes a column that spans all 6 units -->
+                <!-- Covers the middle half of the page -->
+                <div class="col-md-4" style="padding: 8em 0em 0em 0em">
+                    
+                    <button onclick="convert()" type="button" class="center">Convert!</button>
+                                        
+                                      
+                </div>   <!-- /col-md-12 -->  
+            
+                <!-- Empty 3-unit column on the right side of the page -->
+                <div class="col-md-4" style="padding: 0em 0em 0em 7em"> 
+                    
+                    <h3>Result:</h3>
+                    <input readonly type="text" style="text-align: center" id="result" class="no-outline">
+                    
+                </div>
+        
+            </div> <!-- /row -->
+    
+        </div> <!-- /container -->
+    
+        <!-- For Bootstrap -->
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        
+        <!-- Script that generates randomized menu items -->
+        <script>
+            function convert(){
+                
+                let smoot = 5.583333333333333;
+                
+                if(document.getElementById("conType").value === "fts") {
+                    
+                    let numFeet1 = document.getElementById("numToCon").value;
+                    
+                    let numSmoots1 = numFeet1 / smoot; 
+                    
+                    document.getElementById("result").value = numSmoots1.toFixed(2) + " plus or minus an ear";
+                    console.log("hit");
+                }
+                
+                if(document.getElementById("conType").value === "stf") {
+                    
+                    let numSmoots2 = document.getElementById("numToCon").value;
+                    
+                    let numFeet2 = numSmoots2 * smoot; 
+                    
+                    document.getElementById("result").value = numFeet2.toFixed(2) + " plus or minus an ear";
+                    console.log("hit");
+                    
+                }
+                
+            }
+        </script>
+        
+    </body>
+
+</html>
