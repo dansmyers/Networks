@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+    
+    <head>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
+        <style>
+            
+           
+            
+        </style>
+        
+    </head>
+   
+    <body>
+
+        <div class="container">
+            
+            <!-- First Row -->
+            <div class="row">
+            
+                <!-- First Column -->
+                <div class="col-lg-12">
+                    <h1>Welcome to the Smoot Converter.</h1>
+                </div>   <!-- /First Column -->  
+                
+            </div> <!-- /row -->
+            
+            <!-- Second Row -->
+            <div class="row">
+                
+                <div class="col-lg-12">
+                    
+                    <label for="unconverted">Convert</label>
+                    <input type="text" name="unconverted" id="unconverted"/>
+                    
+                    <label for="conversion-menu">From</label>
+                    <select name="conversion-menu" id="conversion">
+                        
+                        <option value="feet-to-smoots">feet-to-smoots</option>
+                        <option value="smoots-to-feet">smoots-to-feet</option>
+                        
+                    </select>
+                    <button onclick="convert()">Convert</button>
+                    
+                </div>
+                
+            </div> <!-- </row> -->
+            
+            <!-- Output Row -->
+            <div class="row">
+                
+                <div class="col-lg-12">
+                    
+                    <p id="output">You have not entered any value to convert.</p>
+                    
+                </div>
+                
+            </div><!-- /row -->
+            
+        </div> <!-- /container -->
+        
+        <!-- JS for smoot conversions -->
+        <script>
+            
+            function convert(){
+                
+                let unconvertedVal = Number(document.getElementById("unconverted").value);
+                
+                let conversionType = document.getElementById("conversion").value;
+                
+                let convertedVal = 0;
+                let factor = 0;
+                let original = "";
+                let newUnit = "";
+                
+                if(conversionType === "feet-to-smoots"){
+                    factor = 12/67;
+                    original = "feet";
+                    newUnit = "smoots";
+                }
+                else if(conversionType === "smoots-to-feet"){
+                    factor = 67/12;
+                    original = "smoots";
+                    newUnit = "feet";
+                }
+                
+                convertedVal = factor * unconvertedVal;
+                
+                document.getElementById("output").innerHTML = unconvertedVal + " " + original + " is roughly " + convertedVal.toFixed(2) + " " + newUnit + ", plus or minus an ear.";
+                
+            }
+            
+        </script>
+        
+        <!-- JS, Popper.js, and jQuery for Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+    
+</html>
