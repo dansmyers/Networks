@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+
+<head>
+  <!-- Boostrap stylesheets -->
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  <!-- Custom CSS styling -->
+  <style>
+    body {
+      font-family: Lucida, serif;
+      font-size: 14pt;
+    }
+
+    h1 {
+      text-align: center;
+      font-variant: small-caps;
+      font-size: 36pt;
+      font-family: Georgia, serif;
+      margin-bottom: 8rem;
+    }
+
+  </style>
+</head>
+
+
+
+<body>
+
+  <!-- Recall: all Bootstrap content must be enclosed in a container div -->
+  <div class="container">
+
+    <!-- Container is made of a series of rows -->
+    <!-- Each row is conceptually divided into 12 units -->
+
+    <!-- Columns can span any subset of those 12 units -->
+
+    <div class="row">
+
+      <!-- Empty 3-unit column on the left side of the page -->
+      <div class="col-md-3"> </div>
+
+      <!-- col-md-6 makes a column that spans all 6 units -->
+      <!-- Covers the middle half of the page -->
+      <div class="col-md-6">
+        <h1>Smoot Converter</h1>
+        <form method="" action="">
+          <div class="form-group">
+            <label>Convert</label>
+            <select class="form-control" id="convertOpt">
+              <option value="1" selected>Feet -to- Smoots</option>
+              <option value="2">Smoots -to- Feet</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-5">
+              <input type="number" class="form-control" id="input" placeholder="1">
+              <label for="input" class="small" id="lbl_input">Feet</label>
+            </div>
+            <div class="form-group col-md-2 text-center">
+              <button type="button" class="btn btn-success font-weight-bold" id="convertBtn" title="convert">=</button>
+            </div>
+            <div class="form-group col-md-5">
+              <p class="form-control mb-0">
+                <span id="output">0.18</span>
+                <span class="ml-2" id="smootEar">&pm;&nbsp;one ear</span>
+              </p>
+              <label for="output" class="small" id="lbl_output">Smoots</label>
+            </div>
+          </div>
+        </form>
+      </div> <!-- /col-md-12 -->
+
+      <!-- Empty 3-unit column on the right side of the page -->
+      <div class="col-md-3"> </div>
+
+    </div> <!-- /row -->
+
+  </div> <!-- /container -->
+
+  <!-- For Bootstrap -->
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <!-- Script Smoot Converter -->
+  <script>
+    const input = document.getElementById("input");
+    const input_lbl = document.getElementById("lbl_input");
+    const output_lbl = document.getElementById("lbl_output");
+    const output = document.getElementById("output");
+    const smootEar = document.getElementById("smootEar");
+    const selectBox = document.getElementById("convertOpt");
+    const convertBtn = document.getElementById("convertBtn");
+
+    const smoot_factor = 0.18;
+
+    selectBox.addEventListener('change', function(e){
+      let optTxt = e.target.options[e.target.selectedIndex].text.split(" -to- ")
+      input.value = "";
+      input.placeholder = e.target.selectedIndex === 0 ? 1 : smoot_factor;
+      output.innerText = e.target.selectedIndex === 0 ? smoot_factor : 1;
+      input_lbl.innerHTML = optTxt[0];
+      output_lbl.innerHTML = optTxt[1];
+      smootEar.style.display = e.target.selectedIndex === 0 ? "" : "none";
+
+    });
+
+    convertBtn.addEventListener('click', function(e){
+      const inputVal = input.value;
+      console.log()
+      if (!inputVal){
+        return;
+      }
+      const selected = selectBox.selectedIndex;
+      if(selected === 0 ){
+        output.innerText = (inputVal * smoot_factor).toFixed(2);
+      } else {
+        output.innerText = (inputVal / smoot_factor).toFixed(2);
+      }
+    });
+
+  </script>
+</body>
+
+</html>
