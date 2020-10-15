@@ -9,12 +9,13 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     
-    
+        <link href='https://fonts.googleapis.com/css?family=Autour One' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
         <!-- Custom CSS styling -->
         <style>
         
             body {
-              font-family: Lucida, serif;
+              font-family: 'Autour One', serif;
               font-size: 14pt;
             }
           
@@ -22,7 +23,7 @@
               text-align: center;
               font-variant: small-caps;
               font-size: 36pt;
-              font-family: Georgia, serif;
+              font-family: 'Aclonica', serif;
               margin-bottom: 8rem;
             }
             
@@ -30,9 +31,12 @@
               font-variant: small-caps;
               font-size: 22pt;
               margin-bottom: 2rem;
-              font-family: Georgia, serif;
+              font-family: 'Aclonica', serif;
             }
-            
+            .dark{
+                background-color: #222222;
+                color: #FAFAFA;
+            }
             .section {
               margin-bottom: 3rem;
             }
@@ -48,6 +52,10 @@
             .clear {
               clear: both;
             }
+            .resize {
+                width: 700px;
+                height: auto;
+            }
             
         </style>
     </head>
@@ -57,7 +65,7 @@
     <body>
       
         <!-- Recall: all Bootstrap content must be enclosed in a container div -->
-        <div class="container">
+        <div class="container-fluid">
     
             <!-- Container is made of a series of rows -->
             <!-- Each row is conceptually divided into 12 units -->
@@ -67,31 +75,45 @@
             <div class="row">
                   
                 <!-- Empty 3-unit column on the left side of the page -->
-                <div class="col-md-3"> </div>
+                <div class="col-lg-3"> </div>
         
                 <!-- col-md-6 makes a column that spans all 6 units -->
                 <!-- Covers the middle half of the page -->
-                <div class="col-md-6">
-                    <h1 id="restaurant_name">The Yellow Sign</h1>
+                <div class="col-lg-6">
+                    <h1 id="restaurant_name">Beers and Beards</h1>
                     
                     <h2>Appetizers</h2>
                     <div class="section" id="appetizers"></div>
                     <div style="clear: both;"></div>
                     
                     <h2>Main Courses</h2>
+                    <p>All main courses come with an IPA</p>
                     <div class="section" id="main_courses"></div>
                     <div style="clear: both;"></div>
 
                     <h2>Desserts</h2>
                     <div class="section" id="desserts"></div>
                     <div style="clear: both;"></div>
+                    
+                    <h3>If you come with a beard, you get an IPA on the house!</h3>
                                       
                 </div>   <!-- /col-md-12 -->  
             
                 <!-- Empty 3-unit column on the right side of the page -->
-                <div class="col-md-3"> </div>
+                <div class="col-lg-3"> </div>
         
             </div> <!-- /row -->
+            
+            <div class="row bg-important">
+                <div class="col-lg-3"> </div>
+                <div class="col-lg-6 text-center">
+                    <p>
+                        <img class="resize" src="ff0843a6b036a73f1208e6ce6e29d835.jpg">
+                        <!--img credit: https://pbcdn1.podbean.com/imglogo/ep-logo/pbblog4004781/ff0843a6b036a73f1208e6ce6e29d835.jpg-->
+                    </p>
+                </div>
+                <div class="col-lg-3"> </div>
+            </div>
     
         </div> <!-- /container -->
     
@@ -105,7 +127,7 @@
         <script>
         
           // Declare lists of menu components
-          let appIngredients = ['sea scallop', 'reindeer', 'chicken bone', 'haricots vertes',
+          let appIngredients = ['sea scallop', 'reindeer', 'chicken bone', 'haricot vertes',
                                   'langoustine', 'ham', 'cuttlefish', 'kale', 'pommes',
                                   'aubergine', 'bone marrow', 'rocket'];
                                  
@@ -113,12 +135,29 @@
                                    'sashimi', 'crunchwrap', 'snowcone', 'tacos', 
                                    'mist', 'hash', 'wellington', 'mush', 'graupel'];
                                   
-          let appAdjectives = ['eldritch', 'frightened', 'farm-to-table', 'sea-salt',
-                                 'ominous', 'non-euclidean', 'carbonized', 'spectral',
-                                 'argyle', 'korean bbq', 'cilantro-lime', 'oblique',
-                                 'ketchuped', 'curried', 'inverted', 'digitized'];
+          let appAdjectives = ['Eldritch', 'Frightened', 'Farm-to-table', 'Sea-salt',
+                                 'Ominous', 'Non-euclidean', 'Carbonized', 'Spectral',
+                                 'Argyle', 'Korean bbq', 'Cilantro-lime', 'Oblique',
+                                 'Ketchuped', 'Curried', 'Inverted', 'Digitized'];
+                                 
+          let mainCourseIngridients = ['NY strip', 'Wings', 'Veal shank', 
+                                      'Broccoli', 'Parmesan', 'White wine', 'Red wine',
+                                      'Fries', 'Salmon', 'Catfish', 'Potatoes', 'Beats' , 'Shrimp'];
+          let mainCoursePreparation = ['roasted', 'burger', 'burnt', 'baked', 'salad',
+                                       'omlet', 'chimichangas', 'jambalaya', 'tacos' ];
+          let mainCourseIPAs = ['Voodu Ranger Imperial IPA', 'Goose Island IPA', 'Stone IPA',
+                                 'Founders All Day IPA', 'Harpoon IPA', 'Happy Hops IPA', 
+                                 'Surf Wax IPA', 'Heady Topper Double IPA', 'Hippies and Cowboys IPA'];  
+          let dessertAdjectives = ['Valhalla', 'Ragnarock', 'Lightning', 'Ice cold', 'Thunder',
+                                    'Hot', 'Monster', 'Bearded', 'Terrifying'];
+          let dessertFlavor = ['chocolate', 'strawberry', 'vanilla', 'cinnamon','key lime',
+                                'chery', 'orange', 'lemon'];                            
+          let dessertPreparation = ['tiramasu', 'cheesecake', 'baklava', 'cake',
+                              'ice cream', 'pie', 'jello', 'smoothie'];
                           
           const MAX_APP_PRICE = 20;
+          const MAX_MAIN_COURSE_PRICE = 50;
+          const MAX_DESERT_PRICE = 30;
                        
           function choose(arr) {
               
@@ -143,9 +182,29 @@
                 
             return result;
           }
+          
+          function generateMainCourse() {
+            let result = choose(mainCourseIngridients) + ' ';
+            result += choose(mainCoursePreparation) + ' ' + 'with ';
+            result += choose(mainCourseIPAs);
+                
+            return result;
+          }
+          
+          function generateDessert() {
+            let result = choose(dessertAdjectives) + ' ';
+            result += choose(dessertFlavor) + ' ';
+            result += choose(dessertPreparation);
+                
+            return result;
+          }
+          
+          
+          
+          
             
           function generateAppetizers() {
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 4; i++) {
               
               // Generate a random item and price
               let result = generateAppetizer();
@@ -182,9 +241,53 @@
               section.appendChild(para);
             }
           }
+          
+          function generateMainCourses() {
+            for (let i = 0; i < 6; i++) {
+              
+              let result = generateMainCourse();
+              let price = Math.floor(Math.random() * (MAX_MAIN_COURSE_PRICE - 1)) + 10;
+             
+              let section = document.getElementById('main_courses');
+                    
+           
+              let para = document.createElement('p');
+                    
+             
+              para.innerHTML = '<span class="name">' + result + '</span>';
+              para.innerHTML += '<span class="price">' + price + '</span>';
+              
+              para.innerHTML += '<div class="clear"></div>'
+    
+              section.appendChild(para);
+            }
+          }
+          
+          function generateDesserts() {
+            for (let i = 0; i < 4; i++) {
+              
+              let result = generateDessert();
+              let price = Math.floor(Math.random() * (MAX_DESERT_PRICE- 1)) + 1;
+             
+              let section = document.getElementById('desserts');
+                    
+           
+              let para = document.createElement('p');
+                    
+             
+              para.innerHTML = '<span class="name">' + result + '</span>';
+              para.innerHTML += '<span class="price">' + price + '</span>';
+              
+              para.innerHTML += '<div class="clear"></div>'
+    
+              section.appendChild(para);
+            }
+          }
             
           function main() {
             generateAppetizers();
+            generateMainCourses();
+            generateDesserts();
           }
             
           // The onload property sets a function that will run once

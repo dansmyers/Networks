@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+    
+    <head>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <title>
+            Smoot converter
+        </title>
+        <style>
+           
+           
+            .gradient1{
+                background: rgb(2,0,36);
+                background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(99,215,219,1) 45%, rgba(0,212,255,1) 100%);
+                font-family: "Helvetica", "Arial", Sans-Serif;
+            }
+            
+            .gradient2{
+                background: rgb(190,238,229);
+                background: radial-gradient(circle, rgba(190,238,229,1) 16%, rgba(148,222,233,1) 100%);
+                font-family: "Helvetica", "Arial", Sans-Serif;
+            }
+            
+            
+            .light{
+                background-color:#FAFAFA;
+                color: #222222;
+            }
+
+            
+            .dark{
+                background-color: #222222;
+                color: #FAFAFA;
+            }
+            
+            img {
+                width: 100%;  
+            }
+            
+            .resize {
+                width: 600px;
+                height: auto;
+            }
+            
+    
+            
+        </style>
+        
+    </head>
+   
+    <body>
+        
+        <!--overview-->
+        <div class="container-fluid">
+            
+            
+            <div class="row gradient1 p-5 text-center text-light"> <!--row-->
+                <div class="col-lg-12"  align="center">
+                    <h1><b>SMOOT COVERTER</b></h1>
+                    <h3>
+                        Best smoot converter! Use this tool to convert feet to Smoots±one ear and Soomts±one ear to feet. Obviusily, famous Soomt is 5 feet, 7 inches!
+                    </h3>
+
+                </div>   <!-- /col-lg-12 -->  
+                
+            </div> <!-- /row -->
+            
+            <div class="row gradient1">
+                <div class="col-lg-12 text-center">
+                    
+                    <select name="conversion" id="selection-box">
+                         <option value="feet_to_smoot">Feet to Smoot</option>
+                          <option value="smoot_to_feet">Smoot to Feet</option>
+                    </select>
+                    
+                    <input type="text" id="text-input">
+                    
+                    <button id="button" onclick="convert()">Convert</button>
+                    
+                </div>   <!-- /col-lg-12 -->  
+                
+            </div> <!--/row-->
+            
+            <div class="row gradient1 p-4 ">
+                
+                <div class="col-lg-12 text-center">
+                    
+                    <div id="response-region"></div>
+                    
+                </div> <!--/col-lg-12-->
+                
+            </div>  <!--/row-->
+            
+            <div class="row">
+                <div class="col-lg-4 offset-lg-4 text-center">
+                    <p>
+                        <img class="resize" src="Smoot_Bridge.jpg">
+                    </p>
+                </div>
+            </div>
+
+            
+        </div> <!-- /container -->
+        
+        <script>
+            'use strict';
+            
+            function convert(){
+                
+                let input = document.getElementById("text-input");
+                let inputValue = input.value;
+                let selection = document.getElementById("selection-box");
+                let type = selection.value;
+                
+                // conversion from feet to smoot
+                if(type === "feet_to_smoot"){
+                    //5.5833 is 5 feet 7 inces presented as decimal value in feet
+                    inputValue = inputValue/5.5833;
+                    let outputValue = inputValue.toFixed(2);
+                    let responseRegion = document.getElementById("response-region");
+                    responseRegion.innerHTML = outputValue + " plus or minus one ear";
+                }
+                
+                // conversion from smoot to feet
+                else if(type === "smoot_to_feet"){
+                    inputValue = inputValue*5.5833;
+                    let outputValue = inputValue.toFixed(2);
+                    let responseRegion = document.getElementById("response-region");
+                    responseRegion.innerHTML = outputValue + " plus or minus one ear";
+                }
+            }
+        </script>
+        
+        <!-- JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+    
+</html>
