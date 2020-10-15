@@ -20,15 +20,29 @@ Determine the extra bits you would need to transmit if you chose to use a two-di
 
 ### Answer
 
+Row Parity Bits: 0101
+Column Parity Bits: 01100101
+Combo Parity Bit: 0
+
 ## Link-Layer Protocols
 
 The Ethernet protocol allows multiple hosts to share a connection to one physical link. Explain briefly how Ethernet manages access to the link to ensure that simultaneous transmissions from multiple hosts do not interfere with each other.
 
 Describe at least two factors that make collision avoidance more challenging in 802.11 networks than in multiple-access wired Ethernets. How is collision avoidance implemented in wireless networks?
 
+### Answer
+
+1. Ethernet manages collisions by checking for extra voltage or "noise" on the wire, which would be caused by two devices on the link attempting to transmit at the same time, if this happens then any device which hears this noise will cut off transmition and wait a random amount of time until it attempts to transmit again.
+
+2. One factor that makes collision avoidance more difficult on 802.11 networks is in a situation where two devices can both "see" a singe other device but not each other, due to this if they both attempt to transmit to that device at the same time they would not be aware that they had collided with another device's transmition since they essentially do not know that each other exist. Another, more basic factor, is that unlike ethernet there is no direct path back to a device from the air around it that the wireless signal is traveling through, therefore if a collision happened a device that sent one of the signals would be completely unaware of this collision and would not be able to resend information like in a ethernet network. Wireless networks can get around this issue using request-to-send and clear-to-send packets, request-to-send packets are sent out by the sender of a transmition to the reciever asking it if it is safe to send information, if it is the the reciever will then send back a clear-to-send packet stating that there will be no collision if information is sent, as well as notifying other devices not to send anything until they get a clear.
+
 ## MAC Addresses
 
 Explain the significance of media access control (MAC) addresses in link-layer networks. How is a device's MAC address set?
+
+### Answer
+
+MAC addresses are important to link-layer networks because they provide the frameword for LAN networks by maintaining a consistent address for a device that has connected to the network, this is important due to the dynamic nature of IP adresses which can change each time you change networks. By mapping the IP address to the MAC address the local network can maintain an understanding of which device is which even when the IP address changes. On top of this MAC addresses allow for network adapters to sift through incoming packets and only processes those meant for the specific device by comparing a packets destination MAC address and the devices current MAC address, if they match you device will process the packet, if not the device will ignore it.
 
 ## Smoot Converter
 
