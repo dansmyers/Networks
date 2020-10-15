@@ -1,10 +1,12 @@
 # Sprint 2 &ndash; Deliverables
 
 ## Honor Code
+on my honor, I have not given, nor recieved, nor witnessed any authorize assistance on this work
 
 Edit this section to include a statement of the Honor Code.
 
 ## Team Members
+Mohamed AL Sharif
 
 List the other members of your team here.
 
@@ -14,7 +16,9 @@ Suppose you want to transmit the following 32-bit sequence:
 
 ```
 0xBEEFCAFE = 1011 1110 1110 1111 1100 1010 1111 1110
+
 ```
+Answer: 1111 0011 1110 0000
 
 Determine the extra bits you would need to transmit if you chose to use a two-dimensional parity algorithm. Use a four row by eight column matrix.
 
@@ -23,10 +27,60 @@ Determine the extra bits you would need to transmit if you chose to use a two-di
 The Ethernet protocol allows multiple hosts to share a connection to one physical link. Explain briefly how Ethernet manages access to the link to ensure that simultaneous transmissions from multiple hosts do not interfere with each other.
 
 Describe at least two factors that make collision avoidance more challenging in 802.11 networks than in multiple-access wired Ethernets. How is collision avoidance implemented in wireless networks?
+Answer: Part 1: 
+Ethernet is a contention-based media access method that allows all hosts on a network to share the same links.
+Part2:
+
+Wi-fi is used by industry manufacturers It’s a host that connects to a wired network
+
+and can’t listen during transmission.
+
+A and C can Callide at B without sensing each other “Hidden node problem”
+
+A  B C  D
+
+Wi-fi is CSMA/CA protocol “collision avoidance”
+
+Basic Strategy – ACK 
+
+1)	If no transmission is in progress, try to send.
+2)	If receiver gets a packet and is passes CRC check, receiver sends on ACK back to sender.
+3)	If sender gets ACK, its transmission succeeded if not, takeout and retransmit.
+
+
 
 ## MAC Addresses
 
 Explain the significance of media access control (MAC) addresses in link-layer networks. How is a device's MAC address set?
+
+Answer: MAC address:
+
+Media access control: unique identifier for every different host 48 -bit board onto ROM
+
+AMD has Ox 080020
+
+Basic unit of transition is a frame: 
+Preamble	Source MAC address
+(48 bit)	Destination MAC address (48 bit)	Data
+CRC 
+
+Transmission algorithm:
+1) If an adaptor has a frame to send and it detects the line is idle, it sends immediately
+-if the line is bag, wait for it to become idle and then it transmits immediately.
+
+CSMA/CD
+	Detection and recovery 
+Hosts monitor the state of the wire and listen for collisions 
+
+On a collision:
+1)	Stop transmitting immediately 
+2)	Send a 32-bit “jamming sequence” to indicate collision
+3)	Wait a little bit
+4)	Try to transmit again
+The random time is a randomly chosen multiple of 51.2 u~s retry up to 16 times 
+Maximum waiting time doubles after every failure
+
+
 
 ## Smoot Converter
 
