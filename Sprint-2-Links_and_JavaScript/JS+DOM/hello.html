@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    
+    <body>
+        <h1> Hello </h1>
+        <p> Type your name and press the button</p>
+        <input type="text" id="name" />
+        <button id="button" onclick="sayHello()">Click me to say hello</button>
+        
+        <div id="output"></div>
+        <script>
+            function sayHello() {
+                let input = document.getElementById("name");
+                let name = input.value;
+                alert("Hi "+name+", welcome to Chili's");
+                console.log("CAN I TAKE YOUR MOTHERFUCKING ORDER")
+            }
+            document.getElementById("output").innerHTML = name;
+        </script>
+    </body>
+</html>

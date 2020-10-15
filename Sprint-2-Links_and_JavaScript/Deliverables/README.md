@@ -2,11 +2,14 @@
 
 ## Honor Code
 
-Edit this section to include a statement of the Honor Code.
+On my honor, I have not given, nor received, nor witnessed any unsupervised help on this work.
 
 ## Team Members
 
-List the other members of your team here.
+Miguel Cabezas
+Me
+Myself
+I
 
 ## Parity
 
@@ -18,15 +21,23 @@ Suppose you want to transmit the following 32-bit sequence:
 
 Determine the extra bits you would need to transmit if you chose to use a two-dimensional parity algorithm. Use a four row by eight column matrix.
 
+4 rows + 8 columns + 1 bit for column parity row = 13 bits
+
 ## Link-Layer Protocols
 
 The Ethernet protocol allows multiple hosts to share a connection to one physical link. Explain briefly how Ethernet manages access to the link to ensure that simultaneous transmissions from multiple hosts do not interfere with each other.
 
 Describe at least two factors that make collision avoidance more challenging in 802.11 networks than in multiple-access wired Ethernets. How is collision avoidance implemented in wireless networks?
 
+1) Unlike with Ethernet, there's no way of telling if a node's packet is being corrupted from interference as it transmits.
+2) Some nodes are hidden from (out of range of) nodes that could cause interference when communicating with nodes within range.
+Collision avoidance is implemented by way of ACK and RTS/CTS responses to tell nodes whether or not their data was received.
+
 ## MAC Addresses
 
 Explain the significance of media access control (MAC) addresses in link-layer networks. How is a device's MAC address set?
+
+A device's MAC address is set at the factory and controlled by hardware. MAC addresses serve as uniquie identifiers to determine which node is which on a shared link.
 
 ## Smoot Converter
 

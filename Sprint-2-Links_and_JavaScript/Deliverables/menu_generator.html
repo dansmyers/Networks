@@ -8,21 +8,26 @@
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    
+        
+        <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Armata' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Bebas Neue' rel='stylesheet'>
     
         <!-- Custom CSS styling -->
         <style>
         
             body {
-              font-family: Lucida, serif;
+              font-family: Armata, sans-serif;
               font-size: 14pt;
+              background: #f0c0a0;
+              color: #804020
             }
           
             h1 {
               text-align: center;
               font-variant: small-caps;
               font-size: 36pt;
-              font-family: Georgia, serif;
+              font-family: Aldrich, sans-serif;
               margin-bottom: 8rem;
             }
             
@@ -30,7 +35,8 @@
               font-variant: small-caps;
               font-size: 22pt;
               margin-bottom: 2rem;
-              font-family: Georgia, serif;
+              font-family: 'Bebas Neue',sans-serif;
+              text-align: center;
             }
             
             .section {
@@ -47,6 +53,10 @@
 
             .clear {
               clear: both;
+            }
+            
+            #restaurant_name {
+                color: #403000;
             }
             
         </style>
@@ -72,7 +82,7 @@
                 <!-- col-md-6 makes a column that spans all 6 units -->
                 <!-- Covers the middle half of the page -->
                 <div class="col-md-6">
-                    <h1 id="restaurant_name">The Yellow Sign</h1>
+                    <h1 id="restaurant_name">Café Aleatoric</h1>
                     
                     <h2>Appetizers</h2>
                     <div class="section" id="appetizers"></div>
@@ -104,21 +114,28 @@
         <!-- Script that generates randomized menu items -->
         <script>
         
-          // Declare lists of menu components
-          let appIngredients = ['sea scallop', 'reindeer', 'chicken bone', 'haricots vertes',
-                                  'langoustine', 'ham', 'cuttlefish', 'kale', 'pommes',
-                                  'aubergine', 'bone marrow', 'rocket'];
-                                 
-          let appPreparations = ['globules', 'cubes', 'granules', 'pasta', 'risotto',
-                                   'sashimi', 'crunchwrap', 'snowcone', 'tacos', 
-                                   'mist', 'hash', 'wellington', 'mush', 'graupel'];
-                                  
-          let appAdjectives = ['eldritch', 'frightened', 'farm-to-table', 'sea-salt',
-                                 'ominous', 'non-euclidean', 'carbonized', 'spectral',
-                                 'argyle', 'korean bbq', 'cilantro-lime', 'oblique',
-                                 'ketchuped', 'curried', 'inverted', 'digitized'];
+          // Menu components for appetizers
+          let appIngredients = ['beef','chicken','fish','lobster','veggie','potato','[object Ingredient]','[REDACTED]','beer','nitroglycerin','uranium','horse','dolphin','tuna','jalapeno','habanero','ice'];
+          let appPreparations = ['fries','chunks','sushi','cuboids','poppers','wrap','sub','chowder','soup','concentrate','.tar.gz','.zip','food thing','thingy','and stuff','chips','rinds','salad'];
+          let appAdjectives = ['all-natural','asbestos-free','artisan','open-source','antiviral','naked','low-sodium','fat-free','vegan','kosher','halal','unleaded','FDA-approved','declassified','gluten-friendly','mysterious','donated','weaponized'];
+          
+          //Menu components for main course
+          let mcIngredients = ['pork','venison','garlic','polycarbonate','NULL','salmon','cod','netherite','ham','cheese','turkey','cactus','air','egg'];
+          let mcAdjectives = ['well-done','limited-time-only','suspicious','enchanted','government-issue','special','medium-rare','quality-controlled','experimental','NP-complete','muggle','frozen','fresh','weaponized'];
+          let mcDishes = ['burger','steak','sandwich','burrito','bucket','meal','stew','fried rice','stir-fry','pasta','pizza','quesadilla','enchilada'];
+          let mcSuffixes = ['with cheese','a la king','sposored by RAID: Shadow Legends','as seen on <i>Bizarre Foods America</i>','(includes a dessert of your choice)'];
+          
+          //Menu components for dessert                                      ...wait what is this nO STOP SIR THIS IS A WE--oh okay carry on
+          let dessAdjectives = ['light','heavy','fluffy','creamy','smooth','soft','supple','large','thicc','sexy','adults-only','sweet','crunchy','chewy','icy','hot','weaponized'];
+          let dessFlavors = ['chocolate','peanut butter','strawberry','vanilla','undefined','mixed berry','oatmeal raisin','angel','devil\'s','sludge','toothpaste','cyanide','aspartame'];
+          let dessDishes = ['ice cream','brownie','cookies','cake','pie','sundae','float','brookie','syrup','plate'];
+          let dessToppingBlurbs = ['sprinked with','drizzed with','topped with','bottomed with','slathered in','coated with','with a hearty dose of'];
+          let dessToppingFlavors = Array.from(dessFlavors);
+          let dessToppings = ['sprinkles','bits','chunks','crumbles','shavings','clippings','droppings','logs','nuggets','nothing, go for a walk']
                           
           const MAX_APP_PRICE = 20;
+          const MAX_MC_PRICE = 35;
+          const MAX_DESS_PRICE = 15;
                        
           function choose(arr) {
               
@@ -141,6 +158,30 @@
             result += choose(appIngredients) + ' ';
             result += choose(appPreparations);
                 
+            return result;
+          }
+          
+          function generateMainCourse() {
+            let result = '';
+            if(Math.random() > 0.5){
+                result += choose(mcAdjectives) + ' ';
+            }
+            result += choose(mcIngredients) + ' ' + choose(mcDishes);
+            if(Math.random() > 0.5){
+                result += ' ' + choose(mcSuffixes);
+            }
+            return result;
+          }
+          
+          function generateDessert() {
+            let result = '';
+            if(Math.random() > 0.5){
+                result += choose(dessAdjectives) + ' ';
+            }
+            result += choose(dessFlavors) + ' ' + choose(dessDishes);
+            if(Math.random() > 0.5){
+                result += ' ' + choose(dessToppingBlurbs) + ' ' + choose(dessToppingFlavors) + ' ' + choose(dessToppings);
+            }
             return result;
           }
             
@@ -182,9 +223,39 @@
               section.appendChild(para);
             }
           }
+          
+          function generateMainCourses() {
+            let numCourses = 3 + Math.floor(Math.random()*3);
+            for(let i = 0; i < numCourses; i++){
+                let result = generateMainCourse();
+                let price = Math.floor(Math.random() * (MAX_MC_PRICE - 1)) + 1;
+                let section = document.getElementById('main_courses');
+                let para = document.createElement('p');
+                para.innerHTML = '<span class="name">' + result + '</span>';
+                para.innerHTML += '<span class="price">' + price + '</span>';
+                para.innerHTML += '<div class="clear"></div>'
+                section.appendChild(para);
+            }
+          }
+          
+          function generateDesserts() {
+            let numCourses = 3 + Math.floor(Math.random()*3);
+            for(let i = 0; i < numCourses; i++){
+                let result = generateDessert();
+                let price = Math.floor(Math.random() * (MAX_DESS_PRICE - 1)) + 1;
+                let section = document.getElementById('desserts');
+                let para = document.createElement('p');
+                para.innerHTML = '<span class="name">' + result + '</span>';
+                para.innerHTML += '<span class="price">' + price + '</span>';
+                para.innerHTML += '<div class="clear"></div>'
+                section.appendChild(para);
+            }
+          }
             
           function main() {
             generateAppetizers();
+            generateMainCourses();
+            generateDesserts();
           }
             
           // The onload property sets a function that will run once
