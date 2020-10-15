@@ -18,15 +18,34 @@ Suppose you want to transmit the following 32-bit sequence:
 
 Determine the extra bits you would need to transmit if you chose to use a two-dimensional parity algorithm. Use a four row by eight column matrix.
 
+```
+You would need 13 extra bits
+```
+
 ## Link-Layer Protocols
 
 The Ethernet protocol allows multiple hosts to share a connection to one physical link. Explain briefly how Ethernet manages access to the link to ensure that simultaneous transmissions from multiple hosts do not interfere with each other.
 
+```
+Ethernet connection supports collision detection, which allows a transmitter to tell when it's transmission has been interfered with so it can stop, wait a certain amount of time, and then try again.
+```
+
 Describe at least two factors that make collision avoidance more challenging in 802.11 networks than in multiple-access wired Ethernets. How is collision avoidance implemented in wireless networks?
+
+```
+One complication is the hidden node problem where it is possible for 2 networks to communicate to a third network without being aware of eachother.
+A second is the exposed node problem, where a node B can be sending a transmission to node A, where only B is in range of node C which also sees a node D which A and B cannot see. In this case C would erroneously conclude that it cannot send a transmission because B is busy, but really B is sending to a node that C isn't aware of, and C it would be able to send to D. 
+
+These problems are avoided by avoiding collisions in the first place as opposed to detecting them after they happen. Using CSMA/CA a sender in a network will send an ACK to the reciver and wait to get one back before sending. This way there should be no confusion about which nodes in a network can or cannot be communicated with at a given time.
+```
 
 ## MAC Addresses
 
 Explain the significance of media access control (MAC) addresses in link-layer networks. How is a device's MAC address set?
+
+```
+A MAC address is a unique identifier for something that acesses networks. They are important for countless reasons, as being able to identify other devices is very important for a device trying to send information. The MAC address is usually assigned by the device manufacturer.
+```
 
 ## Smoot Converter
 

@@ -1,0 +1,71 @@
+<!doctype html>
+
+<html>
+	<head>
+		
+		
+		<style>
+			
+			.center {
+				margin: auto;
+				width: 50%;
+				border: 3px solid green;
+				padding: 10px;
+				text-align: center;
+}
+		</style>
+	</head>
+	
+	
+	
+	<body>
+		<div class="center">
+			<h1>Smoot Converter</h1>
+		
+			<h2></h2>
+		
+			<select name = "units" id = "units">
+				<option value="smoot_to_feet">Smoots to Feet</option>
+				<option value="feet_to_smoot">Feet to Smoots</option>
+			</select>
+			
+			<input type="text" id="input_box" name="input">
+			<input type="button" id="button" name="button" value="Convert!" onclick = "convert()">
+			
+			<h2 id="result"></h2>
+		</div>
+		
+		<script>
+			function convert(){
+				let n = input_box.value;
+				let result = 0;
+				let inital_unit = "smoots";
+				let result_unit = "feet";
+				
+				if (units.value == "smoot_to_feet"){
+					result = n*5.5833;
+				} else {
+					result = n* (1/5.5833);
+					
+					inital_unit = "feet";
+					result_unit = "smoots";
+				}
+				
+				
+				result = parseFloat(result).toFixed(4);
+				
+				
+				document.getElementById("result").innerHTML = n + " " + inital_unit + " is equal to " + result + " " + result_unit + " plus or minus one ear.";
+				
+			}
+			
+			
+		</script>
+		
+	</body>
+	
+	
+	
+	
+	
+</html>
