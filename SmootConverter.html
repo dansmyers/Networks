@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Jay's Smoot Converter</title>
+        
+        <style>
+            body{
+                max-width: 500px;
+                margin: auto;
+            }
+            
+            #output{
+                padding-top: 20px;
+            }
+        
+        </style>
+    </head>
+    
+    <body>
+        <h1>Smoot Converter</h1>
+        
+        <p>Enter the number you would like to convert</p>
+        <input type="number" id="num"/>
+        
+        <button id="button" onclick="convert()">Convert</button>
+        
+        <select name="conversionType" id="type">
+            <option value="feetToSmoot">Feet to Smoots</option>
+            <option value="smootToFeet">Smoots to Feet</option>
+        </select>
+        <div id="output">
+            
+        </div>
+        
+        <script>
+            function convert() {
+               let responseRegion = document.getElementById("output");
+               let CType = document.getElementById("type");
+               let selectedType = CType.options[CType.selectedIndex].value;
+               
+               let x = document.getElementById("num");
+               let y = x.value;
+               let result = 0;
+               if(selectedType == 'feetToSmoot') {
+                   y = y * .17910447761194;
+                   result = y.toFixed(2);
+               }
+               if(selectedType == 'smootToFeet') {
+                   y = y / .17910447761194;
+                   result = y.toFixed(2);
+               }
+               responseRegion.innerHTML = "The conversion is: " + result + " plus or minus one ear";
+            }
+        </script>
+    </body>
+</html>
