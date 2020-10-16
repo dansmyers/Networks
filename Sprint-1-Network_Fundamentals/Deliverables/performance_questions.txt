@@ -1,6 +1,6 @@
 Part 1:
 
-	Time to get on the link (bandwidth) = file size / bandwidth 
+	Time to get on the link (bandwidth) = file size / bandwidth
 
 	megabytes to bits: 1MegaBit = 8 * 1MegaByte
 
@@ -28,7 +28,11 @@ Part 2:
 
 		time to get onto the wire (bandwidth) = file size / bandwidth
 	
+<<<<<<< HEAD
 		file size = 1Mbyte = 8 * (2 ** 20) bits 
+=======
+		file size = 1mbyte = 8 * (2 ** 20) bits 
+>>>>>>> added part 1 and 2 of performance questions
 		bandwidth = 60 * (2 ** 20) bits/sec 
 	
 		8(2 ** 20) / 60(2 ** 20) = 2/15 of a second 2000/15ms or 133.3ms 
@@ -46,6 +50,7 @@ Part 2:
 		243.3ms of travel time 
 	
 Part 3:
+<<<<<<< HEAD
 	
 	Total travel time = time to get on the first wire + time to travel the first wire + time of the queued
 	data to get on the second wire + time for the queued data to tavel the second wire + time for the data
@@ -76,4 +81,6 @@ Part 3:
 	
 	
 	
+=======
+>>>>>>> added part 1 and 2 of performance questions
 	
