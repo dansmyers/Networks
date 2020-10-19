@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+    </head>
+
+    <body>
+        <h1>Example</h1>
+
+        <input id="input_box" type="text">
+
+        <button id="button">Press Here</button>
+
+        <div id="output_div"></div>
+
+        <script>
+            document.getElementById('button').onclick = function() {
+                // use XmlHttpRequest to send info to the server
+                //
+                // Two pieces
+                //
+                // 1. HTTP - now used to exchange arbitrary etxt information
+                // 2. XML - like HTML used to describe hierarchical data in text information
+                //          Nowadays, JSON data format is more common than XML
+                //
+                // AJAX - "asynchronous Javascript and XML"
+                //
+                // Key idea: use JS to respond to interactions, get data from server
+                // and update only the parts of the page that need to exchange
+                let xmlhttp = new XmlHttpRequest();
+                
+                // a function taht runs when the sever's respomnse comes back
+                //
+                // the request will be sent from the client to the server
+                // the server processes and sends back a response
+                // we don't how long that will take
+                // synchronous interaction - pause and wait for response
+                // asynchronous - function fires whenever the request comes interaction
+                //
+                // more advanced JS - "promises", requrire
+                xmlhttp.onload - function() {
+                    let data = JSON.parse(this.responseText);
+                    alert(data.message);
+                }
+            }
+        </script>
+
+    </body>
+</html>
