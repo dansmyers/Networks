@@ -28,7 +28,7 @@
                 //
                 // Key idea: use JS to respond to interactions, get data from server
                 // and update only the parts of the page that need to exchange
-                let xmlhttp = new XmlHttpRequest();
+                let xmlhttp = new XMLHttpRequest();
                 
                 // a function taht runs when the sever's respomnse comes back
                 //
@@ -43,6 +43,20 @@
                     let data = JSON.parse(this.responseText);
                     alert(data.message);
                 }
+                
+                // actually send the request
+                //
+                // /submit is the endpoint on the sserver
+                // GET means tos end the request using HTTP's GET format
+                // GET is used to get data from a sserver
+                //
+                // Other common HTTP mode is POST
+                // POST is used to send data to a server
+                //
+                // Typically, requesting a page is done with GET
+                // Semnding new data like a blog post, comment is done with POST
+                XmlHttpRequestxmlhttp.open("GET", "/submit")
+                xmlhttp.send();
             }
         </script>
 

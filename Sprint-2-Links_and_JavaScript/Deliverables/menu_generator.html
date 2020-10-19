@@ -169,27 +169,6 @@
                                  
           let appPreparations = ['noodles', 'tofu', 'apple', 'caviar', 'fries', 'chicken', 'salad', 'peas'];
                                   
-<<<<<<< HEAD
-          let appAdjectives = ['eldritch', 'frightened', 'farm-to-table', 'sea-salt',
-                                 'ominous', 'non-euclidean', 'carbonized', 'spectral',
-                                 'argyle', 'korean bbq', 'cilantro-lime', 'oblique',
-                                 'ketchuped', 'curried', 'inverted', 'digitized'];
-                                 
-          let mainIngredients = ['whitefish', 'poultry', 'bone', 'miso', 'rice', 'steak', 'eggs', 'fish', 'bird'];
-                                 
-          let mainPreparations = ['risotto', 'omelet', 'hotpot', 'stew', 'soup', 'curry', 'plate'];
-                                  
-          let mainAdjectives = ['tender', 'vintage', 'juicy', 'lucky',
-                                 'curative', 'ironbone', 'black', 'red',
-                                 'prickly', 'milled', 'fresh', 'tri-colored',
-                                 'marbled', 'flaky', 'crisp', 'dirty', 'gummy', 'sharp'];
-                                 
-          let desIngredients = ['milk', 'starberry', 'syrup', 'bagel', 'egg', 'powder'];
-                                 
-          let desPreparations = ['shortcake', 'ice cream', 'purple hearts', 'bagel', 'macchiato', 'punch', 'chiffon cake'];
-                                  
-          let desAdjectives = ['hearty', 'assorted', 'globby', 'clear', 'honey', 'healthy', 'southern', 'fluffy', ];
-=======
           let appAdjectives = ['healthy', 'cowboy', 'stamina', 'mixed', 'mellow', 'filling', 
                                 'stylish', 'light', 'hot', 'picnic', 'rainbow', 'sweet', 'smooth', 'rough',
                                 'special', 'rich', 'pinky', 'painful', 'divine', 'burning', 'greatest', 'mottled',
@@ -206,7 +185,6 @@
           let desPlanets = ['pluto', 'neptune', 'uranus', 'jupiter', 'saturn', 'mars', 'earth', 'venus', 'mercury'];
                                   
           let desJewels = ['diamond', 'sapphire', 'amethyst', 'opal', 'amber', 'tourmaline', 'ruby'];
->>>>>>> f03ce8413ac744062f8f23d5df32347dfc5b8cce
                           
           const MAX_APP_PRICE = 20;
                        
@@ -234,15 +212,6 @@
                 result += choose(appIngredients) + ' ';
                 result += choose(appPreparations);
             } else if (type === "main"){
-<<<<<<< HEAD
-                result += choose(mainAdjectives) + ' ';
-                result += choose(mainIngredients) + ' ';
-                result += choose(mainPreparations);
-            } else {
-                result += choose(desAdjectives) + ' ';
-                result += choose(desIngredients) + ' ';
-                result += choose(desPreparations);
-=======
                 result += choose(mainAddress) + ' ';
                 result += choose(mainNumber) + ' ';
                 result += choose(mainIngredients);
@@ -250,7 +219,6 @@
                 result += choose(desPlanets) + ' ';
                 result += choose(desJewels) + ' ';
                 result += choose(desNoun);
->>>>>>> f03ce8413ac744062f8f23d5df32347dfc5b8cce
             }
                 
             return result;
@@ -258,17 +226,6 @@
             
           function generateMeals() {
             
-<<<<<<< HEAD
-            // Test for encapsulation
-            for (let i = 0; i < 3; i++) {
-              let appResult = generateMeal("app");
-              let mainResult = generateMeal("main");
-              let desResult = generateMeal("des");
-              
-              let appPrice = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
-              let mainPrice = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
-              let desPrice = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
-=======
             for (let i = 0; i < 6; i++) {
               
               // Generate a random item and price
@@ -294,35 +251,17 @@
               // will style them to be aligned left and right respectively
               para.innerHTML = '<span class="name">' + result + '</span>';
               para.innerHTML += '<span class="price">' + price + '</span>';
->>>>>>> f03ce8413ac744062f8f23d5df32347dfc5b8cce
               
-              let appSection = document.getElementById('appetizers');
-              let mainSection = document.getElementById('main_courses');
-              let desSection = document.getElementById('desserts');
-              
-              let appPara = document.createElement('p');
-              let mainPara = document.createElement('p');
-              let desPara = document.createElement('p');
-              
-              appPara.innerHTML = '<span class="name">' + appResult + '</span>';
-              appPara.innerHTML += '<span class="price">' + appPrice + '</span>';
-              
-              mainPara.innerHTML = '<span class="name">' + mainResult + '</span>';
-              mainPara.innerHTML += '<span class="price">' + mainPrice + '</span>';
-              
-              desPara.innerHTML = '<span class="name">' + desResult + '</span>';
-              desPara.innerHTML += '<span class="price">' + desPrice + '</span>';
-              
-              appPara.innerHTML += '<div class="clear"></div>'
-              mainPara.innerHTML += '<div class="clear"></div>'
-              desPara.innerHTML += '<div class="clear"></div>'
-              
-              appSection.appendChild(appPara);
-              mainSection.appendChild(mainPara);
-              desSection.appendChild(desPara);
+              // The last piece of HTML makes an empty div with a
+              // special clear setting that undoes the left and right
+              // floating on the previous line
+              //
+              // This is required to position the next line properly
+              para.innerHTML += '<div class="clear"></div>'
+    
+              // Append the new <p> node to the list of appetizers
+              section.appendChild(para);
             }
-<<<<<<< HEAD
-=======
             
             // For main Courses
             for (let i = 0; i < 10; i++) {
@@ -357,7 +296,6 @@
 
               section.appendChild(para);
             }
->>>>>>> f03ce8413ac744062f8f23d5df32347dfc5b8cce
           }
          
           function main() {
