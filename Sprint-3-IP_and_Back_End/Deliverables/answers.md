@@ -1,4 +1,4 @@
-Deliverables Sprint 3:
+## Deliverables Sprint 3:
 IP Questions
 1.	What assumptions, if any, does IP make about the local networks and lower- level links used to transmit datagrams? How are these assumptions consistent with the design goals IP?
 IP assumes that the local networks and lower-level links may have slower or less good technology. This is consistent with IP being able to run over anything. Assuming the technology isn’t as good or complex is what makes IP scalable and accessible to everyone. 
