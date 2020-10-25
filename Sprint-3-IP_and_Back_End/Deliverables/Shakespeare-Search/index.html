@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Shakespeare Search Engyne</title>
+        <style>
+                body {
+                    font-family: "Helvetica", "Arial", sans-serif;
+                    font-size: 18pt;
+                    color: #333333;
+                    background-color: rgb(168, 154, 188);
+                    margin: 40px auto;
+                    max-width: 840px;
+                    background-image: url('https://www.rpnation.com/gallery/parchment-paper-div-test.33588/full');
+                    text-align: center;
+                }
+                
+                h1{
+                    text-align: center;
+                    font-family: Snell Roundhand, cursive;
+                    font-size: 50pt;
+                }
+                p{
+                    font-family: American Typewriter, serif;
+                }
+    
+                div {
+                    margin-top: 40px;
+                }
+                button{
+                    border-radius: 5px;
+                    
+                }
+                #responseDiv{
+                    border-style: solid;
+                    padding: 5%;
+                    background-color: rgb(234, 224, 197,.5);
+                    font-style: italic;
+                    visibility: hidden;
+                }
+            </style>
+    </head>
+    <body>
+        <h1>Shakespeare Search Engine</h1>
+
+        <p>Enter a word in thy box below and clicketh submit.</p>
+
+        <input type="text" id="inputBox" />
+        <button type="button" id="submitButton"> Submit </button>
+        <div id="responseDiv"></div>
+
+      <script>
+
+      // Set a listener function for the button click
+          document.getElementById('submitButton').onclick = function () {
+
+            // Get the current string in the text box
+            let input = document.getElementById('inputBox').value;
+            // XMLHttpRequest
+            let oReq = new XMLHttpRequest();
+            oReq.onload = function() {
+                console.log("function loaded");
+                let data = JSON.parse(this.responseText);
+                document.getElementById('responseDiv').style.visibility='visible';
+                document.getElementById('responseDiv').innerHTML = data.message;
+                  
+               };
+        
+            oReq.open("GET", "/search/?word=" + input);
+            oReq.send();
+      }
+      </script>
+    </body>
+</html>
