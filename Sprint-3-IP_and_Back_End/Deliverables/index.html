@@ -17,6 +17,31 @@
             div {
                 margin-top: 40px;
             }
+            
+            .play {
+                font-size: 24pt;
+                color: #000000;  
+            }
+            
+            .act {
+                color: #333333;  
+            }
+            
+            .scene {
+                color: #333333;  
+            }
+            
+            .speaker {
+                color: #333333;  
+            }
+            
+            .line {
+                color: #333333;  
+            }
+            
+            .section {
+                
+            }
         </style>
     </head>
 
@@ -29,24 +54,87 @@
         <button type="button" id="submitButton"> Submit </button>
 
         <!-- The div tag creates a named region of the page -->
-        <div id="responseDiv"></div>
+        <!-- <div id="responseDiv"></div> -->
+        
+        <!-- How it all works -->
+        <div class="container">
+            <div class="row align-items-center" style="color: blue">
+                <div class="col-lg-12 text-center" id="responseDiv">
+                    
+                </div>
+            </div> <!-- /row -->
+        </div> <!-- /container -->
 
         <!-- script tag contains JavaScript that interacts with page elements -->
         <script>
             // Set a listener function for the button click
             document.getElementById('submitButton').onclick = function () {
-
+                
                 // Get the current string in the text box
-                var input = document.getElementById('inputBox').value;
+                var textbox = document.getElementById('inputBox');
+                var text = textbox.value;
+                console.log("Text var has: " + text);
+                var data = {query: text};
 
+                // Send the request to the server
                 var oReq = new XMLHttpRequest();
+                
+                oReq.onload = function() {
+                    console.log("we are in the onload function")
+                    var data = JSON.parse(this.responseText);
+                    //alert(data.message);
+                };
+                
                 oReq.addEventListener("load", responseListener);
-                oReq.open("GET", "https://PATH-TO-MIMIR-WORKSPACE/search?query=" + input);
+                oReq.open("GET", "/search?query=" + text);
+                console.log("The url is: " + "/search?query=" + text);
                 oReq.send();
             }
 
             function responseListener() {
-                document.getElementById('responseDiv').innerHTML = this.responseText;
+                document.getElementById('responseDiv').innerHTML = "";
+                
+                let play = "";
+                let act = "";
+                let scene = "";
+                let speaker = "";
+                let line = "";
+                
+                var data = JSON.parse(this.responseText);
+                
+                for (let i = 0; i < Object.keys(data).length; i++) {
+                    play = data[i].play;
+                    act = data[i].act;
+                    scene = data[i].scene;
+                    speaker = data[i].speaker;
+                    line = data[i].line;
+                    
+                    let section = document.getElementById('responseDiv');
+
+                    let firstLine = document.createElement('p');
+                    let secondLine = document.createElement('p');
+                    let thirdLine = document.createElement('p');
+                    let fourthLine = document.createElement('p');
+                      
+                    firstLine.innerHTML += '<span class="play">' + play + '</span>' + " ";
+                    secondLine.innerHTML += '<span class="act">' + act + '</span>' + ", ";
+                    secondLine.innerHTML += '<span class="scene">' + scene + '</span>' + " ";
+                    thirdLine.innerHTML += '<span class="speaker">' + speaker + '</span>' + " ";
+                    fourthLine.innerHTML += '<span class="line">' + line + '</span>' + " ";
+        
+                    fourthLine.innerHTML += '<div class="clear"></div>'
+        
+                    section.appendChild(firstLine);
+                    section.appendChild(secondLine);
+                    section.appendChild(thirdLine);
+                    section.appendChild(fourthLine);
+                    
+                    //document.getElementById('responseDiv').innerHTML += play + " " + act + " " + scene + " " + speaker + " " + line + " ";
+                }
+                
+                
+                
+                //alert(data.query);
             }
         </script>
     </body>
