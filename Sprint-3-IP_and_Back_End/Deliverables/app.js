@@ -49,13 +49,15 @@ function readText(err, fullText) {
         
         let sepWords = line.split(/[\s]+/);
         
+        let speakerFromRest = line.split(/[\t]+/);
+        
         currLine = line;
         
         // Keep track of act
         // use an if to find lines that start with ACT
         // then save the whole line string to currAct
         if (sepWords[0] === "ACT") {
-            let sepWords = line.split(" ");
+            //sepWords = line.split(" ");
             currAct = line;
             //console.log("Current ACT is " + currAct);
         }
@@ -67,28 +69,13 @@ function readText(err, fullText) {
         
         // if a line starts with a TAB, then you know it's part of a particular character's dialogue
         // if first "word" of the line is NOT a TAB, save the first word into currSpeaker
-        if (line.indexOf('\t') !== 0) {
-            currSpeaker = sepWords[0];
+        if (speakerFromRest[0] !== "\t" && speakerFromRest[0] !== "") {
+            currSpeaker = speakerFromRest[0];
         }
         
         for (let word of sepWords) {
             
-            // for each textWord (array) first:
-            // check if it is already included in the index array
-            // if it has not 
-            // add it to the index array
-            // then for both cases
-            // update the play, act, scene, and line number of where it was found
-            
-            // or each textWord 
-            
-            //let textWord = [acts];
-            
-            //if (index.includes(word)) {
-                
-            //}
-            
-            let strippedWord = word.replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g,"");
+            let strippedWord = word.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()@\+\?><\[\]\+]/g, '');
             
             // entire concatenated string with all parsed info for one unique occurrence of the desired word
             let wordInfo = "";
@@ -124,14 +111,6 @@ function readText(err, fullText) {
     for(var word in index) {
         console.log (word, index[word]);
     }
-    
-    //console.log("Index contains the following unique words: " + uniqueWords.toString());
-    
-    //console.log("Number of Acts in current play are " + actCount)
-    
-    //if (index.includes(word)) {
-        
-    //}
 }
 
 /**
