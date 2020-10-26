@@ -58,7 +58,7 @@ Let's get dangerous.
 <img src="https://pics.me.me/thumb_lets-get-dangerous-dark-wing-duck-35791545.png" width="25%" />
 
 Although most of the JS features we've seen so far have been similar to their Java counterparts, the real intellectual heritage of JavaScript reaches back to 
-older function language, notably the Scheme dialect of Lisp. One of the **most important** features that JS inherited from the Scheme tradition is the use of
+older function languages, notably the Scheme dialect of Lisp. One of the **most important** features that JS inherited from the Scheme tradition is the use of
 **first-class anonymous functions**.
 
 ```
