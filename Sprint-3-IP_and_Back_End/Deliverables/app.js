@@ -50,3 +50,5 @@ let texts = ['macbeth.txt', 'romeo_and_juliet.txt', 'a_midsummer_nights_dream.tx
 for (let text of texts) {
    fs.readFile('./texts/' + text, 'utf8' , readText);
 }
+
+console.log("hello dude");
