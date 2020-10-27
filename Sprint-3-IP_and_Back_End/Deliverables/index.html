@@ -48,14 +48,14 @@
             function responseListener() {
             	
             	let response = JSON.parse(this.responseText);
-            	let output = [];
+            	let formattedArr = [];
             	
-            	for(let i = 0; i < response.length; i++)
+            	for(let i = 0; i < response.message.length; i++)
             	{
-            		output[i] = response[i];
+            		formattedArr[i] = response.message[i] + "<br>";
             	}
             	
-                document.getElementById('responseDiv').innerHTML = output;
+                document.getElementById('responseDiv').innerHTML = formattedArr;
             }
         </script>
     </body>
