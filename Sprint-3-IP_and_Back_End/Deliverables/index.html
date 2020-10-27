@@ -47,7 +47,15 @@
 
             function responseListener() {
             	
-                document.getElementById('responseDiv').innerHTML = this.responseText;
+            	let response = JSON.parse(this.responseText);
+            	let output = [];
+            	
+            	for(let i = 0; i < response.length; i++)
+            	{
+            		output[i] = response[i];
+            	}
+            	
+                document.getElementById('responseDiv').innerHTML = output;
             }
         </script>
     </body>

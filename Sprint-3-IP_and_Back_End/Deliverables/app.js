@@ -21,7 +21,7 @@ app.get('/submit', function(req, res) {
     var name = req.query.query;
     console.log("Name: " + name);
 
-    var data = {message: 'hello, ' + name + '!'};
+    var data = {message: index[name]};
 
     res.setHeader('Content-Type', 'application/json');
     res.json(data);
@@ -93,7 +93,18 @@ function readText(err, fullText) {
         			word = word.split("\t")[1];
         		}
         		
-        		console.log(word);
+        		if(!(word in index))
+        		{
+        			index[word] = [play, act, scene, character, line];
+        		}
+        		else
+	    		{
+	    			arr = index[word];
+	    			arr2 = [play, act, scene, character, line];
+	    			arr3 = arr.concat(arr2);
+	    			
+	    			index[word] = arr3;
+	    		}
         	}
         }
         
