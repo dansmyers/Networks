@@ -1,3 +1,33 @@
+const express = require('express');
+const app = express();
+const port = 80;
+var path = require('path');
+app.use(express.static('public'));
+
+// Body parser provides support for reading JSON bodies of POST requests
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+// Return root page
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/index.html')));
+
+// Run server
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+
+app.get('/submit', function(req, res) {
+
+    var name = req.query.query;
+    console.log("Name: " + name);
+
+    var data = {message: 'hello, ' + name + '!'};
+
+    res.setHeader('Content-Type', 'application/json');
+    res.json(data);
+});
+
+
 /**
  * Search engine starter code
  */
@@ -24,7 +54,7 @@ function readText(err, fullText) {
     
     // Process each line
     for (let line of lines) {
-        console.log(line);
+        
     }
 }
 
@@ -50,5 +80,3 @@ let texts = ['macbeth.txt', 'romeo_and_juliet.txt', 'a_midsummer_nights_dream.tx
 for (let text of texts) {
    fs.readFile('./texts/' + text, 'utf8' , readText);
 }
-
-console.log("hello dude");

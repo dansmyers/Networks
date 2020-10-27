@@ -41,11 +41,12 @@
 
                 var oReq = new XMLHttpRequest();
                 oReq.addEventListener("load", responseListener);
-                oReq.open("GET", "https://PATH-TO-MIMIR-WORKSPACE/search?query=" + input);
+                oReq.open("GET", "/submit/?query=" + input);
                 oReq.send();
             }
 
             function responseListener() {
+            	
                 document.getElementById('responseDiv').innerHTML = this.responseText;
             }
         </script>
