@@ -103,3 +103,6 @@ The key phrase that must be memorized and chanted by all SDN acolytes is
 > Separate the control plane from the data plane.
 
 What is the control plane? What is the data plane? Why might we want to separate them? What advantages does SDN offer over traditional network architectures?
+
+
+The control plane is mostly in the software an makes routing decisions and enforcing policies. The data plane is more in the hardware and receives and forwards packets along its connected link. Separating them allows us to deploy relatively dumber and cheaper, but easier to manage, switches and routers. SDN solves the problem of complexity and over management in enterprise level networks. It is easier to manage and is generally cheaper and faster.
