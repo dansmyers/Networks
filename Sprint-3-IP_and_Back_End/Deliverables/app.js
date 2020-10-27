@@ -84,22 +84,23 @@ function readText(err, fullText) {
         
         line = line.replace(/[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-.\/:;<=>?@\[\]^_`{|}~]/g, "");
         
-        
-        words = line.split(" ");
+        words = line.replace(/\t/, " ");
+    	words = words.split(" ");
         
         for(word of words)
         {
+        	
         	if(word !== "")
         	{
-        		if(word[0] === "\t")
+        		if(word[0] === " ")
         		{
-        			word = word.split("\t")[1];
+        			word = word.split(" ")[1];
         		}
         		
-        		if(word.split("\t")[0] === character)
-        		{
-        			word = word.split("\t")[1];
-        		}
+        		// if(word.split("\t")[0] === character)
+        		// {
+        		// 	word = word.split("\t")[1];
+        		// }
         		
         		if(!(word in index))
         		{

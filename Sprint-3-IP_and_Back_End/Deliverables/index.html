@@ -49,13 +49,35 @@
             	
             	let response = JSON.parse(this.responseText);
             	let formattedArr = [];
+            	let output = "";
+            	
+            	let count = 1;
             	
             	for(let i = 0; i < response.message.length; i++)
             	{
-            		formattedArr[i] = response.message[i] + "<br>";
+            		if(count !== 2)
+            		{
+            			formattedArr[i] = response.message[i] + "<br><br>";
+            		}
+            		else
+            		{
+            			formattedArr[i] = response.message[i] + "&nbsp&nbsp&nbsp";
+            		}
+            		
+            		if(count === 5)
+            		{
+            			count = 0;
+            		}
+            		
+            		count++;
             	}
             	
-                document.getElementById('responseDiv').innerHTML = formattedArr;
+            	for(let i = 0; i < formattedArr.length; i++)
+            	{
+            		output += formattedArr[i].replace(",", "");
+            	}
+            	
+                document.getElementById('responseDiv').innerHTML = output;
             }
         </script>
     </body>
