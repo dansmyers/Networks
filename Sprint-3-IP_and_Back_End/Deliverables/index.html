@@ -18,6 +18,16 @@
                 margin-top: 40px;
             }
             
+            input[type="text"]
+            {
+                width:500px
+            }
+            
+            .submitButton {
+                width: 200px;
+                height: 200px;
+            }
+            
             .play {
                 font-size: 24pt;
                 color: #000000;  
@@ -46,19 +56,22 @@
     </head>
 
     <body>
-        <h1>Search Engine</h1>
-
-        <p>Type a word in the box below and click submit.</p>
-
-        <input type="text" id="inputBox" />
-        <button type="button" id="submitButton"> Submit </button>
-
         <!-- The div tag creates a named region of the page -->
         <!-- <div id="responseDiv"></div> -->
         
         <!-- How it all works -->
         <div class="container">
-            <div class="row align-items-center" style="color: blue">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center" id="readonlyDiv">
+                    <h1>Shakespearean Search Engine</h1>
+    
+                    <p>Type your query in the box below and click search.</p>
+            
+                    <input type="text" id="inputBox" />
+                    <button type="button" id="submitButton"> Search </button>
+                </div>
+            </div> <!-- /row -->
+            <div class="row align-items-center">
                 <div class="col-lg-12 text-center" id="responseDiv">
                     
                 </div>

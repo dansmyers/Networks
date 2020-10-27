@@ -10,10 +10,6 @@ app.use(express.static('public'));
 
 // Load required packages
 const fs = require('fs');
-
-// Holds the query from user
-let userQuery = "";
-
     
 //test
 let uniqueWords = [];
@@ -81,7 +77,7 @@ function readText(err, fullText) {
             let wordInfo = "";
             
             // new RegEx option for the queried word
-            let queryRegExp = new RegExp(/^word$/);
+            //let queryRegExp = new RegExp(/^word$/);
             
             wordInfo += currPlay + "\n" + currAct + ", " + currScene + "\n" + currSpeaker + "\n" + currLine + "\n\n";
             
@@ -120,6 +116,7 @@ function readText(err, fullText) {
 // Index object
 let index = {};
 
+// Returns the list values for the desired query (key)
 function listOccurences(query) {
     console.log(index[query]);
     return index[query];
@@ -147,9 +144,7 @@ app.get('/search', function(req, res) {
     var query = req.query.query;
     console.log("You queried: " + query);
     
-    userQuery = query;
-    
-    let allOccurences = listOccurences(userQuery);
+    let allOccurences = listOccurences(query);
 
     var data = {message: 'You queried: ' + query};
 
