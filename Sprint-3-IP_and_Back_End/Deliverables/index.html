@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    
+   
+
+    <head>
+          <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+        <title>Shakespeare Search Engine</title>
+
+        <style>
+            body {
+                font-family: "Helvetica", "Arial", sans-serif;
+                font-size: 18pt;
+                color: #333333;
+                background-color: #E3E3E3;
+                margin: 40px auto;
+                max-width: 640px;
+            }
+
+            div {
+                margin-top: 40px;
+            }
+            
+            .containter-1 {
+                font-family: Verdana;
+                color: #B0112C;
+            }
+            
+            h1{
+            text-align: center;
+            font-weight: bold;
+            }
+            
+            img{
+                margin: auto;
+                display: block;
+            }
+            
+            .containter{
+            text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+         <div class="containter" id="header">
+        <h1>Search Whatever Thou Desires</h1>
+        </div>
+        <div class="containter">
+            
+                    <img
+                        src="https://www.biography.com/.image/t_share/MTQ1MTQwNDI2NTY1NzU2MzEy/william-shakespeare---mini-biography.jpg"
+                     alt=""
+                     id="picOne"
+                     height="300px"
+                    />
+              
+             
+        <h2>Enterith your thoughts here</h2>
+
+        <input type="text" id="inputBox" />
+        <button type="button" id="submitButton"> Submit </button>
+  </div>
+        <!-- The div tag creates a named region of the page -->
+        <div id="responseDiv" class="containter-1"></div>
+
+        <!-- script tag contains JavaScript that interacts with page elements -->
+        <script>
+            // Set a listener function for the button click
+            document.getElementById('submitButton').onclick = function () {
+
+                // Get the current string in the text box
+                var input = document.getElementById('inputBox').value;
+
+                var oReq = new XMLHttpRequest();
+                oReq.addEventListener("load", responseListener);
+                oReq.open("GET", "/submit?query=" + input);
+                const data = oReq.response;
+                console.log(data);
+                oReq.send();
+            }
+
+            function responseListener() {
+                
+                let response = JSON.parse(this.responseText);
+             
+                let formattedtxt = response["message"];
+             
+                
+                for(var i = 0; i < formattedtxt.length; i++){
+                    var text = document.createTextNode(formattedtxt[i]);
+                    var addition = document.createElement("p");
+                    addition.appendChild(text)
+                    document.getElementById('responseDiv').appendChild(addition);
+                }
+                 
+            }
+        </script>
+    </body>
+</html>
