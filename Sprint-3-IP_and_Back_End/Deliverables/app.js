@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/index.html')));
 
 // Run server
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(``));
 
 
 app.get('/submit', function(req, res) {
@@ -52,8 +52,50 @@ function readText(err, fullText) {
     // into separate lines using a regular expression
     let lines = fullText.split(/\r?\n/)
     
+    let play = lines[0];
+    
+    //console.log(play);
+    
+    let act = "";
+    
+    let scene = "";
+    
+    let character = "";
+    
     // Process each line
     for (let line of lines) {
+        if(line[0] === 'A' && line[1] === 'C' && line[2] === 'T')
+        {
+        	act = line;
+        	//console.log(act);
+        }
+        
+        else if(line[0] === 'S' && line [1] === 'C' && line [2] === 'E' && line [3] === 'N' && line [4] === 'E')
+        {
+        	scene = line.split("\t")[0];
+        	//console.log(scene);
+        }
+        
+        else if(line !== act && line.split("\t")[0] !== scene && line !== play && line[0] !== "\t" && line !== "")
+        {
+        	character = line.split("\t")[0];
+        	//console.log(character);
+        }
+        
+        words = line.split(" ");
+        
+        for(word of words)
+        {
+        	if(word !== "")
+        	{
+        		if(word[0] === "\t")
+        		{
+        			word = word.split("\t")[1];
+        		}
+        		
+        		console.log(word);
+        	}
+        }
         
     }
 }
