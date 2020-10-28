@@ -4,6 +4,8 @@
 
 1. What assumptions, if any, does IP make about the local networks and lower- level links used to transmit datagrams? How are these assumptions consistent with the design goals IP?
 
+- While IP is used to get datagrams to their network IP assumes that the network can get the datagrams the rest of the way to the correct device on the network. This is consistent with IP's design goal because it lowers the ammount of packet and data moving one single part of the networking process is doing, making sure there is never one fault point in the system.
+
 2. Describe IP's *best-effort* service model.
 
 - IP will do its best to get packets to the destination, but it can not guarantee that they will be delivered, this is why it is called best-effort, if packets are lost during delivery IP takes not steps to attempt recovery of these packets
@@ -51,14 +53,32 @@ D----------E
 Using the graph above, fill in the table below to show each hosts's distance vector before the routing algorithm executes. Then create two more tables showing
 the updated distance vectors after the first two rounds of message exchanges.
 
-|     |  A  |  B  |  C  |  D  |  E  |  F  |
-|-----|-----|-----|-----|-----|-----|-----|
-|  A  |     |     |     |     |     |     |
-|  B  |     |     |     |     |     |     |
-|  C  |     |     |     |     |     |     |
-|  D  |     |     |     |     |     |     |
-|  E  |     |     |     |     |     |     |
-|  F  |     |     |     |     |     |     |
+|From A |  A  |  B  |  C  |  D  |  E  |  F  |
+|-------|-----|-----|-----|-----|-----|-----|
+|  A    |  0  |     |     |     |     |     |
+|  B    |     |  3  |     |     |     |     |
+|  C    |     |     |     |     |     |     |
+|  D    |     |     |     |  5  |     |     |
+|  E    |     |     |     |     |     |     |
+|  F    |     |     |     |     |     |     |    
+
+|From A |  A  |  B  |  C  |  D  |  E  |  F  |
+|-------|-----|-----|-----|-----|-----|-----|
+|  A    |  0  |     |     |     |     |     |
+|  B    |     |  3  |     |     |     |     |
+|  C    |     |  9  |     |     |     |     |
+|  D    |     |     |     |  5  |     |     |
+|  E    |     | 11  |     |  12  |     |     |
+|  F    |     |     |     |     |     |     |
+
+|From A |  A  |  B  |  C  |  D  |  E  |  F  |
+|-------|-----|-----|-----|-----|-----|-----|
+|  A    |  0  |     |     |     |     |     |
+|  B    |     |  3  |     |     |  20 |     |
+|  C    |     |  9  |     |     |     |     |
+|  D    |     |     |     |  5  | 18 |     |
+|  E    |     | 11  |     |  12  |     |     |
+|  F    |     |     |     |     | 14/13  |     |
 
 ## SDN
 
