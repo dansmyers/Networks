@@ -6,9 +6,15 @@
 
 2. Describe IP's *best-effort* service model.
 
+- IP will do its best to get packets to the destination, but it can not guarantee that they will be delivered, this is why it is called best-effort, if packets are lost during delivery IP takes not steps to attempt recovery of these packets
+
 3. Recall that every Ethernet adaptor has a unique 48-bit MAC address assigned by the manufacturer and burned into its ROM. If these MAC addresses are unique, why does the Internet Protocol need to use IP addresses to identify the source and destination of IP datagrams?
 
+- We need IP to maintain a connection between the senders network and the destinations network, since a device can change the network which it ios connected to we need to hvae a way to find the network first then the device within that natwork
+
 4. Suppose you are given an IP address with the classless network prefix 128.96.16/20. What is the maximum number of hosts that can be attached to this network, assuming one unique 32-bit IP address per host?
+
+- 4096
 
 
 ## Dijkstra
@@ -51,6 +57,14 @@ The key phrase that must be memorized and chanted by all SDN acolytes is
 > Separate the control plane from the data plane.
 
 What is the control plane? What is the data plane? Why might we want to separate them? What advantages does SDN offer over traditional network architectures?
+
+#### Answers
+
+- Control Plane: The control plane is the part of the network which determines how data is transfered from one place to another.
+
+- Data Plane: The data plane is the part of the network which actually does the transmition, following the rules set by the control plane
+
+- 
 
 
 ## A Compleat Shakespearean Search Engyne
