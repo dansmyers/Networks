@@ -29,7 +29,7 @@
         <button type="button" id="submitButton"> Submit </button>
 
         <!-- The div tag creates a named region of the page -->
-        <div id="responseDiv"></div>
+        <div id="responseDiv" style="white-space: pre-wrap;"></div>
 
         <!-- script tag contains JavaScript that interacts with page elements -->
         <script>
@@ -40,13 +40,19 @@
                 var input = document.getElementById('inputBox').value;
 
                 var oReq = new XMLHttpRequest();
+                
+                // oReq.onload = function() {
+                //     var data = JSON.parse(this.responseText);
+                //     alert(data.message);
+                // };
+                
                 oReq.addEventListener("load", responseListener);
-                oReq.open("GET", "https://PATH-TO-MIMIR-WORKSPACE/search?query=" + input);
+                oReq.open("GET", "https://red-elli_80.ide.mimir.io/search?query=" + input);
                 oReq.send();
             }
 
             function responseListener() {
-                document.getElementById('responseDiv').innerHTML = this.responseText;
+                document.getElementById('responseDiv').innerHTML = JSON.parse(this.responseText);
             }
         </script>
     </body>
