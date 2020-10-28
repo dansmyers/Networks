@@ -35,6 +35,16 @@ D----------E
            |
            F
 ```
+#### Answer:
+
+|     |  Shortest Path  |  Path Length  |
+|-----|-----------------|---------------|
+|  A  |       {A}       |       0       |
+|  B  |     {A, B}      |       3       |
+|  C  |    {A, B, C}    |       9       |
+|  D  |     {A, D}      |       5       |
+|  E  |    {A, B, E}    |       11      |
+|  F  |  {A, B, E, F}   |       13      |
 
 ## RIP
 
@@ -64,7 +74,9 @@ What is the control plane? What is the data plane? Why might we want to separate
 
 - Data Plane: The data plane is the part of the network which actually does the transmition, following the rules set by the control plane
 
-- 
+- We would want to seperate these two so that we can maintain a centralized control plane for a large network, allowing someone like an IT Admin to configure the control plane of multiple devices from a single place (ie. a single laptop/computer)
+
+- SDN has a few advantages, firstly the centralization previously described, on top of that SDN allows for ease of use when scaling a network, it does this by maintaining that centralized control plane allowing for new network devices to be setup without needing to configure a brand new control plane. Also due to the centralized nature of SDN, network admins have much better control over the security of the network since all of it can be changed and configured from one space which guarantees normalized security across the entire network.
 
 
 ## A Compleat Shakespearean Search Engyne
