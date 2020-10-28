@@ -4,12 +4,20 @@
 
 1. What assumptions, if any, does IP make about the local networks and lower- level links used to transmit datagrams? How are these assumptions consistent with the design goals IP?
 
+IP makes minimal assumptions about the underlying networks which is congruent with its best effort service model and the ability to "run over anything". As it relates to the idea of best effort service, IP cannot make any performance guarentees as the underlying network could delay delivery. This leads IP protocol to assume that it will be running over a variety of lower level networks, and will need to form its service model around that.
+
 2. Describe IP's *best-effort* service model.
+
+IP’s best effort service model refers to the fact that IP treats all packets with the same and does not have classifications that give better service to some packets and not others. This is thought to prevent discriminating against certain packets, while still moving packets to their destination as quickly as it can. It also refers to the fact that IP makes no guarentees about the delivery of a packet. It quite literally does all it can to get the packet to a place, but does not ensure it won't get lost or corrupted.
 
 3. Recall that every Ethernet adaptor has a unique 48-bit MAC address assigned by the manufacturer and burned into its ROM. If these MAC addresses are unique, why does the Internet Protocol need to use IP addresses to identify the source and destination of IP datagrams?
 
+IP uses IP addresses instead of unique MAC addresses because the MAC addresses do not tell it anything about where the destination host is. MAC addresses are simply unique identifiers for a certain host, but tell us nothing about the network it belongs to or its location. In contrast, the IP address gives information about the location of the network/host which enables routing through IP addressing.
+
 4. Suppose you are given an IP address with the classless network prefix 128.96.16/20. What is the maximum number of hosts that can be attached to this network, assuming one unique 32-bit IP address per host?
 
+
+2^12 = 2^32-20 = 2^12 unique addresses
 
 ## Dijkstra
 
@@ -30,6 +38,15 @@ D----------E
            F
 ```
 
+
+Node                Best Distance                 Path
+
+B                       3                       A-->B
+C                       9                       A->B-->C
+D                       5                       A-->D
+E                       11                      A-->B-->E
+F                       13                      A-->B-->E-->F
+
 ## RIP
 
 Using the graph above, fill in the table below to show each hosts's distance vector before the routing algorithm executes. Then create two more tables showing
@@ -43,6 +60,38 @@ the updated distance vectors after the first two rounds of message exchanges.
 |  D  |     |     |     |     |     |     |
 |  E  |     |     |     |     |     |     |
 |  F  |     |     |     |     |     |     |
+
+Initial
+
+|     |  A  |  B  |  C  |  D  |  E  |  F  |
+|-----|-----|-----|-----|-----|-----|-----|
+|  A  | 0   |  3  |     | 5   |     |     |
+|  B  |  3  |  0  |  6  |     |  8  |     |
+|  C  |     |  6  |  0  |     |     |     |
+|  D  |  5  |     |     |  0  |  7  |     |
+|  E  |     |  8  |     |  7  |  0  |  2  |
+|  F  |     |     |     |     |  2  |  0  |
+
+After exchange 1 
+|     |  A  |  B  |  C  |  D  |  E  |  F  |
+|-----|-----|-----|-----|-----|-----|-----|
+|  A  | 0   |  3  |  9  | 5   |  11 |     |
+|  B  |  3  |  0  |  6  |  8  |  8  |  10 |
+|  C  |  9  |  6  |  0  |     | 14  |     |
+|  D  |  5  |  8  |     |  0  |  7  |  9  |
+|  E  | 11  |  8  | 14  |  7  |  0  |  2  |
+|  F  |     | 10  |     |  9  |  2  |  0  |
+
+After exchange 2:
+|     |  A  |  B  |  C  |  D  |  E  |  F  |
+|-----|-----|-----|-----|-----|-----|-----|
+|  A  | 0   |  3  |  9  | 5   |  11 | 13|
+|  B  |  3  |  0  |  6  |  8  |  8  |  10 |
+|  C  |  9  |  6  |  0  |  14 | 14  |  16
+|  D  |  5  |  8  |  14 |  0  |  7  |  9  |
+|  E  | 11  |  8  | 14  |  7  |  0  |  2  |
+|  F  |  13 | 10  |   16|  9  |  2  |  0  |
+
 
 ## SDN
 
