@@ -1,0 +1,17 @@
+1. 
+
+2. Due to the fact that an IP network should be able to connect any type of technology that wants to join
+   the network, IP does not make any guarentees about packet delivery. This is because it is impossible to
+   define a standard for guarenteed delivery when IP is not able to make any guarentees about the hosts
+   and routers that will be connected to the network. This ensures that any device connected to the
+   network will be able to deliver the services required. This means that IP gives its best-effort to
+   deliver a packet but will make no guarentee that the packet will acually arrive where it is supposed to
+   go.
+   
+ 3. The Internet Protocol needs to use IP addresses because they are hierarchical. This means that they
+	are made up of different parts each of which corrosponds to a specific hierarchy in the network. 
+	This structure usually consists of two different parts. The first part is the network part and the
+	second part is considered the host part. The network part lets the router know what network the host
+	is on and the second host part identifies the specific host on the network the package is ment for.
+	On the other hand, the MAC address does not give this same information to the router. There is no way
+	for a router to find which network to send the data to using the MAC address.

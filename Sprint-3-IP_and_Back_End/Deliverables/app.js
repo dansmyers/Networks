@@ -82,8 +82,6 @@ function readText(err, fullText) {
         	//console.log(character);
         }
         
-        line = line.replace(/[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-.\/:;<=>?@\[\]^_`{|}~]/g, "");
-        
         words = line.replace(/\t/, " ");
     	words = words.split(" ");
         
@@ -101,6 +99,8 @@ function readText(err, fullText) {
         		// {
         		// 	word = word.split("\t")[1];
         		// }
+        		
+        		word = word.replace(/[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-.\/:;<=>?@\[\]^_`{|}~]/g, "");
         		
         		if(!(word in index))
         		{
