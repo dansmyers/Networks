@@ -4,11 +4,19 @@
 
 1. What assumptions, if any, does IP make about the local networks and lower- level links used to transmit datagrams? How are these assumptions consistent with the design goals IP?
 
+It makes no assumptions about the local networks or links; IP was designed to work on virtually any network medium.
+
 2. Describe IP's *best-effort* service model.
+
+Each datagram's header contains all of the information necessary to tell the network how to forward it to its destination. The network makes its *'best effort'* to to deliver the datagram to its destination. There's no error thrown when the delivery fails, or attempt to rectify any error. 
 
 3. Recall that every Ethernet adaptor has a unique 48-bit MAC address assigned by the manufacturer and burned into its ROM. If these MAC addresses are unique, why does the Internet Protocol need to use IP addresses to identify the source and destination of IP datagrams?
 
+Although MAC addresses are unique, they are 'flat' i.e. they provide no information about routing protocols. IP addresses, on the other hand, are 'hierarchical', meaning that the address can be split into meaningful parts. In addition, IP addresses can be either static or dynamic, whereas MAC addresses normally cannot be changed at all.
+
 4. Suppose you are given an IP address with the classless network prefix 128.96.16/20. What is the maximum number of hosts that can be attached to this network, assuming one unique 32-bit IP address per host?
+
+32-20 = 12 bits remaining, 2^12=4096 hosts
 
 
 ## Dijkstra
@@ -35,14 +43,35 @@ D----------E
 Using the graph above, fill in the table below to show each hosts's distance vector before the routing algorithm executes. Then create two more tables showing
 the updated distance vectors after the first two rounds of message exchanges.
 
+Initial table:
 |     |  A  |  B  |  C  |  D  |  E  |  F  |
 |-----|-----|-----|-----|-----|-----|-----|
-|  A  |     |     |     |     |     |     |
-|  B  |     |     |     |     |     |     |
-|  C  |     |     |     |     |     |     |
-|  D  |     |     |     |     |     |     |
-|  E  |     |     |     |     |     |     |
-|  F  |     |     |     |     |     |     |
+|  A  |  0  |  1  |     |  1  |     |     |
+|  B  |  1  |  0  |  1  |     |  1  |     |
+|  C  |     |  1  |  0  |     |     |     |
+|  D  |  1  |     |     |  0  |  1  |     |
+|  E  |     |  1  |     |  1  |  0  |  1  |
+|  F  |     |     |     |     |  1  |  0  |
+
+Round 1:
+|     |  A  |  B  |  C  |  D  |  E  |  F  |
+|-----|-----|-----|-----|-----|-----|-----|
+|  A  |  0  |  1  |  2  |  1  |  2  |     |
+|  B  |  1  |  0  |  1  |  2  |  1  |  2  |
+|  C  |  2  |  1  |  0  |     |  2  |     |
+|  D  |  1  |  2  |     |  0  |  1  |  2  |
+|  E  |  2  |  1  |  2  |  1  |  0  |  1  |
+|  F  |     |  2  |     |  2  |  1  |  0  |
+
+Round 2:
+|     |  A  |  B  |  C  |  D  |  E  |  F  |
+|-----|-----|-----|-----|-----|-----|-----|
+|  A  |  0  |  1  |  2  |  1  |  2  |  3  |
+|  B  |  1  |  0  |  1  |  2  |  1  |  2  |
+|  C  |  2  |  1  |  0  |  3  |  2  |  3  |
+|  D  |  1  |  2  |  3  |  0  |  1  |  2  |
+|  E  |  2  |  1  |  2  |  1  |  0  |  1  |
+|  F  |  3  |  2  |  3  |  2  |  1  |  0  |
 
 ## SDN
 
