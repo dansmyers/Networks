@@ -1,0 +1,16 @@
+In networking the control plane are the processes and procedures
+that control decisions on how to get from node a to node b. This 
+is also called routing. On the other hand the data plane are the 
+processes and procedures that control the next router or hop the 
+data should take based on the data from the control plane. This is
+also called forwarding. The control plane usually creates routing
+tables and the data plane usually creates forwarding tables. The big
+advantage that SDN offers is a NOS or Network Operating System which
+provides an excellent abstraction of the data and control planes. 
+This makes it much easier for the programmers to manage the Network.
+Additionally, with this abstraction we can centralize the control 
+plane to one CPU and have all of the routers build forwarding tables
+based of the routing table created by that central CPU. This makes 
+it much easier to build routers and makes them cheaper and more 
+lightweight then they would if every router had to make routing 
+decisions and forwarding decisions.

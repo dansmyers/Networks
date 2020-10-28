@@ -1,4 +1,9 @@
-1. 
+1. IP makes minimal assumptions about the local networks and lower-
+   level links transmitting the datagrams. This is because one of 
+   the design goals of IP is that it supports hetrogenous networks.
+   This means that we can have an ethernet network and a 802.11 
+   or WIFI network both running IP with no issues despite the 
+   design differences these two networks may have. 
 
 2. Due to the fact that an IP network should be able to connect any type of technology that wants to join
    the network, IP does not make any guarentees about packet delivery. This is because it is impossible to
@@ -15,3 +20,27 @@
 	is on and the second host part identifies the specific host on the network the package is ment for.
 	On the other hand, the MAC address does not give this same information to the router. There is no way
 	for a router to find which network to send the data to using the MAC address.
+
+4. An IP address with a classless network prefix of 128.96.16/20 
+   means that this address has a common prefix of 20 which can be 
+   used as the IP address. Due to the fact that we are scaling up
+   a class c network there were origionally 24 bit network part
+   of the IP address 3 to denote a class 3 network and 21 bits
+   to describe each unique network. with a 20 bit prefix the 
+   origional 24 bit network part of the address gets shortened to
+   20 bits leaving a total of 12 bits for the hosts on the network.
+   This means that there can be 2^12 or 4096 hosts on this network.
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
