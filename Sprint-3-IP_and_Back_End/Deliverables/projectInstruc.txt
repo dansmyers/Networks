@@ -1,0 +1,35 @@
+For the project
+
+Make a front-end page that has a search box, a button, and response div
+
+On a click, get the search term from the box (assume this is one word)
+
+The server looks up instances of that word in the plays and send back a JSON message that contains a list of objects with the information that you want to display as the search results.
+
+On the server, make a route called /search to receive the term
+
+You can use GET
+
+When the server starts, it needs to read the texts of the plays and build an index
+
+Index is a JS object where every word is mapped to a list of locations where that word occurs in the play
+
+index['wherefore'] --> [locations where wherefore occurs in the plays]
+
+To build the index:
+
+1.) Scan the text files
+2.) Break each line into its words
+
+As you scan, keep track of the play, the act, the scene, the speaking character
+
+For each word, create an object that records the word, act scene, play, character, etc.
+
+{
+    word: 'wherefore',
+    play: 'Romeo and Juliet',
+    act: 'II',
+    scene: '2',
+    line: 'Romeo, Romeo, wherefore art thou, Romeo?',
+    character: 'Juliet'
+}

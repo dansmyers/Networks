@@ -5,27 +5,60 @@
         <title>Shakespeare Search Engine</title>
 
         <style>
-            body {
-                font-family: "Helvetica", "Arial", sans-serif;
+            h1 {
+                font-size: 50pt;
+                text-align: center;
+                background-image: url(https://besthqwallpapers.com/Uploads/27-3-2019/85029/thumb2-old-paper-texture-4k-paper-background-paper-textures-old-paper.jpg);
+            }
+            
+            h2 {
                 font-size: 18pt;
-                color: #333333;
+                text-align: center;
+                background-image: url(https://besthqwallpapers.com/Uploads/27-3-2019/85029/thumb2-old-paper-texture-4k-paper-background-paper-textures-old-paper.jpg);
+            }
+            
+            p {
+                text-align: left;
+                margin: 40px 20px auto;
+                max-width: 640px;
+            }
+        
+            body {
+                font-family: "Times New Roman", "Helvetica", "Arial", sans-serif;
+                font-size: 18pt;
+                color: #000000;
                 background-color: #FEFEFE;
                 margin: 40px auto;
                 max-width: 640px;
+                text-align: center;
+                background-image: url(https://www.insidehook.com/wp-content/uploads/2020/08/Shakespeare_bisexual.jpg?fit=1500%2C1000);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                width: 100%;
+                height: 100%;
             }
 
             div {
                 margin-top: 40px;
+                background-image: url(https://besthqwallpapers.com/Uploads/27-3-2019/85029/thumb2-old-paper-texture-4k-paper-background-paper-textures-old-paper.jpg);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                width: 100%;
+                height: 100%;
             }
         </style>
     </head>
 
     <body>
-        <h1>Search Engine</h1>
+        <h1><i>Ye Olde Shakespeare Search Engine</i></h1>
 
-        <p>Type a word in the box below and click submit.</p>
+        <h2>Delve into the mystical realms of Shakespeare's works. Type a word in the box below and click submit.</h2>
 
-        <input type="text" id="inputBox" />
+        <input type="text" id="inputBox"/>
         <button type="button" id="submitButton"> Submit </button>
 
         <!-- The div tag creates a named region of the page -->
@@ -35,13 +68,13 @@
         <script>
             // Set a listener function for the button click
             document.getElementById('submitButton').onclick = function () {
-
                 // Get the current string in the text box
-                var input = document.getElementById('inputBox').value;
+                let input = document.getElementById('inputBox').value;
 
-                var oReq = new XMLHttpRequest();
+                let oReq = new XMLHttpRequest();
                 oReq.addEventListener("load", responseListener);
-                oReq.open("GET", "https://PATH-TO-MIMIR-WORKSPACE/search?query=" + input);
+                
+                oReq.open("GET", "/search?query=" + input);
                 oReq.send();
             }
 
