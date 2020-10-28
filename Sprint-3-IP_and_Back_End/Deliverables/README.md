@@ -101,6 +101,8 @@ The key phrase that must be memorized and chanted by all SDN acolytes is
 
 What is the control plane? What is the data plane? Why might we want to separate them? What advantages does SDN offer over traditional network architectures?
 
+The control plane refers to the switch(router) making decisions and upholding network policies. The data plane referes to receiving and forwarding packets along its connected links. Decoupling the two allows the data frame to be carried out by relatively dumb switches, while the control plane decisions are seperately carried out by top-level master controllers that mostly run in software. This allows for simpler switches throughout the network and smaller pockets of centralized controllers. This is a significant improvement from older more completely centralized structure that risked having a single point of failure. Additionally, this parallels the OS concept of memory virtualization and allowing the highest level interactions to occur in a "masked" format by hiding the complexity of the system.
+
 
 ## A Compleat Shakespearean Search Engyne
 
