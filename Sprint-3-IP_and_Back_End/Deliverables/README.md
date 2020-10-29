@@ -1,15 +1,24 @@
 # Sprint 3 &ndash; Deliverables
 
+Team Members: Eric, Jaysa, Kyle and Nikola.
+
 ## IP Questions
 
 1. What assumptions, if any, does IP make about the local networks and lower- level links used to transmit datagrams? How are these assumptions consistent with the design goals IP?
 
+IP doesn’t make any assumptions about the local networks and the lower-level links used to transmit diagrams. The goals of IP are scalability and heterogeneity and it is considered that it can “run over anything.” Instead of limiting the size of datagrams, IP includes a way to fragment/reassemble data.
+
 2. Describe IP's *best-effort* service model.
+
+IP offers no guaranties when it comes to its reliability and performance. It gives its “best-effort” do successfully complete the transfer of data but there is still a chance of data loss and corruption. This is a result of its run over anything policy and IP relies on other protocols like TCP to ensure reliable transmissions. 
 
 3. Recall that every Ethernet adaptor has a unique 48-bit MAC address assigned by the manufacturer and burned into its ROM. If these MAC addresses are unique, why does the Internet Protocol need to use IP addresses to identify the source and destination of IP datagrams?
 
+The MAC address is used for local identification and IP address for global identification. Ethernet addresses are flat so they have no structure and provide very few clues to routing protocols. However, IP addresses are hierarchical consititng of host and network part. The network part identifies the network of the host and the host part the location of that host on the given network. 
+
 4. Suppose you are given an IP address with the classless network prefix 128.96.16/20. What is the maximum number of hosts that can be attached to this network, assuming one unique 32-bit IP address per host?
 
+The address is 128.96.16/20. /20 tells us that this a classless network with 32-20=12 bits for hosts. Hence we have 2^12 - 2 = 4096-2=4094 hosts. 
 
 ## Dijkstra
 
@@ -52,6 +61,7 @@ The key phrase that must be memorized and chanted by all SDN acolytes is
 
 What is the control plane? What is the data plane? Why might we want to separate them? What advantages does SDN offer over traditional network architectures?
 
+The “control plane” is used for receiving and forwarding over physical links, which is usually achieved utilizing hardware. On the other hand, “data plane” enforces policies and makes routing decisions, mostly through software. This kind of setup fixes the issue of switches that were becoming extremely complex. SDN makes networks more flexible and allows for easier management and updating.
 
 ## A Compleat Shakespearean Search Engyne
 
