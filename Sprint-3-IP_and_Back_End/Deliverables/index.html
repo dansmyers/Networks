@@ -2,26 +2,37 @@
 <html>
 
     <head>
+        <link href='https://fonts.googleapis.com/css?family=Bilbo Swash Caps' rel='stylesheet'>
         <title>Shakespeare Search Engine</title>
 
         <style>
             body {
                 font-family: "Helvetica", "Arial", sans-serif;
                 font-size: 18pt;
-                color: #333333;
-                background-color: #FEFEFE;
+                background: rgb(209,251,243);
+                background: linear-gradient(90deg, rgba(209,251,243,1) 0%, rgba(204,164,37,1) 100%);
                 margin: 40px auto;
                 max-width: 640px;
+            }
+            
+            h1 {
+               font-family: 'Bilbo Swash Caps'; 
             }
 
             div {
                 margin-top: 40px;
             }
+            
+            #responseDiv {
+                white-space: pre-wrap;
+                font-size: 14pt;
+            }
+            
         </style>
     </head>
 
     <body>
-        <h1>Search Engine</h1>
+        <h1>Shakespeare Search Engine</h1>
 
         <p>Type a word in the box below and click submit.</p>
 
@@ -41,12 +52,21 @@
 
                 var oReq = new XMLHttpRequest();
                 oReq.addEventListener("load", responseListener);
-                oReq.open("GET", "https://PATH-TO-MIMIR-WORKSPACE/search?query=" + input);
+                oReq.open("GET", "/submit/?name=" + input);
                 oReq.send();
             }
 
             function responseListener() {
-                document.getElementById('responseDiv').innerHTML = this.responseText;
+                // document.getElementById('responseDiv').innerHTML = this.responseText;
+                console.log(this.responseText);
+                let data = JSON.parse(this.responseText);
+                let content = 'Locations:\n\n';
+                for (let loc of data.locations){
+                    console.log(loc);
+                    content = content + loc + '\n';
+                }
+                
+                document.getElementById('responseDiv').innerHTML = content;
             }
         </script>
     </body>
