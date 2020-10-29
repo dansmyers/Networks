@@ -1,6 +1,35 @@
 /**
  * Search engine starter code
  */
+ let index = {}
+ 
+const express = require('express');
+const app = express();
+const port = 80;
+var path = require('path');
+app.use(express.static('public'));
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+
+app.get('/search', function(req, res) {
+
+    var query = req.query.word;
+    console.log("Query: " + query);
+    
+    var data = index[query];
+
+    res.setHeader('Content-Type', 'application/json');
+    res.json(data);
+});
+
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/index.html')));
+
+app.listen(port, () => console.log(`App listening on port ${port}!`));
+
+
 
 
 // Load required packages
@@ -11,6 +40,14 @@ const fs = require('fs');
  * Process the complete text of one file
  */
 function readText(err, fullText) {
+	
+	let play = "";
+	let act = "";
+	let speaker = "";
+	let scene = "";
+	let firstLine = true;
+	let words = [];
+	// Index object
     
     // If there was an error, give up
     if (err) {
@@ -24,8 +61,54 @@ function readText(err, fullText) {
     
     // Process each line
     for (let line of lines) {
-        console.log(line);
-    }
+    	
+    	if(firstLine){
+    		play = line;
+    		firstLine = false;
+    	} else if (line.substring(0,3) == "ACT" || line.substring(0,8) == "PROLOGUE"){
+    		act = line;
+    	} else if(line.substring(0,5) == "SCENE"){
+    		scene = line.substring(0, line.indexOf('\t'));
+    		} else {
+    		//If the first char isn't a tab, and the line's first character is a letter, the speaker is changing.
+    		if(line.charAt(0) != "\t" && (line.charCodeAt(0) > 65 && line.charCodeAt(0) < 123)){
+    			speakerLines = line.split(/\t/);
+    				speaker = speakerLines[0];
+    				line = speakerLines[1];
+  
+    			}
+    		}
+    		
+    		//This removes the tab from the line if the line begins with one.
+    		if(line.charAt(0) == "\t"){
+    			line = line.substring(1);
+    		}
+    		words = line.split(" ");
+    		
+    		for(let word of words){
+    			if (index.hasOwnProperty(word) === false){
+    				index[word] = [
+    					{
+    						"play": play,
+    						"act": act,
+    						"scene": scene,
+    						"speaker": speaker,
+    						"line": line
+    					}
+    					];
+    					
+    			} else {
+    				index[word].push(
+    					{
+    						"play": play,
+    						"act": act,
+    						"scene": scene,
+    						"speaker": speaker,
+    						"line": line
+    					});
+    			}
+    		}
+    	}
 }
 
 
@@ -33,8 +116,7 @@ function readText(err, fullText) {
  * Main -- setup the index
  */ 
  
-// Index object
-let index = {}
+
 
 // List of the plays
 let texts = ['macbeth.txt', 'romeo_and_juliet.txt', 'a_midsummer_nights_dream.txt']
