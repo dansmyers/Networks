@@ -11,7 +11,7 @@ app.use(express.static('public'));
 // Load required packages
 const fs = require('fs');
     
-//test
+// All unique words will be stored at the start
 let uniqueWords = [];
 
 /**
@@ -34,11 +34,9 @@ function readText(err, fullText) {
     let currAct = "";
     let currScene = "";
     let currSpeaker = "";
-    let lineCounter = 1;
     let currLine = "";
     
     let wordCount = 0;
-    let wordIndex = 0;
     
     // Process each line
     for (let line of lines) {
@@ -53,14 +51,11 @@ function readText(err, fullText) {
         // use an if to find lines that start with ACT
         // then save the whole line string to currAct
         if (sepWords[0] === "ACT") {
-            //sepWords = line.split(" ");
             currAct = line;
-            //console.log("Current ACT is " + currAct);
         }
         
         if (sepWords[0] === "SCENE") {
             currScene = sepWords[0] + " " + sepWords[1];
-            //console.log("Current SCENE is " + currScene);
         }
         
         // if a line starts with a TAB, then you know it's part of a particular character's dialogue
@@ -69,18 +64,18 @@ function readText(err, fullText) {
             currSpeaker = speakerFromRest[0];
         }
         
+        // go through each word
+        // add them to the index
         for (let word of sepWords) {
             
+            // get rid of any unnecessary punctuation barring ones like the apostrophe
             let strippedWord = word.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()@\+\?><\[\]\+]/g, '');
             
-            // entire concatenated string with all parsed info for one unique occurrence of the desired word
-            let wordInfo = "";
-            
-            // new RegEx option for the queried word
-            //let queryRegExp = new RegExp(/^word$/);
-            
-            wordInfo += currPlay + "\n" + currAct + ", " + currScene + "\n" + currSpeaker + "\n" + currLine + "\n\n";
-            
+            // if we haven't already indexed the current word
+            // push it into the unique words array for comparisons down the line
+            // then of course add the first occurence of this word as the key in "index"
+            // else
+            // just add another occurence into index for that key as it's not unique
             if (!uniqueWords.includes(strippedWord)) {
                 uniqueWords.push(strippedWord)
                 
@@ -94,18 +89,7 @@ function readText(err, fullText) {
                 let anOccurence = {play:currPlay, act:currAct, scene:currScene, speaker:currSpeaker, line:currLine};
                 index[strippedWord].push(anOccurence);
             }
-            
-            wordIndex++;
         }
-        wordInfo = "";
-        
-        lineCounter++;
-    }
-    
-    console.log("Number of times desired word appears: " + wordCount + "\n");
-    
-    for(var word in index) {
-        console.log (word, index[word]);
     }
 }
 
@@ -117,6 +101,7 @@ function readText(err, fullText) {
 let index = {};
 
 // Returns the list values for the desired query (key)
+// View the console to confirm
 function listOccurences(query) {
     console.log(index[query]);
     return index[query];
@@ -141,15 +126,14 @@ for (let text of texts) {
 // Receive a request from the server
 app.get('/search', function(req, res) {
 
+    // get the query from the user
     var query = req.query.query;
     console.log("You queried: " + query);
     
+    // find all occurences of user query
     let allOccurences = listOccurences(query);
 
-    var data = {message: 'You queried: ' + query};
-
     res.setHeader('Content-Type', 'application/json');
-    //res.json(data);
     res.json(allOccurences);
 });
 

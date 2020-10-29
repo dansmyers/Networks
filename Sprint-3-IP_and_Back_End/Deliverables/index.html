@@ -2,6 +2,13 @@
 <html>
 
     <head>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <title>Shakespeare Search Engine</title>
 
         <style>
@@ -13,9 +20,13 @@
                 margin: 40px auto;
                 max-width: 640px;
             }
+            
+            h1 {
+                font-weight: bold;
+            }
 
             div {
-                margin-top: 40px;
+                margin-top: 45px;
             }
             
             input[type="text"]
@@ -86,21 +97,18 @@
                 // Get the current string in the text box
                 var textbox = document.getElementById('inputBox');
                 var text = textbox.value;
-                console.log("Text var has: " + text);
                 var data = {query: text};
 
                 // Send the request to the server
                 var oReq = new XMLHttpRequest();
                 
                 oReq.onload = function() {
-                    console.log("we are in the onload function")
                     var data = JSON.parse(this.responseText);
                     //alert(data.message);
                 };
                 
                 oReq.addEventListener("load", responseListener);
                 oReq.open("GET", "/search?query=" + text);
-                console.log("The url is: " + "/search?query=" + text);
                 oReq.send();
             }
 
@@ -141,13 +149,7 @@
                     section.appendChild(secondLine);
                     section.appendChild(thirdLine);
                     section.appendChild(fourthLine);
-                    
-                    //document.getElementById('responseDiv').innerHTML += play + " " + act + " " + scene + " " + speaker + " " + line + " ";
                 }
-                
-                
-                
-                //alert(data.query);
             }
         </script>
     </body>
