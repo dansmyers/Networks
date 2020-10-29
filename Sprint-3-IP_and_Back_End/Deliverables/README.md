@@ -3,13 +3,24 @@
 ## IP Questions
 
 1. What assumptions, if any, does IP make about the local networks and lower- level links used to transmit datagrams? How are these assumptions consistent with the design goals IP?
+```
+The design goal of IP was to make it so any network can use it. In order to do this IP makes minimal assumptions about the node that is using it. 
+```
 
 2. Describe IP's *best-effort* service model.
+```
+IP is based on unreliable datagrams, meaning that if a packet fails to reach its intended destination, the network will make no attempt to try again. The IP service puts the burden on the network to get all of the packets delivered reliably.
+```
 
 3. Recall that every Ethernet adaptor has a unique 48-bit MAC address assigned by the manufacturer and burned into its ROM. If these MAC addresses are unique, why does the Internet Protocol need to use IP addresses to identify the source and destination of IP datagrams?
+```
+The MAC address is simply a random unique identifier, and gives no information about the node. The IP address is different, it allows location addressing and host and network identification.  
+```
 
 4. Suppose you are given an IP address with the classless network prefix 128.96.16/20. What is the maximum number of hosts that can be attached to this network, assuming one unique 32-bit IP address per host?
-
+```
+2^12
+```
 
 ## Dijkstra
 
@@ -29,6 +40,14 @@ D----------E
            |
            F
 ```
+```
+Node     Disance    Path
+B        3          A, B
+C        9          A, B, C
+D        5          A, D
+E        11         A, B, E
+F        13         A, B, E, F
+```
 
 ## RIP
 
@@ -37,12 +56,31 @@ the updated distance vectors after the first two rounds of message exchanges.
 
 |     |  A  |  B  |  C  |  D  |  E  |  F  |
 |-----|-----|-----|-----|-----|-----|-----|
-|  A  |     |     |     |     |     |     |
-|  B  |     |     |     |     |     |     |
-|  C  |     |     |     |     |     |     |
-|  D  |     |     |     |     |     |     |
-|  E  |     |     |     |     |     |     |
-|  F  |     |     |     |     |     |     |
+|  A  |     | 3   |     | 5   |     |     |
+|  B  | 3   |     | 6   |     | 8   |     |
+|  C  |     | 6   |     |     |     |     |
+|  D  | 5   |     |     |     | 7   |     |
+|  E  |     | 8   |     | 7   |     | 2   |
+|  F  |     |     |     |     | 2   |     |
+
+
+|     |  A  |  B  |  C  |  D  |  E  |  F  |
+|-----|-----|-----|-----|-----|-----|-----|
+|  A  |     | 3   | 9   | 5   | 10  |     |
+|  B  | 3   |     | 6   | 8   | 8   | 10  |
+|  C  | 9   | 6   |     |     | 14  |     |
+|  D  | 5   | 8   |     |     | 7   | 9   |
+|  E  | 11  | 8   | 14  | 7   |     | 2   |
+|  F  |     | 10  |     | 9   | 2   |     |
+
+|     |  A  |  B  |  C  |  D  |  E  |  F  |
+|-----|-----|-----|-----|-----|-----|-----|
+|  A  |     | 3   | 9   | 5   | 10  | 13  |
+|  B  | 3   |     | 6   | 8   | 8   | 10  |
+|  C  | 9   | 6   |     |     | 14  | 16  |
+|  D  | 5   | 8   | 14  |     | 7   | 9   |
+|  E  | 11  | 8   | 14  | 7   |     | 2   |
+|  F  | 13  | 10  | 14  | 9   | 2   |     |
 
 ## SDN
 
@@ -51,6 +89,9 @@ The key phrase that must be memorized and chanted by all SDN acolytes is
 > Separate the control plane from the data plane.
 
 What is the control plane? What is the data plane? Why might we want to separate them? What advantages does SDN offer over traditional network architectures?
+```
+The control plane consists of all the functions that determine where a packet is going, the data plane consits of processes that get the packet where it needs to go. Keeping these two planes seperate allows for technology in each area to be developed independently. This way upgrading one plane won't necessitae an upgrade of the other.
+```
 
 
 ## A Compleat Shakespearean Search Engyne
