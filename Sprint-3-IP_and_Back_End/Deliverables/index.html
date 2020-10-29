@@ -33,20 +33,53 @@
 
         <!-- script tag contains JavaScript that interacts with page elements -->
         <script>
-            // Set a listener function for the button click
+    
             document.getElementById('submitButton').onclick = function () {
 
-                // Get the current string in the text box
-                var input = document.getElementById('inputBox').value;
+                let input = document.getElementById('inputBox').value;
 
-                var oReq = new XMLHttpRequest();
+                let oReq = new XMLHttpRequest();
                 oReq.addEventListener("load", responseListener);
-                oReq.open("GET", "https://PATH-TO-MIMIR-WORKSPACE/search?query=" + input);
+                oReq.open("GET", "/submit/?query=" + input);
                 oReq.send();
             }
 
             function responseListener() {
-                document.getElementById('responseDiv').innerHTML = this.responseText;
+            	
+            	let response = JSON.parse(this.responseText);
+            	let formattedArr = [];
+            	let output = "";
+            	
+            	let count = 1;
+            	
+            	for(let i = 0; i < response.message.length; i++)
+            	{
+            		if(count !== 2)
+            		{
+            			response.message[i] += "<br>";
+            		}
+            		else
+            		{
+            			response.message[i] += ",&nbsp";
+            		}
+            		
+            		if(count === 5)
+            		{
+            			response.message[i] += "<br>";
+            			count = 0;
+            		}
+            		
+            		count++;
+            	}
+            	
+            	for(let i = 0; i < response.message.length; i++)
+            	{
+            		output += response.message[i];
+            	}
+            	
+            	output = output.replace(/\g/, "");
+            	
+                document.getElementById('responseDiv').innerHTML = output;
             }
         </script>
     </body>
