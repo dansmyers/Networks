@@ -1,5 +1,9 @@
 # Sprint 3 &ndash; Deliverables
 
+Honor Code: "On my honor I have not given, nor recieved, nor witnessed any unauthorized assisstance on this work."
+
+I worked on these deliverables with Jacob, Randall, Oliver and spoke briefly with Jenny.
+
 ## IP Questions
 
 1. What assumptions, if any, does IP make about the local networks and lower- level links used to transmit datagrams? How are these assumptions consistent with the design goals IP?
