@@ -29,7 +29,7 @@
         <button type="button" id="submitButton"> Submit </button>
 
         <!-- The div tag creates a named region of the page -->
-        <div id="responseDiv"></div>
+        <pre id="responseDiv"></pre>
 
         <!-- script tag contains JavaScript that interacts with page elements -->
         <script>
@@ -37,17 +37,24 @@
             document.getElementById('submitButton').onclick = function () {
 
                 // Get the current string in the text box
-                var input = document.getElementById('inputBox').value;
+                var input = document.getElementById('inputBox').value ;
 
                 var oReq = new XMLHttpRequest();
                 oReq.addEventListener("load", responseListener);
-                oReq.open("GET", "https://PATH-TO-MIMIR-WORKSPACE/search?query=" + input);
+                oReq.open("GET", "/search?word=" + input);
                 oReq.send();
+                console.log(oReq);
             }
 
             function responseListener() {
-                document.getElementById('responseDiv').innerHTML = this.responseText;
+                data = this.responseText;
+                data= data.replace (/"/g,'');
+                data= data.replace ('[','');
+                 data= data.replace (']','');
+                  data= data.replace (/}|,|{/g,"\n");
+                document.getElementById('responseDiv').innerHTML = data;
             }
         </script>
     </body>
 </html>
+
