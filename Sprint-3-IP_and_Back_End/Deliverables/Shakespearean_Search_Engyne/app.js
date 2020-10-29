@@ -182,4 +182,4 @@ app.get('/submit', function(req, res) {
 });
 
 // Run server
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Shakespeare Search Engine listening on ${port}!`));
