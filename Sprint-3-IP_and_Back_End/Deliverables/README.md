@@ -81,6 +81,12 @@ The key phrase that must be memorized and chanted by all SDN acolytes is
 
 What is the control plane? What is the data plane? Why might we want to separate them? What advantages does SDN offer over traditional network architectures?
 
+Control plane = plane on which routing occurs (i.e. building forwarding tables to to establish how to send data packets along connections)
+Data plane = plane on which forwarding occurs (i.e. transferring data packets in between, hosts, switches and routers)
+It's crucial to keep the two planes separate in order to avoid scenarios where data is sent over a network with missing or malformed forwarding tables, causing all of the packets to go missing or be sent to the wrong hosts.
+
+There is much more abstraction involved in SDNs, allowing many parts of the network to be reconfigured using only software where a hardware tweak would otherwise be required.
+In addition, the separation of the control plane and data plane is emphasized to make room for an abstract layer that allows for full-featured communication between the two planes regardless of how they're implemented.
 
 ## A Compleat Shakespearean Search Engyne
 
