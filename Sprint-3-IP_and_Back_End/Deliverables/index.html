@@ -37,16 +37,57 @@
             document.getElementById('submitButton').onclick = function () {
 
                 // Get the current string in the text box
-                var input = document.getElementById('inputBox').value;
+                var submit = document.getElementById('inputBox').value;
+                
+                var data = {message: submit};
 
                 var oReq = new XMLHttpRequest();
                 oReq.addEventListener("load", responseListener);
-                oReq.open("GET", "https://PATH-TO-MIMIR-WORKSPACE/search?query=" + input);
+                oReq.onload = function() {
+                	var data = JSON.parse(this.responseText);
+                }
+                oReq.open("GET", "/search/?query=" + submit);
                 oReq.send();
             }
 
             function responseListener() {
-                document.getElementById('responseDiv').innerHTML = this.responseText;
+            	
+            	var response = this.responseText;
+            	
+            	response = JSON.parse(response);
+            	
+                //document.getElementById('responseDiv').innerHTML = response['response'];
+                //document.getElementById('responseDiv').innerHTML = this.responseText
+                
+                value = response['response'];
+                
+                // format the output
+                
+                count = 0;
+                
+                formatString = '';
+                
+                for(let i = 0; i < value.length; i++) {
+                	
+                	if(count === 1) {
+                		formatString = formatString.concat(value[i] + ', ');
+                	}
+                	else {
+                		formatString = formatString.concat(value[i] + '<br>');
+                	}
+                	count++;
+                	
+                	if(count === 5) {
+                		count = 0;
+                		formatString = formatString.concat('<br>');
+                		
+                	}
+                	
+                }
+                
+                document.getElementById('responseDiv').innerHTML = formatString;
+                
+                
             }
         </script>
     </body>

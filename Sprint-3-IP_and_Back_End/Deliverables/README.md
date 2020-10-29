@@ -1,5 +1,9 @@
 # Sprint 3 &ndash; Deliverables
 
+"On my honor I have not given, nor received, nor witnessed any unauthorized assistance on this work"
+
+Griffin, Randall, Oliver
+
 ## IP Questions
 
 1. What assumptions, if any, does IP make about the local networks and lower- level links used to transmit datagrams? How are these assumptions consistent with the design goals IP?
