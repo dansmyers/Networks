@@ -1,6 +1,6 @@
 In networking the control plane are the processes and procedures
 that control decisions on how to get from node a to node b. This 
-is also called routing. On the other hand the data plane are the 
+is also called routing. On the other hand the data plane is the 
 processes and procedures that control the next router or hop the 
 data should take based on the data from the control plane. This is
 also called forwarding. The control plane usually creates routing

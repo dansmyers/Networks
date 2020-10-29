@@ -11,7 +11,7 @@
    and routers that will be connected to the network. This ensures that any device connected to the
    network will be able to deliver the services required. This means that IP gives its best-effort to
    deliver a packet but will make no guarentee that the packet will acually arrive where it is supposed to
-   go.
+   go. If packets are lost or damaged IP will make effort to recover the lost data.
    
  3. The Internet Protocol needs to use IP addresses because they are hierarchical. This means that they
 	are made up of different parts each of which corrosponds to a specific hierarchy in the network. 
@@ -23,13 +23,13 @@
 
 4. An IP address with a classless network prefix of 128.96.16/20 
    means that this address has a common prefix of 20 which can be 
-   used as the IP address. Due to the fact that we are scaling up
+   used as the network part of the IP address. Due to the fact that we are scaling up
    a class c network there were origionally 24 bit network part
-   of the IP address 3 to denote a class 3 network and 21 bits
+   of the IP address 3 to denote a class c network and 21 bits
    to describe each unique network. with a 20 bit prefix the 
    origional 24 bit network part of the address gets shortened to
    20 bits leaving a total of 12 bits for the hosts on the network.
-   This means that there can be 2^12 or 4096 hosts on this network.
+   This means that there can be 2^12 or 4096 hosts on this network. Or 2^12 - 2 to remove the reserved addresses 0 and 255.
    
    
    

@@ -14,10 +14,10 @@ Table for A:
 Destination          Distance              Next Hop
 ------------       ------------          -----------
     B                   3                    B
-    C                   9                    B 
-    D                   5                    D 
-    E                   11                   B 
-    F                   13                   B
+	D                   5                    D
+	C                   9                    B-C 
+	E                   11                   B-E
+	F                   13                   A-B-F 
     
     
 RIP Table: Round 1 of sharing

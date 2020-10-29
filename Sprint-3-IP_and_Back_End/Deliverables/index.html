@@ -57,25 +57,28 @@
             	{
             		if(count !== 2)
             		{
-            			formattedArr[i] = response.message[i] + "<br><br>";
+            			response.message[i] += "<br>";
             		}
             		else
             		{
-            			formattedArr[i] = response.message[i] + "&nbsp&nbsp&nbsp";
+            			response.message[i] += ",&nbsp";
             		}
             		
             		if(count === 5)
             		{
+            			response.message[i] += "<br>";
             			count = 0;
             		}
             		
             		count++;
             	}
             	
-            	for(let i = 0; i < formattedArr.length; i++)
+            	for(let i = 0; i < response.message.length; i++)
             	{
-            		output += formattedArr[i].replace(",", "");
+            		output += response.message[i];
             	}
+            	
+            	output = output.replace(/\g/, "");
             	
                 document.getElementById('responseDiv').innerHTML = output;
             }
