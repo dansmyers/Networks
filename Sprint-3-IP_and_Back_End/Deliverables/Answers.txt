@@ -1,0 +1,42 @@
+What assumptions, if any, does IP make about the local networks and lower- level links used to transmit datagrams? How are these assumptions consistent with the design goals IP? 
+	IP assumes the underlying layers/links are unreliable but does its best to get a transmission through to its destination (with no guarantees). These assumptions are consistent with IP’s best effort design.
+
+Describe IP's best-effort service model. 
+	IP is designed to operate on all networks so that it is fully scalable. For this reason it is not optimized for speed, it does not offer any guaranteed delivery speed or delivery at all. All IP packets are treated the same. IP does its best to deliver packets but does not take steps to recover lost/damaged packets. 
+
+Recall that every Ethernet adaptor has a unique 48-bit MAC address assigned by the manufacturer and burned into its ROM. If these MAC addresses are unique, why does the Internet Protocol need to use IP addresses to identify the source and destination of IP datagrams? 
+	IP addresses are needed to locate devices on a network. MAC address is like a serial number, it never changes and is unique for each device. IP addresses change depending on which network is connected. IP address is like a postal address, MAC address doesn’t change so if you were to move networks, packets couldn’t find their destination using MAC. IP addresses are network to network, MAC are used for computer to computer. 
+
+Suppose you are given an IP address with the classless network prefix 128.96.16/20. What is the maximum number of hosts that can be attached to this network, assuming one unique 32-bit IP address per host? 
+
+Class A
+10000000.01100000.0001 0000.00000000
+4093 hosts
+	
+
+
+
+
+
+SDN
+What is the control plane? What is the data plane? Why might we want to separate them? What advantages does SDN offer over traditional network architectures?
+
+The “control plane” is responsible for making routing decisions and enforcing policies through top level master controller / Software. The higher quality devices are used in the control plane. 
+The “data plane” has to do with forwarding and receiving packets, mostly done by “dumb” switches through hardware.
+SDN has the advantage of avoiding multiple expensive high end routers by using one master controller that makes all routing decisions for other dumb inexpensive routers. This has the advantage of solving the issue of complexity and overmanagement in enterprise level networks. 
+
+ Dijkstra’s algorithm
+
+
+
+
+
+
+
+RIP - Before
+
+
+RIP - One Round
+
+
+RIP - Two Rounds
