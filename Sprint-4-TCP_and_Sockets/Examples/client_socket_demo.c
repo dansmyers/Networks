@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
   
   // Read the server's response
   char response[64];
-  read(clientSocket, response, sizeof(response));
+  read(client_fd, response, sizeof(response));
   printf("Server's response: %s\n", response);
   
   // Close the connection
