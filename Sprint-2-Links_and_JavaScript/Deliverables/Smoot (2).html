@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <h1>Smoot Calculator</h1>
+        <p>Use the dropdown to specify the the type of input. Please enter your input in the text box below.</p>
+        <select name="Type" id="selection">
+  <option value="smoot">Smoot</option>
+  <option value="Feet">Feet</option>
+  </select>
+        
+        <input type="number" id= "name" />
+        
+        <button id="Calculate" onclick="calculateSmoots()">Calculate</button>
+        
+        <!-- scripts go at the end of the body-->
+        <div id="output"></div>
+        <script>
+            // everything in this script block is not javascript
+            
+            
+            function calculateSmoots(){
+                let input= document.getElementById("name");
+                let x = document.getElementById("selection").value;
+                let feet= input.value;
+                if (x=="Feet"){
+                    let calc= feet*5.58;
+                    let final= calc.toFixed(2);
+                    alert("The number of Smoots that are equivalent to your input is: " + final+ " Smoots plus or minus one ear.");
+                }
+                else{
+                    let calc=feet/5.58;
+                     let final= calc.toFixed(2);
+                    alert("The number of Feet that are equivalent to your input is: " + final+ " Feet.");
+                }
+              
+               
+               
+            }
+            
+        </script>
+    </body>
+</html>
