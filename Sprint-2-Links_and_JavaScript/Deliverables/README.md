@@ -3,11 +3,12 @@
 ## Honor Code
 
 Edit this section to include a statement of the Honor Code.
+On my honor, I have neither given nor receieved any unauthorized work on this assignment. 
 
 ## Team Members
 
 List the other members of your team here.
-
+Nitish Jagdev
 ## Parity
 
 Suppose you want to transmit the following 32-bit sequence:
@@ -20,13 +21,13 @@ Determine the extra bits you would need to transmit if you chose to use a two-di
 
 ## Link-Layer Protocols
 
-The Ethernet protocol allows multiple hosts to share a connection to one physical link. Explain briefly how Ethernet manages access to the link to ensure that simultaneous transmissions from multiple hosts do not interfere with each other.
+The Ethernet protocol allows multiple hosts to share a connection to one physical link. Explain briefly how Ethernet manages access to the link to ensure that simultaneous transmissions from multiple hosts do not interfere with each other. Senders listen to the wire, and they wait until the line goes idle. Ethernet uses a 1-persistent protocol to properly allow senders to broadcast when the line goes idle. 
 
-Describe at least two factors that make collision avoidance more challenging in 802.11 networks than in multiple-access wired Ethernets. How is collision avoidance implemented in wireless networks?
+Describe at least two factors that make collision avoidance more challenging in 802.11 networks than in multiple-access wired Ethernets. How is collision avoidance implemented in wireless networks?One problem unique to 802.11 is the hidden node problem where two recievers send to a node between them, but they dont know about the existence of each other. There is also an unpredicable noise envirnoment in wireless networks that isnt present in wired networks. In 802.11, RTS/CTS protocol is used wher the sender sends a ready to send signal, and it only sends if the reciever sends back a clear to send signal. 
 
 ## MAC Addresses
 
-Explain the significance of media access control (MAC) addresses in link-layer networks. How is a device's MAC address set?
+Explain the significance of media access control (MAC) addresses in link-layer networks. How is a device's MAC address set? MAC addressesare important because they are a unique identifier for hardware that recieves data. It is set by it being burned into the ROM of the computer.
 
 ## Smoot Converter
 
