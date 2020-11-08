@@ -1,3 +1,4 @@
+
 // Basic Web Server
 // CMS450, Fall 2014
 //
@@ -28,7 +29,7 @@ void
 send_response(int fd, char *response, int response_length) {
 
   // Fill in code to write the response to the descriptor
-
+  send(fd, response, response_length, 0);
 }
 
 
@@ -85,7 +86,8 @@ send_error_response(int socket_fd, char *error_num, char *short_msg, char *long_
 /** Process a single HTTP request **/
 void 
 handle_request(int socket_fd, char *request) {
-  int len, i, rc, filesize;
+  //int len, i, rc, filesize;
+  int filesize;
   char method[MAX_LINE];
   char uri[MAX_LINE];
   char version[MAX_LINE];
@@ -110,11 +112,22 @@ handle_request(int socket_fd, char *request) {
   }
 
   // Open the file for reading
-
+  int fd = open(filename, O_RDONLY);
+  
   // If the file does not exist, return a 404 error message
-
+  if(fd < 0)
+  {
+  	send_error_response(socket_fd, "404", "File not found", "Server can not find this file");
+  	return;
+  }
+  
   // Stat the file to learn its size
-
+  struct stat buffer;
+  
+  stat(filename, &buffer);
+  
+  filesize = buffer.st_size;
+  
   // Memory-map the file so that its contents are in a buffer in memory
   // File descriptor is stored in variable named fd
   if ((ptr = (char *) mmap(0, filesize, PROT_READ, MAP_PRIVATE, fd, 0)) <= (char *) 0) {
@@ -124,8 +137,15 @@ handle_request(int socket_fd, char *request) {
 
   // Form HTTP response message header
   // The return code must be 200 OK
-
+  
+  char httpResponseMessage[MAX_LINE];
+  
+  snprintf(httpResponseMessage, sizeof(httpResponseMessage), "HTTP/1.0 200 OK\r\nServer: CMS450 Web Server\r\nContent-Length: %d\r\nContent-Type: %s\r\n", filesize, get_filetype(filename));
+  
+  printf("%s", httpResponseMessage);
+  
   // Write the response message header to the descriptor
+  send_response(fd, httpResponseMessage, sizeof(httpResponseMessage));
 
   // Write the file contents to the descriptor
 
@@ -158,8 +178,9 @@ int
 main(int argc, char * argv[]) {
 
   struct sockaddr_in sin;
-  char buf[MAX_LINE];
-  int len, addr_len;
+  //char buf[MAX_LINE];
+  //int len, addr_len;
+  int addr_len;
   int s, new_s;
   int rc;
 
