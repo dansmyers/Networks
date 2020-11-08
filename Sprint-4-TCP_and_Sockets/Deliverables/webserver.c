@@ -86,8 +86,7 @@ send_error_response(int socket_fd, char *error_num, char *short_msg, char *long_
 /** Process a single HTTP request **/
 void 
 handle_request(int socket_fd, char *request) {
-  //int len, i, rc, filesize;
-  int filesize;
+  int len, i, rc, filesize;
   char method[MAX_LINE];
   char uri[MAX_LINE];
   char version[MAX_LINE];
@@ -178,9 +177,8 @@ int
 main(int argc, char * argv[]) {
 
   struct sockaddr_in sin;
-  //char buf[MAX_LINE];
-  //int len, addr_len;
-  int addr_len;
+  char buf[MAX_LINE];
+  int len, addr_len;
   int s, new_s;
   int rc;
 
