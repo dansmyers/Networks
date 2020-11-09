@@ -1,4 +1,3 @@
-
 // Basic Web Server
 // CMS450, Fall 2014
 //
@@ -145,7 +144,28 @@ handle_request(int socket_fd, char *request) {
   send_response(socket_fd, httpResponseMessage, strlen(httpResponseMessage));
 
   // Write the file contents to the descriptor
-  send_response(socket_fd, ptr, strlen(ptr));
+  if(strcmp(get_filetype(filename), "image/jpeg") == 0)
+  {
+  	int n;
+  	char *pointer = ptr;
+  	
+  	while(filesize > 0)
+  	{
+  		n = send(socket_fd, pointer, sizeof(pointer), 0);
+  		
+  		if(n <= 0)
+  		{
+  			break;
+  		}
+  		
+  		pointer += n;
+  		filesize -= n;
+	}
+  }
+  else
+  {
+	send_response(socket_fd, ptr, strlen(ptr));
+  }
   
   // Unmap file
   munmap(ptr, filesize);
@@ -217,3 +237,5 @@ main(int argc, char * argv[]) {
 
   exit(0);
 }
+
+
