@@ -2,6 +2,12 @@
 
 <img src="https://imgs.xkcd.com/comics/the_cloud.png" width="85%" />
 
+## Honor code
+"On my honor, I have not given, nor received, nor witnessed any unauthorized assistance on this work." - Eric Grimm
+
+## Team Members
+Jaysa, Kyle, Nikola
+
 ## Web Server
 
 ### Description and Goals

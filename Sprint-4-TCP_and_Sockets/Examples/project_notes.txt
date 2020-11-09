@@ -1,0 +1,12 @@
+Server should keep listening while processing requests, spin off a new thread to handle the requests
+
+Most of what we need to write is in the handle request function
+- figure out what the user is requesting
+- parse message
+- figure out what file they want
+- read the file and send it back
+
+Refer to send error response, shows how to send data back to the client
+
+Fill in send_response
+- like example code
