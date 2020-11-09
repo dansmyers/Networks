@@ -29,7 +29,7 @@ void
 send_response(int fd, char *response, int response_length) {
 
   // Fill in code to write the response to the descriptor
-  send(fd, response, response_length, 0);
+     send(fd, response, response_length, 0);
 }
 
 
@@ -105,7 +105,7 @@ handle_request(int socket_fd, char *request) {
   printf("Filename = %s\n", filename);
 
   // If the method is not GET, return an error
-  if (strcmp(method, "GET")) {
+  if (strcmp(method, "GET") != 0) {
     send_error_response(socket_fd, "501", "Not implemented", "Server does not implement this method");
     pthread_exit(0);
   }
@@ -139,15 +139,14 @@ handle_request(int socket_fd, char *request) {
   
   char httpResponseMessage[MAX_LINE];
   
-  snprintf(httpResponseMessage, sizeof(httpResponseMessage), "HTTP/1.0 200 OK\r\nServer: CMS450 Web Server\r\nContent-Length: %d\r\nContent-Type: %s\r\n", filesize, get_filetype(filename));
-  
-  printf("%s", httpResponseMessage);
+  snprintf(httpResponseMessage, sizeof(httpResponseMessage), "HTTP/1.0 200 OK\r\nServer: CMS450 Web Server\r\nContent-Length: %d\r\nContent-Type: %s\r\n\r\n", filesize, get_filetype(filename));
   
   // Write the response message header to the descriptor
-  send_response(fd, httpResponseMessage, sizeof(httpResponseMessage));
+  send_response(socket_fd, httpResponseMessage, strlen(httpResponseMessage));
 
   // Write the file contents to the descriptor
-
+  send_response(socket_fd, ptr, strlen(ptr));
+  
   // Unmap file
   munmap(ptr, filesize);
   close(fd);
