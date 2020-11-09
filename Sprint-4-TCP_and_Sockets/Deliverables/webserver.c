@@ -1,7 +1,12 @@
 
 // Basic Web Server
-// CMS450, Fall 2014
-//
+// CMS 450, Fall 2020
+
+
+// Jacob Buckelew
+// This program runs a socket from the perspective of the server. The user will interact with the server by sending requests for various files and file types. The server will parse Http requests and then send a response back containing an Http Response header and the contents of the requested file.
+
+
 // Includes code adapted from Bryant and O'Hallaron's text
 
 #include <stdio.h>
@@ -25,11 +30,13 @@
 
 
 /** Send the given response message over the given descriptor **/
+// This function is void and requires a socket descriptor(int), response text(char *), and a response length(int)
 void 
 send_response(int fd, char *response, int response_length) {
 
   // Fill in code to write the response to the descriptor
   send(fd, response, response_length, 0);
+  
 }
 
 
@@ -84,6 +91,7 @@ send_error_response(int socket_fd, char *error_num, char *short_msg, char *long_
 
 
 /** Process a single HTTP request **/
+// This void method takes two parameters: an int representing a socket and and particular request in the form of a char *
 void 
 handle_request(int socket_fd, char *request) {
   int len, i, rc, filesize;
@@ -148,8 +156,20 @@ handle_request(int socket_fd, char *request) {
   
 
   // Write the file contents to the descriptor
-	
-  send_response(socket_fd, ptr, strlen(ptr));
+  if(strcmp(get_filetype(filename), "image/jpeg") == 0){
+  	int n;
+    char *p = ptr;
+    while (filesize > 0) {
+        n = send(socket_fd, p, sizeof(p), 0);
+        if (n <= 0)
+            break;
+        p += n;
+        filesize -= n;
+    }
+  }
+  else{
+	send_response(socket_fd, ptr, strlen(ptr));
+  }
   // Unmap file
   munmap(ptr, filesize);
   close(fd);
