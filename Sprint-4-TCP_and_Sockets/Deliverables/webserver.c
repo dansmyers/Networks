@@ -28,7 +28,8 @@ void
 send_response(int fd, char *response, int response_length) {
 
   // Fill in code to write the response to the descriptor
-
+  // Write a response to the client
+  write(fd, response, response_length);
 }
 
 
@@ -104,16 +105,28 @@ handle_request(int socket_fd, char *request) {
   printf("Filename = %s\n", filename);
 
   // If the method is not GET, return an error
-  if (strcmp(method, "GET")) {
+  if (strcmp(method, "GET") != 0) {
     send_error_response(socket_fd, "501", "Not implemented", "Server does not implement this method");
     pthread_exit(0);
   }
-
+    
   // Open the file for reading
+  int fd = open(filename, O_RDONLY);
 
   // If the file does not exist, return a 404 error message
+  if (access( filename, F_OK ) != -1) {
+    printf("FILE FOUND\n");
+  } else {
+    send_error_response(socket_fd, "404", "File not found", "Could not find requested file");
+    printf("file not found\n");
+    return;
+  }
 
   // Stat the file to learn its size
+  struct stat st;
+  fstat(fd, &st);
+  filesize = st.st_size;
+  printf("File size is: %d\n", filesize);
 
   // Memory-map the file so that its contents are in a buffer in memory
   // File descriptor is stored in variable named fd
@@ -124,10 +137,40 @@ handle_request(int socket_fd, char *request) {
 
   // Form HTTP response message header
   // The return code must be 200 OK
-
+  
+  char response_header[MAX_LINE];
+  char body[MAX_LINE];
+  
   // Write the response message header to the descriptor
-
+  
+  sprintf(response_header, "HTTP/1.0 200 OK\r\nServer: CMS450 Web Server\r\nContent-Length: %d\r\nContent-Type: %s\r\n\r\n", filesize, get_filetype(filename));
+  send_response(socket_fd, response_header, strlen(response_header));
+  printf("%s", response_header);
+  
   // Write the file contents to the descriptor
+  // images on webpage handled in a loop
+  if(strcmp(get_filetype(filename), "image/jpeg") == 0)
+  {
+  	int n;
+  	char *pointer = ptr;
+  	
+  	while(filesize > 0)
+  	{
+  		n = write(socket_fd, pointer, sizeof(pointer));
+  		
+  		if(n <= 0)
+  		{
+  			break;
+  		}
+  		
+  		pointer += n;
+  		filesize -= n;
+	}
+  }
+  else
+  {
+	send_response(socket_fd, ptr, strlen(ptr));
+  }
 
   // Unmap file
   munmap(ptr, filesize);
