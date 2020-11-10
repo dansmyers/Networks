@@ -28,6 +28,7 @@ void
 send_response(int fd, char *response, int response_length) {
 
   // Fill in code to write the response to the descriptor
+    
 
 }
 
@@ -110,10 +111,18 @@ handle_request(int socket_fd, char *request) {
   }
 
   // Open the file for reading
+  int fd;
+  fd = open(filename, O_RDONLY);
 
   // If the file does not exist, return a 404 error message
-
+  if (fd < 0) {
+    send_error_response(socket_fd, "404", "File not found", "The file requested cannot be found.");
+    pthread_exit(0);
+  }
   // Stat the file to learn its size
+  struct stat tbuf;
+  fstat(fd, &tbuf);
+  filesize = tbuf.st_size;
 
   // Memory-map the file so that its contents are in a buffer in memory
   // File descriptor is stored in variable named fd
