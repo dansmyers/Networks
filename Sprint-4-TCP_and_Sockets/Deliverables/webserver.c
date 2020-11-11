@@ -26,11 +26,8 @@
 /** Send the given response message over the given descriptor **/
 void 
 send_response(int fd, char *response, int response_length) {
-
-  // Fill in code to write the response to the descriptor
-
+  write(fd, response, response_length + 1);
 }
-
 
 /** Convert the given filetype into an HTML-recognized filetype **/
 char * 
@@ -110,10 +107,21 @@ handle_request(int socket_fd, char *request) {
   }
 
   // Open the file for reading
+  int fd = open(filename, O_RDONLY);
 
   // If the file does not exist, return a 404 error message
+  if (fd < 0) {
+    send_error_response(socket_fd, "404", "File not found", "Server can not find this file");
+  	return;
+  }
 
   // Stat the file to learn its size
+  struct stat buffer;
+  
+  stat(filename, &buffer);
+  
+  filesize = buffer.st_size;  
+  
 
   // Memory-map the file so that its contents are in a buffer in memory
   // File descriptor is stored in variable named fd
@@ -124,16 +132,36 @@ handle_request(int socket_fd, char *request) {
 
   // Form HTTP response message header
   // The return code must be 200 OK
+  char httpResponseMessage[MAX_LINE];
+  snprintf(httpResponseMessage, sizeof(httpResponseMessage), "HTTP/1.0 200 OK\r\nServer: CMS450 Web Server\r\nContent-Length: %d\r\nContent-Type: %s\r\n\r\n", filesize, get_filetype(filename));
 
   // Write the response message header to the descriptor
-
+  send_response(socket_fd, httpResponseMessage, strlen(httpResponseMessage));
+  
   // Write the file contents to the descriptor
-
+  if(strcmp(get_filetype(filename), "image/jpeg") == 0) {
+  	int n;
+  	char *pointer = ptr;
+  	
+  	while(filesize > 0) {
+  		n = send(socket_fd, pointer, sizeof(pointer), 0);
+  		
+  		if(n <= 0) {
+  			break;
+  		}
+  		
+  		pointer += n;
+  		filesize -= n;
+	   }
+  }
+  else {
+	send_response(socket_fd, ptr, strlen(ptr));
+  }
+  
   // Unmap file
   munmap(ptr, filesize);
   close(fd);
 }
-
 
 /** Listen for messages on a new connection **/
 void* 
