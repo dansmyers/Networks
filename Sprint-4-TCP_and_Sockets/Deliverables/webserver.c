@@ -2,6 +2,8 @@
 // CMS450, Fall 2014
 //
 // Includes code adapted from Bryant and O'Hallaron's text
+//
+// Collaborators: Elliot Wurst
 
 #include <stdio.h>
 #include <sys/types.h>
@@ -26,9 +28,13 @@
 /** Send the given response message over the given descriptor **/
 void 
 send_response(int fd, char *response, int response_length) {
-
   // Fill in code to write the response to the descriptor
-
+  int retVal = write(fd, response, response_length);
+  
+  if (retVal < 1) {
+    perror("write");
+    exit(1);
+  }
 }
 
 
@@ -54,7 +60,6 @@ get_filetype(char *filename) {
 /** Construct and send an error message **/
 void 
 send_error_response(int socket_fd, char *error_num, char *short_msg, char *long_msg) {
-
    char buf[MAX_LINE];
    char body[MAX_LINE];
 
@@ -85,12 +90,13 @@ send_error_response(int socket_fd, char *error_num, char *short_msg, char *long_
 /** Process a single HTTP request **/
 void 
 handle_request(int socket_fd, char *request) {
-  int len, i, rc, filesize;
+  int len, i, rc, filesize, fd;
   char method[MAX_LINE];
   char uri[MAX_LINE];
   char version[MAX_LINE];
   char filename[MAX_LINE];
   char *ptr;
+  struct stat fileBuffer;
 
   // Parse out the HTTP method, the URI, and the version
   sscanf(request, "%s %s %s", method, uri, version);
@@ -110,10 +116,17 @@ handle_request(int socket_fd, char *request) {
   }
 
   // Open the file for reading
+  fd = open(filename, O_RDONLY);
 
   // If the file does not exist, return a 404 error message
+  if (fd < 1) {
+    send_error_response(socket_fd, "404", "Not Found", "The file with that file name was not found.");
+    pthread_exit(0);
+  }
 
   // Stat the file to learn its size
+  stat(filename, &fileBuffer);
+  filesize = fileBuffer.st_size;
 
   // Memory-map the file so that its contents are in a buffer in memory
   // File descriptor is stored in variable named fd
@@ -124,10 +137,18 @@ handle_request(int socket_fd, char *request) {
 
   // Form HTTP response message header
   // The return code must be 200 OK
+  char responseHeader[MAX_LINE];
+  sprintf(responseHeader, "HTTP/1.1 200 OK\r\n"); 
+  sprintf(responseHeader, "%sServer: CMS450 Web Server\r\n", responseHeader);
+  sprintf(responseHeader, "%sContent-Length: %d\r\n", responseHeader, filesize);
+  sprintf(responseHeader, "%sContent-type: %s\r\n\r\n", responseHeader, get_filetype(filename));
+  printf(responseHeader);
 
   // Write the response message header to the descriptor
+  send_response(socket_fd, responseHeader, strlen(responseHeader));
 
   // Write the file contents to the descriptor
+  send_response(socket_fd, ptr, filesize);
 
   // Unmap file
   munmap(ptr, filesize);
@@ -169,7 +190,7 @@ main(int argc, char * argv[]) {
   sin.sin_port = htons((unsigned short) SERVER_PORT);
 
   if ((s = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
-    perror("simplex-talk: socket");
+    perror("simplex-talk:socket");
     exit(1);
   }
 
