@@ -28,6 +28,8 @@ void
 send_response(int fd, char *response, int response_length) {
 
   // Fill in code to write the response to the descriptor
+  write(fd, response, response_length);
+  
 
 }
 
@@ -85,7 +87,7 @@ send_error_response(int socket_fd, char *error_num, char *short_msg, char *long_
 /** Process a single HTTP request **/
 void 
 handle_request(int socket_fd, char *request) {
-  int len, i, rc, filesize;
+  int len, i, rc, size;
   char method[MAX_LINE];
   char uri[MAX_LINE];
   char version[MAX_LINE];
@@ -110,27 +112,77 @@ handle_request(int socket_fd, char *request) {
   }
 
   // Open the file for reading
+  //assign to the int representing the file descriptor
+  int fd = open(filename, O_RDONLY);
+  
+  
+  if (fd < 0){
+     // If the file does not exist, return a 404 error message
+        send_error_response(socket_fd,"404", "No file", "File not found");
+        pthread_exit(0);
+        return;
+    }
 
-  // If the file does not exist, return a 404 error message
+  
 
   // Stat the file to learn its size
+  struct stat st;
+  stat(filename, &st);
+  size = st.st_size;
 
+    
   // Memory-map the file so that its contents are in a buffer in memory
   // File descriptor is stored in variable named fd
-  if ((ptr = (char *) mmap(0, filesize, PROT_READ, MAP_PRIVATE, fd, 0)) <= (char *) 0) {
+  if ((ptr = (char *) mmap(0, size, PROT_READ, MAP_PRIVATE, fd, 0)) <= (char *) 0) {
     perror("mmap");
     exit(1);
   }
 
-  // Form HTTP response message header
-  // The return code must be 200 OK
 
-  // Write the response message header to the descriptor
+    
+    char buf[MAX_LINE];
+    
+    // Form HTTP response message header
+    // The return code must be 200 OK
+    // Write out the header information for this response
+   sprintf(buf, "HTTP/1.0 200 OK\r\n");
+   send_response(socket_fd, buf, strlen(buf));
+   printf("%s", buf);
+   sprintf(buf, "Server: CMS450 Web Server\r\n");
+   send_response(socket_fd, buf, strlen(buf));
+   printf("%s", buf);
+   sprintf(buf, "Content-Length: %d\r\n", size);
+   send_response(socket_fd, buf, strlen(buf));
+   printf("%s", buf);
+   sprintf(buf, "Content-Type: %s\r\n\r\n", get_filetype(filename));
+   send_response(socket_fd, buf, strlen(buf));
+   printf("%s", buf);
+    // Write the response message header to the descriptor
 
-  // Write the file contents to the descriptor
 
+
+   // Write the file contents to the descriptor
+   //If we are handing the image, iterate through using ptr
+   //If not, call send response with the ptr 
+    if(strcmp(get_filetype(filename), "image/jpeg") == 0){
+        int place;
+        char *p = ptr;
+      while (0 < size) {
+         place = send(socket_fd, p, sizeof(p), 0);
+         if (place <= 0){
+             break;
+         }
+          p = p + place;
+          size = size - place;
+      }
+    }
+   else{ 
+    send_response(socket_fd, ptr, strlen(ptr));
+   }
+ 
+  
   // Unmap file
-  munmap(ptr, filesize);
+  munmap(ptr, size);
   close(fd);
 }
 
