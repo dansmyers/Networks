@@ -1,8 +1,7 @@
 // Basic Web Server
-// CMS450, Fall 2014
+// CMS450, Fall 2020
 //
 // Includes code adapted from Bryant and O'Hallaron's text
-
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -26,11 +25,9 @@
 /** Send the given response message over the given descriptor **/
 void 
 send_response(int fd, char *response, int response_length) {
-
   // Fill in code to write the response to the descriptor
-
+  send(fd, response, response_length, 0);
 }
-
 
 /** Convert the given filetype into an HTML-recognized filetype **/
 char * 
@@ -49,7 +46,6 @@ get_filetype(char *filename) {
     return "text/plain";
   }
 }
-
 
 /** Construct and send an error message **/
 void 
@@ -81,7 +77,6 @@ send_error_response(int socket_fd, char *error_num, char *short_msg, char *long_
    printf("%s", body);
 }
 
-
 /** Process a single HTTP request **/
 void 
 handle_request(int socket_fd, char *request) {
@@ -104,17 +99,26 @@ handle_request(int socket_fd, char *request) {
   printf("Filename = %s\n", filename);
 
   // If the method is not GET, return an error
-  if (strcmp(method, "GET")) {
+  if (strcmp(method, "GET") != 0) {
     send_error_response(socket_fd, "501", "Not implemented", "Server does not implement this method");
     pthread_exit(0);
   }
 
   // Open the file for reading
-
+  int fd = open(filename, O_RDONLY);
+  
   // If the file does not exist, return a 404 error message
-
+  if(fd < 0)
+  {
+  	send_error_response(socket_fd, "404", "File not found", "Server can not find this file");
+  	return;
+  }
+  
   // Stat the file to learn its size
-
+  struct stat buffer;
+  stat(filename, &buffer);
+  filesize = buffer.st_size;
+  
   // Memory-map the file so that its contents are in a buffer in memory
   // File descriptor is stored in variable named fd
   if ((ptr = (char *) mmap(0, filesize, PROT_READ, MAP_PRIVATE, fd, 0)) <= (char *) 0) {
@@ -123,12 +127,28 @@ handle_request(int socket_fd, char *request) {
   }
 
   // Form HTTP response message header
-  // The return code must be 200 OK
-
+  char httpResponseMessage[MAX_LINE];
+  snprintf(httpResponseMessage, sizeof(httpResponseMessage), "HTTP/1.0 200 OK\r\nServer: CMS450 Web Server\r\nContent-Length: %d\r\nContent-Type: %s\r\n\r\n", filesize, get_filetype(filename));
+  printf("%s", httpResponseMessage);
+  
   // Write the response message header to the descriptor
-
+  send_response(socket_fd, httpResponseMessage, strlen(httpResponseMessage));
+  
   // Write the file contents to the descriptor
-
+  if(strcmp(get_filetype(filename), "image/jpeg") == 0){
+  	int n;
+    char *p = ptr;
+    while (0 <filesize) {
+        n = send(socket_fd, p, sizeof(p), 0);
+        if (n <= 0)
+            break;
+        p += n;
+        filesize -= n;
+    }
+  }
+  else{
+	send_response(socket_fd, ptr, strlen(ptr));
+  }
   // Unmap file
   munmap(ptr, filesize);
   close(fd);
