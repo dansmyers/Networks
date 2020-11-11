@@ -2,51 +2,81 @@
 <html>
 
     <head>
+       
         <title>Shakespeare Search Engine</title>
-
+        
+        <!-- fancy font for the aesthetic -->
+        <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&ampdisplay=swap" rel="stylesheet">
+        
         <style>
+            
+            h1 {
+                font-family: 'IM Fell English SC', serif;
+                text-align: center;
+            }
+            
             body {
-                font-family: "Helvetica", "Arial", sans-serif;
+                font-family: "Helvetica", sans-serif;
                 font-size: 18pt;
+                text-align: center;
                 color: #333333;
-                background-color: #FEFEFE;
+                background-color: #94b595;
                 margin: 40px auto;
                 max-width: 640px;
             }
-
-            div {
-                margin-top: 40px;
+            
+            #responseDiv {
+                white-space: pre-wrap;
+                font-size: 14pt;
             }
+            
         </style>
+        
     </head>
 
     <body>
-        <h1>Search Engine</h1>
-
-        <p>Type a word in the box below and click submit.</p>
-
+        
+        <h1>Shakespeare Search Engine</h1>
+        
+        <p>Enter the word you're looking for, then click submit.</p>
+        
+        <!-- text box and button for submission -->
         <input type="text" id="inputBox" />
         <button type="button" id="submitButton"> Submit </button>
-
-        <!-- The div tag creates a named region of the page -->
+        
+        <hr>
+        
+        <!-- create div for response -->
         <div id="responseDiv"></div>
-
-        <!-- script tag contains JavaScript that interacts with page elements -->
+        
+        
         <script>
-            // Set a listener function for the button click
+            
+            // set a listener function for the button click
             document.getElementById('submitButton').onclick = function () {
-
-                // Get the current string in the text box
+                
+                // get the current string in the text box
                 var input = document.getElementById('inputBox').value;
-
+                
                 var oReq = new XMLHttpRequest();
                 oReq.addEventListener("load", responseListener);
-                oReq.open("GET", "https://PATH-TO-MIMIR-WORKSPACE/search?query=" + input);
+                oReq.open("GET", "/submit/?name=" + input);
                 oReq.send();
             }
-
+            
             function responseListener() {
-                document.getElementById('responseDiv').innerHTML = this.responseText;
+                // document.getElementById('responseDiv').innerHTML = this.responseText;
+                
+                let data = JSON.parse(this.responseText);
+
+                let content = 'Thy Results:\n\n';
+                
+                for (let loc of data.locations){
+                    content = content + loc + '\n';
+                }
+                
+                // display the results
+                document.getElementById('responseDiv').innerHTML = content;
             }
         </script>
     </body>
