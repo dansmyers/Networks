@@ -1,5 +1,15 @@
 # Sprint 4 &ndash; Deliverables
 
+## Honor Code
+
+“On my honor, I have not given, nor received, nor witnessed any unauthorized assistance on this work.”
+-Samuel Solomon 
+
+## Team Members
+Nathaly Espinosa Teran
+
+Jenny Goldsher
+
 <img src="https://imgs.xkcd.com/comics/the_cloud.png" width="85%" />
 
 ## Web Server
