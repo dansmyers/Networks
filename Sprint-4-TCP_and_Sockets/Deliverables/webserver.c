@@ -28,8 +28,7 @@ void
 send_response(int fd, char *response, int response_length) {
 
   // Fill in code to write the response to the descriptor
-    
-
+    write(fd, response, response_length);
 }
 
 
@@ -37,13 +36,13 @@ send_response(int fd, char *response, int response_length) {
 char * 
 get_filetype(char *filename) {
  
-  if (strstr(filename, "html")) {
+  if (strstr(filename, ".html")) {
     return "text/html";
   }
-  else if (strstr(filename, "jpg") || strstr(filename, "jpeg")) {
+  else if (strstr(filename, ".jpg") || strstr(filename, ".jpeg")) {
     return "image/jpeg";
   }
-  else if (strstr(filename, "gif")) {
+  else if (strstr(filename, ".gif")) {
     return "image/gif";
   } 
   else {
@@ -69,7 +68,7 @@ send_error_response(int socket_fd, char *error_num, char *short_msg, char *long_
    send_response(socket_fd, buf, strlen(buf));
    printf("%s", buf);
 
-   sprintf(buf, "Content-Type: %s\r\n", get_filetype("html"));
+   sprintf(buf, "Content-Type: %s\r\n", get_filetype(".html"));
    send_response(socket_fd, buf, strlen(buf));
    printf("%s", buf);
 
@@ -132,12 +131,29 @@ handle_request(int socket_fd, char *request) {
   }
 
   // Form HTTP response message header
+  char hbuf[MAX_LINE];
   // The return code must be 200 OK
 
   // Write the response message header to the descriptor
-
+  sprintf(hbuf, "HTTP/1.0 200 OK\r\n");
+  send_response(socket_fd, hbuf, strlen(hbuf));
+  printf("%s", hbuf);
+  
+  sprintf(hbuf, "Server: CMS450 Web Server");
+  send_response(socket_fd, hbuf, strlen(hbuf));
+  printf("%s", hbuf);
+  
+  sprintf(hbuf, "Content-Type: %s\r\n", get_filetype(filename));
+  send_response(socket_fd, hbuf, strlen(hbuf));
+  printf("%s", hbuf);
+  
+  sprintf(hbuf, "Content-Length: %d\r\n\r\n", filesize);
+  send_response(socket_fd, hbuf, strlen(hbuf));
+  printf("%s", hbuf);
+  
   // Write the file contents to the descriptor
-
+  send_response(socket_fd, ptr, filesize);
+  
   // Unmap file
   munmap(ptr, filesize);
   close(fd);
