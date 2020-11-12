@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Shakespeare Search Engine</title>
+
+        <style>
+            body {
+                font-family: "Helvetica", "Arial", sans-serif;
+                font-size: 18pt;
+                color: #333333;
+                background-color: #FEFEFE;
+                margin: 40px auto;
+                max-width: 640px;
+            }
+
+            div {
+                margin-top: 40px;
+            }
+            img{
+                width: 20%;
+                height: 40%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>A Shakepsearian Search Engine</h1>
+
+        <img src="https://insidestory.org.au/wp-content/uploads/will_final_2.jpg" alt="Shakespeare wearing a mask."/>
+        <p>Type a word in the box below and click submit to see were it appears in three of Shakespeare's most well kown plays.</p>
+
+        <input type="text" id="inputBox" />
+        <button type="button" id="submitButton"> Submit </button>
+
+        <!-- The div tag creates a named region of the page -->
+        <hr>
+        <div id="responseDiv"></div>
+        <hr>
+
+        <!-- script tag contains JavaScript that interacts with page elements -->
+        <script>
+            // Set a listener function for the button click
+            document.getElementById('submitButton').onclick = function () {
+
+                // Get the current string in the text box
+                var input = document.getElementById('inputBox').value;
+
+                var oReq = new XMLHttpRequest();
+                oReq.addEventListener("load", responseListener);
+                oReq.open("GET", "/submit/?name=" + input);
+                oReq.send();
+            }
+
+            function responseListener() {
+                let data = JSON.parse(this.responseText);
+                let content = 'Locations:\n\n';
+                for (let loc of data.locations){
+                    console.log(loc);
+                    content = content + loc + '\n';
+                }
+                
+                document.getElementById('responseDiv').innerHTML = content;
+            }
+        </script>
+    </body>
+</html>
