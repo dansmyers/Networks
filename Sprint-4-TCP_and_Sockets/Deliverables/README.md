@@ -2,6 +2,11 @@
 
 <img src="https://imgs.xkcd.com/comics/the_cloud.png" width="85%" />
 
+<strong>Group Members/Collaborators:</strong> Eric Grimm, Jaysa Ramirez, Nikola Vuckovic
+
+<strong>Honor Code:</strong> “On my honor, I have not given, nor received, nor witnessed any unauthorized assistance on this work.”
+-- Kyle Major
+
 ## Web Server
 
 ### Description and Goals
