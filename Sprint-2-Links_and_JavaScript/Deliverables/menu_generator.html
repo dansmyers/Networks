@@ -14,8 +14,11 @@
         <style>
         
             body {
-              font-family: Lucida, serif;
+              font-family: Lucida, serif, helvetica;
               font-size: 14pt;
+              background-color: #EEE500;
+              border-style: solid;
+              border-width: 10px;
             }
           
             h1 {
@@ -31,6 +34,7 @@
               font-size: 22pt;
               margin-bottom: 2rem;
               font-family: Georgia, serif;
+              border-style: hidden hidden dashed hidden;
             }
             
             .section {
@@ -47,6 +51,10 @@
 
             .clear {
               clear: both;
+            }
+            
+            #restaurant_name {
+                border-style: double;
             }
             
         </style>
@@ -72,7 +80,7 @@
                 <!-- col-md-6 makes a column that spans all 6 units -->
                 <!-- Covers the middle half of the page -->
                 <div class="col-md-6">
-                    <h1 id="restaurant_name">The Yellow Sign</h1>
+                    <h1 id="restaurant_name"><u>Lenny's</u></h1>
                     
                     <h2>Appetizers</h2>
                     <div class="section" id="appetizers"></div>
@@ -105,20 +113,37 @@
         <script>
         
           // Declare lists of menu components
-          let appIngredients = ['sea scallop', 'reindeer', 'chicken bone', 'haricots vertes',
-                                  'langoustine', 'ham', 'cuttlefish', 'kale', 'pommes',
-                                  'aubergine', 'bone marrow', 'rocket'];
+          //Appetizers Section
+          let appIngredients = ['halepeno poppers', 'mac n cheese', 'french fries', 'haricots vertes',
+                                  'mashed potato', 'corn bread', 'house salad', 'kale', '2 eggs',
+                                  'eggplant', 'sesame noodle', 'lettuce wrap', 'spring roll', 'summer role', 'crunchy noodle', 'falaffel' , 'chips', 'corn chips', 'sweet potato', 'rocket'];
                                  
           let appPreparations = ['globules', 'cubes', 'granules', 'pasta', 'risotto',
-                                   'sashimi', 'crunchwrap', 'snowcone', 'tacos', 
-                                   'mist', 'hash', 'wellington', 'mush', 'graupel'];
+                                   'balls', 'crunchwrap', 'snowcone', 'tacos', 
+                                   'mist', 'hash', 'rolls', 'mush', 'with butter'];
                                   
-          let appAdjectives = ['eldritch', 'frightened', 'farm-to-table', 'sea-salt',
-                                 'ominous', 'non-euclidean', 'carbonized', 'spectral',
-                                 'argyle', 'korean bbq', 'cilantro-lime', 'oblique',
-                                 'ketchuped', 'curried', 'inverted', 'digitized'];
+          let appAdjectives = ['special', 'lively', 'farm-to-table', 'salted', 'sea-salted',
+                                 'spicy', 'crazy', 'seasoned', 'eye-popping',
+                                 'hardcore', 'bbq', 'crispy', 'crunchy',
+                                 'alluring', 'irresistable', 'yoked', 'any way you like em'];
+          
+          //Main Courses Section
+          let mainAdjectives = ['stir fried', 'pan fried', 'deep fried', 'sauteed', 'minced', 'tofu', 'baked', 'wrapped', 'seasoned', 'five spice', 'spicy', 'mild', 'oven fresh'];
+          
+          let mainIngredients = ['pancake', 'waffle', 'burrito', 'salad', 'curry', 'kabob', 'noodles', 'quesadilla', 'burger', 'enchilladas', 'phad thai', 'soup', 'souffle', 'pasta', 'spaghetti'];
+          
+          let mainExtraFeatures = ['with hot sauce', 'with a side of fries', 'muffins', 'with greek vinagarrette', 'with a fruit bowl', 'double stack', 'triple stack', 'with fresh maple syrup', 'steeped in kale juice', 'seasoned with house spices'];
+          
+          //Desserts Section
+          let dessertFlavorings = ['hot fudge', 'vanilla', 'chocolate', 'strawberry', 'cookie dough', 'rocky road', 'bubble gum', 'cherry', 'apple', 'pumpkin', 'pumpkin spice', 'caramel', 'velvety', 'carmelized'];
+          
+          let dessertIngredients = ['sundae', 'icecream', 'pie', 'creamsicle', 'cheesecake', 'scone', 'crepe', 'cookie', 'bannana split', 'red velvet cake', 'bannana pudding', 'cotton candy', 'italian ice'];
+          
+          let dessertToppings = ['with sprinkles', 'with extra bannanas', 'with powdered sugar', 'with whipped cream and choclate chips', 'with your choice of toppings', 'with a cherry on top', 'fresh from the oven', 'frozen'];
                           
-          const MAX_APP_PRICE = 20;
+          const MAX_APP_PRICE = 15;
+          const MAX_MAIN_PRICE = 30;
+          const MAX_DESS_PRICE = 20;
                        
           function choose(arr) {
               
@@ -137,15 +162,16 @@
           }
             
           function generateAppetizer() {
+             
             let result = choose(appAdjectives) + ' ';
             result += choose(appIngredients) + ' ';
             result += choose(appPreparations);
-                
+               
             return result;
           }
             
           function generateAppetizers() {
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 5; i++) {
               
               // Generate a random item and price
               let result = generateAppetizer();
@@ -176,15 +202,93 @@
               // floating on the previous line
               //
               // This is required to position the next line properly
-              para.innerHTML += '<div class="clear"></div>'
+              para.innerHTML += '<div class="clear"></div>';
     
               // Append the new <p> node to the list of appetizers
               section.appendChild(para);
             }
           }
+          
+          function generateMainCourse(){
+               
+              let result = choose(mainAdjectives) + ' ';
+              result += choose(mainIngredients) + ' ';
+              result += choose(mainExtraFeatures) + ' ';
+              
+              return result;
+              
+          }
+          
+          function generateMainCourses(){
+              
+            for (let i = 0; i < 10; i++) {
+              
+              // Generating a random item and price
+              let result = generateMainCourse();
+              let price = Math.floor(Math.random() * (MAX_MAIN_PRICE - 1)) + 1;
+              
+              // Getting a reference to the main_courses div
+              let section = document.getElementById('main_courses');
+              
+              // Creating a new <p> node
+              let para = document.createElement('p');
+              
+              //Setting the internal contents of para using the DOM
+              para.innerHTML = '<span class="name">' + result + '</span>';
+              para.innerHTML += '<span class="price">' + price + '</span>';
+              
+              //div required for positioning the next line properly
+              para.innerHTML += '<div class="clear"></div>';
+              
+              // Appending the new <p> node to the list of main courses
+              section.appendChild(para);
+              
+            }
+              
+          }
+          
+          function generateDessert(){
+               
+              let result = choose(dessertFlavorings) + ' ';
+              result += choose(dessertIngredients) + ' ';
+              result += choose(dessertToppings) + ' ';
+              
+              return result;
+              
+          }
+          
+          function generateDesserts(){
+              
+            for (let i = 0; i < 7; i++) {
+              
+              // Generating a random item and price
+              let result = generateDessert();
+              let price = Math.floor(Math.random() * (MAX_DESS_PRICE - 1)) + 1;
+              
+              // Getting a reference to the desserts div
+              let section = document.getElementById('desserts');
+              
+              // Creating a new <p> node
+              let para = document.createElement('p');
+              
+              //Setting the internal contents of para using the DOM
+              para.innerHTML = '<span class="name">' + result + '</span>';
+              para.innerHTML += '<span class="price">' + price + '</span>';
+              
+              //div required for positioning the next line properly
+              para.innerHTML += '<div class="clear"></div>';
+              
+              // Appending the new <p> node to the list of main courses
+              section.appendChild(para);
+              
+            }
+              
+          }
             
           function main() {
             generateAppetizers();
+            generateMainCourses();
+            generateDesserts();
           }
             
           // The onload property sets a function that will run once
