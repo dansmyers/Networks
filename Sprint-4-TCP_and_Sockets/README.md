@@ -1,6 +1,13 @@
 # Sprint 4 &ndash; TCP and Sockets
 
 
+Nitish Jagdev
+ On my honor I have not given nor received any unauthorized work or assistance on my work.
+ 
+ Team members: Ryan King 
+ 
+Griffin tried helping me with the jpegs, but I could not get it to work.
+
 ## Starts Wednesday, 10/28
 ## Deliverables and quiz are due on Wednesday, 11/11
 
