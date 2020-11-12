@@ -28,7 +28,7 @@ void
 send_response(int fd, char *response, int response_length) {
 
   // Fill in code to write the response to the descriptor
-
+	write(fd, response, response_length);
 }
 
 
@@ -61,7 +61,7 @@ send_error_response(int socket_fd, char *error_num, char *short_msg, char *long_
    // Create the body of the error message
    sprintf(body, "<html><title>Error %s: %s</title>", error_num, short_msg);
    sprintf(body, "%s<h1>Error %s: %s</h1>\r\n", body, error_num, short_msg);
-   sprintf(body, "%s<p>%s\r\n", body, long_msg);
+   sprintf(body, "%s <p>%s\r\n", body, long_msg);
 
    // Write out the header information for this response
    sprintf(buf, "HTTP/1.0 %s %s\r\n", error_num, short_msg);
@@ -98,10 +98,12 @@ handle_request(int socket_fd, char *request) {
   // Get the filename by parsing the message URI
   sscanf(uri, "/%s", filename);
 
+
   printf("\nMethod = %s\n", method);
   printf("URI = %s\n", uri);
   printf("Version = %s\n", version);
   printf("Filename = %s\n", filename);
+  
 
   // If the method is not GET, return an error
   if (strcmp(method, "GET")) {
@@ -109,29 +111,71 @@ handle_request(int socket_fd, char *request) {
     pthread_exit(0);
   }
 
+
   // Open the file for reading
+  FILE *fd = fopen(filename,"r");
 
   // If the file does not exist, return a 404 error message
-
-  // Stat the file to learn its size
-
+	if(fd == NULL){
+		
+		send_error_response(socket_fd, "404", "File Not Found", "Server could not find this file");
+		pthread_exit(0);
+	}
+ // Stat the file to learn its size
+	
+    struct stat stats;
+	stat(filename, &stats);
+	filesize = stats.st_size;
+	
   // Memory-map the file so that its contents are in a buffer in memory
   // File descriptor is stored in variable named fd
-  if ((ptr = (char *) mmap(0, filesize, PROT_READ, MAP_PRIVATE, fd, 0)) <= (char *) 0) {
+  if ((ptr = (char *) mmap(0, filesize, PROT_READ, MAP_PRIVATE, fileno(fd), 0)) <= (char *) 0) {
     perror("mmap");
     exit(1);
-  }
-
+  } 
+  
   // Form HTTP response message header
   // The return code must be 200 OK
-
+	char *filetype = get_filetype(filename);
+	
+	char response[MAX_LINE];
+	sprintf(response, "%s 200 OK \r\nServer: %s\r\nContent-Length: %d\r\nContent-Type: %s\r\n\n", version, "450 Webserver", filesize, filetype);
+	printf("\n%s\n", response);
   // Write the response message header to the descriptor
-
-  // Write the file contents to the descriptor
-
+	send_response(socket_fd, response, strlen(response) + 1);
+	
+	
+  //We ran out of time before we could figure out how to make the jpg work, though i do think we were pretty close.
+  if(strcmp(get_filetype(filename), "image/jpeg") == 0){
+  	int x;
+  	
+  	char *pointer = ptr;
+  	
+  	
+  	while(filesize > 0){
+  		
+  		printf("sent!");
+  		
+  		x = send(socket_fd, pointer, sizeof(ptr), 0);
+  		
+  		if(x <= 0){
+  			break;
+  		}
+  		
+  		pointer += x;
+  		filesize -= x;
+  		printf("%d", filesize);
+  		
+  	}
+  } else {
+	send_response(socket_fd, ptr, strlen(ptr) + 1);
+  }
+	
   // Unmap file
   munmap(ptr, filesize);
-  close(fd);
+  
+  close(socket_fd);
+  pthread_exit(0);
 }
 
 
