@@ -22,13 +22,18 @@
 #define MAX_PENDING 5
 #define MAX_LINE 2048
 
+fd_set set;
 
 /** Send the given response message over the given descriptor **/
 void 
 send_response(int fd, char *response, int response_length) {
 
-  // Fill in code to write the response to the descriptor
-
+  int rc = write(fd, response, response_length);
+  if (rc != response_length) {
+    perror("write");
+    exit(1);
+  }
+    
 }
 
 
@@ -55,37 +60,37 @@ get_filetype(char *filename) {
 void 
 send_error_response(int socket_fd, char *error_num, char *short_msg, char *long_msg) {
 
-   char buf[MAX_LINE];
-   char body[MAX_LINE];
+  char buf[MAX_LINE];
+  char body[MAX_LINE];
 
-   // Create the body of the error message
-   sprintf(body, "<html><title>Error %s: %s</title>", error_num, short_msg);
-   sprintf(body, "%s<h1>Error %s: %s</h1>\r\n", body, error_num, short_msg);
-   sprintf(body, "%s<p>%s\r\n", body, long_msg);
+  // Create the body of the error message
+  sprintf(body, "<html><title>Error %s: %s</title>", error_num, short_msg);
+  sprintf(body, "%s<h1>Error %s: %s</h1>\r\n", body, error_num, short_msg);
+  sprintf(body, "%s<p>%s\r\n", body, long_msg);
 
-   // Write out the header information for this response
-   sprintf(buf, "HTTP/1.0 %s %s\r\n", error_num, short_msg);
-   send_response(socket_fd, buf, strlen(buf));
-   printf("%s", buf);
+  // Write out the header information for this response
+  sprintf(buf, "HTTP/1.0 %s %s\r\n", error_num, short_msg);
+  send_response(socket_fd, buf, strlen(buf));
+  printf("%s", buf);
 
-   sprintf(buf, "Content-Type: %s\r\n", get_filetype("html"));
-   send_response(socket_fd, buf, strlen(buf));
-   printf("%s", buf);
+  sprintf(buf, "Content-Type: %s\r\n", get_filetype("html"));
+  send_response(socket_fd, buf, strlen(buf));
+  printf("%s", buf);
 
-   sprintf(buf, "Content-Length: %lu\r\n\r\n", strlen(body));
-   send_response(socket_fd, buf, strlen(buf));
-   printf("%s", buf);
+  sprintf(buf, "Content-Length: %lu\r\n\r\n", strlen(body));
+  send_response(socket_fd, buf, strlen(buf));
+  printf("%s", buf);
 
-   // Write out the content
-   send_response(socket_fd, body, strlen(body));
-   printf("%s", body);
+  // Write out the content
+  send_response(socket_fd, body, strlen(body));
+  printf("%s", body);
 }
 
 
 /** Process a single HTTP request **/
 void 
 handle_request(int socket_fd, char *request) {
-  int len, i, rc, filesize;
+  int len, i, rc, filesize,size;
   char method[MAX_LINE];
   char uri[MAX_LINE];
   char version[MAX_LINE];
@@ -110,28 +115,112 @@ handle_request(int socket_fd, char *request) {
   }
 
   // Open the file for reading
+  char path1[MAX_LINE];
+  char path2[MAX_LINE];
+  
+  //strcpy(path1, "./");
+  //strcat(path1, filename);
+  //printf("%s\n",path1);
+  
+  // start file stream
+  //FILE *fptr;
+  //fptr = fopen(filename,"r");
+  
+  int fd = open(filename, O_RDONLY);
+  if (fd < 0) {
+            send_error_response(socket_fd, "404", "Not Found", "File Not Found");
+            pthread_exit(0);
 
-  // If the file does not exist, return a 404 error message
+  }
+  
+  /***
+  if (fptr == NULL){
+      send_error_response(socket_fd, "404", "Not Found", "File Not Found");
+      
+      // Move pthread exit to here
+
+      
+       printf("Error opening file on first try\n");
+
+       // try to open using other path
+       strcpy(path2, "./files/");
+       strcat(path2, filename);
+       if ((fptr = fopen(path2,"r")) == NULL){
+            printf("Error opening file");
+            send_error_response(socket_fd, "404", "Not Found", "File Not Found");
+            
+            // Program exits if the file pointer returns NULL.
+            pthread_exit(0);
+        }
+   }
+
+  // get file descriptor
+  int fd = fileno(fptr);
+  
+  printf("This is the opened the fd = %d\n", fd);     
+  ***/
+
 
   // Stat the file to learn its size
+  struct stat buff;
+  //fstat(fd, &buff);
+  //int size = buff.st_size;
+  rc = stat(filename, &buff);
+  if (rc < 0) {
+    perror("stat");
+    exit(1);
+  }
+  size = buff.st_size;
+  
+  printf("File size = %d\n", size);
 
   // Memory-map the file so that its contents are in a buffer in memory
   // File descriptor is stored in variable named fd
-  if ((ptr = (char *) mmap(0, filesize, PROT_READ, MAP_PRIVATE, fd, 0)) <= (char *) 0) {
+  if ((ptr = (char *) mmap(0, size, PROT_READ, MAP_PRIVATE, fd, 0)) <= (char *) 0) {
     perror("mmap");
     exit(1);
   }
+  
+  printf("%p\n", ptr);
 
   // Form HTTP response message header
   // The return code must be 200 OK
+  char buf[MAX_LINE];
+ 
+  sprintf(buf, "HTTP/1.0 200 OK\r\n");
+  //send_response(socket_fd, buf, strlen(buf));
+  printf("%s", buf);
+  
+  sprintf(buf, "%sServer: CMS450 Web Server\r\n", buf);
+  //send_response(socket_fd, buf, strlen(buf));
+  printf("%s", buf);
+  
+  sprintf(buf, "%sContent-Length: %d\r\n", buf, size);
+  //send_response(socket_fd, buf, strlen(buf));
+  printf("%s", buf);
 
+
+  sprintf(buf, "%sContent-Type: %s\r\n\r\n",buf, get_filetype(filename));
+  
+  printf("%s", buf);
+  
+  send_response(socket_fd,buf, strlen(buf));
+  //send_response(socket_fd, buf, strlen(buf));
+  printf("%s", buf);
+  
+  //printf("%s", buf);
   // Write the response message header to the descriptor
-
+  
   // Write the file contents to the descriptor
-
+  send_response(socket_fd, ptr, size);
+  
+  
   // Unmap file
-  munmap(ptr, filesize);
+  munmap(ptr, size);
   close(fd);
+  //close(socket_fd);
+  
+  
 }
 
 
