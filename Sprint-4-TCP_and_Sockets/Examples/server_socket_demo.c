@@ -40,6 +40,9 @@ int main(void)
   }
 
   // Bind the socket
+  //
+  // Bind connects the socket to the port that you want to listen on
+  // Tells OS to establish a socket/port connection
   rc = bind(server_fd, servinfo->ai_addr, servinfo->ai_addrlen);
   if (rc < 0) {
     close(server_fd);
@@ -47,6 +50,8 @@ int main(void)
   }
     
   // Listen for incoming connections
+  //
+  // Listen makes the socket active and start listening for incoming connections
   rc = listen(server_fd, BACKLOG);
   if (rc < 0) {
     perror("listen");
@@ -63,6 +68,10 @@ int main(void)
   while (1) {
     
     // accept blocks until a client connection arrives
+    //
+    // accept blocks and waits until a client connection arrives
+    // server stops and waits until a client request comes in
+    // accept returns a new descriptor for interacting with a client
     socklen_t sa_len = sizeof(servinfo);
     int connection_fd = accept(server_fd, (struct sockaddr*) &servinfo, &sa_len);
     if (connection_fd < 0) {
@@ -72,6 +81,11 @@ int main(void)
 
     printf("Accepted a request.  Descriptor = %d\n", connection_fd);
 
+    
+    // Use connection_fd to interact with the client side communication
+    // read from connection_fd --> reading bytes sent to the client
+    // write to connection_fd --> sending bytes to the client
+    
     rc = read(connection_fd, &buf, sizeof(buf));
     printf("Message: %s\n", buf);
     
@@ -89,3 +103,8 @@ int main(void)
 
   return 0;
 }
+
+
+// *** socket, bind, listen, accept ***
+
+
