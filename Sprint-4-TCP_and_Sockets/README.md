@@ -4,6 +4,10 @@
 ## Starts Wednesday, 10/28
 ## Deliverables and quiz are due on Wednesday, 11/11
 
+### Collaborators
+
+Oliver (me), Griffin, Jacob, Lee, Alex
+
 ## Overview and Goals
 
 We've now (mostly) polished off the lower levels of the protocol stack. Our goal for this unit is to get familiar with two important protocols at the Transport and Application Layers: **TCP** and **HTTP**.
