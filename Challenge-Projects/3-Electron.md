@@ -13,6 +13,8 @@ desktop format). The main criticism of Electron is that its apps tend to consume
 Chromium.
 
 The project is simple: **use Electron to build any non-trivial application**. Your project can do anything you want and use any combination of tools or styles, as long as it goes
-beyond creating a simple `Hello, World` app. That's it!
+beyond creating a simple `Hello, World` app.
+
+That's it! We'll address any questions as they come up.
 
 
