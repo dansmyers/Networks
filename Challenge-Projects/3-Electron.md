@@ -1,5 +1,7 @@
 # Challenge Project &ndash; Electron
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Electron_Software_Framework_Logo.svg/1920px-Electron_Software_Framework_Logo.svg.png" width="20%" />
+
 ## Due December 11
 
 ## Description
