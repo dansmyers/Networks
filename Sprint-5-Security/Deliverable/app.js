@@ -3,10 +3,23 @@
 /* Weather*/
 // ---------------------------------------------------------------------------------------------
 let currentWeather = "";
+let currentCityID = 2130629;
+
+let myAudio = new Audio();
+
+
+// hashmap to store city name (key) to their id (value)
+let cities = new Map();
+cities.set('Orlando', 4167147);
+cities.set('New York City', 5128581);
+cities.set('Piedmont', 4083004);
+cities.set('Osaka', 1853908);
+cities.set('Atlanta', 4180439);
 
 window.onload = function() {
     // 4083004
-  weatherBalloon( 4083004 );
+    // Orlando: 4167147
+  weatherBalloon( currentCityID );
 }
 
 function drawWeather( d ) {
@@ -21,18 +34,33 @@ function drawWeather( d ) {
 	if( description.indexOf('rain') > 0 ) {
       	document.body.className = 'rainy';
       	currentWeather = 'rainy';
+      	stopSound();
+      	playRain();
     } else if( description.indexOf('cloud') > 0 ) {
   	    document.body.className = 'cloudy';
   	    currentWeather = 'cloudy';
-    } else if( description.indexOf('sunny') > 0 ) {
-  	    document.body.className = 'sunny';
+  	    stopSound();
+    } else if( description.indexOf('clear') > 0 ) {
+  	    document.body.className = 'clear';
+  	    currentWeather = 'clear';
+  	    stopSound();
+    } else if( description.indexOf('clear') > 0 ) {
+  	    document.body.className = 'clear';
+  	    currentWeather = 'clear';
+  	    stopSound();
+    } else {
+        document.body.className = 'sunny';
   	    currentWeather = 'sunny';
+  	    stopSound();
     }
+    
     
     // Particle start moving from here
     // Reason being is particles need to init after weather balloon starts
+    
     init();
-    animate();
+    //ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
 }
 
 function weatherBalloon( cityID ) {
@@ -52,12 +80,13 @@ function weatherBalloon( cityID ) {
 // ---------------------------------------------------------------------------------------------
 
 const canvas = document.getElementById('canvas');
+
 const ctx = canvas.getContext('2d');
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let numberOfParticles = 200;
-
-const particlesArray = [];
+let particlesArray = [];
 
 class Particle {
     constructor(){
@@ -65,8 +94,8 @@ class Particle {
             this.toRainy();
         else if (currentWeather === 'cloudy')
             this.toCloudy();
-        else if (currentWeather === 'sunny')
-            this.toSunny();
+        else if (currentWeather === 'clear')
+            this.toClear();
     }
     draw(){
         ctx.beginPath();
@@ -76,7 +105,7 @@ class Particle {
             ctx.fillStyle = 'blue';
         else if (currentWeather === 'cloudy')
             ctx.fillStyle = 'gray';
-        else if (currentWeather === 'sunny')
+        else if (currentWeather === 'clear')
             ctx.fillStyle = 'orange';
             
         ctx.fill();
@@ -95,26 +124,6 @@ class Particle {
                 this.y = 0;
         }
         
-        // mouse collision
-        // not working rn
-        let dx = mouse.x - this.x;
-        let dy = mouse.y - this.y;
-        let distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < mouse.radius + this.size) {
-            if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
-                this.x += 10;
-            }
-            if (mouse.x > this.x && this.x > this.size * 10) {
-                this.x -= 10;
-            }
-            if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
-                this.y += 10;
-            }
-            if (mouse.y > this.y && this.y > this.size * 10) {
-                this.y -= 10;
-            }
-        }
-        
         this.draw();
     }
     toCloudy() {
@@ -131,12 +140,12 @@ class Particle {
         this.speedX = 0;
         this.speedY = Math.floor(Math.random() * (5 - 4 + 1)) + 4;
     }
-    toSunny() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.radius = (Math.random() * 10) + 2;
-        this.speedX = (Math.random() * 3) - 1.5;
-        this.speedY = (Math.random() * 3) - 1.5;
+    toClear() {
+        this.x = canvas.width / 2;
+        this.y = 150;
+        this.radius = 100;
+        this.speedX = 0;
+        this.speedY = 0;
     }
     
 
@@ -161,22 +170,30 @@ window.addEventListener('resize', function(){
   init();
 })
 
-// Mouse Movement position
-let mouse = {
-    x: null,
-    y: null,
-    radius: (canvas.height/80) * (canvas.width/80)
+animate();
+
+// Background noise (e.g. rain, snow, wind, etc.)
+
+function playRain() {
+    myAudio = new Audio('sounds/rain.mp3');
+    myAudio.loop = true;
+    myAudio.play();
 }
 
-window.addEventListener('mousemove',
-    function(event) {
-        mouse.x = event.x;
-        mouse.y = event.y;
-        //console.log("mosue moved");
-    }
+function stopSound() {
+    myAudio.pause();
+}
+
+
+// Dropdown menu listener
+var elements = document.getElementsByClassName('dropdown-item');
+
+Array.from(elements).forEach((element) => {
+  element.addEventListener('click', (event) => {
     
-);
-
-
-
-
+    currentCityID = cities.get(event.target.innerText);
+    particlesArray = [];
+    weatherBalloon( currentCityID );
+    
+  });
+});
