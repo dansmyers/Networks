@@ -1,3 +1,4 @@
+
 /* Toggle Particle Animation */
 let toggleButton = document.getElementById("toggle-btn");
 
@@ -12,15 +13,17 @@ toggleButton.addEventListener('click', function() {
 let rainButton = document.getElementById("rain-btn");
 
 rainButton.addEventListener('click', function() {
-    tsParticles.loadJSON("tsparticles", "particles-rain.json");
+    
+    tsParticles.loadJSON("tsparticles", "particles/particles-rain.json");
     tsParticles.dom()[0].refresh();
+    
 })
 
 /* Snow Particles */
 let snowButton = document.getElementById("snow-btn");
 
 snowButton.addEventListener('click', function() {
-    tsParticles.loadJSON("tsparticles", "particles-snow.json");
+    tsParticles.loadJSON("tsparticles", "particles/particles-snow.json");
     tsParticles.dom()[0].refresh();
 })
 
@@ -28,7 +31,7 @@ snowButton.addEventListener('click', function() {
 let clearButton = document.getElementById("clear-btn");
 
 clearButton.addEventListener('click', function() {
-    tsParticles.loadJSON("tsparticles", "particles-clear.json");
+    tsParticles.loadJSON("tsparticles", "particles/particles-clear.json");
     tsParticles.dom()[0].refresh();
 })
 
@@ -36,7 +39,7 @@ clearButton.addEventListener('click', function() {
 let cloudyButton = document.getElementById("cloudy-btn");
 
 cloudyButton.addEventListener('click', function() {
-    tsParticles.loadJSON("tsparticles", "particles-cloudy.json");
+    tsParticles.loadJSON("tsparticles", "particles/particles-cloudy.json");
     tsParticles.dom()[0].refresh();
 })
 
