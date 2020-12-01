@@ -1,0 +1,25 @@
+{
+  "background": {
+    "color": "#556259"
+  },
+  "particles": {
+    "color": {
+      "value": "#d8dfe1"
+    },
+    "move": {
+      "direction": "right",
+      "enable": true,
+      "outModes": {
+        "bottom": "out",
+        "left": "out",
+        "right": "out",
+        "top": "out"
+      },
+      "straight": true,
+      "speed": 4
+    },
+    "size": {
+      "value": 55
+    }
+  }
+}

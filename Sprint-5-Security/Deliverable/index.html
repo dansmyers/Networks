@@ -1,177 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Responsive Weather Particle System</title>
-
+    <meta charset="UTF-8">
+    <title>TSParticles</title>
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900" rel="stylesheet">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        #canvas {
-            width: 100%;
-            height: auto;
-            border: 2px solid black;
-            background:url(mountain-bg.png);
-            background-size: 100% 100%;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-            font-size: 1.3em;
-            color: #fff;
-            text-shadow: .1em .1em 0 rgba(0,0,0,0.3);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: linear-gradient(to right top, #99bbcb, #a5c7d7, #b1d4e2, #bde0ee, #c9edfa);
-        }
-        h1 {
-            margin: 0 auto;
-            font-size: 2.2em;
-            text-align: center;
-            color: #fff;
-            font-size: 5em;
-        }
-        body.sunny {
-            background-image: linear-gradient(to right top, #ff4e50, #ff713e, #ff932b, #ffb41d, #f9d423);
-        }
-        body.cloudy {
-            background-image: linear-gradient(to right top, #63747c, #71858e, #7f96a0, #8da8b2, #9bbac5);
-        }
-        body.rainy {
-            background-image: linear-gradient(to right top, #637c7b, #718e8c, #7ea09e, #8db2b0, #9bc5c3);
-        }
-
-        /* Acts as a buffer between top Background and rest of rows */
-        .top-buffer {
-            margin-top: 40px;
-        }
-
-        .weather-info-buffer {
-            margin-top: 15%;
-        }
-
-        .bottom-buffer {
-            margin-bottom: 10%;
-        }
-
-        /* Dropdown Button */
-        .dropbtn {
-            background-color: #3498DB;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* Dropdown button on hover & focus */
-        .dropbtn:hover, .dropbtn:focus {
-            background-color: #2980B9;
-        }
-
-        /* The container <div> - needed to position the dropdown content */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Dropdown Content (Hidden by Default) */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        /* Links inside the dropdown */
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        /* Change color of dropdown links on hover */
-        .dropdown-content a:hover {background-color: #ddd}
-
-        /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-        .show {display:block;}
-    </style>
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"
+    ></script>
 </head>
-
-
-
 <body>
-
-<div class="container-fluid no-padding">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Dynamic Weather Particles</h1>
-        </div> <!-- /col-md-6 -->
-    </div> <!-- /row -->
-
-    <div class="row">
-        <div class="col-md-10">
-            <canvas id="canvas"></canvas>
-        </div> <!-- /col-md-6 -->
-        <div class="col-md-2 align-items-center text-center weather-info-buffer">
-            <div id="weather">
-                <div id="description"></div>
-                <h1 id="temp"></h1>
-                <div id="location"></div>
-            </div>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle top-buffer" type="button" id="cityDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Select City
-                </button>
-                <div class="dropdown-menu" aria-labelledby="cityDropDown">
-                    <a class="dropdown-item" href="#" id="city1">Orlando</a>
-                    <a class="dropdown-item" href="#" id="city2">New York City</a>
-                    <a class="dropdown-item" href="#" id="city3">Osaka</a>
-                    <a class="dropdown-item" href="#" id="city4">Piedmont</a>
-                    <a class="dropdown-item" href="#" id="city5">Atlanta</a>
-                    <a class="dropdown-item" href="#" id="city6">Selmer</a>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <div class="title" id="title">
+                    Dynamic Weather Particles
                 </div>
-                <div class="button top-buffer">
-                    <button type="button" class="btn btn-primary" id="rainButton">Let it Rain</button>
+                <div id="weather">
+                    <div id="description"></div>
+                    <h1 id="temp"></h1>
+                    <div id="location"></div>
                 </div>
             </div>
-        </div> <!-- /col-md-6 -->
-    </div> <!-- /row -->
-</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10">
+                <div id="tsparticles"></div>
+            </div>
+            <div class="col-lg-2">
+                <button type="button" class="btn btn-success" id="toggle-btn">Toggle Particle Animation</button>
+                <button type="button" class="btn btn-primary" id="rain-btn">Rain</button>
+                <button type="button" class="btn btn-primary" id="snow-btn">Snow</button>
+                <button type="button" class="btn btn-primary" id="cloudy-btn">Clouds</button>
+                <button type="button" class="btn btn-primary" id="clear-btn">Clear</button>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle top-buffer" type="button" id="cityDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select City
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="cityDropDown">
+                        <a class="dropdown-item" href="#" id="city1">Orlando</a>
+                        <a class="dropdown-item" href="#" id="city2">New York City</a>
+                        <a class="dropdown-item" href="#" id="city3">Osaka</a>
+                        <a class="dropdown-item" href="#" id="city4">Piedmont</a>
+                        <a class="dropdown-item" href="#" id="city5">Atlanta</a>
+                        <a class="dropdown-item" href="#" id="city6">Selmer</a>
+                        <a class="dropdown-item" href="#" id="city7">Tokyo</a>
+                        <a class="dropdown-item" href="#" id="city8">London</a>
+                        <a class="dropdown-item" href="#" id="city9">Salt Lake City</a>
+                        <a class="dropdown-item" href="#" id="city10">Egypt</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<script src="app.js"></script>
+    <script src="app.js"></script>
+    <script src="weather.js"></script>
+    <script src="tsparticles.min.js"></script>
 
-
-<!-- Bootstrap Scripts -->
-<script
-        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"
-></script>
-<script
-        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"
-></script>
-<script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"
-></script>
-
+    <script>tsParticles.loadJSON("tsparticles", "particles-snow.json")</script>
 </body>
 </html>

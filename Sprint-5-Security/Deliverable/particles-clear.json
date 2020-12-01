@@ -1,0 +1,13 @@
+{
+  "background": {
+    "color": "#ff7b00"
+  },
+  "particles": {
+    "number": {
+      "density": {
+        "enable": true
+      },
+      "value": 0
+    }
+  }
+}
