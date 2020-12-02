@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+    
+    <head>
+        
+        <title> Cipher Generator </title>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
+        <style>
+            body {
+                font-size: 15pt;
+                font-family: Helvetica, Arial, sans-serif;
+                display: block;
+            }
+        
+            h1 {
+                font-size: 30pt;
+            }
+        
+            .text-center {
+                text-align: center;
+            }
+            
+            .text-right {
+                text-align: right;
+            }
+            
+            .text-right {
+                text-align: left;
+            }
+            
+        </style>
+        
+    </head>
+    
+    <body>
+        
+        <div class="container">
+            
+            <div class="row">
+                
+                <div class="col-md-12 text-center">
+                    <h1> Cipher Generator </h1>
+                    <p>
+                        <br> Generate an encrypted message using a popular cipher! 
+                    </p>
+                </div>
+                
+            </div>
+            
+            <br>
+            
+            <div class="row">
+                
+                <div class="col-md-4 text-center">
+                    <p> Input </p>
+                
+                    <!-- Create an input box for the plaintext/ciphertext -->
+                </div>
+                
+                <div class="col-md-4 text-center">
+                    <p> Select </p>
+                    <select name="cipherSelection" id="cipherType" class="text-center">
+                        <option value=""> --Select a cipher-- </option>
+                        <option value=""> --[PLACEHOLDER]-- </option>
+                        
+                        <!-- Research ciphers to include in the project; at least 4-->
+                    </select>
+                </div>
+                
+                <div class="col-md-4 text-center">
+                    <p> Output </p>
+                    
+                    <!-- Create and output box for the ciphertext/plaintext -->
+                </div>
+                
+            </div>
+            
+            <br>
+            
+            <div class="row">
+                
+                <div class="col-md-4 text-right">
+                    <button id="button" onclick="selectCipherToPlaintext()">
+                        Cipher-to-Plaintext
+                        
+                        <!-- Create function for switching from cipher input to plaintext input-->
+                    </button>
+                </div>
+                
+                <div class="col-md-4 text-center">
+                    <p> Swap </p>
+                </div>
+                
+                <div class="col-md-4 text-left">
+                    <button id="button" onclick="selectPlaintextToCipher()">
+                        Plaintext-to-Cipher
+                        
+                        <!-- Create function for switching from plaintext input to cipher input-->
+                    </button>
+                </div>
+                
+            </div>
+            
+            <!-- Include some instructions on how the selected cipher works-->
+            
+        </div>
+        
+        <!-- For Bootstrap -->
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        
+        <script>
+            //Create functions for ciphers
+            //Create functions for switching between the modes
+        </script>
+        
+    </body>
+    
+</html>
