@@ -1,0 +1,108 @@
+
+.title{
+  width: 100%;
+  font-size: 25px;
+  height: 50px;
+  text-align: center;
+}
+
+.apps{
+
+}
+
+/* weather -------------------------------------- */
+.weather-app{
+  background-color: #f1f3f8;
+
+  text-align: center;
+
+}
+
+.temp{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.temp{
+    flex-direction: column;
+}
+
+.degree-section{
+    display: flex;
+    align-items: center;
+}
+
+.degree-section span {
+    margin: 10px;
+    font-size: 30px;
+}
+
+.degree-section h2 {
+    font-size: 40px;
+}
+
+/* covid ------------------------------------------- */
+.covid-app{
+  background-color: #d6e0f0;
+  text-align: center;
+}
+
+/* covid ------------------------------------------- */
+.covid-chart{
+  background-color:  #e6ecff;
+  text-align: center;
+}
+
+.apps2{
+  heigh: 400px;
+}
+
+/* news ------------------------------------------ */
+
+.news-app{
+ background-color:  #e6f2ff;
+
+ width: 100%;
+}
+
+.news-header{
+  text-align: center;
+}
+
+.hl{
+  padding-top: 5px;
+}
+.headlines{
+  font-size: 18px;
+  padding: 30px 15px;
+}
+
+a{
+  color: black;
+
+}
+a:hover {
+  color: #6e7891;
+}
+
+/* ----------------------------------------------- */
+.jokeContainer{
+  padding-top: 30px;
+  color: #d6e0f0;
+}
+.jokeContainer h4 {
+
+  padding-bottom: 10px;
+  color: #525252;
+}
+.jokeContainer .btn{
+  font-style: italic;
+  color:#f1f3f8;
+}
+.only-quote{
+  height: 150px;
+}
+.quote{
+  background-color: #8d93ab;
+}
