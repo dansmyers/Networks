@@ -18,7 +18,7 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/index.html')));
 app.get("/submit", function(req, res){
 	
 	let name = req.query.name;
-	console.log("Name: ", name + "!");
+	console.log(name);
 	
 	let data = {message: name};
 	
