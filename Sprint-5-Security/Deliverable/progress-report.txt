@@ -1,0 +1,90 @@
+Ryan King
+Progress report
+
+Goals:
+The main goal of this project is to create a web application that can solve almost any sudoku puzzle. When I say almost any I mean that it would have an extremely high probability of solving any algorithmically create sudoku puzzle. My program basically soves sudoku the same way a human would, and prints each step it makes to a log.
+
+The general consensus in the sudoku commuinity is that there are about 9 different common strategies used to determine which numbers go in each box. Using these 9 strategies you could solve pretty much any puzzle. My goal would be to implement these strategies into my program. The one catch is that there do exist puzzles, typically created by humans (mad puzzlemaking geniuses) that require very obscure or even unique strategies and logic to solve. My program would likely not be able to solve these, and there's not really much I can do about that.
+
+
+What I have done so far:
+
+-Program can recive inputs, and check for input validity. If the input is formatted improperly, the program will throw an error
+
+-Program will make sure there are no contradictions in the input, meaning it will make sure you didn't put two of the same number in the same block, row, or col. If the input is contradictory, it will throw an error.
+
+-Each square in the sudoku grid has a set assigned to it, containing all of the numbers that box could potentially be. If a box is already filled in, the set will contain a single element, the number the box contains. Every empty box will have the numbers 1-9.
+
+-The function simpleRuleOut uses sudoku rules to rule out potential numbers from the empty boxes. For all filled in numbers, there can't be another instance of that number in the same block, row, col.
+
+-The function nakedSingle looks for a naked singles, which is when an empty box only has one number it could potentially be, the other eight have already been ruled out.
+
+-The function hiddenSIngle looks for hidden singles, which is when a row, col, or block only has one box where a certain number can be.
+
+
+
+
+
+The three functions I've implemented for solving can on their own solve easy, medium, and most hard puzzles. Expert puzzles will require more advanced strategies. There are about seven more strategies I need to implement to solve any expert puzzle. These seven strategies are rarely ever used, but they need to be there just in case. With sudoku it seems like about 90% of boxes can be solved using just 10% of the strategies. But you can't get through an expert puzzle without being able to solve the last 10% of boxes.
+
+Here are some sample puzzles you can input to test it. They are from sudoku.com.
+
+The two expert puzzles will not solve, in fact they will only make it a few steps. By the end of the project I want these puzzles, and any other expert puzzle to be solved.
+
+Easy
+ 9 832 57
+218  5   
+ 5  9    
+53 9   72
+    5    
+  7      
+1        
+9 2 7 41 
+ 7 56 9 8
+
+
+
+Medium
+4       7
+  2 8 53 
+   75   9
+  587  62
+6 392  8 
+ 9  65   
+  7      
+  6  72  
+    917 3
+
+Expert
+   6     
+5 8     1
+    91  5
+      5 3
+34 8  6  
+   4 7   
+9  324   
+  7    1 
+6       2
+
+
+Expert
+ 5     9 
+6        
+     93 7
+ 3  2    
+ 7   81  
+  5  1  8
+82  5  7 
+    4 5  
+ 1  3   9
+
+Hard
+87      3
+ 9   8   
+5  2    4
+  6 1  7 
+   3 7   
+   8  56 
+  54     
+2 1  374 
+     1  2
