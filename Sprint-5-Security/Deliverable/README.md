@@ -1,5 +1,9 @@
 # Original Project
 
+"On my honor I have not given nor witnessed nor recieved any unauthorized assistance on this work".
+
+I am working on this project with Jacob
+
 ## Mid-point check-in due December 2
 
 ## Description
