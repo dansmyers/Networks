@@ -1,0 +1,19 @@
+{
+  "name": "networks-spotify",
+  "version": "1.0.0",
+  "description": "Final project for Networks.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaysarc/Networks-Spotify.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaysarc/Networks-Spotify/issues"
+  },
+  "homepage": "https://github.com/jaysarc/Networks-Spotify#readme"
+}
