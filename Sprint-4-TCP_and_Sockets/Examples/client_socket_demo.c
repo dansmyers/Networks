@@ -36,6 +36,9 @@ int main(int argc, char** argv) {
   int client_fd = socket(servinfo->ai_family, servinfo->ai_socktype, 0);
   if (client_fd < 0) {
     perror("socket"); //Print an error and exit the program if client_fd is negative
+  int client_fd = socket(servinfo->ai_family, servinfo->ai_socktype, 0);
+  if (client_fd < 0) {
+    perror("socket");
     return(-1);
   }
 
@@ -53,6 +56,10 @@ int main(int argc, char** argv) {
   
   // Read the server's response
   //Reading from a socket is also like reading from a file
+  // Write something to the socket
+  write(client_fd, "Hello, Server!", 140);
+  
+  // Read the server's response
   char response[64];
   read(client_fd, response, sizeof(response));
   printf("Server's response: %s\n", response);

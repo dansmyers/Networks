@@ -34,6 +34,8 @@ send_response(int fd, char *response, int response_length) {
     exit(1);
   }
     
+  // Fill in code to write the response to the descriptor
+
 }
 
 
@@ -84,13 +86,43 @@ send_error_response(int socket_fd, char *error_num, char *short_msg, char *long_
   // Write out the content
   send_response(socket_fd, body, strlen(body));
   printf("%s", body);
+
+   char buf[MAX_LINE];
+   char body[MAX_LINE];
+
+   // Create the body of the error message
+   sprintf(body, "<html><title>Error %s: %s</title>", error_num, short_msg);
+   sprintf(body, "%s<h1>Error %s: %s</h1>\r\n", body, error_num, short_msg);
+   sprintf(body, "%s<p>%s\r\n", body, long_msg);
+
+   // Write out the header information for this response
+   sprintf(buf, "HTTP/1.0 %s %s\r\n", error_num, short_msg);
+   send_response(socket_fd, buf, strlen(buf));
+   printf("%s", buf);
+
+   sprintf(buf, "Content-Type: %s\r\n", get_filetype("html"));
+   send_response(socket_fd, buf, strlen(buf));
+   printf("%s", buf);
+
+   sprintf(buf, "Content-Length: %lu\r\n\r\n", strlen(body));
+   send_response(socket_fd, buf, strlen(buf));
+   printf("%s", buf);
+
+   // Write out the content
+   send_response(socket_fd, body, strlen(body));
+   printf("%s", body);
+
 }
 
 
 /** Process a single HTTP request **/
 void 
 handle_request(int socket_fd, char *request) {
+
   int len, i, rc, filesize,size;
+
+  int len, i, rc, filesize;
+
   char method[MAX_LINE];
   char uri[MAX_LINE];
   char version[MAX_LINE];
@@ -115,6 +147,7 @@ handle_request(int socket_fd, char *request) {
   }
 
   // Open the file for reading
+
   char path1[MAX_LINE];
   char path2[MAX_LINE];
   
@@ -220,7 +253,28 @@ handle_request(int socket_fd, char *request) {
   close(fd);
   //close(socket_fd);
   
-  
+
+  // If the file does not exist, return a 404 error message
+
+  // Stat the file to learn its size
+
+  // Memory-map the file so that its contents are in a buffer in memory
+  // File descriptor is stored in variable named fd
+  if ((ptr = (char *) mmap(0, filesize, PROT_READ, MAP_PRIVATE, fd, 0)) <= (char *) 0) {
+    perror("mmap");
+    exit(1);
+  }
+
+  // Form HTTP response message header
+  // The return code must be 200 OK
+
+  // Write the response message header to the descriptor
+
+  // Write the file contents to the descriptor
+
+  // Unmap file
+  munmap(ptr, filesize);
+  close(fd);
 }
 
 

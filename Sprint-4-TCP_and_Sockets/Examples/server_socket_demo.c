@@ -3,6 +3,7 @@
 // Incorporates code from Beej's Guide to Network Programming
 
 //Socket, bind, listen, accept
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -75,7 +76,6 @@ int main(void)
     }
 
     printf("Accepted a request.  Descriptor = %d\n", connection_fd);
-
     
     //Use connection_fd to interact with the client side communication
     //read connection_fd 
