@@ -1,0 +1,636 @@
+<!doctype html>
+<html>
+    
+    <head>
+        
+        <title> Adventurer's Tavern </title>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
+        <style>
+            body {
+                font-size: 15pt;
+                font-family: "Times New Roman", Times, sans-serif;
+                background-image: url("https://www.hipstersanddragons.com/wp-content/uploads/2019/08/dnd-adventures-tavern.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            
+            h1 {
+                font-size: 20pt;
+            }
+            
+            /* Change upgrade blocks when the user mouses over them */
+            .upgrade-block:hover {
+                color: #0275d8;  /* Bootstrap primary blue */
+                cursor: pointer;  /* Make mouse into a finger */
+            }
+            
+            .hidden-block {
+                display: none;
+            }
+            
+            .float-left {
+                float: left;
+            }
+            
+            .float-right {
+                float: right;
+            }
+        
+            .small-text {
+                font-size: .85em;
+            }
+            
+            #achievements {
+                height: 250px;
+            }
+            
+            .wooden-back {
+                background-image: url("https://img.freepik.com/free-photo/old-wooden-texture-background-vintage_55716-1138.jpg?size=626&ext=jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                
+            }
+            
+            .stone-back {
+                background-image: url("https://images.squarespace-cdn.com/content/v1/54e57631e4b0450c1805daad/1440652671550-QYYA56IKF2HZ1FD1HMDW/ke17ZwdGBToddI8pDm48kEACdDR_b7nTZeqo4lkeIB9Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxP833nQGePQCEfrkXIhRsYiyBl9fzS7hS6Mpu4JEsiDKOgefZ9dZs5KJdqiFIuxrU/image-asset.jpeg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            
+            .paper-back {
+                background-image: url("https://theeyeopener.com/wp-content/uploads/2019/03/DD-parchment.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            
+            .title {
+                text-align: center; 
+                font-size: 70pt;
+                font-family: Impact, sans-serif;
+                color: maroon;
+            }
+            
+            .center {
+                text-align: center;
+            }
+            
+            .button {
+                font-size: 80pt;
+                border-radius: 25%;
+                background-color: #00BB55;
+                color: #FFFFFF;
+            }
+            
+            .button:hover {
+                font-size: 80pt;
+                border-radius: 25%;
+                background-color: #007711;
+                color: #FFFFFF;
+            }
+            
+            .feastButton {
+                font-size: 40pt;
+                border-radius: 25%;
+                background-color: #FF8C00;
+                color: #FFFFFF;
+            }
+            
+            .feastButton:hover {
+                font-size: 40pt;
+                border-radius: 25%;
+                background-color: #BB8C00;
+                color: #FFFFFF;
+            }
+        
+        </style>
+    </head>
+   
+    <body>
+
+        <div class="container wooden-back">
+            
+            <!-- First row: title and main number -->
+            <div class="row mt-5">
+                <div class="col"></div>
+                <div class="col-lg-9">
+                    <h1 class="title stone-back"><b><i> Adventurer's Tavern </i></b></h1>  
+                </div>
+                <div class="col"></div>
+            </div> <!-- /row -->
+            
+            
+            <!-- Second row: button and gold income -->
+            <div class="row mt-5">
+                <div class="col-lg-8 center">
+                
+                    <button class="button" id="click" onclick="sellDrinks()">
+                        Sell drinks!
+                    </button>
+                    
+                    <div class="row mt-5">
+                        <div class="col"></div>
+                        <div class="col-3 center paper-back">
+                            <div>
+                                <b><h1>Feast Power:</h1></b> <span id="feast-power">0</span>/50
+                            </div>
+                        </div>
+                        <div class="col-1"></div>
+                        <div class="col-3 center">
+                            <button class="feastButton" id="feast" onclick="performFeast()">
+                            Feast!
+                            </button>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 center paper-back">
+                    <h1 id="number" class="center">0</h1>
+                    <div class="clear"></div> <!-- Required to reset float positioning -->
+                    
+                    <img src="https://www.netclipart.com/pp/m/14-149044_use-these-free-coin-clip-art-for-your.png" width="250" height="200" style="vertical-align:middle"/>
+                </div>
+            </div> <!-- /row -->
+            
+            
+            <!-- Second row: buttons, resources, and upgrades -->
+            <div class="row mt-5">
+              
+                <!-- Button and resource counts -->
+                
+                <div class="col"></div>
+                
+                <div class="col-lg-4 paper-back">
+                    <b>Tavern Information</b>
+                    
+                    <div class="mt-3">
+                        Drink strength: <span id="num-drink-strength">1</span>
+                    </div>
+                    
+                    <div>
+                        Staff: <span id="num-staff">1</span>
+                    </div>
+
+                    <div class="hidden-block" id="barbarian-income-display">
+                        Barbarian Income: <span id="barbarian-income"> 0 </span>
+                    </div>
+                    
+                    <div class="hidden-block" id="bard-income-display">
+                        Bard Income: <span id="bard-income"> 0 </span>
+                    </div>
+                    
+                    <div class="hidden-block" id="knight-income-display">
+                        Knight Income: <span id="knight-income"> 0 </span>
+                    </div>
+                    
+                </div>
+                
+                <div class="col"></div>
+                
+                <!-- Upgrades column -->
+                <div class="col-lg-5 paper-back">
+                    <b>Tavern Upgrades</b>
+                    
+                    <div class="upgrade-block mt-3" id="stronger-drinks" onclick="buyStrongerDrinks()">
+                        <span class="float-left">Stronger drinks</span>
+                        <span class="float-right" id="stronger-drinks-cost">10</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Double the strength of button clicks</span>
+                    </div>
+                    
+                    <div class="upgrade-block mt-3" id="num-staff" onclick="buyIncreaseStaff()">
+                        <span class="float-left">More staff</span>
+                        <span class="float-right" id="increase-staff-cost">100</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Increase the amount of staff working the tavern.</span>
+                    </div>
+                    
+                    <div class="upgrade-block hidden-block mt-3" id="barbarian" onclick="buyBarbarianPatron()">
+                        <span class="float-left">Barbarian</span>
+                        <span class="float-right" id="barbarian-patron-cost">100</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Unlock the Barbarian to increase the number of drinks bought!</span>
+                    </div>
+                    
+                    <div class="upgrade-block hidden-block mt-3" id="bard" onclick="buyBardPatron()">
+                        <span class="float-left">Bard</span>
+                        <span class="float-right" id="bard-patron-cost">100</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Unlock the Bard to increase the number of drinks bought!</span>
+                    </div>
+                    
+                    <div class="upgrade-block hidden-block mt-3" id="knight" onclick="buyKnightPatron()">
+                        <span class="float-left">Knight</span>
+                        <span class="float-right" id="knight-patron-cost">100</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Unlock the Knight to increase the number of drinks bought!</span>
+                    </div>
+                    
+                    <div class="upgrade-block mt-3" id="increase-tavern-size" onclick="buyIncreaseTavernSize()">
+                        <span class="float-left">Bigger tavern</span>
+                        <span class="float-right" id="increase-tavern-size-cost">500</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Increase the size of the tavern and unlock new patrons.</span>
+                    </div>
+                    
+                    <div class="upgrade-block hidden-block mt-3" id="retire" onclick="buyRetire()">
+                        <span class="float-left">Retire</span>
+                        <span class="float-right" id="retire-cost">150000</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Complete your quest of becoming the greatest tavernkeep and retire.</span>
+                    </div>
+                </div>
+                
+                <div class="col"></div>
+            </div> <!-- /row -->
+            
+            <!-- Instructions and Information -->
+            <div class="row mt-5">
+                <div class="col"></div>
+                <div class="col-lg-7 overflow-auto paper-back" id="instructions">
+                    <b> Instructions </b>
+                    <p>
+                        Welcome to the Adventurer's Tavern!
+                        <br><br>
+                        Adventurer's Tavern is a clicker-style game where the goal is to become the greatest tavernkeep and retire.
+                        To complete this goal, you need to do what every tavern does: <b>sell drinks</b> and <b>gather patrons</b>.
+                        <br><br>
+                        Your <b>gold income</b> is based on your <b>drink strength</b> and the size of your tavern's <b>staff</b>.
+                        Each staff member will produce an income based on your drink strength every time you sell a drink.
+                        You can upgrade your drink strength, the number of staff you have working your tavern, and the <b>tavern size</b>.
+                        <br><br>
+                        When your tavern grows in size, you can unlock a new patron: the <b>barbarian</b>, the <b>bard</b>, then finally the <b>knight</b>.
+                        Once you obtain a patron, staff members will automatically collect gold from them without you having to sell drinks manually.
+                        <br><br>
+                        Once your tavern has grown to its maximum capacity, you can save up gold in order to <b>retire</b> as the greatest tavernkeep.
+                        <br><br>
+                        HOWEVER, there is more! What is a tavern without a <b>feast</b> for the adventurers! 
+                        As you sell drinks, you will generate feast power, which will you to hold a feast when you generate enough.
+                        Feasts will give you a huge boost in gold income based on the patrons you have as well as the staff members.
+                        <br><br>
+                        Now get to it, novice tavernkeep. You have a tavern to run!
+                    </p>
+                </div>  
+                <div class="col"></div>
+            </div> <!-- /row -->
+            
+            <!-- Log and achievements -->
+            <div class="row mt-5 stone-back">
+                <div class="col"></div>
+                <div class="col-lg-6 overflow-auto small-text paper-back" id="achievements">
+                    <p class="center"><b> Adventurer's Tavern Accolade Board </b></p>
+                </div>   
+                <div class="col"></div>
+            </div>  <!-- /row -->
+            
+        </div> <!-- /container -->
+        
+        
+        <!-- JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  
+        <script>
+        
+            //*** THE NUMBER: make this go up ***//
+            let number = 0; 
+            let feastCount = 0;
+            let feastPowerMax = 50;
+        
+            //** Resources ***//
+        
+            // Increase the counter by this much on each button click
+            let clickIncrement = 1;
+            let staff = 1;
+
+            // Automatically increment by this much every second
+            let autoclickers = 0;
+            
+            // Initial costs to buy upgrades
+            
+            let strongerDrinksCost = 10;
+            let staffCost = 100;
+            let barbarianPatronCost = 100;
+            let bardPatronCost = 100;
+            let knightPatronCost = 100;
+            let increaseTavernSizeCost = 500;
+            let retireCost = 150000;
+            
+            // Amount of money patrons give as gold income
+            
+            let barbarianIncome = 0;
+            let bardIncome = 0;
+            let knightIncome = 0;
+            
+            //*** Achievement object ***//
+            achievements = {tavernKeeping101: false, another: false, thoseWhoSayNi: false, taleToTell: false, growExpand: false, youNeedAdditionalPylons: false, retire: false, letThemEatCake: false};
+            
+            // Initial level of tavern for unlocking patrons 
+            let tavernLevel = 0;
+            
+            // Initializing whether the player has retired or not
+            let hasRetired = false;
+            let heldFirstFeast = false;
+            
+            //*** Change function ***//
+            //
+            // Called by any action that changes the number
+            //
+            // amount: the amount to increment or decrement
+            function changeNumber(amount) {
+                number += amount;
+                
+                // Update the number field    
+                document.getElementById("number").innerHTML = number;
+            }
+            
+            
+            //*** Upgrade purchase functions ***//
+            //
+            // Each of these is triggered by clicking on its relevant
+            // name in the Upgrades menu
+            
+            //*** Buy an autoclicker ***//
+            function buyBarbarianPatron() {
+                // Check that the number is big enough to purchase
+                if (number < barbarianPatronCost) {
+                    return;
+                }
+                
+                // Reduce the number to pay for the upgrade
+                changeNumber(-barbarianPatronCost);
+                
+                // Increase barbarian income
+                barbarianIncome += 20;
+                document.getElementById("barbarian-income").innerHTML = barbarianIncome;
+                
+                // Upgrade cost scales nonlinearly
+                // There's nothing special about this function choice    
+                barbarianPatronCost = Math.round(2 * Math.pow(barbarianPatronCost, 1.15));
+                document.getElementById("barbarian-patron-cost").innerHTML = barbarianPatronCost;
+            }
+            
+            function buyBardPatron() {
+                // Check that the number is big enough to purchase
+                if (number < bardPatronCost) {
+                    return;
+                }
+                
+                // Reduce the number to pay for the upgrade
+                changeNumber(-bardPatronCost);
+                
+                // Increase bard income
+                bardIncome += 20;
+                document.getElementById("bard-income").innerHTML = bardIncome;
+                
+                
+                // Upgrade cost scales nonlinearly
+                // There's nothing special about this function choice    
+                bardPatronCost = Math.round(2 * Math.pow(bardPatronCost, 1.15));
+                document.getElementById("bard-patron-cost").innerHTML = bardPatronCost;
+            }
+            
+            function buyKnightPatron() {
+                // Check that the number is big enough to purchase
+                if (number < knightPatronCost) {
+                    return;
+                }
+                
+                // Reduce the number to pay for the upgrade
+                changeNumber(-knightPatronCost);
+                
+                // Increase knight income
+                knightIncome += 20;
+                document.getElementById("knight-income").innerHTML = knightIncome;
+                
+                // Upgrade cost scales nonlinearly
+                // There's nothing special about this function choice    
+                knightPatronCost = Math.round(2 * Math.pow(knightPatronCost, 1.15));
+                document.getElementById("knight-patron-cost").innerHTML = knightPatronCost;
+            }
+            
+            //*** Increase drink strength ***//
+            function buyStrongerDrinks() {
+                if (number < strongerDrinksCost) {
+                    return;
+                }
+                
+                changeNumber(-strongerDrinksCost);
+                
+                clickIncrement *= 2;
+                document.getElementById("num-drink-strength").innerHTML = clickIncrement;
+                
+                strongerDrinksCost = Math.round(Math.pow(strongerDrinksCost, 1.35));
+                document.getElementById("stronger-drinks-cost").innerHTML = strongerDrinksCost;
+            }
+            
+            //*** Increase tavern size ***//
+            function buyIncreaseTavernSize() {
+                if (number < increaseTavernSizeCost) {
+                    return;
+                }
+                
+                changeNumber(-increaseTavernSizeCost);
+                
+                tavernLevel += 1;
+                
+                checkPatrons(tavernLevel);
+                
+                increaseTavernSizeCost = Math.round(2 * Math.pow(increaseTavernSizeCost, 1.2));
+                document.getElementById("increase-tavern-size-cost").innerHTML = increaseTavernSizeCost;
+            }
+            
+            //*** Increase staff ***//
+            function buyIncreaseStaff() {
+                if (number < staffCost) {
+                    return;
+                }
+                
+                changeNumber(-staffCost);
+                
+                staff += 1;
+                document.getElementById("num-staff").innerHTML = staff;
+                
+                staffCost = Math.round(2 * Math.pow(staffCost, 1.1));
+                document.getElementById("increase-staff-cost").innerHTML = staffCost;
+            }
+            
+            //*** Check achievements ***//
+            //
+            // Runs every cycle and posts any new achievements to the log
+            function checkAchievements() {
+                if (number >= 1 && !achievements.tavernKeeping101) {
+                    achievements.tavernKeeping101 = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Tavernkeeping 101</b>: You have sold your first drink!";
+                }
+                
+                if (barbarianIncome > 0 && !achievements.another) {
+                    achievements.another = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Another!</b>: Unlock the Barbarian Patron.";
+                }
+                
+                if (bardIncome > 0 && !achievements.taleToTell) {
+                    achievements.taleToTell = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Oh do I have a tale to tell!</b>: Unlock the Bard Patron.";
+                }
+                
+                if (knightIncome > 0 && !achievements.thoseWhoSayNi) {
+                    achievements.thoseWhoSayNi = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Those who say Ni!</b>: Unlock the Knight Patron.";
+                }
+                
+                if (tavernLevel === 1 && !achievements.growExpand) {
+                    achievements.growExpand = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Grow...EXPAND!</b>: Increase the tavern level for the first time.";
+                }
+                
+                if (tavernLevel === 3 && !achievements.youNeedAdditionalPylons) {
+                    achievements.youNeedAdditionalPylons = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>You need additional Pylons!</b>: Maximize the tavern level.";
+                }
+                
+                if (hasRetired && !achievements.retire) {
+                    achievements.retire = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Retire!</b>: Complete your quest to become the greatest tavernkeep.";
+                }
+                
+                if (heldFirstFeast && !achievements.letThemEatCake) {
+                    achievements.letThemEatCake = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Let them eat cake...</b>: Hold your first feast.";
+                }
+            }
+            
+            //*** Check patrons ***//
+            function checkPatrons(tavernLevel) {
+                if (tavernLevel === 1) {
+                    document.getElementById("barbarian").style.display = "block";
+                    document.getElementById("barbarian-income-display").style.display = "block";
+                }
+                
+                if (tavernLevel === 2) {
+                    document.getElementById("bard").style.display = "block";
+                    document.getElementById("bard-income-display").style.display = "block";
+                }
+                
+                if (tavernLevel === 3) {
+                    document.getElementById("knight").style.display = "block";
+                    document.getElementById("knight-income-display").style.display = "block";
+                    
+                    document.getElementById("increase-tavern-size").style.display = "none";
+                    document.getElementById("retire").style.display = "block";
+                }
+            }
+            
+            //*** Calculate autoclicker ***//
+            function calculateAutoclickers() {
+                autoclickers = (barbarianIncome + bardIncome + knightIncome) * staff;
+            }
+            
+            //*** Perform the feast feature ***//
+            function performFeast() {
+                if (feastCount < feastPowerMax) {
+                    return;
+                }
+                
+                heldFirstFeast = true;
+                
+                let feastIncome;
+                if ((barbarianIncome + bardIncome + knightIncome) === 0) {
+                    feastIncome = 10 * staff * clickIncrement;
+                } else {
+                    feastIncome = (barbarianIncome + bardIncome + knightIncome) * staff * clickIncrement;
+                }
+                
+                changeNumber(feastIncome);
+                feastCount = 0;
+                document.getElementById("feast-power").innerHTML = 0;
+            }
+            
+            //*** Retire and complete the game ***//
+            function buyRetire() {
+                if (number < retireCost) {
+                    return;
+                }
+                
+                changeNumber(-retireCost);
+                hasRetired = true;
+                
+                alert("You have retired and become the greatest tavernkeep! You are going to retire with " + number + " gold!");
+            }
+            
+            
+            //*** Sell drinks and calculate gold income***//
+            function sellDrinks() {
+                changeNumber(clickIncrement * staff);
+                
+                feastCount++;
+                document.getElementById("feast-power").innerHTML = feastCount;
+            }
+            
+            //*** Main loop ***//
+            //
+            // Function runs every 1000 ms
+            
+            window.setInterval(function() {
+                calculateAutoclickers();
+                changeNumber(autoclickers);
+                checkAchievements();
+            }, 1000);
+            
+        </script>
+  
+    </body>
+    
+</html>
