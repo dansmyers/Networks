@@ -21,11 +21,13 @@
                 [0,10,"num-autopoppers","autopopper-cost",1], // poppers
                 [0,100,"num-thumbTackCannons","thumbTackCannon-cost",5], // tack
                 [0,500,"num-kindergartenClass","kindergartenClass-cost",10], // kindergarteners
-                [0,2500,"num-porcupines","porcupines-cost",25]
+                [0,2500,"num-porcupines","porcupines-cost",25], // porcupines-cost
+                [0,10000,"num-seaUrchin","seaUrchin-cost",100], // sea urchins
+                [0,100000,"num-knifeFactory","knifeFactory-cost",1000] // knife factory
                 ];
             
             //*** Achievement object ***//
-            achievements = {upAndRunning: false, industrialRevolution: false};
+            achievements = {upAndRunning: false, industrialRevolution: false, classInSession:false, secondIndustrialRevolution: false, animalAbuse: false, childAbuse: false};
             
             
             //*** Change function ***//
@@ -102,6 +104,34 @@
                     
                     document.getElementById("achievements").innerHTML +=
                         "<br/> <b>Industrial revolution</b>: Buy an autoclicker";
+                }
+                
+                if (upgradeInfo[2][0] >= 1 && !achievements.classInSession) {
+                    achievements.classInSession = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Class is in session</b>: Buy a kindergarten class";
+                }
+                
+                if (upgradeInfo[5][0] >= 1 && !achievements.secondIndustrialRevolution) {
+                    achievements.secondIndustrialRevolution = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Second industrial revolution</b>: Buy a knife factory";
+                }
+                
+                if (upgradeInfo[3][0] >= 1 && upgradeInfo[4][0] >= 1 && !achievements.animalAbuse) {
+                    achievements.animalAbuse = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Animal abuse</b>: Buy a prickle of porcupines and a sea urchin aquarium";
+                }
+                
+                if (upgradeInfo[3][0] >= 1 && !achievements.childAbuse) {
+                    achievements.childAbuse = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Child labor</b>: Buy 10 kindergarten classes (is this even legal?)";
                 }
             }
             
