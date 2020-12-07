@@ -127,7 +127,7 @@
                         "<br/> <b>Animal abuse</b>: Buy a prickle of porcupines and a sea urchin aquarium";
                 }
                 
-                if (upgradeInfo[3][0] >= 1 && !achievements.childAbuse) {
+                if (upgradeInfo[3][0] >= 10 && !achievements.childAbuse) {
                     achievements.childAbuse = true;
                     
                     document.getElementById("achievements").innerHTML +=
