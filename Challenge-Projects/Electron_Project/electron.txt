@@ -1,0 +1,4 @@
+For this project, I made a simple web application that allows a user to create events through the application menu at the top of the screen. By click this option or using the command+ shortcut on Mac, one can open a new window that allows a user to make an event to be added to the travel itinerary. Under the file tab, users can also delete all events or quit the app. Developer tools are also available as well as being able to reload the app. Double clicking an event will remove an individual event from the itinerary.
+
+
+
