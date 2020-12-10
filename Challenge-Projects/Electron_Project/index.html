@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <style>
+
+        .header {
+            text-align: center;
+            background-color: darksalmon;
+            color: whitesmoke;
+        }
+
+
+
+    </style>
+
+    <title>Travel Itinerary</title>
+</head>
+<body>
+    <!--Create Container-->
+
+    <div class="container">
+
+        <!--Create a row-->
+
+        <div class="row header">
+
+            <!--Create col-lg-12 -->
+
+            <div class="col-lg-12">
+                <h1>Travel Itinerary</h1>
+            </div>
+            <!--Close col-lg-12-->
+        </div>
+        <!-- close row-->
+
+        <!--open new row-->
+
+        <div class="row">
+            <!--Open new col-lg-12-->
+            <div class="col-lg-12">
+
+                <ul>
+
+
+                </ul>
+
+                <script>
+                const electron = require('electron');
+                const {ipcRenderer} = electron;
+
+                const ul = document.querySelector('ul');
+
+                // Catch the items from the addEvent Window
+
+                ipcRenderer.on('item:add', function(e,items){
+                
+                // Create Li, create text node and then append it to the li
+                const li = document.createElement('li');
+                const separator = ' at Time: ';
+                const itemText = document.createTextNode(items[0]);
+                const itemSeparator = document.createTextNode(separator);
+                const itemText2 = document.createTextNode(items[1]);
+
+                li.appendChild(itemText);
+                li.appendChild(itemSeparator);
+                li.appendChild(itemText2);
+                ul.appendChild(li);
+
+                });
+
+                // Clear ALL items
+
+                ipcRenderer.on('item:clear', function(){
+                    // Create ul
+
+                    ul.innerHTML = '';
+
+                });
+
+                // Remove a specific item
+
+                ul.addEventListener('dblclick', removeItem);
+        
+                function removeItem(e) {
+                    e.target.remove();
+                }
+
+                </script>
+            </div>
+            <!--Close col-->
+        </div>
+        <!--close row-->
+    </div>
+    <!--Close container-->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+</body>
+</html>
