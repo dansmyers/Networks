@@ -6,19 +6,26 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Fishing Game!</title>
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         
         <style>
+            html{
+                height: 100%;
+            }
+
             body {
                 font-size: 15pt;
                 font-family: Helvetica, Arial, sans-serif;
+                background-image: linear-gradient(120DEG, #008BCF, #FFFFFF);
+                background-repeat: no-repeat;
             }
             
             /* Change upgrade blocks when the user mouses over them */
             .upgrade-block:hover {
-                color: #0275d8;  /* Bootstrap primary blue */
+                color: #bb0505;  /* Bootstrap primary blue */
                 cursor: pointer;  /* Make mouse into a finger */
             }
             
@@ -48,7 +55,7 @@
             <!-- First row: title and main number -->
             <div class="row mt-5">
                 <div class="col-lg-12">
-                    <h1 class="float-left">Incremental Game</h1>  
+                    <h1 class="float-left">Ultimate Fisherman!</h1>  
                     
                     <h1 id="number" class="float-right">0</h1>
                     
@@ -64,15 +71,23 @@
                 <div class="col-lg-7">
                       
                     <button class="btn btn-dark" id="click" onclick="changeNumber(clickIncrement)">
-                        Click to increase the number
+                        Catch Fish
                     </button>
                     
                     <div class="mt-5">
-                        Finger strength: <span id="num-finger-strength">1</span>
+                        Number of Workers: <span id="num-finger-strength">1</span>
                     </div>
 
                     <div>
-                        Autoclickers: <span id="num-autoclickers">0</span>
+                        Automated Rods: <span id="num-autoclickers">0</span>
+                    </div>
+
+                    <div>
+                        Fisherboats: <span id="num_fisherboats">0</span>
+                    </div>
+
+                    <div>
+                        Automated Rods: <span id="num_automated_rods">0</span>
                     </div>
                     
                 </div>
@@ -82,7 +97,7 @@
                 <div class="col-lg-5">
                                       
                     <div class="upgrade-block" id="autocoder" onclick="buyAutoclicker()">
-                        <span class="float-left">Autoclicker</span>
+                        <span class="float-left">Hire Fisherman</span>
                         <span class="float-right" id="autoclicker-cost">10</span>
                         
                         <div class="clear"></div> <!-- Required to reset float positioning -->
@@ -91,9 +106,20 @@
                         
                         <span class="small-text">Clicks once per second</span>
                     </div>
+
+                    <div class="upgrade-block mt-3" id="trainFisherman" onclick="trainFisherman()">
+                        <span class="float-left">Train Fisherman</span>
+                        <span class="float-right" id="trainFishermanCost">50</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Doubles fish per second</span>
+                    </div>
                     
                     <div class="upgrade-block mt-3" id="stronger-fingers" onclick="buyStrongerFingers()">
-                        <span class="float-left">Stronger fingers</span>
+                        <span class="float-left">Set up Automated Line</span>
                         <span class="float-right" id="stronger-fingers-cost">100</span>
                         
                         <div class="clear"></div> <!-- Required to reset float positioning -->
@@ -101,6 +127,50 @@
                         <br/>
                         
                         <span class="small-text">Double the strength of button clicks</span>
+                    </div>
+
+                    <div class="upgrade-block mt-3" id="fisherboat" onclick="buyFisherboat()">
+                        <span class="float-left">Hire Fisherboat</span>
+                        <span class="float-right" id="fisherboat_cost">1000</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Adds 100 fish every 30 seconds</span>
+                    </div>
+
+                    <div class="upgrade-block mt-3" id="upgradeFisherboat" onclick="upgradeFisherboat()">
+                        <span class="float-left">Upgrade Fisherboat</span>
+                        <span class="float-right" id="upgradeFisherboat-cost">50000</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Clicks once per second</span>
+                    </div>
+
+                    <div class="upgrade-block mt-3" id="robotFish" onclick="buyRobotFish()">
+                        <span class="float-left">Build Robot Fish</span>
+                        <span class="float-right" id="robotFishCost">100000</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Robot fish catches 500 fish every minute</span>
+                    </div>
+
+                    <div class="upgrade-block mt-3" id="updateRobotOS" onclick="upgradeRobotOS()">
+                        <span class="float-left">Upgrade Robot OS</span>
+                        <span class="float-right" id="upgradeRobotOS-cost">5000000</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Clicks once per second</span>
                     </div>
         
                 </div>
@@ -136,6 +206,22 @@
             // Automatically increment by this much every second
             let autoclickers = 0;            
             let autoclickerCost = 10;
+            let autoclickerEfficiency = 1000;
+            let autoclickerEfficiencyCost = 50;
+            let interval_ID;
+            let first = true;
+
+            // Increase the counter by fisherboat amount every 30 seconds
+            let fisherboat = 0;
+            let fisherboatCost = 1000;
+            let fisherboatEfficiency = 30000;
+            let fisherboatEfficiencyCost = 50000;
+
+            // Increase the counter by robot fish amount every minute
+            let robotFish = 0;
+            let robotFishCost = 100000;
+            let robotFishEfficiency = 100000;
+            let robotFishEfficiencyCost = 5000000;
             
             //*** Achievement object ***//
             achievements = {upAndRunning: false, industrialRevolution: false};
@@ -165,6 +251,13 @@
                 if (number < autoclickerCost) {
                     return;
                 }
+
+                if(first)
+                {
+                    first = false;
+
+                    setFishermanTimer(autoclickerEfficiency);
+                }
                 
                 // Reduce the number to pay for the upgrade
                 changeNumber(-autoclickerCost);
@@ -177,6 +270,26 @@
                 // There's nothing special about this function choice    
                 autoclickerCost = Math.round(2 * Math.pow(autoclickerCost, 1.25));
                 document.getElementById("autoclicker-cost").innerHTML = autoclickerCost;
+            }
+
+            // upgrades the fishermans efficiency
+            function trainFisherman()
+            {
+                if(number < autoclickerEfficiencyCost)
+                {
+                    return;
+                }
+
+                changeNumber(-autoclickerEfficiencyCost);
+
+                autoclickerEfficiency /= 2;
+
+                clearInterval(interval_ID);
+
+                setFishermanTimer(autoclickerEfficiency);
+                //console.log(autoclickerEfficiency);
+                autoclickerEfficiencyCost = Math.round(2 * Math.pow(autoclickerEfficiencyCost, 1.25));
+                document.getElementById("trainFishermanCost").innerHTML = autoclickerEfficiencyCost;
             }
             
             //*** Increase finger strength ***//
@@ -192,6 +305,39 @@
                 
                 strongerFingersCost = Math.round(2 * Math.pow(strongerFingersCost, 1.1));
                 document.getElementById("stronger-fingers-cost").innerHTML = strongerFingersCost;
+            }
+
+            //*** Buy a fisher boat for huge fish catching abilities ***//
+            function buyFisherboat()
+            {
+                if(number < fisherboatCost)
+                {
+                    return;
+                }
+
+                changeNumber(-fisherboatCost);
+
+                fisherboat += 1;
+                document.getElementById("num_fisherboats").innerHTML = fisherboat;
+
+                fisherboatCost = Math.round(2 * Math.pow(fisherboatCost, 1.29));
+                document.getElementById("fisherboat_cost").innerHTML = fisherboatCost;
+            }
+
+            function buyRobotFish()
+            {
+                if(number < robotFishCost)
+                {
+                    return;
+                }
+
+                changeNumber(-robotFishCost)
+
+                robotFish += 1;
+                document.getElementById("num_robot_fish").innerHTML = robotFish;
+
+                robotFishCost = Math.round(2 * Math.pow(robotFishCost, 1.3));
+                document.getElementById("robotFishCost").innerHTML = robotFishCost;
             }
             
             //*** Check achievements ***//
@@ -219,9 +365,27 @@
             // Function runs every 1000 ms
             
             window.setInterval(function() {
-                changeNumber(autoclickers);
+                console.log("running");
+                //changeNumber(autoclickers);
                 checkAchievements();
-            }, 1000);
+            }, autoclickerEfficiency);
+
+            function setFishermanTimer(time)
+            {
+                interval_ID = window.setInterval(function() {
+                    changeNumber(autoclickers);
+                }, time)  
+            }
+
+            window.setInterval(function(){
+                console.log("running from the 30 seconds");
+                changeNumber(fisherboat * 100);
+            }, fisherboatEfficiency);
+
+            window.setInterval(function(){
+                console.log("running from the 1 minute");
+                changeNumber(robotFish * 500);
+            }, robotFishEfficiency)
             
         </script>
   
