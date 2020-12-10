@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.7/chartist.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Morning Dashboard</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+        <p class="navbar-brand mb-0 h1 w-100 text-center">Morning Dashboard</p>
+    </nav>
+    <div class="container">
+
+      <!-- row with weather and covid stats -->
+      <div class="row apps">
+        <!-- weather app -->
+        <div class="col-md-6 weather-app">
+            <div class="location pt-3">
+                <h1 class="location-timezone pt-1">Location...</h1>
+                <img class="icon" width="128" height="128" src="http://openweathermap.org/img/w/01d.png"></img>
+            </div>
+            <div class="temp">
+                <div class="degree-section">
+                   <h2 class="temp-degree">75</h2>
+                   <span>F</span>
+                </div>
+                <div class="temp-description font-weight-light">Description...</div>
+            </div>
+          </div>
+        <!-- end weather app -->
+
+        <div class="col-md-6 covid-app">
+          <div>
+              <h1 class="pt-3 news-title">Covid News...</h1>
+              <p class="date-time font-weight-light">Date and Time...</p>
+          </div>
+          <div class="stats">
+            <!-- positive cases || Total number of confirmed plus probable cases of COVID-19 reported by the state or territory  -->
+            <div class="row">
+              <div class="col-12">
+                <p class="pr-3 font-italic font-weight-bold">Total cases: </p>
+                <p class="total-cases">0</p>
+              </div>
+
+            </div>
+            <!-- positveIncrease || new cases -->
+            <div class="row">
+              <div class="col-12">
+                <p class="pr-3 font-italic font-weight-bold">New cases: </p>
+                <p class="new-cases">0</p>
+              </div>
+            </div>
+
+            <!-- Total fatalities with confirmed OR probable COVID-19 case diagnosis-->
+            <div class="row">
+              <div class="col-12">
+                <p class="pr-3 font-italic font-weight-bold">Total fatalities: </p>
+                <p class="total-deaths">0</p>
+              </div>
+            </div>
+            <!--Daily increase in death, calculated from the previous day’s value.  -->
+
+          </div> <!--end stats -->
+        </div> <!-- end weather and covid row-->
+      </div><!-- end news and other row-->
+
+        <!-- row with news app and chart -->
+      <div class="row apps2">
+          <!-- covid app -->
+          <div class="col-md-6 covid-chart ">
+            <div class"row">
+                <h3 class="chart-title pb-5 pt-4">New covid cases the last 30 days</h3>
+                <div id="chart01" class="ct-chart ct-square"></div>
+              <div  class="col-sm-6 text-center"></div>
+            </div>
+          </div><!-- end news app-->
+
+          <!-- news app -->
+          <div class="col-md-6 news-app">
+            <div class="news-header">
+              <h3 class="pt-4">5 new articles on <span class="search-word">'covid'</span></h3>
+              <p class="font-weight-light">Enter a search word</p>
+              <div class="pb-3">
+                <input type="text" id="inputBox" />
+                <button type="button" id="submitButton" onclick="searchWord()"> Submit </button>
+              </div>
+            </div>
+
+
+              <div class="headlines">
+
+                  <a href= "google.com" class="headline-1 hl">Headline 1</a>
+                  <br></br>
+                  <a href="" class="headline-2 hl">Headline 2</a>
+                  <br></br>
+                  <a href="" class="headline-3 hl">Headline 3</a>
+                  <br></br>
+                  <a href="" class="headline-4 hl">Headline 4</a>
+                  <br></br>
+                  <a href="" class="headline-5 hl">Headline 5</a>
+
+              </div>
+          </div> <!--end news app -->
+
+
+           <!-- end of chart-->
+
+      </div> <!--end row of chart and news-->
+
+      <div class="row only-quote text-center">
+        <div class="col-12 quote">
+          <div class="jokeContainer">
+              <h4>Random Dad Joke:</h4>
+            <div class="joke"></div>
+            <div class="btn">Get Another</div>
+          </div>
+        </div>
+      </div>
+
+    </div> <!--end container-->
+
+    <!-- Optional JavaScript -->
+
+    <script src="covid.js"></script>
+    <script src="weather.js">></script>
+    <script src="joke.js"></script>
+    <script src="news.js">
+
+    </script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.7/chartist.min.js">
+
+    </script>
+  </body>
+</html>

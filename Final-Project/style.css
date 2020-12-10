@@ -1,0 +1,138 @@
+
+.title{
+  width: 100%;
+  font-size: 25px;
+  height: 50px;
+  text-align: center;
+}
+
+/* weather -------------------------------------- */
+.weather-app{
+  background-color: #f1f3f8;
+  text-align: center;
+}
+
+.temp{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.temp{
+    flex-direction: column;
+}
+
+.degree-section{
+    display: flex;
+    align-items: center;
+}
+
+.degree-section span {
+    margin: 10px;
+    font-size: 30px;
+}
+
+.degree-section h2 {
+    font-size: 40px;
+}
+
+/* covid ------------------------------------------- */
+.covid-app{
+  background-color: #d6e0f0;
+  text-align: center;
+
+}
+
+
+/* covid ------------------------------------------- */
+.covid-chart{
+  background-color:  #e6ecff;
+  text-align: center;
+}
+
+
+.apps2{
+  height: 600px;
+}
+
+/* news ------------------------------------------ */
+
+.news-app{
+ background-color:  #e6f2ff;
+ width: 100%;
+}
+
+.news-header{
+  text-align: center;
+}
+
+.hl{
+  padding-top: 5px;
+}
+.headlines{
+  font-size: 18px;
+  padding: 20px 15px;
+  padding-left: 60px;
+  font-style: italic;
+}
+
+a{
+  color: black;
+
+}
+a:hover {
+  color: #6e7891;
+}
+
+#submitButton {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+	background-color:#f9f9f9;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+
+  height: 33.3px;
+}
+#submitButton:hover {
+	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+	background-color:#e9e9e9;
+}
+#submitButton:active {
+	position:relative;
+	top:1px;
+}
+/* ----------------------------------------------- */
+.jokeContainer{
+  padding-top: 30px;
+  color: #d6e0f0;
+}
+.jokeContainer h4 {
+
+  padding-bottom: 10px;
+  color: #525252;
+}
+.jokeContainer .btn{
+  font-style: italic;
+  color:#f1f3f8;
+}
+.only-quote{
+  height: 130px;
+}
+.quote{
+  background-color: #8d93ab;
+}
+
+@media (max-width: 767px) {
+    .only-quote{
+        display:none;
+    }
+}
