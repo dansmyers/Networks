@@ -53,7 +53,7 @@ if(navigator.geolocation){
 
 }else{
     console.log("error");
-    h1.textContent = "Can't get location"
+    alert("Can't get location");
 }
 
 
