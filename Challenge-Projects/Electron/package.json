@@ -1,0 +1,14 @@
+{
+  "name": "stickynote",
+  "version": "1.0.0",
+  "description": "Sticky Note App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "RLS",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^11.0.4"
+  }
+}
