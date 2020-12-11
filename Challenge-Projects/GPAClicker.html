@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+   
+    <head>
+
+        <title>GPA Clicker</title>
+       
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+       
+       
+        <style>
+            body {
+                font-size: 15pt;
+                font-family: Helvetica, Arial, sans-serif;
+            }
+           
+            /* Change upgrade blocks when the user mouses over them */
+            .upgrade-block:hover {
+                color: #0275d8;  /* Bootstrap primary blue */
+                cursor: pointer;  /* Make mouse into a finger */
+            }
+           
+            .float-left {
+                float: left;
+            }
+           
+            .float-right {
+                float: right;
+            }
+       
+            .small-text {
+                font-size: .85em;
+            }
+           
+            #achievements {
+                height: 250px;
+            }
+
+            #title {
+                color: red;
+            }
+
+            #top-bar {
+                background-color: #F1D592;
+            }
+       
+        </style>
+    </head>
+   
+
+    <!-- Image and text -->
+    <nav class="navbar navbar-light" id="top-bar">
+        <a class="navbar-brand" href="#">
+        
+        GPA Clicker
+        </a>
+  </nav>
+   
+    <body>
+
+        <div class="container">
+           
+            
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <h1 class="float-left" id="title">GPA Clicker</h1> 
+                   
+                    <h1 id="number" class="float-right">0</h1>
+                   
+                    <div class="clear"></div> 
+                </div>
+            </div>
+           
+           
+            <!-- Second row: buttons, resources, and upgrades -->
+            <div class="row mt-5">
+             
+                <!-- Button and resource counts -->
+                <div class="col-lg-7">
+                     
+                    <button class="btn btn-dark" id="click" onclick="changeNumber(clickIncrement)">
+                        
+                        Click to boost GPA
+                        
+                    </button>
+                   
+                    <div class="mt-5">
+                        Points made per click: <span id="num-finger-strength">1</span>
+                    </div>
+
+                    <div>
+                        Number of HW: <span id="num-HW">0</span>
+                    </div>
+
+                    <div>
+                        Number of Tutors: <span id="num-tutors">0</span>
+                    </div>
+
+                    <div>
+                        Number of Challenge Projects: <span id="num-challenge-prokects">0</span>
+                    </div>
+                   
+                </div>
+               
+               
+                <!-- Upgrades column -->
+                <div class="col-lg-5">
+                    <h1><i class="fas fa-shopping-cart"></i>Supply Shop:</h1>
+                                     
+                    <div class="upgrade-block mt-3" id="autocoder" onclick="doHW()">
+                        <span class="float-left">Do your HW!</span>
+                        <span class="float-right" id="HW-cost">10</span>
+                       
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                       
+                        <br/>
+                       
+                        <span class="small-text">HW generates 1 GPA per second</span>
+                    </div>
+                   
+                    <div class="upgrade-block mt-3" id="stronger-fingers" onclick="hireTutor()">
+                        <span class="float-left">Higher a tutor</span>
+                        <span class="float-right" id="tutor-cost">10</span>
+                       
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                       
+                        <br/>
+                       
+                        <span class="small-text">Earns one extra GPA per click</span>
+                    </div>
+
+                    <div class="upgrade-block mt-3" id="challenge-project" onclick="doChallengeProject()">
+                        <span class="float-left">Complete a Challenge Project</span>
+                        <span class="float-right" id="CP-Cost">250</span>
+
+                        <div class="clear"></div>
+
+                        <br/>
+                        <span class="small-text">Doubles GPA per click</span>
+                    </div>
+       
+                </div>
+            </div> <!-- /row -->
+           
+           
+            <!-- Log and achievements -->
+            <div class="row mt-5">
+                <div class="col-lg-12 overflow-auto small-text" id="achievements">
+                    <i class="fas fa"></i>School Achievements:
+                </div>         
+            </div>  <!-- /row -->
+           
+        </div> <!-- /container -->
+       
+       
+        <!-- JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+ 
+        <script>
+       
+            //*** THE NUMBER: make this go up ***//
+            let number = 0;            
+       
+            //** Resources ***//
+       
+            // Increase the counter by this much on each button click
+            let clickIncrement = 1;
+
+            //New employees
+            let numOfTutors = 0;
+            let tutorCost = 10;
+
+            //new plants
+            let newChallengeProject = 250;
+            let numOfProjects = 0;
+
+           
+            // Automatically increment by this much every second
+            let HW = 0;            
+            let HWCost = 10;
+           
+            //*** Achievement object ***//
+            achievements = {firstDay: false, extraWERK: false, tutor: false};
+           
+           
+            //*** Change function ***//
+            //
+            // Called by any action that changes the number
+            //
+            // amount: the amount to increment or decrement
+            function changeNumber(amount) {
+                number += amount;
+               
+                // Update the number field    
+                document.getElementById("number").innerHTML = number;
+            }
+           
+           
+            //*** Upgrade purchase functions ***//
+            //
+            // Each of these is triggered by clicking on its relevant
+            // name in the Upgrades menu
+           
+            //*** Buy an autoclicker ***//
+            function doHW() {
+                // Check that the number is big enough to purchase
+                if (number < HWCost) {
+                    return;
+                }
+               
+                // Reduce the number to pay for the upgrade
+                changeNumber(-HWCost);
+               
+                // Add one more autoclicker
+                HW += 1;
+                document.getElementById("num-HW").innerHTML = HW;
+               
+                // Upgrade cost scales nonlinearly
+                // There's nothing special about this function choice    
+                HWCost = Math.round(2 * Math.pow(HWCost, 1.25));
+                document.getElementById("HW-cost").innerHTML = HWCost;
+            }
+           
+            function hireTutor() {
+                //check number is large enough to hire employee
+                if(number < tutorCost) {
+                    return;
+                }
+                //subtract the cost
+                changeNumber(-tutorCost);
+
+                //increment click
+                clickIncrement += 1;
+                document.getElementById("num-finger-strength").innerHTML = clickIncrement;
+
+                //add one to num employees;
+                numOfTutors += 1;
+                document.getElementById("num-tutors").innerHTML = numOfTutors;
+
+                //increase cost
+                tutorCost = Math.round(2 * Math.pow(employeeCost, 1.1));
+                document.getElementById("tutor-cost").innerHTML = tutorCost;
+
+
+
+            }
+
+            function doChallengeProject() {
+                if(number < newChallengeProject) {
+                    return;
+                }
+                //subtract cost from number
+                changeNumber(-newChallengeProject);
+
+                //Add one to number of plants
+                numOfProjects += 1;
+                document.getElementById("num-challenge-prokects").innerHTML = numOfProjects;
+
+                //double the click increment, increase finger-strength
+                clickIncrement *= 2;
+                document.getElementById("num-finger-strength").innerHTML = clickIncrement;
+               
+                newChallengeProject = Math.round(2 * Math.pow(newChallengeProject, 1.15));
+                document.getElementById("CP-Cost").innerHTML = newChallengeProject;
+            }
+
+           
+            //*** Check achievements ***//
+            //
+            // Runs every cycle and posts any new achievements to the log
+            function checkAchievements() {
+                if (number >= 1 && !achievements.firstDay) {
+                    achievements.firstDay = true;
+                   
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>First Day</b>: Put your name on it!";
+                }
+               
+                if (numOfProjects >= 1 && !achievements.extraWERK) {
+                    achievements.extraWERK = true;
+                   
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Extra WERK</b>: Complete a challenge Project";
+                }
+
+                if(numOfTutors >= 1 && !achievements.tutor) {
+                    achievements.tutor = true;
+                    document.getElementById("achievements").innerHTML += "<br/> <b>Apprentice</b>: Hire your first tutor";
+                }
+            }
+
+            //function to add new items to purchase
+            function checkStore() {
+                if(numOfTutors <= 2) {
+                    document.getElementById("challenge-project").style.display = "none";
+                }
+                else {
+                    document.getElementById("challenge-project").style.display = "block";
+                }
+            }
+
+
+            //*** Main loop ***//
+            //
+            // Function runs every 1000 ms
+           
+            window.setInterval(function() {
+                changeNumber(HW);
+                checkAchievements();
+                checkStore();
+            }, 1000);
+           
+        </script>
+ 
+    </body>
+   
+</html>
