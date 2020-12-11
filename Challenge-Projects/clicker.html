@@ -1,0 +1,427 @@
+<!doctype html>
+<html>
+    
+    <head>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
+        <style>
+            body {
+                font-size: 15pt;
+                font-family: Helvetica, Arial, sans-serif;
+                
+                background-image: url(clickerBackground.jpg) ; 
+               background-size:cover;
+               
+                
+            }
+            
+            /* Change upgrade blocks when the user mouses over them */
+            .upgrade-block:hover {
+                color: #0275d8;  /* Bootstrap primary blue */
+                cursor: pointer;  /* Make mouse into a finger */
+            }
+            
+            .float-left {
+                float: left;
+            }
+            
+            .float-right {
+                float: right;
+            }
+        
+            .small-text {
+                font-size: .85em;
+            }
+            
+            #achievements {
+                height: 250px;
+            }
+        
+        </style>
+    </head>
+   
+    <body>
+
+        <div class="container">
+            
+            <!-- First row: title and main number -->
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <h1 class="float-left">Doge Miner</h1>  
+                    
+                    <h1 id="number" class="float-right">0</h1>
+                    
+                    <div class="clear"></div> <!-- Required to reset float positioning -->
+                </div>
+            </div> <!-- /row -->
+            
+            
+            <!-- Second row: buttons, resources, and upgrades -->
+            <div class="row mt-5">
+              
+                <!-- Button and resource counts -->
+                <div class="col-lg-7">
+                      
+                    <div style="position: absolute; left: 500px; top: 20px;"> 
+                        <img src="doge.png" width="114" height="114" onclick="changeNumber(clickIncrement);" />
+                    </div>
+                    
+                    <div class="mt-5">
+                        Axe strength: <span id="num-finger-strength">1</span>
+                    </div>
+
+                    <div>
+                        Miners Output (per second): <span id="num-autoclickers">0</span>
+                    </div>
+                    
+                    <div>
+                        Tech Advancements: <span id="tech-adv">0</span>
+                    </div>
+                    <div>
+                        Overtimes Shifts: <span id="overtime">0</span>
+                    </div>
+                    <div>
+                        Demolitions: <span id="demo">0</span>
+                    </div>
+                    <div>
+                        Bitcoins: <span id="bitcoins">0</span>
+                    </div>
+                </div>
+                
+                
+                <!-- Upgrades column -->
+                <div class="col-lg-5">
+                                      
+                    <div class="upgrade-block" id="autocoder" onclick="buyAutoclicker()">
+                        <span class="float-left">Miner</span>
+                        <span class="float-right" id="autoclicker-cost">10</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Mines one coin per second</span>
+                    </div>
+                    
+                    <div class="upgrade-block mt-3" id="stronger-fingers" onclick="buyStrongerFingers()">
+                        <span class="float-left">Stronger Pickaxe</span>
+                        <span class="float-right" id="stronger-fingers-cost">100</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Double the strength of axe</span>
+                    </div>
+                    
+                    <div class="upgrade-block mt-3" id="tech-adv" onclick="buyTechAdv()">
+                        <span class="float-left">Technology Advancement</span>
+                        <span class="float-right" id="tech-adv-cost">100000</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Axe strength squares. </span>
+                    </div>
+                    <div class="upgrade-block mt-3" id="overtime" onclick="buyOvertime()">
+                        <span class="float-left">Miner Overtime</span>
+                        <span class="float-right" id="overtimeCost">500000</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Each miner increases their production by .5. </span>
+                    </div>
+                    <div class="upgrade-block mt-3" id="bitcoins" onclick="buyBitcoin()">
+                        <span class="float-left">Buy Bitcoin</span>
+                        <span class="float-right" id="bitcoinCost">?</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Buy bitcoin at the mystery market value for the potential to sell it at a higher value. </span>
+                    </div>
+                    <div class="upgrade-block mt-3" id="bitcoins" onclick="sellBitcoin()">
+                        <span class="float-left">Sell Bitcoin</span>
+                        <span class="float-right" id="bitcoinCost">?</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Liquidate your bitcoins at the mystery market value. </span>
+                    </div>
+                    <div class="upgrade-block mt-3" id="demo" onclick="buyMineDemo()">
+                        <span class="float-left">Demolition</span>
+                        <span class="float-right" id="demoCost">1000000000</span>
+                        
+                        <div class="clear"></div> <!-- Required to reset float positioning -->
+                        
+                        <br/>
+                        
+                        <span class="small-text">Demolish the mine since it has run out of coins.</span>
+                    </div>
+        
+                </div>
+            </div> <!-- /row -->
+            
+            
+            <!-- Log and achievements -->
+            <div class="row mt-5">
+                <div class="col-lg-12 overflow-auto small-text" id="achievements">
+                    ACHIEVEMENTS
+                </div>          
+            </div>  <!-- /row -->
+            
+        </div> <!-- /container -->
+        
+        
+        <!-- JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  
+        <script>
+        
+            //*** THE NUMBER: make this go up ***//
+            let number = 0;            
+        
+            //** Resources ***//
+        
+            // Increase the counter by this much on each button click
+            let clickIncrement = 1;
+            let strongerFingersCost = 100;
+            
+            // Automatically increment by this much every second
+            let autoclickers = 0;            
+            let autoclickerCost = 10;
+            let techAdv= 0;
+            let techCost= 100000;
+            let demoCost=1000000000;
+            let demo=0;
+            let overtime=0;
+            let overtimeCost=500000;
+            let bitcoins=0;
+            let bitcoinCost=0;
+            
+            //*** Achievement object ***//
+            achievements = {upAndRunning: false, industrialRevolution: false, miningCompany: false, miningConglomerate: false,cuttingEdge:false, freshStart:false, bestBoss:false };
+            
+            
+            //*** Change function ***//
+            //
+            // Called by any action that changes the number
+            //
+            // amount: the amount to increment or decrement
+            function changeNumber(amount) {
+                number += amount;
+                
+                // Update the number field    
+                document.getElementById("number").innerHTML = number;
+            }
+            
+            
+            //*** Upgrade purchase functions ***//
+            //
+            // Each of these is triggered by clicking on its relevant
+            // name in the Upgrades menu
+            
+            //*** Buy an autoclicker ***//
+            function buyAutoclicker() {
+                // Check that the number is big enough to purchase
+                if (number < autoclickerCost) {
+                    return;
+                }
+                
+                // Reduce the number to pay for the upgrade
+                changeNumber(-autoclickerCost);
+                
+                // Add one more autoclicker
+                autoclickers += 1;
+                document.getElementById("num-autoclickers").innerHTML = autoclickers;
+                
+                // Upgrade cost scales nonlinearly
+                // There's nothing special about this function choice    
+                autoclickerCost = Math.round(2 * Math.pow(autoclickerCost, 1.1));
+                document.getElementById("autoclicker-cost").innerHTML = autoclickerCost;
+            }
+            function buyOvertime() {
+                // Check that the number is big enough to purchase
+                if (number < overtimeCost) {
+                    return;
+                }
+                
+                // Reduce the number to pay for the upgrade
+                changeNumber(-overtimeCost);
+                
+                // Add one more autoclicker
+                autoclickers += (.5*autoclickers);
+                overtime +=1;
+                document.getElementById("num-autoclickers").innerHTML = autoclickers;
+                document.getElementById("overtime").innerHTML = overtime;
+                // Upgrade cost scales nonlinearly
+                // There's nothing special about this function choice    
+                overtimeCost = Math.round(2 * Math.pow(overtimeCost, 1.1));
+                document.getElementById("overtimeCost").innerHTML = overtimeCost;
+            }
+            //*** Increase finger strength ***//
+            function buyStrongerFingers() {
+                if (number < strongerFingersCost) {
+                    return;
+                }
+                
+                changeNumber(-strongerFingersCost);
+                
+                clickIncrement *= 2;
+                document.getElementById("num-finger-strength").innerHTML = clickIncrement;
+                
+                strongerFingersCost = Math.round(2 * Math.pow(strongerFingersCost, 1.1));
+                document.getElementById("stronger-fingers-cost").innerHTML = strongerFingersCost;
+            }
+            function buyTechAdv() {
+                if (number < techCost) {
+                    return;
+                }
+                
+                changeNumber(-techCost);
+                techAdv+=1;
+                
+                clickIncrement = Math.round( Math.pow(clickIncrement,2));
+                document.getElementById("tech-adv").innerHTML = techAdv;
+                document.getElementById("num-finger-strength").innerHTML = clickIncrement;
+                //this is rounded so we don't have to have decimals in the game
+                techCost = Math.round(2 * Math.pow(techCost, 1.1));
+                document.getElementById("tech-adv-cost").innerHTML = techCost;
+            }
+            // bitcoin cost is randomized and you dont know how much you are buying it for making it very risky
+            function buyBitcoin() {
+                bitcoinCost= Math.round(Math.random() * 100000);
+                if (number < bitcoinCost) {
+                    return;
+                }
+                
+                changeNumber(-bitcoinCost);
+                bitcoins+=1;
+                
+                   document.getElementById("bitcoins").innerHTML =bitcoins;
+            }
+            function sellBitcoin() {
+               bitcoinCost= Math.round(Math.random() * 100000);
+                
+                
+                changeNumber(+(bitcoinCost*bitcoins));
+                bitcoins=0;
+                
+                   document.getElementById("bitcoins").innerHTML =bitcoins;
+            }
+            function buyMineDemo() {
+                if (number < demoCost) {
+                    return;
+                }
+                
+                changeNumber(-demoCost);
+                demo+=1;
+                
+                clickIncrement = 1;
+                autoclickers=0;
+                number = 0;            
+        
+            //** Resources ***//
+        
+            // Increase the counter by this much on each button click
+               
+                strongerFingersCost = 100;
+            
+            // Automatically increment by this much every second
+                            
+                autoclickerCost = 10;
+                techAdv= 0;
+                techCost= 100000;
+                demoCost=1000000000;
+                overtime=0;
+                overtimeCost=500000;
+                document.getElementById("tech-adv").innerHTML = techAdv;
+                document.getElementById("num-autoclickers").innerHTML = autoclickers;
+                document.getElementById("demo").innerHTML = demo;
+                document.getElementById("num-finger-strength").innerHTML = clickIncrement;
+                //this is rounded so we don't have to have decimals in the game
+                document.getElementById("autoclicker-cost").innerHTML = autoclickerCost;
+                document.getElementById("tech-adv-cost").innerHTML = techCost;
+                document.getElementById("stronger-fingers-cost").innerHTML = strongerFingersCost;
+                document.getElementById("overtimeCost").innerHTML = overtimeCost;
+                document.getElementById("overtime").innerHTML = overtime;
+            }
+            
+            //*** Check achievements ***//
+            //
+            // Runs every cycle and posts any new achievements to the log
+            function checkAchievements() {
+                if (number >= 1 && !achievements.upAndRunning) {
+                    achievements.upAndRunning = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Welcome to the mine</b>: Mine one coin";
+                }
+                
+                if (autoclickers >= 1 && !achievements.industrialRevolution) {
+                    achievements.industrialRevolution = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Entrepreneur</b>: Employ a fellow Miner";
+                }
+                if (autoclickers >= 5 && !achievements.miningCompany) {
+                    achievements.miningCompany = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Mining Company</b>: Employ 5 or more Miners";
+                }
+                if (autoclickers >= 20 && !achievements.miningConglomerate) {
+                    achievements.miningConglomerate = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Mining Mogul</b>: Employ 20 or more Miners";
+                }
+                if (techAdv >= 1 && !achievements.cuttingEdge) {
+                    achievements.cuttingEdge = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Cutting Edge</b>: Advance mining technology";
+                }
+                if (demo >= 1 && !achievements.freshStart) {
+                    achievements.freshStart = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Fresh Start</b>:Demolish the mine after mining all the precious dog coin.";
+                }
+                if (overtime >= 1 && !achievements.bestBoss) {
+                    achievements.bestBoss = true;
+                    
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Ambitious</b>:Pay your workers extra for overtime shifts to increase output";
+                }
+            }
+            
+            
+            //*** Main loop ***//
+            //
+            // Function runs every 1000 ms
+            
+            window.setInterval(function() {
+                changeNumber(autoclickers);
+                checkAchievements();
+            }, 1000);
+            
+        </script>
+  
+    </body>
+    
+</html>
