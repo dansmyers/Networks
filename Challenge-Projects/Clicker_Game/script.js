@@ -15,7 +15,6 @@
                 [number,cost, html number name, html cost name, increment]
             
             */
-            
             // greaterPoppability has its own function
             let upgradeInfo = [
                 [0,10,"num-autopoppers","autopopper-cost",1], // poppers
