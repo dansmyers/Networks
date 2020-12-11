@@ -1,5 +1,5 @@
  //*** THE NUMBER: make this go up ***//
-            let number = 3000000;  
+            let number = 3000000;  //represents monetary/capitol units gained for producing gravel.
             
             let profit = 0;
         
@@ -224,7 +224,7 @@
             function addConstructionContractor(){
                 
                 //Return if not unlocked or too expensive
-                //Return if minimum 25:1 ratio of hiring:construction is not upheld
+                //If there are not enough workers or capital to create a new factory yet, this will be caught when the contractor calls the buildFactory() method in the main game loop.
                 if(number < costConstructionContractor || hqStatus === "closed" || profit < 200000){
                     return;
                 }
