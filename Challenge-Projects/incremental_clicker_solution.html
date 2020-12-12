@@ -73,6 +73,10 @@
                     <button class="btn btn-dark" id="click" onclick="changeNumber(clickIncrement)">
                         Catch Fish
                     </button>
+
+                    <button class="btn btn-dark" id="gamble" onclick="gambleFish()">
+                        Gamble Fish
+                    </button>
                     
                     <div class="mt-5">
                         Number of Lines: <span id="num-finger-strength">1</span>
@@ -287,6 +291,35 @@
                     showElement(robotOS);
                 }
             });
+
+
+            function gambleFish()
+            {                
+                let bet = prompt("Street artist wants to play dice\nIf you guess right make 10x your fish\nGuess lower and make 2x your fish\n Guess higher and lose your fish\nenter fish to bet: ", 0);
+                if(number < bet)
+                {
+                    alert("you do not have that many fish!");
+                    return;
+                }
+                let guess = prompt("Enter your guess between 1 and 6", 1);
+                let correctNumber = Math.floor(Math.random() * Math.floor(6)) + 1;
+
+                if(guess < correctNumber)
+                {
+                    alert("You guessed " + guess + "the correct number was " + correctNumber + " you won " + bet * 2 + " fish!");
+                    changeNumber(2 * bet);
+                }
+                else if(guess == correctNumber)
+                {
+                    alert("You guessed " + guess + "the correct number was " + correctNumber + " you won " + bet * 10 + " fish!");
+                    changeNumber(10 * bet)
+                }
+                else
+                {
+                    alert("You guessed " + guess + "the correct number was " + correctNumber + " you lost " + bet + " fish!");
+                    changeNumber(-bet);
+                }
+            }
             
             //*** Upgrade purchase functions ***//
             //
