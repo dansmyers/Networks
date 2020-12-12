@@ -1,0 +1,136 @@
+.header-1 {
+  background-color: #7ddff0;
+  text-align: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.h1-1 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bolder;
+}
+
+.h1-2 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bolder;
+  padding: 2%;
+}
+
+.h2-2 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: cornsilk;
+  font-weight: lighter;
+}
+
+img {
+  justify-content: center;
+  width: 100%;
+}
+
+body {
+  margin: 40px auto;
+}
+
+p {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 14pt;
+}
+
+.p-1 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 14pt;
+  text-align: center;
+  color: #708090;
+}
+
+.h3-1 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+}
+
+.text-3 {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #708090;
+  font-size: 14pt;
+}
+
+.container-2 {
+  padding: 3%;
+  background-color: black;
+}
+
+.container-4 {
+  text-align: center;
+}
+
+#picBack {
+  background-image: url(https://img.freepik.com/free-vector/illustrated-delivery-service-with-masks-concept_23-2148493019.jpg?size=626&ext=jpg);
+  height: 350px;
+  text-align: center;
+}
+
+#title {
+  font-weight: bolder;
+}
+
+#prt2 {
+  color: mintcream;
+}
+
+#bckgrd2 {
+  background-color: black;
+  padding: 3%;
+}
+
+
+
+#c1 {
+  padding: 2%;
+  background: rgb(125, 254, 233);
+  background: linear-gradient(
+    0deg,
+    rgba(125, 254, 233, 1) 0%,
+    rgba(228, 241, 240, 0.15449929971988796) 100%
+  );
+}
+#contact {
+  text-align: center;
+}
+
+#contact2 {
+  padding: 1.3%;
+}
+.link {
+  font-size: 14pt;
+  font-style: italic;
+  font-family: sans-serif;
+  font-stretch: extra-expanded;
+}
+
+#topLast {
+  padding: 2%;
+}
+
+#h1-3 {
+  font-weight: bold;
+  font-style: oblique;
+  font-stretch: extra-expanded;
+  color: indianred;
+}
+
+#end {
+  padding: 2.6%;
+}
+
+#gradiant {
+  background: rgb(125, 254, 233);
+  background: linear-gradient(
+    0deg,
+    rgba(125, 254, 233, 1) 0%,
+    rgba(228, 241, 240, 0.15449929971988796) 100%
+  );
+}

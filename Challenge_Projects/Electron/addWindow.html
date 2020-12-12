@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player info</title>
+</head>
+<body>
+  <img src="https://media.giphy.com/media/550gG3PUVHLm7C1BWy/giphy.gif" alt="" id="image1">
+
+    <script>
+      
+        let sources = [
+            "https://media.giphy.com/media/550gG3PUVHLm7C1BWy/giphy.gif",
+            "https://media.giphy.com/media/3o7TKVJrotqrMJdlao/giphy.gif",
+            "https://media.giphy.com/media/3oz8xHDXHJPsqhWZTW/giphy.gif",
+            "https://media.giphy.com/media/nxG4i6YuQnHzi/giphy.gif",
+            "https://media.giphy.com/media/YzgUKarHP6IwM/giphy.gif",
+            "https://media.giphy.com/media/5tAyZQOeIiX0A/giphy.gif",
+            "https://media.giphy.com/media/CXWVrpJ1PN92o/giphy.gif"
+
+        ];
+
+        document.getElementById("image1").src = sources[Math.floor(Math.random() * sources.length)];
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+
+<!doctype html>
+<html>
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-size: 15pt;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        /* Change upgrade blocks when the user mouses over them */
+        .upgrade-block:hover {
+            color: #0275d8;
+            /* Bootstrap primary blue */
+            cursor: pointer;
+            /* Make mouse into a finger */
+        }
+
+        .float-left {
+            float: left;
+        }
+
+        .float-right {
+            float: right;
+        }
+
+        .small-text {
+            font-size: .85em;
+        }
+
+        #achievements {
+            height: 250px;
+        }
+
+        .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        }
+
+        h1{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- First row: title and main number -->
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <h1 >Marathon Potato Masher</h1>
+                <h6 class="float-left">(No sadly this is not heaven)</h6>
+
+                <h1 id="number" class="float-right">0</h1>
+
+                <div class="clear"></div> <!-- Required to reset float positioning -->
+            </div>
+        </div> <!-- /row -->
+
+
+        <!-- Second row: buttons, resources, and upgrades -->
+        <div class="row mt-5">
+
+            <!-- Button and resource counts -->
+            <div class="col-lg-7">
+
+                <button class="btn btn-danger" id="click" onclick="changeNumber(clickIncrement)">
+                  Mash those taters!
+                </button>
+
+
+                <div class="mt-5">
+                    Finger strength: <span id="num-finger-strength">1</span>
+                </div>
+
+                <div>
+                    Autoclickers: <span id="num-autoclickers">0</span>
+                </div>
+
+                <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fassets.marthastewart.com%2Fstyles%2Fwmax-750%2Fd30%2Fgarlic-mashed-potatoes-a101006%2Fgarlic-mashed-potatoes-a101006_horiz.jpg%3Fitok%3DveOwxEQD"
+                    alt="" height="2px" class="center" id="pic">
+
+            </div>
+
+
+            <!-- Upgrades column -->
+            <div class="col-lg-5">
+
+                <div class="upgrade-block" id="autocoder" onclick="buyAutoclicker()">
+                    <span class="float-left" id="ac">Autoclicker</span>
+                    <span class="float-right" id="autoclicker-cost">10</span>
+
+                    <div class="clear"></div> <!-- Required to reset float positioning -->
+
+                    <br />
+
+                    <span class="small-text">Clicks once per second</span>
+                </div>
+
+                <div class="upgrade-block mt-3" id="stronger-fingers" onclick="buyStrongerFingers()">
+                    <span class="float-left">Stronger fingers</span>
+                    <span class="float-right" id="stronger-fingers-cost">20</span>
+
+                    <div class="clear"></div> <!-- Required to reset float positioning -->
+
+                    <br />
+
+                    <span class="small-text">Double the strength of button clicks</span>
+
+
+                    <!-- Log and achievements -->
+                    <div class="row mt-5">
+                        <div class="col-lg-12 overflow-auto small-text" id="achievements">
+                            This is your log of achievements. Make your mother proud!
+                        </div>
+                    </div> <!-- /row -->
+                </div>
+
+            </div>
+        </div> <!-- /row -->
+
+
+      
+
+    </div> <!-- /container -->
+
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        //*** THE NUMBER: make this go up ***//
+        let number = 0;
+
+        //** Resources ***//
+
+        // Increase the counter by this much on each button click
+        let clickIncrement = 1;
+        let strongerFingersCost = 20;
+        
+
+        // Automatically increment by this much every second
+        let autoclickers = 0;
+        let autoclickerCost = 10;
+
+        //*** Achievement object ***//
+        achievements = { upAndRunning: false, industrialRevolution: false, aclicktwo: false, aclickthree: false, fingerStrenOne: false, fingerStrenTwo: false, fingerStrenThree:false };
+
+
+        //*** Change function ***//
+        //
+        // Called by any action that changes the number
+        //
+        // amount: the amount to increment or decrement
+        function changeNumber(amount) {
+            ornum = number;
+            number += amount;
+
+
+            // Update the number field    
+            document.getElementById("number").innerHTML = number;
+
+            if(number %  30 == 8){
+                document.getElementById("pic").src = "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/k%2Farchive%2F7f3ff5fd143576a09933ee6b27fc397ebcf0538a"
+            } else if (number % 30 == 20){
+               document.getElementById("pic").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS6xkU2W89WE-maY4aSITgegm77vBpWsBCslw&usqp=CAU"
+            } else if(number % 30 == 27){
+               document.getElementById("pic").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT3nXFLiGTepNNRYWXF_90gXryn7siLH5nZRg&usqp=CAU"
+            } else if(number % 30 == 12){
+                document.getElementById("pic").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSfE989hxlVo-uodYZ5LEXa6Tvwjob2zvXUXw&usqp=CAU"
+            } else if(number % 30 == 2){
+                document.getElementById("pic").src = "https://i2-prod.mirror.co.uk/incoming/article10057698.ece/ALTERNATES/s615/1_JS108961241.jpg"
+            }
+
+            let orSize = document.getElementById("pic").height;
+            if(ornum < number){
+            document.getElementById("pic").height = orSize + 1;
+            }
+        }
+
+
+        //*** Upgrade purchase functions ***//
+        //
+        // Each of these is triggered by clicking on its relevant
+        // name in the Upgrades menu
+
+        //*** Buy an autoclicker ***//
+        function buyAutoclicker() {
+            // Check that the number is big enough to purchase
+            if (number < autoclickerCost) {
+                return;
+            }
+
+            // Reduce the number to pay for the upgrade
+            changeNumber(-autoclickerCost);
+
+            // Add one more autoclicker
+            autoclickers += 1;
+            document.getElementById("num-autoclickers").innerHTML = autoclickers;
+
+            // Upgrade cost scales nonlinearly
+            // There's nothing special about this function choice    
+            autoclickerCost = Math.round(2 * Math.pow(autoclickerCost, 1.12));
+            document.getElementById("autoclicker-cost").innerHTML = autoclickerCost;
+
+            if(autoclickers > 3 && autoclickers < 5){    
+                    document.getElementById("ac").innerHTML = "Super-AutoClicker";
+            } else if(autoclickers >= 5 && autoclickers <=9){
+                document.getElementById("ac").innerHTML = "Super-duper-AutoClicker";
+            } else if (autoclickers >= 9 && autoclickers <= 15) {
+                document.getElementById("ac").innerHTML = "The-World's-Best-AutoClicker";
+            }
+
+
+        }
+
+        //*** Increase finger strength ***//
+        function buyStrongerFingers() {
+            if (number < strongerFingersCost) {
+                return;
+            }
+
+            changeNumber(-strongerFingersCost);
+
+            clickIncrement *= 2;
+            document.getElementById("num-finger-strength").innerHTML = clickIncrement;
+
+            strongerFingersCost = Math.round(2 * Math.pow(strongerFingersCost, 1.12));
+            document.getElementById("stronger-fingers-cost").innerHTML = strongerFingersCost;
+
+
+        }
+
+        //*** Check achievements ***//
+        //
+        // Runs every cycle and posts any new achievements to the log
+        function checkAchievements() {
+            if (number >= 1 && !achievements.upAndRunning) {
+                achievements.upAndRunning = true;
+
+                document.getElementById("achievements").innerHTML +=
+                    "<br/> <b>Up and running</b>: Click one time";
+            }
+
+            if (autoclickers >= 1 && !achievements.industrialRevolution) {
+                achievements.industrialRevolution = true;
+
+                document.getElementById("achievements").innerHTML +=
+                    "<br/> <b>Mashed potato veteran</b>: Buy an autoclicker";
+            }
+
+            if (autoclickers >= 3 && !achievements.aclicktwo) {
+                achievements.aclicktwo = true;
+
+                document.getElementById("achievements").innerHTML +=
+                    "<br/> <b>Loaded Mash Hero</b>: Buy 4 autoclickers";
+            }
+
+            if (autoclickers >= 6 && !achievements.aclickthree) {
+                achievements.aclickthree = true;
+
+                document.getElementById("achievements").innerHTML +=
+                    "<br/> <b>The Cheesiest Mash</b>: Buy 6 autoclickers";
+            }
+
+            if (clickIncrement == 2 && !achievements.fingerStrenOne) {
+                achievements.fingerStrenOne = true;
+
+                document.getElementById("achievements").innerHTML +=
+                    "<br/> <b>Mash 'em or Hash 'em</b>: Finger Strength x2";
+            }
+
+             if (clickIncrement == 4 && !achievements.fingerStrenTwo) {
+                achievements.fingerStrenTwo = true;
+
+                document.getElementById("achievements").innerHTML +=
+                    "<br/> <b>Butter Makes Everything Better</b>: Finger Strength x4";
+            }
+
+            if (clickIncrement == 8 && !achievements.fingerStrenThree) {
+                achievements.fingerStrenThree = true;
+
+                document.getElementById("achievements").innerHTML +=
+                    "<br/> <b>Master Potato Masher</b>: Finger Strength x8";
+            }
+        }
+
+
+        //*** Main loop ***//
+        //
+        // Function runs every 1000 ms
+
+        window.setInterval(function () {
+           let size = document.getElementById("pic").height;
+
+           if(size > 500){
+               alert("You have won by way of worlds largest mashed potatoes. It is now year 2056");
+               document.getElementById("pic").height = 1;
+               document.getElementById("achievements").innerHTML =
+                   "<br/> <b>Up and running</b>: Click one time";
+               achievements.industrialRevolution = false;
+               achievements.fingerStrenOne = false;
+               achievements.fingerStrenTwo = false;
+               achievements.fingerStrenThree = false;
+               achievements.aclicktwo = false;
+               achievements.aclickthree = false;
+               autoclickers = 0;
+               clickIncrement = 1;
+               document.getElementById("num-finger-strength").innerHTML = clickIncrement;
+               document.getElementById("stronger-fingers-cost").innerHTML = 10;
+               strongerFingersCost = 10;
+               document.getElementById("num-autoclickers").innerHTML = autoclickers;
+               autoclickerCost = 20;
+               document.getElementById("autoclicker-cost").innerHTML = autoclickerCost;
+
+           }else if (achievements.aclickthree == true && achievements.fingerStrenThree == true){
+               alert("You have won by way of achievement. You may now brag to all your friends.");
+               document.getElementById("pic").height = 1;
+               document.getElementById("achievements").innerHTML =
+                   "<br/> <b>Up and running</b>: Click one time";
+                   achievements.industrialRevolution = false;
+                   achievements.fingerStrenOne = false;
+                   achievements.fingerStrenTwo = false;
+                   achievements.fingerStrenThree = false;
+                   achievements.aclicktwo = false;
+                   achievements.aclickthree = false;
+                   autoclickers = 0;
+                   clickIncrement = 1;
+                   document.getElementById("num-finger-strength").innerHTML = clickIncrement;
+                   document.getElementById("stronger-fingers-cost").innerHTML = 10;
+                   strongerFingersCost = 10;
+                   document.getElementById("num-autoclickers").innerHTML = autoclickers;
+                   autoclickerCost = 20;
+                   document.getElementById("autoclicker-cost").innerHTML = autoclickerCost;
+           }
+
+          
+
+            changeNumber(autoclickers);
+            checkAchievements();
+        }, 1000);
+
+    </script>
+
+</body>
+
+</html>

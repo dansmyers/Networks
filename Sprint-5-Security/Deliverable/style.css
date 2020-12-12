@@ -1,0 +1,12 @@
+#stuff {
+  text-align: center;
+  font-weight: 700;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#talk {
+  width: 16%;
+  margin-left: 42%;
+  margin-right: 42%;
+  height: 50px;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styleSmoots.css" />
+    <script src="scriptSmoots.js"></script>
+    <title>Smoots</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Converter: Smoots to Feet or Feet to Smoots</h1>
+      <div class="row">
+        <div class="col-lg-6">
+          <select id="selectionSF" class="form-control form-control-lg">
+            <option value="smoot_to_feet">Smoots --> Feet</option>
+            <option value="feet_to_smoot">Feet --> Smoots</option>
+          </select>
+        </div>
+        <div class="col-lg-6">
+          <input
+            type="number"
+            id="inputNum"
+            min="0"
+            class="form-control form-control-lg"
+          />
+        </div>
+      </div>
+      <div class="row" id="row2">
+        <div class="col-lg-6">
+          <button onclick="convert()" class="btn-danger" id="btn1">
+            <h1 class="btnfont">Convert</h1>
+          </button>
+        </div>
+        <div class="col-lg-6">
+          <h1 id="output"></h1>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

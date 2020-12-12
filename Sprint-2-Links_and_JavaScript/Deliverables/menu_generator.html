@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Boostrap stylesheets -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+
+    <!-- Optional theme -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+      crossorigin="anonymous"
+    />
+    <script src="menuScript.js"></script>
+    <!-- Custom CSS styling -->
+    <style>
+      body {
+        font-family: Lucida, serif;
+        font-size: 14pt;
+        height: 100%;
+        margin: 0;
+        background-color: black;
+      }
+
+      h1 {
+        text-align: center;
+        font-variant: small-caps;
+        font-size: 36pt;
+        font-family: Georgia, serif;
+        color: deepskyblue;
+      }
+
+      h3 {
+        text-align: center;
+        font-variant: small-caps;
+        margin-bottom: 8rem;
+        color: rgb(201, 201, 201);
+        font-size: 10pt;
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+
+      h2 {
+        font-variant: small-caps;
+        font-size: 22pt;
+        margin-bottom: 2rem;
+        font-family: Georgia, serif;
+      }
+
+      .section1,
+      .section2,
+      .section3 {
+        margin-bottom: 3rem;
+        color: navy;
+      }
+
+      .name {
+        float: left;
+      }
+
+      .price {
+        float: right;
+      }
+
+      .clear {
+        clear: both;
+      }
+
+      .header {
+        background-color: black;
+      }
+
+      .container {
+        min-height: 100%;
+      }
+
+      #rightHand {
+        background-color: mediumturquoise;
+      }
+      .col-md-6 {
+        background-image: url("https://cdn.britannica.com/65/161665-050-C4B1FA75/Waves-North-Shore-Oahu-Hawaiian-Islands.jpg");
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <!-- Recall: all Bootstrap content must be enclosed in a container div -->
+    <div class="container">
+      <!-- Container is made of a series of rows -->
+      <!-- Each row is conceptually divided into 12 units -->
+
+      <!-- Columns can span any subset of those 12 units -->
+
+      <div class="row">
+        <!-- Empty 3-unit column on the left side of the page -->
+        <div class="col-md-3"></div>
+
+        <!-- col-md-6 makes a column that spans all 6 units -->
+        <!-- Covers the middle half of the page -->
+        <div class="col-md-6">
+          <div class="header">
+            <h1 id="restaurant_name">Irreplicable Vibes</h1>
+            <h3 class="description">Food for your spirit</h3>
+          </div>
+          <h2 class="section1">Appetizers</h2>
+          <div class="section1" id="appetizers"></div>
+          <div style="clear: both"></div>
+
+          <h2 class="section2">Main Courses</h2>
+          <div class="section2" id="main_courses"></div>
+          <div style="clear: both"></div>
+
+          <h2 class="section3">Desserts</h2>
+          <div class="section3" id="desserts"></div>
+          <div style="clear: both"></div>
+        </div>
+        <!-- /col-md-12 -->
+
+        <!-- Empty 3-unit column on the right side of the page -->
+        <div class="col-md-3" id="rightHand"></div>
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+
+    <!-- For Bootstrap -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

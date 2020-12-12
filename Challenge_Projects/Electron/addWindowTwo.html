@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Player info</title>
+</head>
+
+<body>
+
+<img src="https://media.giphy.com/media/5tAyZQOeIiX0A/giphy.gif" alt="" height="250">
+
+
+<h1>Slugging Percentage</h1>
+<h2 id="content"></h2>
+
+<form id="info">
+    <input type="text" id="at bats">
+    <h2>At Bats</h2>
+    <br>
+    <input type="text" id="hits">
+    <h2>Hits</h2>
+    <br>
+    <input type="text" id="doubles">
+    <h2>Number of doubles</h2>
+    <br>
+    <input type="text" id="triples">
+    <h2>Number of triples</h2>
+    <br>
+    <input type="text" id="hr">
+    <h2>Number of HR</h2>
+    
+
+
+</form>
+<h2 id="thing"></h2>
+<button class="btn btn-primary" onclick="displ()">Calculate</button>
+
+<script>
+
+    function displ() {
+        let hits = document.getElementById("hits").value;
+        let ab = document.getElementById("at bats").value;
+        let triples = document.getElementById("triples").value;
+        let doubles = document.getElementById("doubles").value;
+        let hr = document.getElementById("hr").value;
+        
+
+        let singles = hits - doubles - triples - hr;
+
+        
+        var calc = (3*triples) + singles + (2*doubles) + (4* hr);
+    
+        calc = calc/ab;
+       
+
+        calc = calc.toFixed(3);
+        // calc = calc/10;
+
+
+        calc = document.createTextNode(calc);
+        document.getElementById("thing").innerHTML = "Slugging %: ";
+        document.getElementById("thing").appendChild(calc);
+
+    }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+    <title>Batting Average</title>
+</head>
+<body >
+   
+
+    <img src="https://media.giphy.com/media/3o7btViiCGp5R4UcSs/giphy.gif" alt="" height="200">
+    <h1>Batting Average Calculator</h1>
+    <h2 id="content"></h2>
+
+        <form id="info">
+            <input type="text" id="hits">
+            <h2>At Bats</h2>
+            <input type="text" id="at bats">
+            <h2>Hits</h2>
+         
+        
+        </form>
+<h2 id="thing"></h2>
+    <button class= "btn btn-primary" onclick="displ()">Calculate</button>
+
+    <script>
+
+        function displ(){
+         let hits = document.getElementById("hits").value;
+         let ab = document.getElementById("at bats").value;
+         console.log(hits);
+         console.log(ab);
+
+         var calc = ab/hits;
+         calc = calc.toFixed(3);
+        // calc = calc/10;
+        
+
+         calc = document.createTextNode(calc);
+         document.getElementById("thing").innerHTML = "Batting Average: ";
+         document.getElementById("thing").appendChild(calc);
+
+        }
+    </script>
+</body>
+</html>
