@@ -1,0 +1,51 @@
+/*
+Color Palette
+
+Purple: #7d5ba6
+Dark Blue: #000022
+White: #F6F4F3
+Grey-green: #798071
+Blue: #1982C4
+
+*/
+
+
+
+
+.header{
+	background-color: #F6F4F3;
+	height: 100px;
+	padding-left: 100px;
+	padding-top: 25px;
+}
+
+.message_box{
+	background-color: #F6F4F3;
+	border-color: #1982C4;
+	border-style: solid;
+	height: 300px;
+	padding-left: 100px;
+	padding-top: 25px;
+}
+
+.stat_box{
+	background-color: #F6F4F3;
+	border-color: #1982C4;
+	border-style: solid;
+	height: 60px;
+	font-size: 16px;
+	
+}
+
+.grid{
+	background-color: #F6F4F3;
+	border-color: #000000;
+	border-style: solid;
+	height: 200px;
+	align-content: center;
+	text-align: center;
+	font-size: 12px;
+}
+
+
+
