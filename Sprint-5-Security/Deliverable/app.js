@@ -12,6 +12,34 @@ function add1(n){
 	return n+1;
 }
 
+function isSuperset(set, subset) {
+    for (let elem of subset) {
+        if (!set.has(elem)) {
+            return false
+        }
+    }
+    return true
+}
+
+function eqSet(as, bs) {
+    if (as.size !== bs.size) return false;
+    for (var a of as) if (!bs.has(a)) return false;
+    return true;
+}
+
+function setToArray(s){
+	array = new Array(s.size);
+	count = 0;
+	
+	for(let i = 0; i < 9; i++){
+		if(s.has(i)){
+			array[count] = i;
+			count++;
+		}
+	}
+	return array;
+}
+
 function init(){
 	
 	validPuzzle = false;
@@ -47,6 +75,7 @@ function init(){
 	}
 }
 
+
 function checkContradictions(){
 	//Check for contradictions
 	for(let i = 0; i < 9; i++){
@@ -72,9 +101,12 @@ function checkContradictions(){
 					//This is for checking the square
 					//In code above we found out what square we're in. Given that square, check if anything else in the square contradicts [i][j]
 					kX = squareX*3+k%3;
-					kY = squareY*3+Math.floor(k/3);squareY*3 + (i+1)%3;
+					kY = squareY*3+Math.floor(k/3);
 					
-					if((i != kX) && (j != kY) && puzzle[i][j] === puzzle[kX][kY]){
+					//console.log(j + " " + i + " " + kX + " "+ kY);
+					
+					if(((i != kY) || (j != kX)) && puzzle[i][j] === puzzle[kY][kX]){
+						//console.log("shut down");
 						return false;
 					}
 				}
@@ -147,6 +179,16 @@ function simpleRuleOut(){
 				
 				let val = parseInt(puzzle[i][j]);
 				
+				//This loop ensures that the only value in pMatrix for a defined number is the number
+				//it's defined as. This is a fix to a bug encountered in naked tuple
+				for(let k = 0; k < 9; k++){
+					if(val != k && pMatrix[i][j].has(k)){
+						pMatrix[i][j].delete(k);
+					}
+				}
+				
+				
+				
 				for(let k = 0; k < 9; k++){
 					
 					//Rule out the row
@@ -167,17 +209,17 @@ function simpleRuleOut(){
 		}
 	}
 	
-	//for(let i = 0; i < 9; i++){
-	//	for(let j = 0; j < 9; j++){
-	//		console.log("Space " + i + ", " + j + ": " );
-	//		
-	//		for(let k = 1; k < 10; k++){
-	//			if(pMatrix[i][j].has(k)){
-	//				console.log(k);
-	//			}
-	//		}
-	//	}
-	//}
+	for(let i = 0; i < 9; i++){
+		for(let j = 0; j < 9; j++){
+			console.log("Space " + add1(j) + ", " + add1(i) + ": " );
+			
+			for(let k = 1; k < 10; k++){
+				if(pMatrix[i][j].has(k)){
+					console.log(k);
+				}
+			}
+		}
+	}
 }
 
 function hiddenSingle(){
@@ -262,7 +304,7 @@ function hiddenSingle(){
 	
 	
 	
-	return null
+	return null;
 
 }
 
@@ -286,6 +328,349 @@ function nakedSingle(){
 	}
 	return null;
 }
+
+function checkTuple(i, j, or, n, tuple){
+	
+	
+	returnString = "";
+	
+	let indexes = new Set();
+	indexCount = 0;
+	
+	if(or === "row"){
+		
+		count = 1;
+		for(let k = 0; k < 9; k++){
+			
+			if(k != j){
+				
+				if(isSuperset(tuple, pMatrix[i][k])){
+					count++;
+					indexes.add(k);
+					
+				}
+				
+			}
+		}
+		//If we have found n instances of the tuple, eliminate all instances of elements of the tuple not in index array.
+		if(count == n){
+			for(let k = 0; k < 9; k++){
+				for(let l = 1; l < 10; l++){
+					if(tuple.has(l) && pMatrix[i][k].has(l) && (indexes.has(k) != true) && k != j){
+						pMatrix[i][k].delete(l);
+						returnString = returnString +  "The number " + l + " has been ruled out from box " + add1(k) + ", " + add1(i) + " by a naked set of " + n + " in row " + add1(i) + "\n\n";
+					}
+				}
+			}
+			
+			if(returnString != ""){
+				return returnString;
+			} else{
+				return "";
+			}
+		}
+	}
+	
+	if(or === "col"){
+		
+		count = 1;
+		for(let k = 0; k < 9; k++){
+			
+			if(k != i){
+				
+				if(isSuperset(tuple, pMatrix[k][j])){
+					count++;
+					indexes.add(k);
+					
+				}
+				
+			}
+		}
+		//If we have found n instances of the tuple, eliminate all instances of elements of the tuple not in index array.
+		if(count == n){
+			for(let k = 0; k < 9; k++){
+				for(let l = 1; l < 10; l++){
+					if(tuple.has(l) && pMatrix[k][j].has(l) && (indexes.has(k) != true) && k != i){
+						pMatrix[k][j].delete(l);
+						returnString = returnString +  "The number " + l + " has been ruled out from box " + add1(j) + ", " + add1(k) + " by a naked set of " + n + " in column " + add1(j) + "\n\n";
+					}
+				}
+			}
+			
+			if(returnString != ""){
+				return returnString;
+			} else{
+				return "";
+			}
+		}
+	}
+	
+	if(or === "block"){
+		
+		
+		count = 1;
+		
+		
+		let blockX = Math.floor(j/3);
+		let blockY = Math.floor(i/3);
+		
+		let kX = 0;
+		let kY = 0;
+		
+		//We need a second set of indexes to keep track of Y because the we are dealing with two 
+		//directions
+		
+		indexesY = new Set();
+		
+		for(let k = 0; k < 9; k++){
+			
+			//console.log("in " + j + " " + i + " " + kX + " "+ kY);
+			
+			
+			//The absolute x and y for each square
+			kX = blockX*3 + k%3;
+			kY = blockY*3 + Math.floor(k/3)
+			
+			if(kX != j || kY != i){
+				
+				
+				
+				if(isSuperset(tuple, pMatrix[kY][kX])){
+					
+					count++;
+					indexes.add(kX);
+					indexesY.add(kY);
+					
+				}
+				
+			}
+		}
+		//If we have found n instances of the tuple, eliminate all instances of elements of the tuple not in index array.
+		if(count == n){
+			for(let k = 0; k < 9; k++){
+				
+				kX = blockX*3 + k%3;
+				kY = blockY*3 + Math.floor(k/3)
+				
+				for(let l = 1; l < 10; l++){
+					if(tuple.has(l) && pMatrix[kY][kX].has(l) && ((indexes.has(kX) != true) || indexesY.has(kY) != true) && (kX != j || kY != i)){
+						pMatrix[kY][kX].delete(l);
+						returnString = returnString +  "The number " + l + " has been ruled out from box " + add1(kX) + ", " + add1(kY) + " by a naked set of " + n + " in block " + add1(blockX) + ", " + add1(blockY) + "\n\n";
+					}
+				}
+			}
+			
+			if(returnString != ""){
+				return returnString;
+			} else{
+				return "";
+			}
+		
+		
+	}
+}
+		
+	
+	
+	
+	
+	
+	return "";
+}
+
+function nakedN(){
+	
+	returnString = "";
+	
+	for(let n = 2; n < 4; n++){
+		console.log()
+	//check rows
+	
+		for(let i = 0; i < 9; i++){
+			for(let j = 0; j < 9; j++){
+				if(puzzle[i][j] === " "){
+					
+					if(pMatrix[i][j].size === n){
+						
+						
+						
+						returnString = returnString + checkTuple(i, j, "row", n, pMatrix[i][j]);
+						
+						if(returnString === ""){
+							returnString = returnString + checkTuple(i, j, "col", n, pMatrix[i][j]);
+						}
+						
+						if(returnString === ""){
+							returnString = returnString + checkTuple(i, j, "block", n, pMatrix[i][j]);
+						}
+					}
+					
+					
+				}
+			}
+		}
+		
+		
+	}
+	
+	if(returnString !== ""){
+			return returnString;
+		} else{
+			return null;
+		}
+}
+	
+	
+function pointingPair(){
+	
+	//iterate through each block
+	for(let m = 0; m < 3; m++){
+		for(let n = 0; n < 3; n++){
+			
+			//for each block, check if there is a pointing pair
+			//check each number 1-9
+			for(let a = 1; a < 10; a++){
+				
+				let foundPair = false;
+				let cont = true;
+				let row = 0;
+				
+				//Check for horizontal pointing pairs
+				//Iterate through the block. In this case i is a row in a block and j is a column
+				for(let i = 0; i < 3; i++){
+					
+					if(cont === true){
+						
+						let count = 0;
+						for(let j = 0; j < 3; j++){
+							if(pMatrix[m*3+i][n*3+j].has(a)){
+								count++;
+							}
+						}
+						
+						if(foundPair === false){
+							if(count > 1){
+								foundPair = true;
+								row = i+m*3;
+							} else if(count == 1) {
+								cont = false;
+							}
+						} else{
+							if(count > 0){
+								cont = false;
+								foundPair = false;
+							}
+						}
+					}
+				}
+				
+			if(cont === true && foundPair === true){
+				
+				let indexes = "";
+				for(let k = 0; k < 9; k++){
+					if(pMatrix[row][k].has(a) && ((k > (n*3)+2) || k < n*3)){
+						pMatrix[row][k].delete(a);
+						indexes = indexes + " " + add1(k) + ", " + add1(row) + ", ";
+					}
+					
+				}
+				if(indexes != ""){
+					
+					return "The number " + a + " has been ruled out from boxes " + indexes + " by a pointing pair in row " + add1(row);
+				}
+			}
+			}
+			
+			
+		}
+	}
+	
+	//Columns
+	
+	for(let m = 0; m < 3; m++){
+		for(let n = 0; n < 3; n++){
+			
+			//for each block, check if there is a pointing pair
+			//check each number 1-9
+			for(let a = 1; a < 10; a++){
+				
+				let foundPair = false;
+				let cont = true;
+				let row = 0;
+				
+				//Check for horizontal pointing pairs
+				//Iterate through the block. In this case i is a row in a block and j is a column
+				for(let j = 0; j < 3; j++){
+					
+					if(cont === true){
+						
+						let count = 0;
+						for(let i = 0; i < 3; i++){
+							if(pMatrix[m*3+i][n*3+j].has(a)){
+								count++;
+							}
+						}
+						
+						if(foundPair === false){
+							if(count > 1){
+								foundPair = true;
+								col = j+n*3;
+							} else if(count == 1) {
+								cont = false;
+							}
+						} else{
+							if(count > 0){
+								cont = false;
+								foundPair = false;
+							}
+						}
+					}
+				}
+				
+			if(cont === true && foundPair === true){
+				
+				let indexes = "";
+				for(let k = 0; k < 9; k++){
+					if(pMatrix[k][col].has(a) && ((k > (m*3)+2) || k < m*3)){
+						pMatrix[k][col].delete(a);
+						indexes = indexes + " " + add1(col) + ", " + add1(k) + ", ";
+					}
+					
+				}
+				if(indexes != ""){
+					
+					return "The number " + a + " has been ruled out from boxes " + indexes + " by a pointing pair in col " + add1(col);
+				}
+			}
+			}
+			
+			
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	return null;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -311,25 +696,32 @@ function next(){
 		
 		
 		if(!a){
-			document.getElementById("output").value = "A contradiction was found in your input. Make sure you entered it correctly and try again.";
+			returnString = "ERROR: Contradiction found."
 		}
 	}
 		
 	//Simple rule out rules out nums for empty squares based on characters that have already been defined
 	//Since this is the most simple strategy in sodoku and it happens a lot, nothing will be printed to 
 	//the log when this happens.
-	simpleRuleOut();
+	if(returnString === null){
+	 simpleRuleOut();
+	}
 	
-	//Hidden Single is the most common strategy for determining what a num is. It is when only one space 
-	//in a coloumn, row or square can be a given value.
-	returnString = nakedSingle();
-	
-	//Naked single is another very common strategy
-	//It is when a given box can only be one value, as every other potential value has been ruled out.
 	if(returnString === null){
 	 returnString = hiddenSingle();
 	}
 	
+	if(returnString === null){
+	 returnString = pointingPair();
+	}
+	
+	if(returnString === null){
+	 returnString = nakedSingle();
+	}
+	
+	if(returnString === null){
+	 returnString = nakedN();
+	}
 	
 	
 	
