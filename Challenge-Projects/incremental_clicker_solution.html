@@ -107,7 +107,7 @@
                         <span class="small-text">Clicks once per second</span>
                     </div>
 
-                    <div class="upgrade-block mt-3" id="trainFisherman" onclick="trainFisherman()">
+                    <div class="upgrade-block mt-3" id="trainFisherman" style="display: none;" onclick="trainFisherman()">
                         <span class="float-left">Train Fisherman</span>
                         <span class="float-right" id="trainFishermanCost">50</span>
                         
@@ -129,7 +129,7 @@
                         <span class="small-text">Double the strength of button clicks</span>
                     </div>
 
-                    <div class="upgrade-block mt-3" id="fisherboat" onclick="buyFisherboat()">
+                    <div class="upgrade-block mt-3" id="fisherboat" style="display: none;" onclick="buyFisherboat()">
                         <span class="float-left">Hire Fisherboat</span>
                         <span class="float-right" id="fisherboat_cost">1000</span>
                         
@@ -140,7 +140,7 @@
                         <span class="small-text">Adds 100 fish every 30 seconds</span>
                     </div>
 
-                    <div class="upgrade-block mt-3" id="upgradeFisherboat" onclick="upgradeFisherboat()">
+                    <div class="upgrade-block mt-3" id="upgradeFisherboat" style="display: none;" onclick="upgradeFisherboat()">
                         <span class="float-left">Upgrade Fisherboat</span>
                         <span class="float-right" id="upgradeFisherboat-cost">50000</span>
                         
@@ -151,7 +151,7 @@
                         <span class="small-text">Clicks once per second</span>
                     </div>
 
-                    <div class="upgrade-block mt-3" id="robotFish" onclick="buyRobotFish()">
+                    <div class="upgrade-block mt-3" id="robotFish" style="display: none;" onclick="buyRobotFish()">
                         <span class="float-left">Build Robot Fish</span>
                         <span class="float-right" id="robotFishCost">100000</span>
                         
@@ -162,7 +162,7 @@
                         <span class="small-text">Robot fish catches 500 fish every minute</span>
                     </div>
 
-                    <div class="upgrade-block mt-3" id="updateRobotOS" onclick="upgradeRobotOS()">
+                    <div class="upgrade-block mt-3" id="updateRobotOS" style="display: none;" onclick="upgradeRobotOS()">
                         <span class="float-left">Upgrade Robot OS</span>
                         <span class="float-right" id="upgradeRobotOS-cost">5000000</span>
                         
@@ -224,7 +224,7 @@
             let robotFishEfficiencyCost = 5000000;
             
             //*** Achievement object ***//
-            achievements = {upAndRunning: false, industrialRevolution: false};
+            achievements = {upAndRunning: false, industrialRevolution: false, fisherboat: false, fisherboatUpgrade: false, robotFish: false, upgradeRobotFishOS: false};
             
             
             //*** Change function ***//
@@ -239,6 +239,40 @@
                 document.getElementById("number").innerHTML = number;
             }
             
+            let importantButton = document.getElementById("click");
+
+            importantButton.addEventListener("click", function(){
+                let trainFisherman = document.getElementById("trainFisherman");
+                let fisherboat = document.getElementById("fisherboat");
+                let upgradeFisherboat = document.getElementById("upgradeFisherboat");
+                let robotFish = document.getElementById("robotFish");
+                let robotOS = document.getElementById("updateRobotOS");
+
+                if(number >= 100)
+                {
+                    showElement(trainFisherman);
+                }
+
+                if(number >= 500)
+                {
+                    showElement(fisherboat);
+                }
+                
+                if(number >= 1000)
+                {
+                    showElement(upgradeFisherboat);
+                }
+
+                if(number >= 10000)
+                {
+                    showElement(robotFish);
+                }
+
+                if(number >= 100000)
+                {
+                    showElement(robotOS);
+                }
+            });
             
             //*** Upgrade purchase functions ***//
             //
@@ -357,8 +391,51 @@
                     document.getElementById("achievements").innerHTML +=
                         "<br/> <b>Industrial revolution</b>: Buy an autoclicker";
                 }
+
+                if(fisherboat >= 1 && !achievements.fisherboat)
+                {
+                    achievements.fisherboat = true;
+
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Fisherboat</b>: Buy a fisherboat";
+                }
+                
+                if(fisherboatEfficiency < 30000 && !achievements.fisherboatUpgrade)
+                {
+                    achievements.fisherboatUpgrade = true;
+
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Upgraded Fisherboat</b>: Buy a fisherboat upgrade";
+                }
+
+                if(robotFish >= 1 && !achievements.robotFish)
+                {
+                    achievements.robotFish = true;
+
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Killer Waters:</b>: Buy a robot fish";
+                }
+
+                if(robotFishEfficiency < 100000 && !achievements.upgradeRobotFishOS)
+                {
+                    achievements.upgradeRobotFishOS = true;
+
+                    document.getElementById("achievements").innerHTML +=
+                        "<br/> <b>Super Fish</b>: Upgrade Robot Fish OS"
+                }
             }
-            
+
+            // Hide an element from the player
+            function hideElement(element)
+            {
+                element.sytle.display = "none";
+            }
+
+            // Reveal a hidden element to the player
+            function showElement(element)
+            {
+                element.style.display = "block";
+            }
             
             //*** Main loop ***//
             //
