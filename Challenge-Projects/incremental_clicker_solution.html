@@ -152,7 +152,7 @@
                         
                         <br/>
                         
-                        <span class="small-text">Clicks once per second</span>
+                        <span class="small-text">Doubles clicking Speed</span>
                     </div>
 
                     <div class="upgrade-block mt-3" id="robotFish" style="display: none;" onclick="buyRobotFish()">
@@ -174,7 +174,7 @@
                         
                         <br/>
                         
-                        <span class="small-text">Clicks once per second</span>
+                        <span class="small-text">Doubles clicking speed</span>
                     </div>
 
                     <div class="upgrade-block mt-3" id="finalUpgrade" onclick="finalUpgrade()">
@@ -231,6 +231,8 @@
             let fisherboatCost = 1000;
             let fisherboatEfficiency = 30000;
             let fisherboatEfficiencyCost = 50000;
+            let fisher_ID;
+            let fisherFirst = true;
 
             // Increase the counter by robot fish amount every minute
             let robotFish = 0;
@@ -405,6 +407,24 @@
                 document.getElementById("fisherboat_cost").innerHTML = fisherboatCost;
             }
 
+            function upgradeFisherboat()
+            {
+                if(number < fisherboatEfficiencyCost)
+                {
+                    return;
+                }
+
+                changeNumber(-fisherboatEfficiencyCost);
+
+                fisherboatEfficiency /= 2;
+
+                clearInterval(fisher_ID);
+
+                setFishermanTimer(fisherboatEfficiency);
+                fisherboatEfficiencyCost = Math.round(2 * Math.pow(fisherboatEfficiencyCost, 1.25));
+                document.getElementById("upgradeFisherboat-cost").innerHTML = fisherboatEfficiencyCost;
+            }
+
             function buyRobotFish()
             {
                 if(number < robotFishCost)
@@ -419,6 +439,24 @@
 
                 robotFishCost = Math.round(2 * Math.pow(robotFishCost, 1.3));
                 document.getElementById("robotFishCost").innerHTML = robotFishCost;
+            }
+
+            function upgradeRobotOS()
+            {
+                if(number < robotFishEfficiencyCost)
+                {
+                    return;
+                }
+
+                changeNumber(-fisherboatEfficiencyCost);
+
+                robotFishEfficiency /= 2;
+
+                clearInterval(robot_ID);
+
+                setFishermanTimer(robotFishEfficiency);
+                robotFishEfficiencyCost = Math.round(2 * Math.pow(robotFishEfficiencyCost, 1.25));
+                document.getElementById("upgradeRobotOS-cost").innerHTML = robotFishEfficiencyCost;
             }
             
             function finalUpgrade()
@@ -435,7 +473,7 @@
 
                 img.src = "james.jpg";
 
-                p.innerHTML = "Greetings. I am Bond, James Bond from the MI6. While you thought you were catching fish in reality you were providing invaluable intellengence on the doings of the evil corporation Chicken Bones©. They have been trying to steal all of the fish in the world so consumers can only eat pultury. Thankfully your fish shall keep them from capturing all of the seafood for their nafarious purposes. Good luck and have a great winter break!";
+                p.innerHTML = "Greetings. I am Bond, James Bond from the MI6. While you thought you were catching fish in reality you were providing invaluable intellengence on the doings of the evil corporation Chicken Bones©. They have been trying to steal all of the fish in the world so consumers can only eat poultry. Thankfully you caught " + number + " fish which goes a log way towards keeping them from capturing all of the seafood for their nafarious purposes. Good luck and have a great winter break!";
 
                 body.append(img);
                 body.append(p);
