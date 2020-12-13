@@ -1,0 +1,152 @@
+[
+    {
+        "id": 1850147,
+        "name": "Tokyo",
+        "state": "",
+        "country": "JP",
+        "coord": {
+            "lon": 139.691711,
+            "lat": 35.689499
+        }
+    },
+    {
+        "id": 4167147,
+        "name": "Orlando",
+        "state": "FL",
+        "country": "US",
+        "coord": {
+            "lon": -81.379242,
+            "lat": 28.53834
+        }
+    },
+    {
+        "id": 1273294,
+        "name": "Delhi",
+        "state": "",
+        "country": "IN",
+        "coord": {
+            "lon": 77.216667,
+            "lat": 28.666668
+        }
+    },
+    {
+        "id": 1796236,
+        "name": "Shanghai",
+        "state": "",
+        "country": "CN",
+        "coord": {
+            "lon": 121.458061,
+            "lat": 31.222219
+        }
+    },
+    {
+        "id": 3448433,
+        "name": "São Paulo",
+        "state": "",
+        "country": "BR",
+        "coord": {
+            "lon": -49.0,
+            "lat": -22.0
+        }
+    },
+    {
+        "id": 3530597,
+        "name": "Mexico City",
+        "state": "",
+        "country": "MX",
+        "coord": {
+            "lon": -99.127663,
+            "lat": 19.428471
+        }
+    },
+    {
+        "id": 360630,
+        "name": "Cairo",
+        "state": "",
+        "country": "EG",
+        "coord": {
+            "lon": 31.24967,
+            "lat": 30.06263
+        }
+    },
+    {
+        "id": 1275339,
+        "name": "Mumbai",
+        "state": "",
+        "country": "IN",
+        "coord": {
+            "lon": 72.847939,
+            "lat": 19.01441
+        }
+    },
+    {
+        "id": 1816670,
+        "name": "Beijing",
+        "state": "",
+        "country": "CN",
+        "coord": {
+            "lon": 116.397232,
+            "lat": 39.907501
+        }
+    },
+    {
+        "id": 1185241,
+        "name": "Dhaka",
+        "state": "",
+        "country": "BD",
+        "coord": {
+            "lon": 90.40744,
+            "lat": 23.7104
+        }
+    },
+    {
+        "id": 1853908,
+        "name": "Osaka",
+        "state": "",
+        "country": "JP",
+        "coord": {
+            "lon": 137.266663,
+            "lat": 35.950001
+        }
+    },
+    {
+        "id": 3425505,
+        "name": "Greenland",
+        "state": "",
+        "country": "GL",
+        "coord": {
+            "lon": -40.0,
+            "lat": 72.0
+        }
+    },
+    {
+        "id": 5870294,
+        "name": "North Pole",
+        "state": "AK",
+        "country": "US",
+        "coord": {
+            "lon": -147.349442,
+            "lat": 64.751106
+        }
+    },
+    {
+        "id": 524305,
+        "name": "Murmansk",
+        "state": "",
+        "country": "RU",
+        "coord": {
+            "lon": 33.09251,
+            "lat": 68.979172
+        }
+    },
+    {
+        "id": 524894,
+        "name": "Moscow",
+        "state": "",
+        "country": "RU",
+        "coord": {
+            "lon": 37.606667,
+            "lat": 55.761665
+        }
+    }
+]
