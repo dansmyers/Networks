@@ -25,5 +25,6 @@ of year, some weather conditions may become extremely rare. In that case, they w
 
 - https://github.com/matteobruni/tsparticles
 - https://particles.matteobruni.it/Samples#snow
+- https://dev.to/matteobruni/tsparticles-rain-effect-315d
 - https://openweathermap.org/
 

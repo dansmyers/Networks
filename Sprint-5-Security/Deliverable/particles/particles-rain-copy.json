@@ -4,10 +4,10 @@
   },
   "particles": {
     "color": {
-      "value": "#d8dfe1"
+      "value": "#0d47a1"
     },
     "move": {
-      "direction": "right",
+      "direction": "bottom",
       "enable": true,
       "outModes": {
         "bottom": "out",
@@ -16,15 +16,10 @@
         "top": "out"
       },
       "straight": true,
-      "speed": 4
+      "speed": 12
     },
     "size": {
-      "value": 55
-    },
-    "shape": {
-        "iimageshape": {
-            "src": "../cloud.png"
-        }
+      "value": 5
     }
   }
 }

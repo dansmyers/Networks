@@ -1,7 +1,6 @@
 let currentWeather = "";
 let currentCityID = "4167147";
 
-
 function weatherBalloon( cityID ) {
     var key = '27dc2ecb9b04d810f8ec9d991876dfa4';
     fetch('https://api.openweathermap.org/data/2.5/weather?id=' + cityID+ '&appid=' + key)
@@ -10,7 +9,7 @@ function weatherBalloon( cityID ) {
             drawWeather(data);
         })
         .catch(function() {
-            // catch any errors
+            console.log("Sorry, the requested city does not exist in the OpenWeatherMap database.");
         });
 }
 

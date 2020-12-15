@@ -20,11 +20,6 @@
     },
     "size": {
       "value": 55
-    },
-    "shape": {
-        "iimageshape": {
-            "src": "../cloud.png"
-        }
     }
   }
 }
