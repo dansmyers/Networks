@@ -40,13 +40,18 @@ canvas {
     vertical-align: bottom;
 }
 
+#weather {
+    padding-left: 0px;
+}
+
 #citytextbox {
-    width:500px;
+    width:100%;
     height: 45px;
 }
 
 .ui-autocomplete {
-    max-height: 100px;
+    max-height: 400px;
+    max-width: 15%;
     overflow-y: auto;
     /* prevent horizontal scrollbar */
     overflow-x: hidden;

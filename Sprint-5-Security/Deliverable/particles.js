@@ -9,7 +9,15 @@ toggleButton.addEventListener('click', function() {
         tsParticles.dom()[0].play();
 })
 
-/* Rain Particles */
+/* Restart Particle Animation */
+let restartButtom = document.getElementById("restart-btn");
+
+restartButtom.addEventListener('click', function() {
+        console.log("restarting particle animation");
+        tsParticles.dom()[0].refresh();
+})
+
+/* Rain */
 let rainButton = document.getElementById("rain-btn");
 
 rainButton.addEventListener('click', function() {
@@ -19,19 +27,11 @@ rainButton.addEventListener('click', function() {
     
 })
 
-/* Snow Particles */
+/* Snow */
 let snowButton = document.getElementById("snow-btn");
 
 snowButton.addEventListener('click', function() {
     tsParticles.loadJSON("tsparticles", "particles/particles-snow.json");
-    tsParticles.dom()[0].refresh();
-})
-
-/* Clear */
-let clearButton = document.getElementById("clear-btn");
-
-clearButton.addEventListener('click', function() {
-    tsParticles.loadJSON("tsparticles", "particles/particles-clear.json");
     tsParticles.dom()[0].refresh();
 })
 
@@ -43,3 +43,18 @@ cloudyButton.addEventListener('click', function() {
     tsParticles.dom()[0].refresh();
 })
 
+/* Clear */
+let clearButton = document.getElementById("clear-btn");
+
+clearButton.addEventListener('click', function() {
+    tsParticles.loadJSON("tsparticles", "particles/particles-clear.json");
+    tsParticles.dom()[0].refresh();
+})
+
+/* Mist */
+let mistButton = document.getElementById("mist-btn");
+
+mistButton.addEventListener('click', function() {
+    tsParticles.loadJSON("tsparticles", "particles/particles-mist.json");
+    tsParticles.dom()[0].refresh();
+})

@@ -2,6 +2,32 @@
   "background": {
     "color": "#556259"
   },
+  "interactivity": {
+    "events": {
+      "onClick": {
+        "enable": true,
+        "mode": "repulse"
+      },
+      "onHover": {
+        "enable": true,
+        "mode": "bubble"
+      }
+    },
+    "modes": {
+      "bubble": {
+        "distance": 100,
+        "duration": 1,
+        "opacity": 0.45,
+        "size": 65
+      },
+      "grab": {
+        "distance": 250,
+        "links": {
+          "opacity": 0.5
+        }
+      }
+    }
+  },
   "particles": {
     "color": {
       "value": "#d8dfe1"
@@ -19,11 +45,24 @@
       "speed": 4
     },
     "size": {
-      "value": 55
+      "random": {
+        "enable": true,
+        "minimumValue": 35
+      },
+      "value": 100
+    },
+    "number": {
+      "density": {
+        "enable": true
+      },
+      "value": 20
     },
     "shape": {
-        "iimageshape": {
-            "src": "../cloud.png"
+        "type": "image",
+        "image": {
+            "src": "../cloud.png",
+            "width": 140,
+            "height": 100
         }
     }
   }

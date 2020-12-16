@@ -1,5 +1,5 @@
 let currentWeather = "";
-let currentCityID = "4167147";
+let currentCityID = "4167147"; // Default is Orlando's city ID
 
 function weatherBalloon( cityID ) {
     var key = '27dc2ecb9b04d810f8ec9d991876dfa4';
@@ -46,6 +46,12 @@ function drawWeather( d ) {
         tsParticles.loadJSON("tsparticles", "particles/particles-cloudy.json");
         tsParticles.dom()[0].refresh();
         console.log("cloud");
+    } else if( description.includes("mist") ) {
+        document.body.className = 'mist';
+        currentWeather = "mist";
+        tsParticles.loadJSON("tsparticles", "particles/particles-mist.json");
+        tsParticles.dom()[0].refresh();
+        console.log("mist");
     }
 
 }

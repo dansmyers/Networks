@@ -13,7 +13,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row text-center">
             <div class="col-lg-12">
                 <div class="title" id="title">
@@ -21,36 +21,36 @@
                 </div>
             </div>
         </div>
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <div id="weather">
+        <div class="row">
+            <div class="col-lg-2 text-center">
+                <div class="interactive-buttons">
+                    <div class="particles-btn-group" role="group">
+                        <button type="button" class="btn btn-success" id="toggle-btn">Toggle Particle Animation</button>
+                        <button type="button" class="btn btn-danger" id="restart-btn">Restart Particle Animation</button>
+                    </div>
+                    <div class="weather-btn-group" role="group" style="padding-top: 20px">
+                        <button type="button" class="btn btn-primary" id="rain-btn">Rain</button>
+                        <button type="button" class="btn btn-primary" id="snow-btn">Snow</button>
+                        <button type="button" class="btn btn-primary" id="cloudy-btn">Clouds</button>
+                        <button type="button" class="btn btn-primary" id="mist-btn">Mist</button>
+                        <button type="button" class="btn btn-primary" id="clear-btn">Clear</button>
+                    </div>
+                </div>
+                <div id="weather" style="padding-top: 50px">
                     <div id="description"></div>
                     <h1 id="temp"></h1>
                     <div id="location"></div>
                 </div>
+                <div class="top-buffer" id="citydropdown" style="padding-top: 30px">
+                    <form autocomplete="off" action="/action_page.php">
+                      <div class="autocomplete">
+                        <input required type="search" id="citytextbox" name="myCity" placeholder="Enter City Name">
+                      </div>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-10" >
                 <div id="tsparticles"></div>
-            </div>
-            <div class="col-lg-2">
-                <form autocomplete="off" action="/action_page.php">
-                  <div class="autocomplete">
-                    <input required type="search" id="citytextbox" name="myCity" placeholder="Enter City Name">
-                  </div>
-                </form>
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-lg-2">
-                <button type="button" class="btn btn-success" id="toggle-btn">Toggle Particle Animation</button>
-            </div>
-            <div class="col-lg-4">
-                <button type="button" class="btn btn-primary" id="rain-btn">Rain</button>
-                <button type="button" class="btn btn-primary" id="snow-btn">Snow</button>
-                <button type="button" class="btn btn-primary" id="cloudy-btn">Clouds</button>
-                <button type="button" class="btn btn-primary" id="clear-btn">Clear</button>
             </div>
         </div>
     </div>

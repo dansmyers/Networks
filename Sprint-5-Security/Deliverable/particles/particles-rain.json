@@ -17,7 +17,7 @@
         "mode": "repulse"
       },
       "onHover": {
-        "enable": false,
+        "enable": true,
         "mode": "repulse",
         "parallax": {
           "enable": false,
@@ -55,7 +55,7 @@
         "quantity": 2
       },
       "repulse": {
-        "distance": 200,
+        "distance": 100,
         "duration": 0.4
       }
     }
@@ -129,7 +129,7 @@
       },
       "stroke": {
         "color": "#efefefee",
-        "width": 1
+        "width": 3
       },
       "type": "line"
     },
