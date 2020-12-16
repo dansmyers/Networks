@@ -21,7 +21,6 @@ function shuntingYard(expression)
             }
         }
     }
-
     console.log(queue);
     console.log(stack);
 }
