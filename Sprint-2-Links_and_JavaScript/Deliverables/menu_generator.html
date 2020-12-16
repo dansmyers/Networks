@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
     <head>
+        <title>The Hip Stir Fryer and Pub</title>
         <!-- Boostrap stylesheets -->
       
         <!-- Latest compiled and minified CSS -->
@@ -14,15 +15,16 @@
         <style>
         
             body {
-              font-family: Lucida, serif;
+              font-family: Courier, serif;
               font-size: 14pt;
+              background-image: url(https://d1e00ek4ebabms.cloudfront.net/production/8669b7f0-b3bb-4c07-ad74-88af722d110b.jpg);
             }
           
             h1 {
               text-align: center;
               font-variant: small-caps;
-              font-size: 36pt;
-              font-family: Georgia, serif;
+              font-size: 40pt;
+              font-family: Courier, serif;
               margin-bottom: 8rem;
             }
             
@@ -30,7 +32,7 @@
               font-variant: small-caps;
               font-size: 22pt;
               margin-bottom: 2rem;
-              font-family: Georgia, serif;
+              font-family: Courier, serif;
             }
             
             .section {
@@ -47,6 +49,29 @@
 
             .clear {
               clear: both;
+            }
+            
+            .latteBack {
+                background-color: #FFF8E7;
+            }
+            
+            .lightRedOchreText {
+                color: #E97551; 
+            }
+            
+            .redOchreText {
+                color: #913832;
+            }
+            
+            .blackText {
+                color: #000000;
+            }
+            
+            img {
+                width: 32%;
+                height: 200px;
+                margin-left: auto;
+                margin-right: auto;
             }
             
         </style>
@@ -66,30 +91,46 @@
 
             <div class="row">
                   
-                <!-- Empty 3-unit column on the left side of the page -->
-                <div class="col-md-3"> </div>
+                <!-- Empty 2-unit column on the left side of the page -->
+                <div class="col-md-2"> </div>
         
                 <!-- col-md-6 makes a column that spans all 6 units -->
                 <!-- Covers the middle half of the page -->
-                <div class="col-md-6">
-                    <h1 id="restaurant_name">The Yellow Sign</h1>
+                <div class="col-md-8 latteBack lightRedOchreText">
+                    <p><b>//////////////////////////////////////////////////////////////////</b></p>
+                    <p><b>////////////////////////////////////////////</b></p>
+                    <p><b>//////////////////////</b></p>
+                    <br><br>
                     
-                    <h2>Appetizers</h2>
+                    <h1 id="restaurant_name" class="blackText"><i><b>the hip stir fryer and pub</b></i></h1>
+                    
+                    <h2 class="redOchreText"><b>.appetizers//////////</b></h2>
                     <div class="section" id="appetizers"></div>
                     <div style="clear: both;"></div>
                     
-                    <h2>Main Courses</h2>
+                    <h2 class="redOchreText"><b>.main courses//////////</b></h2>
                     <div class="section" id="main_courses"></div>
                     <div style="clear: both;"></div>
 
-                    <h2>Desserts</h2>
+                    <h2 class="redOchreText"><b>.desserts//////////</b></h2>
                     <div class="section" id="desserts"></div>
                     <div style="clear: both;"></div>
-                                      
+                     
+                    <br><br>
+                     
+                    <img src="https://madeinpgh.com/wp-content/uploads/2016/08/13166809_925146884250822_888319976_n.jpg"/>
+                    <img src="https://s3.amazonaws.com/spoonuniversi-wpengine/spoonuniversi/wp-content/uploads/sites/54/2016/05/food-truck-crepe.png"/>
+                    <img src="https://quizly-s3-sparklette.netdna-ssl.com/wp-content/uploads/2019/03/26000559/Ramen-Burger.jpg"/>
+                     
+                    <br><br><br>
+                    <p><b>//////////////////////</b></p>
+                    <p><b>////////////////////////////////////////////</b></p> 
+                    <p><b>//////////////////////////////////////////////////////////////////</b></p>
+                                 
                 </div>   <!-- /col-md-12 -->  
             
-                <!-- Empty 3-unit column on the right side of the page -->
-                <div class="col-md-3"> </div>
+                <!-- Empty 2-unit column on the right side of the page -->
+                <div class="col-md-2"> </div>
         
             </div> <!-- /row -->
     
@@ -117,8 +158,23 @@
                                  'ominous', 'non-euclidean', 'carbonized', 'spectral',
                                  'argyle', 'korean bbq', 'cilantro-lime', 'oblique',
                                  'ketchuped', 'curried', 'inverted', 'digitized'];
+                                 
+          let mainIngredients = ['turkey', 'chicken', 'snapper', 'mixed fish', 'pork', 'rice',
+                                    'cheese', 'kale', 'grouper', 'beef', 'steak', 'soy'];
+          
+          let mainPreparations = ['burger', 'chips', 'salad', 'sandwich', 'casserole',
+                                    'toast', 'stir fry'];
+          
+          let mainAdjectives = ['hot-off-the-grill', 'fried', 'vegan', 'gluten-free',
+                                'meatless', 'grass-fed', 'french', 'trendy'];
+          
+          let dessIngredients = ['cheese', 'chocolate', 'vanilla', 'strawberry', 'cranberry'];
+          
+          let dessPreparations = ['cake', 'sorbet', 'muffin', 'toast', 'crisps'];
                           
           const MAX_APP_PRICE = 20;
+          const MAX_MAIN_PRICE = 35;
+          const MAX_DESS_PRICE = 15;
                        
           function choose(arr) {
               
@@ -143,9 +199,25 @@
                 
             return result;
           }
+          
+          function generateMainCourse() {
+            let result = choose(mainAdjectives) + ' ';
+            result += choose(mainIngredients) + ' ';
+            result += 'and ' + choose(mainIngredients) + ' ';
+            result += choose(mainPreparations);
+                
+            return result;
+          }
+          
+          function generateDessert() {
+            let result = choose(dessIngredients) + ' ';
+            result += choose(dessPreparations);
+                
+            return result;
+          }          
             
           function generateAppetizers() {
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 4; i++) {
               
               // Generate a random item and price
               let result = generateAppetizer();
@@ -169,7 +241,85 @@
               // The name and price go in <span> tags with classes that
               // will style them to be aligned left and right respectively
               para.innerHTML = '<span class="name">' + result + '</span>';
-              para.innerHTML += '<span class="price">' + price + '</span>';
+              para.innerHTML += '<span class="price blackText">' + price + ',95&#x20AC' + '</span>';
+              
+              // The last piece of HTML makes an empty div with a
+              // special clear setting that undoes the left and right
+              // floating on the previous line
+              //
+              // This is required to position the next line properly
+              para.innerHTML += '<div class="clear"></div>'
+    
+              // Append the new <p> node to the list of appetizers
+              section.appendChild(para);
+            }
+          }
+          
+          function generateMainCourses() {
+            for (let i = 0; i < 5; i++) {
+              
+              // Generate a random item and price
+              let result = generateMainCourse();
+              let price = Math.floor(Math.random() * (MAX_MAIN_PRICE - 1)) + 1;
+                  
+              // Insert the new item into the appetizers div
+              //
+              // Basic strategy: use DOM functions to make a new
+              // node representing the new menu item, then add it
+              // into the existing DOM at the correct position
+                    
+              // Get a reference to the appetizers div
+              let section = document.getElementById('main_courses');
+                    
+              // Create a new <p> node
+              let para = document.createElement('p');
+                    
+              // Set the internal contents of the new <p> node
+              // to hold the randomized menu item
+              //
+              // The name and price go in <span> tags with classes that
+              // will style them to be aligned left and right respectively
+              para.innerHTML = '<span class="name">' + result + '</span>';
+              para.innerHTML += '<span class="price blackText">' + price + ',95&#x20AC' + '</span>';
+              
+              // The last piece of HTML makes an empty div with a
+              // special clear setting that undoes the left and right
+              // floating on the previous line
+              //
+              // This is required to position the next line properly
+              para.innerHTML += '<div class="clear"></div>'
+    
+              // Append the new <p> node to the list of appetizers
+              section.appendChild(para);
+            }
+          }
+          
+          function generateDesserts() {
+            for (let i = 0; i < 3; i++) {
+              
+              // Generate a random item and price
+              let result = generateDessert();
+              let price = Math.floor(Math.random() * (MAX_DESS_PRICE - 1)) + 1;
+                  
+              // Insert the new item into the appetizers div
+              //
+              // Basic strategy: use DOM functions to make a new
+              // node representing the new menu item, then add it
+              // into the existing DOM at the correct position
+                    
+              // Get a reference to the appetizers div
+              let section = document.getElementById('desserts');
+                    
+              // Create a new <p> node
+              let para = document.createElement('p');
+                    
+              // Set the internal contents of the new <p> node
+              // to hold the randomized menu item
+              //
+              // The name and price go in <span> tags with classes that
+              // will style them to be aligned left and right respectively
+              para.innerHTML = '<span class="name">' + result + '</span>';
+              para.innerHTML += '<span class="price blackText">' + price + ',95&#x20AC' + '</span>';
               
               // The last piece of HTML makes an empty div with a
               // special clear setting that undoes the left and right
@@ -185,6 +335,8 @@
             
           function main() {
             generateAppetizers();
+            generateMainCourses();
+            generateDesserts();
           }
             
           // The onload property sets a function that will run once
