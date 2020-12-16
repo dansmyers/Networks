@@ -40,8 +40,18 @@ canvas {
     vertical-align: bottom;
 }
 
-citytextbox {
-    
+#citytextbox {
+    width:500px;
+    height: 45px;
+}
+
+.ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding to account for vertical scrollbar */
+    padding-right: 20px;
 }
 
 /* ---- tsparticles container ---- */
