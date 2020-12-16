@@ -17,6 +17,10 @@
                 font-size: 15pt;
                 font-family: Helvetica, Arial, sans-serif;
                 display: block;
+                background-image: url("https://cdn.pixabay.com/photo/2014/05/27/23/32/matrix-356024_960_720.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
             }
         
             h1 {
@@ -35,18 +39,38 @@
                 text-align: left;
             }
             
+            .hidden {
+                display: none;
+            }
+            
+            .gray {
+                background-color: gray;
+            }
+            
+            .gradient {
+                background-image: linear-gradient(gray, green);
+            }
+            
+            .reverseGradient {
+                background-image: linear-gradient(green, gray);
+            }
+            
+            .background {
+                
+            }
+            
         </style>
         
     </head>
     
     <body>
         
-        <div class="container">
+        <div class="container background">
             
             <div class="row">
                 
-                <div class="col-md-12 text-center">
-                    <h1> Cipher Generator </h1>
+                <div class="col-md-12 text-center gray">
+                    <h1><b>Cipher Generator</b></h1>
                     <p>
                         <br> Generate an encrypted message using a popular cipher! 
                     </p>
@@ -56,60 +80,115 @@
             
             <br>
             
-            <div class="row">
+            <div class="row gradient">
+                <div class="col-2"></div>
                 
-                <div class="col-md-4 text-center">
-                    <p> Input </p>
-                
-                    <!-- Create an input box for the plaintext/ciphertext -->
+                <div class="col-md-3 text-center">
+                    <label><b>Input</b></label>
+                    <textarea id="inputBox" name="inputBox" rows="7" cols="20"></textarea>
                 </div>
                 
-                <div class="col-md-4 text-center">
-                    <p> Select </p>
-                    <select name="cipherSelection" id="cipherType" class="text-center">
-                        <option value=""> --Select a cipher-- </option>
-                        <option value=""> --[PLACEHOLDER]-- </option>
-                        
-                        <!-- Research ciphers to include in the project; at least 4-->
-                    </select>
+                <div class="col-md-2 text-center">
+                    <br><br><br><br>
+                    <button id="convertButton" onclick="convert()">
+                        <b>Convert!</b>
+                    </button>
                 </div>
                 
-                <div class="col-md-4 text-center">
-                    <p> Output </p>
-                    
-                    <!-- Create and output box for the ciphertext/plaintext -->
+                <div class="col-md-3 text-center">
+                    <label><b>Output</b></label>
+                    <textarea id="outputBox" name="output" rows="7" cols="20"></textarea>
                 </div>
                 
+                <div class="col-2"></div>
             </div>
             
             <br>
             
-            <div class="row">
+            <div class="row reverseGradient">
+                <div class="col-2"></div>
                 
-                <div class="col-md-4 text-right">
-                    <button id="button" onclick="selectCipherToPlaintext()">
-                        Cipher-to-Plaintext
-                        
-                        <!-- Create function for switching from cipher input to plaintext input-->
-                    </button>
+                <div class="col-md-3 text-center">
+                    <label id="shiftLabel" class="hidden"><b>Insert the shift value:</b></label>
+                    <textarea id="shiftInputBox" name="shiftInputBox" class="hidden" rows="1" cols="20">0</textarea>
+                    <label id="keyLabel" class="hidden"><b>Insert a key:</b></label>
+                    <textarea id="keyInputBox" name="keyInputBox" class="hidden" rows="1" cols="20">key</textarea>
+                    <label id="alphabetLabel" class="hidden"><b>Insert the alphabet you would like to use for the grid:</b></label>
+                    <textarea id="alphabetInputBox" name="alphabetInputBox" class="hidden" rows="1" cols="20">abcdefghijklmnopqrstuvwxyz0123456789</textarea>
                 </div>
                 
-                <div class="col-md-4 text-center">
-                    <p> Swap </p>
+                <div class="col-md-2 text-center">
+                    <label><b>Select a cipher</b></label>
+                    <button id="selectSubstitutionButton" onclick="selectSubstitutionCipher()">
+                        Substitution
+                    </button><br><br>
+                    
+                    <button id="selectVigenereButton" onclick="selectVigenereCipher()">
+                        Vigenère
+                    </button><br><br>
+                    
+                    <button id="selectAtbashButton" onclick="selectAtbashCipher()">
+                        Atbash
+                    </button><br><br>
+                    
+                    <button id="selectADFGVXButton" onclick="selectADFGVXCipher()">
+                        ADFGVX
+                    </button><br><br>
                 </div>
                 
-                <div class="col-md-4 text-left">
-                    <button id="button" onclick="selectPlaintextToCipher()">
+                <div class="col-md-3 text-center">
+                    <br><br>
+                    <p><b> Swap </b></p>
+                    
+                    <button id="plaintextToCipherButton" onclick="selectPlaintextToCipher()">
                         Plaintext-to-Cipher
-                        
-                        <!-- Create function for switching from plaintext input to cipher input-->
+                    </button>
+                    
+                    <br><br>
+                    
+                    <button id="cipherToPlaintextButton" onclick="selectCipherToPlaintext()">
+                        Cipher-to-Plaintext
                     </button>
                 </div>
-                
             </div>
             
-            <!-- Include some instructions on how the selected cipher works-->
+            <br>
             
+            <div class="row gray">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <p id="substitutionInstruc" class="hidden text-center"><b>
+                        The subsitution cipher requires a shift value which shifts the letters based on their position on the alphabet. 
+                        This substituion cipher does not shift symbols and numbers. The shift value must be a positive or negative integer value.
+                    </b></p>
+                
+                    <p id="vigenereInstruc" class="hidden text-center"><b>
+                        The vigenère cipher requires a key which is used to substitute letters in the plaintext message.
+                        The cipher loops through the key cyclically until the message is entirely encoded.
+                        The position of the corresponding letter of the key is added to the position of the corresponding letter of the message in the alphabet.
+                        The final value is modulo 26 and represents the encoded letter.
+                        The key value must be an alphabetic character and not a symbol or number.
+                    </b></p>
+                
+                    <p id="atbashInstruc" class="hidden text-center"><b> 
+                        The atbash cipher does not require any additional input other than the message.
+                        The cipher reverses the alphabet and replaces the letters with their new position in the alphabet.
+                        For example, the letter 'a' is replaced with the letter 'z'.
+                        The message will only reverse alphabetic characters.
+                    </b></p>
+                
+                    <p id="adfgvxInstruc" class="hidden text-center"><b>
+                        The ADFGVX cipher is a complex cipher which includes a substitution and a transposition.
+                        The cipher requires an alphabet which includes letters and numbers, no symbols.
+                        The cipher also requires a key value for encoding.
+                        The message is replaced with two letters, which can be A, D, F, G, V, or X. The letters depend on their position in a grid based on the alphabet.
+                        After the message is substituted, the substituted message loops through the key cylically, generating a column.
+                        The columns are organized based on the corresponding key letters position in the alphabet.
+                        Finally, the columns are read from top to bottom in the reordered column order.
+                    </b></p>
+                </div>
+                <div class="col-2"></div>
+            </div>
         </div>
         
         <!-- For Bootstrap -->
@@ -121,6 +200,530 @@
         <script>
             //Create functions for ciphers
             //Create functions for switching between the modes
+            let cipherType;
+            let conversionType;
+            let cipher;
+            
+            function selectPlaintextToCipher() {
+                conversionType = "plaintext-to-cipher";
+            }
+            
+            function selectCipherToPlaintext() {
+                conversionType = "cipher-to-plaintext";
+            }
+            
+            function selectSubstitutionCipher() {
+                cipherType = "substitution";
+                
+                // Displays the proper labels and input boxes for the substitution cipher
+                document.getElementById("shiftInputBox").style.display = "block";
+                document.getElementById("shiftLabel").style.display = "block";
+                document.getElementById("keyInputBox").style.display = "none";
+                document.getElementById("keyLabel").style.display = "none";
+                document.getElementById("alphabetInputBox").style.display = "none";
+                document.getElementById("alphabetLabel").style.display = "none";
+                document.getElementById("substitutionInstruc").style.display = "block";
+                document.getElementById("vigenereInstruc").style.display = "none";
+                document.getElementById("atbashInstruc").style.display = "none";
+                document.getElementById("adfgvxInstruc").style.display = "none";
+            }
+            
+            function selectVigenereCipher() {
+                cipherType = "vigenere";
+                
+                // Displays the proper labels and input boxes for the Vigenere cipher
+                document.getElementById("shiftInputBox").style.display = "none";
+                document.getElementById("shiftLabel").style.display = "none";
+                document.getElementById("keyInputBox").style.display = "block";
+                document.getElementById("keyLabel").style.display = "block";
+                document.getElementById("alphabetInputBox").style.display = "none";
+                document.getElementById("alphabetLabel").style.display = "none";
+                document.getElementById("substitutionInstruc").style.display = "none";
+                document.getElementById("vigenereInstruc").style.display = "block";
+                document.getElementById("atbashInstruc").style.display = "none";
+                document.getElementById("adfgvxInstruc").style.display = "none";
+            }
+            
+            function selectAtbashCipher() {
+                cipherType = "atbash";
+                
+                // Displays the proper labels and input boxes for the Atbash cipher
+                document.getElementById("shiftInputBox").style.display = "none";
+                document.getElementById("shiftLabel").style.display = "none";
+                document.getElementById("keyInputBox").style.display = "none";
+                document.getElementById("keyLabel").style.display = "none";
+                document.getElementById("alphabetInputBox").style.display = "none";
+                document.getElementById("alphabetLabel").style.display = "none";
+                document.getElementById("substitutionInstruc").style.display = "none";
+                document.getElementById("vigenereInstruc").style.display = "none";
+                document.getElementById("atbashInstruc").style.display = "block";
+                document.getElementById("adfgvxInstruc").style.display = "none";                
+            }
+            
+            function selectADFGVXCipher() {
+                cipherType = "adfgvx";
+                
+                // Displays the proper labels and input boxes for the ADFGVX cipher
+                document.getElementById("shiftInputBox").style.display = "none";
+                document.getElementById("shiftLabel").style.display = "none";
+                document.getElementById("keyInputBox").style.display = "block";
+                document.getElementById("keyLabel").style.display = "block";
+                document.getElementById("alphabetInputBox").style.display = "block";
+                document.getElementById("alphabetLabel").style.display = "block";
+                document.getElementById("substitutionInstruc").style.display = "none";
+                document.getElementById("vigenereInstruc").style.display = "none";
+                document.getElementById("atbashInstruc").style.display = "none";
+                document.getElementById("adfgvxInstruc").style.display = "block";
+            }
+            
+            function convert() {
+                let message = document.getElementById("inputBox").value;
+                
+                // Checks to see if a conversion type and cipher have been selected then performs the cipher
+                if(conversionType === "plaintext-to-cipher" || conversionType === "cipher-to-plaintext") {
+                    if (cipherType === "substitution") {
+                        performSubstitutionCipher(message);
+                    } else if (cipherType === "vigenere") {
+                        performVigenereCipher(message);
+                    } else if (cipherType === "atbash") {
+                        performAtbashCipher(message);
+                    } else if (cipherType === "adfgvx") {
+                        performADFGVXCipher(message);
+                    } else {
+                        alert("Please select a cipher to continue.");
+                    }
+                } else {
+                    alert("Please select a conversion type to continue.");
+                }
+                
+                
+            }
+            
+            function performSubstitutionCipher(message) {
+                let value = Number(document.getElementById("shiftInputBox").value);
+                cipher = "";
+                
+                // Negate the shift value if you are decrypting
+                if (conversionType === "cipher-to-plaintext") {
+                    value = -value;
+                }
+                
+                // Convert each letter of the message to its encrypted letter
+                for(let i = 0; i < message.length; i++) {
+                    let letter = message[i];
+                    let encryptedLetter = convertSubstitutionLetter(letter, value);
+                    
+                    cipher = cipher.concat(encryptedLetter);
+                }
+                
+                document.getElementById("outputBox").value = cipher;
+            }
+            
+            function performAtbashCipher(message) {
+                cipher = "";
+                
+                // Convert each letter of the message to its encrypted letter
+                for(let i = 0; i < message.length; i++) {
+                    let letter = message[i];
+                    let encryptedLetter = convertAtbashLetter(letter);
+                    
+                    cipher = cipher.concat(encryptedLetter);
+                }
+                
+                document.getElementById("outputBox").value = cipher;
+            }
+            
+            function performVigenereCipher(message) {
+                let keyIndex = 0;
+                let key = String(document.getElementById("keyInputBox").value);
+                key = key.toLowerCase();
+                
+                cipher = "";
+                
+                // Convert each letter of the message to its encrypted letter
+                for(let i = 0; i < message.length; i++) {
+                    let letter = message[i];
+                    let encryptedLetter = convertVigenereLetter(letter, key, keyIndex);
+                    
+                    if (isLetter(letter)) {
+                        keyIndex++;
+                        keyIndex %= key.length;
+                    }
+                    
+                    cipher = cipher.concat(encryptedLetter);
+                }
+                
+                document.getElementById("outputBox").value = cipher;
+            }
+            
+            function performADFGVXCipher(message) {
+                let alphabet = String(document.getElementById("alphabetInputBox").value);
+                let key = String(document.getElementById("keyInputBox").value);
+                key = key.toLowerCase();
+                
+                cipher = "";
+                let cipherNoTranspose = "";
+                let ADFGVXGrid = fillADFGVXGrid(alphabet);
+                
+                // Convert each letter of the message to its encrypted letter
+                if (conversionType === "plaintext-to-cipher") {
+                    for (let i = 0; i < message.length; i++) {
+                        let letter = message[i];
+                        letter = letter.toLowerCase();
+                        let encryptedLetter = convertADFGVXLetter(letter, ADFGVXGrid);
+                        
+                        cipherNoTranspose = cipherNoTranspose.concat(encryptedLetter);
+                    }
+                    
+                    cipher = performColumnTransposition(cipherNoTranspose, key);
+                } else {
+                    // Convert each letter of the message to its decrypted letter
+                    cipherNoTranspose = undoColumnTransposition(message, key);
+                    
+                    for (let i = 0; i < cipherNoTranspose.length; i += 2) {
+                        let letters = cipherNoTranspose[i] + cipherNoTranspose[i + 1];
+                        
+                        let decryptedLetter = convertADFGVXLetter(letters, ADFGVXGrid);
+                        
+                        cipher = cipher.concat(decryptedLetter);
+                    }
+                }
+                
+                document.getElementById("outputBox").value = cipher;
+            }
+            
+            function undoColumnTransposition(message, cipherKey) {
+                let columns = new Array(cipherKey.length);
+                let messageArray = message.split(" ");
+                let messageLength = messageArray.join("").length;
+                let messageNoTranspose = "";
+                
+                // Create the columns for the transposition
+                for (let i = 0; i < columns.length; i++) {
+                    columns[i] = [cipherKey[i], ""];
+                }
+                
+                // Reorder the columns in alphabetical order based on the key letter
+                for (let i = 1; i < columns.length; i++) {
+                    let key = columns[i];
+                    
+                    let j = i - 1;
+                    while ((j >= 0) && (columns[j][0] > key[0])) {
+                        columns[j + 1] = columns[j];
+                        j--;
+                    }
+                    columns[j + 1] = key;
+                }
+                
+                // Add the message fragments to their corresponding columns
+                for (let i = 0; i < columns.length; i++) {
+                    columns[i][1] = columns[i][1].concat(messageArray[i]);
+                }
+                
+                let reorderedColumns = new Array(cipherKey.length);
+                
+                // Reorder the columns so they column key letters spell out the key word
+                for (let i = 0; i < cipherKey.length; i++) {
+                    let foundColumn = false;
+                    for (let j = 0; j < columns.length; j++) {
+                        if (foundColumn) {
+                            continue;
+                        }
+                        
+                        if (cipherKey[i] === columns[j][0]) {
+                            reorderedColumns[i] = columns[j][1];
+                            
+                            columns.splice(j, 1, "");
+                            foundColumn = true;
+                        }
+                    }
+                }
+                
+                // Decrypted the column transposition
+                let letterCount = 0;
+                for (let i = 0; i < reorderedColumns[0].length; i++) {
+                    for (let j = 0; j < reorderedColumns.length; j++) {
+                        messageNoTranspose = messageNoTranspose.concat(reorderedColumns[j][i]);
+                        
+                        letterCount++;
+                        if (letterCount >= messageLength) {
+                            break;
+                        }
+                    }
+                }
+                
+                return messageNoTranspose;
+            }
+            
+            function performColumnTransposition(message, cipherKey) {
+                let cipher = "";
+                let keyIndex = 0;
+                let columns = new Array(cipherKey.length);
+                
+                // Create the columns for the transposition
+                for (let i = 0; i < columns.length; i++) {
+                    columns[i] = [cipherKey[i], ""];
+                }
+                
+                // Fill the columns with the message
+                for (let i = 0; i < message.length; i++) {
+                    columns[keyIndex][1] = columns[keyIndex][1].concat(message[i]);
+                    
+                    keyIndex++;
+                    keyIndex %= cipherKey.length;
+                }
+                
+                // Sort the columns alphabetically based on the key using an insertion sort
+                for (let i = 1; i < columns.length; i++) {
+                    let key = columns[i];
+                    
+                    let j = i - 1;
+                    while ((j >= 0) && (columns[j][0] > key[0])) {
+                        columns[j + 1] = columns[j];
+                        j--;
+                    }
+                    columns[j + 1] = key;
+                }
+                
+                for (let i = 0; i < columns.length; i++) {
+                    cipher = cipher.concat(columns[i][1] + " ");
+                }
+                
+                return cipher;
+            }
+            
+            function convertADFGVXLetter(letter, grid) {
+                let firstLetter;
+                let secondLetter;
+                
+                // Decrypt or encrypt the cipher or message
+                if (conversionType === "plaintext-to-cipher") {
+                    let encryptedLetter;
+                    
+                    for (let i = 0; i < grid.length; i++) {
+                        for (let j = 0; j < grid[i].length; j++) {
+                            if (letter === grid[i][j]) {
+                                firstLetter = j;
+                                secondLetter = i;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    let gridLetter = formGridLetter(firstLetter, secondLetter);
+                    encryptedLetter = gridLetter;
+                    return encryptedLetter;
+                } else {
+                    firstLetter = letter[0];
+                    secondLetter = letter[1];
+                    
+                    decryptedLetter = convertFromADFGVX(firstLetter, secondLetter, grid);
+                    return decryptedLetter;
+                }
+            }
+            
+            function convertFromADFGVX(firstLetter, secondLetter, grid) {
+                let decryptedLetter = "";
+                
+                gridHoriNum = findGridNum(firstLetter);
+                gridVertNum = findGridNum(secondLetter);
+                
+                decryptedLetter = grid[gridHoriNum][gridVertNum];
+                
+                return decryptedLetter;
+            }
+            
+            function findGridNum(letter) {
+                let gridNum;
+                
+                if (letter === "A") {
+                    gridNum = 0;
+                } else if (letter === "D") {
+                    gridNum = 1;
+                } else if (letter === "F") {
+                    gridNum = 2;
+                } else if (letter === "G") {
+                    gridNum = 3;
+                } else if (letter === "V") {
+                    gridNum = 4;
+                } else if (letter === "X") {
+                    gridNum = 5;
+                } else {
+                    gridNum = -1;
+                }
+                
+                return gridNum;
+            }
+            
+            function formGridLetter(i, j) {
+                let gridLetters = "";
+                gridLetters = gridLetters.concat(convertToADFGVX(j));
+                gridLetters = gridLetters.concat(convertToADFGVX(i));
+                
+                return gridLetters;
+            }
+            
+            function convertToADFGVX(n) {
+                let gridLetter;
+                
+                if (n === 0) {
+                    gridLetter = "A";
+                } else if (n === 1) {
+                    gridLetter = "D";
+                } else if (n === 2) {
+                    gridLetter = "F";
+                } else if (n === 3) {
+                    gridLetter = "G";
+                } else if (n === 4) {
+                    gridLetter = "V";
+                } else if (n === 5) {
+                    gridLetter = "X";
+                } else {
+                    gridLetter = "";
+                }
+                
+                return gridLetter;
+            }
+            
+            function fillADFGVXGrid(alphabet) {
+                let gridLength = 6;
+                let grid = new Array(gridLength);
+                for (let i = 0; i < gridLength; i++) { 
+                    grid[i] = new Array(gridLength);
+                } 
+                
+                let index = 0;
+                for (let i = 0; i < grid.length; i++) {
+                    for (let j = 0; j < grid[i].length; j++) {
+                        grid[i][j] = alphabet[index];
+                        index++;
+                    }
+                }
+                
+                return grid;
+            }
+            
+            function isLetter(letter) {
+                let asciiLetterNum = letter.charCodeAt(0);
+                
+                if ((asciiLetterNum >= 65 && asciiLetterNum < 91) || (asciiLetterNum >= 97 && asciiLetterNum < 123)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            
+            function convertVigenereLetter(letter, key, keyIndex) {
+                let keyIndexLetter = key[keyIndex];
+                
+                let asciiLetterNum = letter.charCodeAt(0);
+                let asciiKeyLetterNum = keyIndexLetter.charCodeAt(0);
+                
+                if (asciiLetterNum >= 65 && asciiLetterNum < 91) {
+                    return convertVigenereUppercaseLetter(asciiLetterNum, asciiKeyLetterNum);
+                } else if (asciiLetterNum >= 97 && asciiLetterNum < 123){
+                    return convertVigenereLowercaseLetter(asciiLetterNum, asciiKeyLetterNum);
+                } else {
+                    return letter;
+                }
+            }
+            
+            function convertVigenereUppercaseLetter(asciiLetterNum, asciiKeyLetterNum) {
+                asciiLetterNum -= 65;
+                asciiKeyLetterNum -= 97;
+                
+                if (conversionType === "plaintext-to-cipher") {
+                    asciiLetterNum += asciiKeyLetterNum;
+                    asciiLetterNum %= 26;
+                } else {
+                    asciiLetterNum -= asciiKeyLetterNum;
+                    asciiLetterNum += 26;
+                    asciiLetterNum %= 26;
+                }
+                
+                asciiLetterNum += 65;
+                
+                return String.fromCharCode(asciiLetterNum);
+            }
+            
+            function convertVigenereLowercaseLetter(asciiLetterNum, asciiKeyLetterNum) {
+                asciiLetterNum -= 97;
+                asciiKeyLetterNum -= 97;
+                
+                if (conversionType === "plaintext-to-cipher") {
+                    asciiLetterNum += asciiKeyLetterNum;
+                    asciiLetterNum %= 26;
+                } else {
+                    asciiLetterNum -= asciiKeyLetterNum;
+                    asciiLetterNum += 26;
+                    asciiLetterNum %= 26;
+                }
+                
+                asciiLetterNum += 97;
+                
+                return String.fromCharCode(asciiLetterNum);
+            }
+            
+            function convertAtbashLetter(letter) {
+                let asciiNum = letter.charCodeAt(0);
+                
+                if (asciiNum >= 65 && asciiNum < 91) {
+                    return convertAtbashUppercaseLetter(asciiNum);
+                } else if (asciiNum >= 97 && asciiNum < 123){
+                    return convertAtbashLowercaseLetter(asciiNum);
+                } else {
+                    return letter;
+                }
+            }
+            
+            function convertAtbashUppercaseLetter(asciiNum) {
+                asciiNum -= 65;
+                asciiNum = 25 - asciiNum;
+                asciiNum += 65;
+                
+                return String.fromCharCode(asciiNum);
+            }
+            
+            function convertAtbashLowercaseLetter(asciiNum) {
+                asciiNum -= 97;
+                asciiNum = 25 - asciiNum;
+                asciiNum += 97;
+                
+                return String.fromCharCode(asciiNum);
+            }
+            
+            function convertSubstitutionLetter(letter, value) {
+                let asciiNum = letter.charCodeAt(0);
+                
+                if (asciiNum >= 65 && asciiNum < 91) {
+                    return convertSubstitutionUppercaseLetter(asciiNum, value);
+                } else if (asciiNum >= 97 && asciiNum < 123){
+                    return convertSubstitutionLowercaseLetter(asciiNum, value);
+                } else {
+                    return letter;
+                }
+            }
+            
+            function convertSubstitutionUppercaseLetter(asciiNum, value) {
+                asciiNum -= 65;
+                asciiNum += value;
+                asciiNum += 26;
+                asciiNum %= 26;
+                asciiNum += 65;
+                
+                return String.fromCharCode(asciiNum);
+            }
+            
+            function convertSubstitutionLowercaseLetter(asciiNum, value) {
+                asciiNum -= 97;
+                asciiNum += value;
+                asciiNum += 26;
+                asciiNum %= 26;
+                asciiNum += 97;
+                
+                return String.fromCharCode(asciiNum);
+            }
+            
         </script>
         
     </body>
