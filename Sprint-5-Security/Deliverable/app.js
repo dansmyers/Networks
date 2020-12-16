@@ -22,9 +22,19 @@ app.get("/submit", function(req, res){
 	console.log(name);
 	
 	let data = {message: name};
+
+	console.log(data);
 	
 	res.setHeader("COntent-Type", "application/json");
 	res.json(data);
-})
+});
+
+app.post("/calculateDerative", function(req, res){
+	let formula = req.body.hello;
+
+	console.log(formula);
+
+	res.send(formula);
+});
 
 app.listen(port, () => console.log(`Server is listening on port ${port}!`));
