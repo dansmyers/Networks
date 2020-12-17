@@ -36,7 +36,7 @@ app.post("/calculateDerative", function(req, res){
 
 	console.log(math.derivative(formula,"x").toString());
 	
-jello
+
 	let result = math.derivative(formula, "x").toString();
 
 	res.send(result);
