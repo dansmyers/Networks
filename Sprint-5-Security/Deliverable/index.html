@@ -28,9 +28,11 @@
             	box should go. After finishing each line of the puzzle, hit enter without typing any
             	additional characters, and continue. When your puzzle is fully typed, it should have 9 rows of 9 chaacters and only contain numbers 1-9 and spaces.</p>
             	
-            	<p>Once you have inputed, click 'solve'. Your puzzle should appear in the middle
+            	<p>Once you have inputed, click 'Confirm Input'. Your puzzle should appear in the middle
             	box. Click 'next' to begin solving. Every time you press 'next' the solver will 
-            	advance a step in the solution.</p>
+            	advance a step in the solution. If you want to skip to the complete solution, click 'Instant Solve'.</p>
+            	
+            	<p>Once you are done, if you want to solve another puzzle, refresh the page.</p>
             	
             	
             </div>
@@ -60,9 +62,11 @@
             
             <div class="row">
             	
-            	<button id = "solve" onclick="init()">Solve</button>
+            	<button id = "solve" onclick="init()">Confirm Input</button>
             	
             	<button id = "next" onclick="next()">Next Step</button>
+            	
+            	<button id = "instantSolve" onclick="instantSolve()">Instant Solve</button>
             	
             </div>
             

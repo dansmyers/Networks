@@ -308,6 +308,7 @@ function hiddenSingle(){
 
 }
 
+//Look for any squares where the number is not filled in, and there is only one number it could be
 function nakedSingle(){
 	for(let i = 0; i < 9; i++){
 		for(let j = 0; j < 9; j++){
@@ -647,23 +648,416 @@ function pointingPair(){
 			
 		}
 	}
+	return null;
+}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+function claimingPair(){
+		
+		
+		//row
+		for(let i = 0; i < 9; i++){
+			
+			for(let n = 1; n < 10; n++){
+				count = 0;
+				index1 = -1;
+				index2 = -1;
+				
+				for(let j = 0; j < 9; j++){
+					if(pMatrix[i][j].has(n) && puzzle[i][j] !== "" ){
+						count++;
+					if(index1 === -1){
+						index1 = j;
+					} else{
+						index2 = j;
+					}
+					
+					}	
+				}
+				
+				if(count === 2){
+					if(Math.floor(index1/3) === Math.floor(index2/3)){
+						
+						blockX = Math.floor(index1/3);
+						blockY = Math.floor(i/3);
+						
+						indexes = "";
+						
+						for(let h = 0; h < 9; h++){
+							
+							hX = blockX*3 + h%3;
+							hY = blockY*3 + Math.floor(h/3);
+							
+							if(hY != i && pMatrix[hY][hX].has(n)){
+								indexes = indexes + ": " + add1(hX) + ", " + add1(hY) + " ";
+								pMatrix[hY][hX].delete(n);
+							}
+						}
+					if(indexes !== ""){
+							return "The number " + n + " has been ruled out from boxes " + indexes + " by a claiming pair in box " + add1(blockX) + ", " + add1(blockY);
+					}
+				}
+			}
+		}
+	}
+		
+		
+	//col
+		for(let j = 0; j < 9; j++){
+			
+			for(let n = 1; n < 10; n++){
+				count = 0;
+				index1 = -1;
+				index2 = -1;
+				
+				for(let i = 0; i < 9; i++){
+					if(pMatrix[i][j].has(n) && puzzle[i][j] !== "" ){
+						count++;
+					if(index1 === -1){
+						index1 = i;
+					} else{
+						index2 = i;
+					}
+					
+					}	
+				}
+				
+				if(count === 2){
+					if(Math.floor(index1/3) === Math.floor(index2/3)){
+						
+						blockX = Math.floor(j/3);
+						blockY = Math.floor(index1/3);
+						
+						indexes = "";
+						
+						for(let h = 0; h < 9; h++){
+							
+							hX = blockX*3 + h%3;
+							hY = blockY*3 + Math.floor(h/3);
+							
+							if(hX != j && pMatrix[hY][hX].has(n)){
+								indexes = indexes + ": " + add1(hX) + ", " + add1(hY) + " ";
+								pMatrix[hY][hX].delete(n);
+							}
+						}
+					if(indexes !== ""){
+							return "The number " + n + " has been ruled out from boxes " + indexes + " by a claiming pair in box " + add1(blockX) + ", " + add1(blockY);
+						
+						
+					}
+				}
+			}
+		}
+	}
+
 	return null;
 }
 
 
+function hiddenPair(){
+	
+	//check every combo of two numbers, exclude any repeats by letting k > l
+	for(let k = 1; k < 10; k++){
+		for(let l = 1; l < 10; l++){
+			if(k > l){
+				
+				//check rows
+				for(let i = 0; i < 9; i++){
+					
+					count = 0;
+					index1 = -1;
+					index2 = -1;
+					
+					for(let j = 0; j < 9; j++){
+						if(pMatrix[i][j].has(k) && pMatrix[i][j].has(l)){
+							count++;
+							
+							if(index1 === -1){
+							index1 = j;
+						} else{
+							index2 = j;
+						}
+						}
+						
+						//if either k or l exists in a box without the other, move on to the next row
+						if((pMatrix[i][j].has(k) || pMatrix[i][j].has(l)) && ((pMatrix[i][j].has(k) && pMatrix[i][j].has(l)) === false)){
+							//console.log(i + " " + j);
+							count = -10000;
+							}
+						
+						}
+					
+					
+					
+					if(count === 2){
+						let print = false;
+						for(let a = 1; a < 10; a++){
+							if(pMatrix[i][index1].has(a) && a != k && a != l){
+								pMatrix[i][index1].delete(a);
+								print = true;
+							}
+							if(pMatrix[i][index2].has(a) && a != k && a != l){
+								pMatrix[i][index2].delete(a);
+								print = true;
+							}
+							
+						}
+						if(print === true){
+								return "Boxes " + add1(index1) + ", " + add1(i) + " and " + add1(index2) + ", " + add1(i) + " can only be either " + k + " or "+ l + ". ";
+							}
+					}
+				
+				
+				//check cols
+				for(let j = 0; j < 9; j++){
+					
+					count = 0;
+					index1 = -1;
+					index2 = -1;
+					
+					for(let i = 0; i < 9; i++){
+						if(pMatrix[i][j].has(k) && pMatrix[i][j].has(l)){
+							count++;
+							
+							if(index1 === -1){
+							index1 = i;
+						} else{
+							index2 = i;
+						}
+						}
+						
+						//if either k or l exists in a box without the other, move on to the next row
+					if((pMatrix[i][j].has(k) || pMatrix[i][j].has(l)) && ((pMatrix[i][j].has(k) && pMatrix[i][j].has(l)) === false)){
+						count = -10000;
+					}
+					}
+					
+					
+					
+					if(count === 2){
+						let print = false;
+						for(let a = 1; a < 10; a++){
+							if(pMatrix[index1][j].has(a) && a != k && a!=l){
+								pMatrix[index1][j].delete(a);
+								print = true;
+							}
+							if(pMatrix[index2][j].has(a) && a != k && a!=l){
+								pMatrix[index2][j].delete(a);
+								print = true;
+							}
+							
+						}
+						
+						if(print === true){
+								return "Boxes " + add1(j) + ", " + add1(index1) + " and " + add1(j) + ", " + add1(index2) + " can only be either " + k + " or "+ l + ". ";
+							
+						}
+					}
+				
+				}
+				
+				
+				//check boxes
+				for(let m = 0; m < 2; m++){
+					for(n =0; n < 2; n++){
+						count = 0;
+						index1 = -1;
+						index2 = -1;
+					
+					for(let i = 0; i < 9; i++){
+						
+						iX = m*3 + i%3;
+						iY = n*3 + Math.floor(i/3);
+						
+						
+						if(pMatrix[iY][iX].has(k) && pMatrix[iY][iX].has(l)){
+							count++;
+							
+							if(index1 === -1){
+							index1 = i;
+						} else{
+							index2 = i;
+							}
+						}
+						
+							//if either k or l exists in a box without the other, move on to the next row
+						if((pMatrix[iY][iX].has(k) || pMatrix[iY][iX].has(l)) && ((pMatrix[iY][iX].has(k) && pMatrix[iY][iX].has(l)) === false)){
+							count = -10000;
+									}
+								}
+								
+						if(count === 2){
+							let index1X = m*3 + index1%3;
+							let index1Y = n*3 + Math.floor(index1/3);
+							let index2X = m*3 + index2%3;
+							let index2Y = n*3 + Math.floor(index2/3);
+							
+							
+							let print = false;
+							for(let a = 1; a < 10; a++){
+								if(pMatrix[index1Y][index1X].has(a) && a != k && a!=l){
+									pMatrix[index1Y][index1X].delete(a);
+									print = true;
+								}
+								if(pMatrix[index2Y][index2X].has(a) && a != k && a!=l){
+									pMatrix[index2Y][index2X].delete(a);
+									print = true;
+								}
+							
+						}
+						
+						if(print === true){
+								return "Boxes " + add1(index1X) + ", " + add1(index1Y) + " and " + add1(index2X) + ", " + add1(index2Y) + " can only be either " + k + " or "+ l + ". ";
+							}
+						}
+					}
+				
+				}
+			}
+		}
+	}
+	}
+
+return null;
+}
 
 
-
+function xWing(){
+	
+	//check each number 1-9
+	for(let n = 0; n < 9; n++){
+		
+		//check the rows
+		for(let i = 0; i < 9; i++ ){
+			count = 0;
+			index1 = -1;
+			index2 = -1;
+			
+			for(let j = 0; j < 9; j++){
+				if(pMatrix[i][j].has(n)){
+					count++;
+					
+					if(index1 === -1){
+						index1 = j;
+					} else {
+						index2 = j;
+					}
+				}
+			}
+			
+			//if we find that a number can only be in two spots, we need to run the same program for the rest of the rows. If we get a second row with the same result, we have found an x wing.
+			if(count === 2){
+				for(let k = 0; k < 9; k++){
+					count2 = 0;
+					index3 = -1;
+					index4 = -1;
+					
+					for(let l = 0; l < 9; l++){
+						if(pMatrix[k][l].has(n)){
+							count2++;
+							
+							if(index3 === -1){
+								index3 = l;
+							} else {
+								index4 = l;
+							}
+						}
+					}
+					
+					
+					if(count2 === 2 && index1 === index3 && index2 === index4 && i != k){
+						let print = false;
+						for(let m = 0; m < 9; m++){
+							if(m != i && m != k && pMatrix[m][index1].has(n)){
+								pMatrix[m][index1].delete(n);
+								print = true;
+							}
+							if(m != i && m != k && pMatrix[m][index2].has(n)){
+								pMatrix[m][index2].delete(n);
+								print = true;
+							}
+							
+						}
+						if(print === true){
+								return "By the X-Wing rule, in columns " + add1(index1) + " and " + add1(index2) + " only boxes " + add1(index1) + ", " + add1(i) + ": " + add1(index1) + ", " + add1(k) + ": " + add1(index2) + ", " + add1(i) + ": " + add1(index2) + ", " + add1(k) + " can be the number " + n;
+							}
+					}
+					
+				}
+				
+				
+				
+			}
+			
+		}
+		
+		
+		//check the columns
+		for(let j = 0; j < 9; j++ ){
+			count = 0;
+			index1 = -1;
+			index2 = -1;
+			
+			for(let i = 0; i < 9; i++){
+				if(pMatrix[i][j].has(n)){
+					count++;
+					
+					if(index1 === -1){
+						index1 = i;
+					} else {
+						index2 = i;
+					}
+				}
+			}
+			
+			//if we find that a number can only be in two spots, we need to run the same program for the rest of the rows. If we get a second row with the same result, we have found an x wing.
+			if(count === 2){
+				for(let l = 0; l < 9; l++){
+					count2 = 0;
+					index3 = -1;
+					index4 = -1;
+					
+					for(let k = 0; k < 9; k++){
+						if(pMatrix[k][l].has(n)){
+							count2++;
+							
+							if(index3 === -1){
+								index3 = k;
+							} else {
+								index4 = k;
+							}
+						}
+					}
+					
+					
+					if(count2 === 2 && index1 === index3 && index2 === index4 && j != l){
+						console.log("in");
+						let print = false;
+						for(let m = 0; m < 9; m++){
+							if(m != j && m != l && pMatrix[index1][m].has(n)){
+								pMatrix[index1][m].delete(n);
+								print = true;
+							}
+							if(m != j && m != l && pMatrix[index2][m].has(n)){
+								pMatrix[index2][m].delete(n);
+								print = true;
+							}
+						}
+						if(print === true){
+								return "By the X-Wing rule, in rows " + add1(index1) + " and " + add1(index2) + " only boxes " + add1(j) + ", " + add1(index1) + ": " + add1(l) + ", " + add1(index1) + ": " + add1(j) + ", " + add1(index2) + ": " + add1(l) + ", " + add1(index2) + " can be the number " + n;
+							}
+					}
+					
+				}
+				
+				
+				
+			}
+			
+		}
+		
+	}
+	return null;
+}
 
 
 
@@ -680,7 +1074,7 @@ function next(){
 	
 	if(!validPuzzle){
 		document.getElementById("output").value = "You have not entered a valid input yet. Enter a valid input and click solve, then try again."
-		return;
+		return null;
 	}
 	
 	//This section only needs to happen the first time next() is run. It checks to make sure the puzzle
@@ -700,9 +1094,7 @@ function next(){
 		}
 	}
 		
-	//Simple rule out rules out nums for empty squares based on characters that have already been defined
-	//Since this is the most simple strategy in sodoku and it happens a lot, nothing will be printed to 
-	//the log when this happens.
+	
 	if(returnString === null){
 	 simpleRuleOut();
 	}
@@ -716,12 +1108,26 @@ function next(){
 	}
 	
 	if(returnString === null){
+	 returnString = claimingPair();
+	}
+	
+	if(returnString === null){
 	 returnString = nakedSingle();
 	}
 	
 	if(returnString === null){
 	 returnString = nakedN();
 	}
+	
+	if(returnString === null){
+	 returnString = hiddenPair();
+	}
+	
+	if(returnString === null){
+	 returnString = xWing();
+	}
+	
+	
 	
 	
 	
@@ -788,4 +1194,17 @@ function next(){
 	
 	document.getElementById("output").value = puzzleOutput;
 	document.getElementById("log").value = logString;
+	
+	return returnString;
+}
+
+function instantSolve(){
+	cont = true;
+	
+	while(cont){
+		string = next();
+		if(string === "The solver was unable to solve this puzzle. Check your input and try again." || string === "The puzzle is solved." || string === "" || string === null){
+			cont = false;
+		}
+	}
 }
