@@ -8,6 +8,8 @@ const port = 80;
 app.use(express.static("public"));
 
 var bodyParser = require('body-parser');
+const math = require("mathjs");
+
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
@@ -21,20 +23,23 @@ app.get("/submit", function(req, res){
 	let name = req.query.name;
 	console.log(name);
 	
-	let data = {message: name};
+	let data = {message: math.derivative(name).toString()};
 
 	console.log(data);
 	
-	res.setHeader("COntent-Type", "application/json");
+	res.setHeader("Content-Type", "application/json");
 	res.json(data);
 });
 
 app.post("/calculateDerative", function(req, res){
 	let formula = req.body.hello;
 
-	console.log(formula);
+	console.log(math.derivative(formula,"x").toString());
+	
 
-	res.send(formula);
+	let result = math.derivative(formula, "x").toString();
+
+	res.send(result);
 });
 
 app.listen(port, () => console.log(`Server is listening on port ${port}!`));

@@ -8,7 +8,7 @@ function main()
         let dataForm = $(this).serialize();
 
         $.post("/calculateDerative", dataForm, function(equationInfo){
-            shuntingYard(equationInfo);
+            console.log(equationInfo);
         });
     })
 }
