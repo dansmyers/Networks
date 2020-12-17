@@ -18,19 +18,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/index.html')));
 
-app.get("/submit", function(req, res){
-	
-	let name = req.query.name;
-	console.log(name);
-	
-	let data = {message: math.derivative(name).toString()};
-
-	console.log(data);
-	
-	res.setHeader("Content-Type", "application/json");
-	res.json(data);
-});
-
 app.post("/calculateDerative", function(req, res){
 	let formula = req.body.hello;
 
