@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -8,13 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
-    <link rel="stylesheet" href="derivativeCalculator.css">
-    
-    <style>
-    	h1{
-    		text-align: center;
-    	}
-    </style>
+    <link rel="stylesheet" href="/css/derivativeCalculator.css">
 
     <title>Derivative Calculator</title>
   </head>
@@ -29,174 +23,46 @@
 			
 		</div><!-- </row> -->
 		
-				<div class="row">
+		<div class="row justify-content-center">
 			
 			<div class="col-lg-12">
-				<p>Calculate a Derivative: <input type="text" id="derivative"></p>
-				<button id="submitDerivative">Submit Derivative</button>
-				<script>
-					
-					function checkEnd(listLength, listElement)
-					{
-						if(listElement === listLength - 1)
-						{
-							alert("Enter Valid Expression \n Incorrect Ending Symbol");
-							return true;
-						}
-						return false;
-					}
-					
-					
-					let button = document.getElementById("submitDerivative");
-					let check = document.getElementById("derivative")
-					
-					// check for a change in the input box
-					// if a change was detected then check for valid expression
-					
-					check.addEventListener("change", function(){
-						// add valid expression logic here
-						let input = derivative.value;
-						console.log(input + " before parsing");
-						input = input.replace(/\s/g, '');
-						console.log(input);
-						let specialCharacter = false;
-						let previousCharacter = "";
-						
-						for(let i = 0; i < input.length; i++)
-						{
-							if(isNaN(input[i]))
-							{
-								if(specialCharacter)
-								{
-									if(previousCharacter === "c")
-									{
-										if(input[i] === "o" && i !== input.length - 1)
-										{
-											previousCharacter = "o";
-											continue;
-										}
-										else
-										{
-											alert("Enter Valid Expression \n Did you mean to type cos?");
-											break;
-										}
-									}
-									else if(previousCharacter === "o")
-									{
-										if(input[i] === "s" && i !== input.length - 1)
-										{
-											previousCharacter = "s";
-											continue;
-										}
-										else
-										{
-											alert("Enter Valid Expression \n Did you mean to type cos?");
-											break;
-										}
-									}
-									else if(previousCharacter === "s")
-									{
-										if(input[i] === "(" && i !== input.length - 1)
-										{
-											previousCharacter = "";
-											specialCharacter = false;
-											continue;
-										}
-										else
-										{
-											alert("Enter Valid Expression \n Did you mean to type cos?");
-											break;
-										}
-									}
-								}
-								else
-								{
-									switch(input[i])
-									{
-										case "+":
-											if(checkEnd(input.length, i))
-											{
-												break;
-											}
-											continue;
-										case "-":
-											if(checkEnd(input.length, i))
-											{
-												break;
-											}
-											continue;
-										case "*":
-											if(checkEnd(input.length, i))
-											{
-												break;
-											}
-											continue;
-										case "/":
-											if(checkEnd(input.length, i))
-											{
-												break;
-											}
-											continue;
-										case "^":
-											if(checkEnd(input.length, i))
-											{
-												break;
-											}
-											continue;
-										case "l":
-											i += 1;
-											if(checkEnd(input.length, i))
-											{
-												break;
-											}
-											continue;
-										case "c":
-											specialCharacter = true;
-											previousCharacter = "c";
-											if(checkEnd(input.length, i))
-											{
-												break;
-											}
-										continue;
-										case "s":
-											if(checkEnd(input.length, i))
-											{
-												break;
-											}
-											continue;
-										case "(":
-											continue;
-										case ")":
-											continue;
-										case "x":
-											continue;
-										default:
-											alert(input[i] + " is not a valid symbol");
-									}
-								}
-							}
-						}
-					})
-					
-					button.addEventListener("click", function(){
-						let derivative = document.getElementById("derivative");
-						let text = derivative.value;
-						let data = {name: text};
-						
-						let xmlhttp = new XMLHttpRequest();
-						
-						xmlhttp.onload = function(){
-							let data = JSON.parse(this.responseText);
-							alert(data.message);
-						};
-						
-						xmlhttp.open("GET", "/submit/?name=" + text);
-						xmlhttp.send();
-					})
-				</script>
-			</div><!-- </col-lg-12> -->
+
+				<form action="calculateDerative" method="post" id="derivativeInfo">
+					<div>
+						<label for="hello">Enter a function in terms of x:</label>
+					</div>
+					<input type="text" name="hello" id="input" class="form-control" placeholder="example expression: cos(x)+2x^2+3">
+					<input type="submit">
+					<div id="expression"></div>
+				</form>
+				
+				<div id="plot"></div>
+
+			</div><!-- </col-lg-6> -->
 			
 		</div><!-- </row> -->
+		
+		<div class="row justify-content-center">
+			
+			<div class="col-lg-6">
+				
+				<h3>Rules:</h3>
+				
+				<p>All derivatives are differentiated in terms of x</p>
+				<p>Valid functions include:</p>
+				<p>cos(expression)</p>
+				<p>acos(expression)</p>
+				<p>sin(expression)</p>
+				<p>asin(expression)</p>
+				<p>log(expression, base)*</p>
+				<p>tan</p>
+				<p>atan(expression)</p>
+				<p>*To use the natural log (ln) you must use log(expression, e)</p>
+				
+				
+			</div><!-- </col-lg-12> -->
+			
+		</div><!--</row>-->
 		
 	</div><!-- </content> -->
 
@@ -204,7 +70,20 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="derivativeCalculator.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	<!-- Used for the post method to get the form info on the front end of the site non-slim version of jquery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	
+	<!-- Used for MathJax to write good looking equations on the front end (currently not implemented) -->
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	
+	<!-- For using mathjs in the front end and to draw graphs in the front end of the site -->
+	<script src="https://unpkg.com/mathjs@8.1.0/lib/browser/math.js"></script>
+	<script src="https://cdn.plot.ly/plotly-1.35.2.min.js"></script>
+	
+	<!-- Locally Written javascript files located in assets/javascript folder -->
+	<script src="/javascript/formControl.js"></script>
   </body>
 </html>

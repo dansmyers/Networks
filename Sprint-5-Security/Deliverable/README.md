@@ -1,8 +1,8 @@
 # Original Project
 
-"On my honor I have not given nor witnessed nor recieved any unauthorized assistance on this work".
+"On my honor, I have not given, nor witnessed, nor received any unauthorized assistance on this work".
 
-I am working on this project with Griffin
+Working on this project with Griffin Lehrer
 
 ## Mid-point check-in due December 2
 
