@@ -63,6 +63,15 @@ mistButton.addEventListener('click', function() {
     loopSound("cloudSound");
 })
 
+/* Secret */
+let secretButtom = document.getElementById("secret-btn");
+
+secretButtom.addEventListener('click', function() {
+    tsParticles.loadJSON("tsparticles", "particles/particles-secret.json");
+    tsParticles.dom()[0].refresh();
+    loopSound("secretSound");
+})
+
 /* Sound Toggle */
 let soundToggleButton = document.getElementById("mute-btn");
 

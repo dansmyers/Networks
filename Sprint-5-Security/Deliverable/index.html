@@ -17,12 +17,12 @@
         <div class="row text-center">
             <div class="col-lg-12">
                 <div class="title" id="title">
-                    Dynamic Weather Particles
+                    Global Weather Particles
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-2 text-center">
+        <div class="row" style="padding-top: 30px">
+            <div class="col-lg-3 text-center">
                 <div id="weather">
                     <div id="description"></div>
                     <h1 id="temp"></h1>
@@ -31,7 +31,7 @@
                 <div class="top-buffer" id="citydropdown" style="padding-top: 30px">
                     <form autocomplete="off" action="/action_page.php">
                       <div class="autocomplete">
-                        <input required type="search" id="citytextbox" name="myCity" placeholder="Enter City Name">
+                        <input required type="search" id="citytextbox" name="myCity" placeholder="Enter City Name" pattern="(.*)(,)(\s)(.*)(,)(\s)(.*)">
                       </div>
                     </form>
                 </div>
@@ -47,11 +47,13 @@
                         <button type="button" class="btn-lg btn-primary" id="cloudy-btn">Clouds</button>
                         <button type="button" class="btn-lg btn-primary" id="mist-btn">Mist</button>
                         <button type="button" class="btn-lg btn-primary" id="clear-btn">Clear</button>
+                        <button type="button" class="btn-lg btn-danger" id="secret-btn">Secret</button>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-10" >
-                <div id="tsparticles"></div>
+            <div class="col-lg-9" >
+                <div id="tsparticles">
+                </div>
             </div>
         </div>
     </div>
@@ -66,6 +68,9 @@
     </audio>
     <audio id="cloudSound">
       <source src="sounds/cloud.mp3" type="audio/mp3">
+    </audio>
+    <audio id="secretSound">
+      <source src="sounds/bells.wav" type="audio/wav">
     </audio>
 
 

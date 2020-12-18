@@ -2,7 +2,6 @@
   "detectRetina": true,
   "fpsLimit": 60,
   "background": {
-    "color": "#556259"
   },
   "interactivity": {
     "detectsOn": "canvas",

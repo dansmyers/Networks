@@ -1,13 +1,66 @@
 {
-  "background": {
-    "color": "#e9e9e2"
-  },
-  "particles": {
-    "number": {
-      "density": {
-        "enable": true
+    "background": {
+    },
+    "interactivity": {
+    "events": {
+      "onClick": {
+        "enable": true,
+        "mode": "repulse"
       },
-      "value": 0
+      "onHover": {
+        "enable": true,
+        "mode": "attract"
+      }
+    },
+    "modes": {
+      "slow": {
+        "factor": 2.5,
+        "radius":  40
+      },
+      "attract": {
+        "distance": 350,
+        "duration": 1,
+        "speed": 5
+      }
     }
-  }
+    },
+    "particles": {
+        "color": {
+          "value": "#d8dfe1"
+        },
+        "move": {
+          "direction": "bottom",
+          "enable": true,
+          "outModes": {
+            "bottom": "bounce",
+            "left": "bounce",
+            "right": "bounce",
+            "top": "bounce"
+          },
+          "straight": false,
+          "speed": 4
+        },
+        "size": {
+          "value": 100
+        },
+        "number": {
+          "value": 1
+        },
+        "shape": {
+            "type": "image",
+            "image": {
+                "src": "sun.svg",
+                "width": 100,
+                "height": 100
+            }
+        },
+        "rotate": {
+            "value": 90,
+            "direction": "clockwise",
+            "animation": {
+                "enable": true,
+                "speed": 5
+            }
+        }
+    }
 }

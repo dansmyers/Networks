@@ -25,35 +25,35 @@ function drawWeather( d ) {
     document.getElementById('location').innerHTML = d.name;
 
     if( description.includes("rain") ) {
-        document.body.className = 'rainy';
+        
         loopSound("rainSound");
         currentWeather = "rainy";
         tsParticles.loadJSON("tsparticles", "particles/particles-rain.json");
         tsParticles.dom()[0].refresh();
         console.log("rainy");
     } else if( description.includes("snow") ) {
-        document.body.className = 'snow';
+        
         loopSound("snowSound");
         currentWeather = "snow";
         tsParticles.loadJSON("tsparticles", "particles/particles-snow.json");
         tsParticles.dom()[0].refresh();
         console.log("snowy");
     } else if( description.includes("clear") ) {
-        document.body.className = 'clear';
+        
         loopSound("sunnySound");
         currentWeather = "clear";
         tsParticles.loadJSON("tsparticles", "particles/particles-clear.json");
         tsParticles.dom()[0].refresh();
         console.log("clear");
     } else if( description.includes("cloud") ) {
-        document.body.className = 'cloud';
+        
         loopSound("cloudSound");
         currentWeather = "cloud";
         tsParticles.loadJSON("tsparticles", "particles/particles-cloudy.json");
         tsParticles.dom()[0].refresh();
         console.log("cloud");
     } else if( description.includes("mist") ) {
-        document.body.className = 'mist';
+        
         loopSound("cloudSound");
         currentWeather = "mist";
         tsParticles.loadJSON("tsparticles", "particles/particles-mist.json");
