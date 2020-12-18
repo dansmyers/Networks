@@ -15,6 +15,16 @@ var answers = [
     "I've always wanted to take up painting."
 ];
 
+var bbG = [
+    "https://media.giphy.com/media/3o6Zt1TrXW8uW2lE2I/giphy.gif",
+    "https://media.giphy.com/media/3oriNVvop3bMSjM12g/giphy.gif",
+    "https://media.giphy.com/media/XWyvX116VmUpO/giphy.gif",
+    "https://media.giphy.com/media/WYODE1C6cy9AQ/giphy.gif",
+    "https://media.giphy.com/media/l2Sq9Z6ckIlrJss7e/giphy.gif"
+
+
+];
+
 var baseball = [
     "Joe Dimaggio holds the MLB's longest hit streak with 56 Games.",
     "After 108 years, the Cubs finally won the World Series in 2016.",
@@ -38,6 +48,16 @@ var baseball = [
 
 ];
 
+var spG = [
+    "https://media.giphy.com/media/3o85xt08p2Y0hanhwQ/giphy.gif",
+    "https://media.giphy.com/media/3o6ZsVLtrVPHjcxXDa/giphy.gif",
+    "https://media.giphy.com/media/xTk9Zx7rh7aONWVzKo/giphy.gif",
+    "https://media.giphy.com/media/HL4zwTG6PV9hm/giphy.gif",
+    "https://media.giphy.com/media/3o6ZtipNmvcvWRrLSU/giphy.gif"
+
+
+];
+
 var sp = [
     "Cartman is keeeeeewwwll.",
     "Mister Garrison!!",
@@ -47,8 +67,7 @@ var sp = [
     "Kenny dies in every episode",
     "Mrs. Broflofski is often very stressed",
     "We all love Cheesy poofs.... Or we'd be lame!"
-]
-
+];
 var cheese = [
     "Mozzerella cheese is the cheese that goes on pizza",
     "Americans consume 15 pounds of cheese a year on average",
@@ -58,14 +77,34 @@ var cheese = [
     "The phrase 'say cheese' Originated in Texas in the nineteen 40's",
     "A Wisconsin law used to require restaurants to serve cheese with every meal.",
     "Culvers makes delicious cheese curds."
-]
+];
+
+var cheeseGifs = [
+    "https://media.giphy.com/media/P0kLJlDyqz2qA/giphy.gif",
+    "https://media.giphy.com/media/lP5KY1DVqBkFG/giphy.gif",
+    "https://media.giphy.com/media/Z2lMI3RoVv2ne/giphy.gif",
+
+];
+
+var iSpyClues = [
+    "I spy something on the internet",
+    "I spy something ugly.",
+    "I spy something seasonal.",
+    "I spy something that keeps your feet warm.",
+    "Do you know what it is?",
+    "https://media.giphy.com/media/D28t0Rto3daKI/giphy.gif"
+];
 var first = 0;
+var isp = false;
 const btn = document.querySelector('#talk');
 const content = document.querySelector('.content');
 
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
+
+const SpeechRecognition2 = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition2 = new SpeechRecognition();
 
 recognition.onstart = function(){
     console.log('voice is activated, try microphone');
@@ -104,36 +143,173 @@ btn.addEventListener('click', () => {
 
 function readOutLoud(message){
     const speech = new SpeechSynthesisUtterance();
-
-
     var words = message.split(" ");
-
     var num = Math.floor(Math.random() * answers.length);
+
+
     said = answers[num];
-    for(var i = 0; i < words.length; i++){
+    
+
+    if (isp == true){
+        var socks = false;
+        var christmas = false;
+        speech.text = said;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = .3;
+
+        for(var k = 0; k < words.length; k++){
+            if(words[k] == "socks" || words[k] == "Socks"){
+                socks = true;
+            } else if(words[k] == "christmas" || words[k] == "Christmas"){
+                christmas = true;
+            }
+        }
+        if(christmas == true && socks == true){
+            said = "correct";
+            speech.text = said;
+            window.speechSynthesis.speak(speech);
+        }else{
+            said = "wrong";
+            speech.text = said;
+            window.speechSynthesis.speak(speech);
+        }
+
+     
+
+     
+        document.getElementById('talk2').style.visibility = "hidden";
+        isp = false;
+        document.getElementById("image").src = iSpyClues[iSpyClues.length - 1];
+        document.getElementById("image").style.visibility = "visible";
+  
+
+    }else{
+
+        
+
+    
+     for(var i = 0; i < words.length; i++){
         if (words[i] == "hello" || words[i] == "Hello"){
             said = "Hello, how are you?";
+           
         }else if(words[i] == "baseball" || words[i] == "Baseball"){
             num = Math.floor(Math.random() * baseball.length );
             said = baseball[num]; 
+            document.getElementById("curr").src = bbG[Math.floor(Math.random() * bbG.length)];
         }else if(words[i] == "south" || words[i] == "South"){
             num = Math.floor(Math.random() * sp.length );
             said = sp[num]; 
+            document.getElementById("curr").src = spG[Math.floor(Math.random() * spG.length)];
         }else if(words[i] == "cheese" || words[i] == "Cheese"){
             num = Math.floor(Math.random() * cheese.length );
             said = cheese[num]; 
+            document.getElementById("curr").src = cheeseGifs[Math.floor(Math.random() * cheeseGifs.length)];
+        } else if(words[i] == "elephant" || words[i] == "Elephant"){
+            secretInteraction();
+            isp = true;
+        } else if(words[i] == "remove" || words[i] == "Remove"){
+            document.getElementById("image").style.visibility = "hidden";
+
         }
+     }
+
+  }
+
+    if (isp == false && said != "correct" && said != "wrong"){
+    speech.text = said;
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = .3;
+
+    window.speechSynthesis.speak(speech);
+    }
+}
+
+function yesOrNo(message){
+    var words = message.split(" ");
+
+    console.log("here");
+    if(words[1] == "correct"){
+        const speech = new SpeechSynthesisUtterance();
+        speech.text = "correct";
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = .3;
+
+        window.speechSynthesis.speak(speech);
+    } else{
+          const speech = new SpeechSynthesisUtterance();
+        speech.text = "correct";
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = .3;
+
+        window.speechSynthesis.speak(speech);
+    }
+}
+
+function secretInteraction(){
+
+    const speech = new SpeechSynthesisUtterance();
+    speech.text = "You have discovered my secret talent. Now we shall play I spy.";
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = .3;
+
+    window.speechSynthesis.speak(speech);
+
+
+
+    let found = false;
+    while(found == false){
+
+
+        found = iSpy();
+
     }
 
 
-    speech.text = said;
-    speech.volume = 1;
+}
 
-    speech.rate = 1;
 
-    speech.pitch = .3;
 
+function iSpy(){
+    document.getElementById("curr").src = "";
+    const speech2 = new SpeechSynthesisUtterance();
+    
+    speech2.volume = 1;
+    speech2.rate = 1;
+    speech2.pitch = .3;
+  
     
 
-    window.speechSynthesis.speak(speech);
+
+
+    for(var i = 0; i < iSpyClues.length - 1; i++){
+
+
+    const speech = new SpeechSynthesisUtterance();
+    
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = .8;
+  
+
+        speech.text = iSpyClues[i];
+        window.speechSynthesis.speak(speech);
+
+    }
+
+
+    document.getElementById('talk2').style.visibility = "visible";
+   
+    btn2 = document.getElementById('talk2');
+    btn2.addEventListener('click', () => {
+        recognition.start();
+    });
+
+
+
+    return true;
 }
