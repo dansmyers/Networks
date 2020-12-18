@@ -1,5 +1,5 @@
 let currentWeather = "";
-let currentCityID = "4167147"; // Default is Orlando's city ID
+let currentCityID = 4167147; // Default is Orlando's city ID
 
 function weatherBalloon( cityID ) {
     var key = '27dc2ecb9b04d810f8ec9d991876dfa4';
@@ -9,7 +9,9 @@ function weatherBalloon( cityID ) {
             drawWeather(data);
         })
         .catch(function() {
+            console.log(currentCityID);
             console.log("Sorry, the requested city does not exist in the OpenWeatherMap database.");
+            //alert("Sorry, there is currently no weather data for that area.");
         });
 }
 
@@ -24,30 +26,35 @@ function drawWeather( d ) {
 
     if( description.includes("rain") ) {
         document.body.className = 'rainy';
+        loopSound("rainSound");
         currentWeather = "rainy";
         tsParticles.loadJSON("tsparticles", "particles/particles-rain.json");
         tsParticles.dom()[0].refresh();
         console.log("rainy");
     } else if( description.includes("snow") ) {
         document.body.className = 'snow';
+        loopSound("snowSound");
         currentWeather = "snow";
         tsParticles.loadJSON("tsparticles", "particles/particles-snow.json");
         tsParticles.dom()[0].refresh();
         console.log("snowy");
     } else if( description.includes("clear") ) {
         document.body.className = 'clear';
+        loopSound("sunnySound");
         currentWeather = "clear";
         tsParticles.loadJSON("tsparticles", "particles/particles-clear.json");
         tsParticles.dom()[0].refresh();
         console.log("clear");
     } else if( description.includes("cloud") ) {
         document.body.className = 'cloud';
+        loopSound("cloudSound");
         currentWeather = "cloud";
         tsParticles.loadJSON("tsparticles", "particles/particles-cloudy.json");
         tsParticles.dom()[0].refresh();
         console.log("cloud");
     } else if( description.includes("mist") ) {
         document.body.className = 'mist';
+        loopSound("cloudSound");
         currentWeather = "mist";
         tsParticles.loadJSON("tsparticles", "particles/particles-mist.json");
         tsParticles.dom()[0].refresh();

@@ -60,7 +60,7 @@
     "shape": {
         "type": "image",
         "image": {
-            "src": "../cloud.png",
+            "src": "cloud.png",
             "width": 140,
             "height": 100
         }

@@ -23,20 +23,7 @@
         </div>
         <div class="row">
             <div class="col-lg-2 text-center">
-                <div class="interactive-buttons">
-                    <div class="particles-btn-group" role="group">
-                        <button type="button" class="btn btn-success" id="toggle-btn">Toggle Particle Animation</button>
-                        <button type="button" class="btn btn-danger" id="restart-btn">Restart Particle Animation</button>
-                    </div>
-                    <div class="weather-btn-group" role="group" style="padding-top: 20px">
-                        <button type="button" class="btn btn-primary" id="rain-btn">Rain</button>
-                        <button type="button" class="btn btn-primary" id="snow-btn">Snow</button>
-                        <button type="button" class="btn btn-primary" id="cloudy-btn">Clouds</button>
-                        <button type="button" class="btn btn-primary" id="mist-btn">Mist</button>
-                        <button type="button" class="btn btn-primary" id="clear-btn">Clear</button>
-                    </div>
-                </div>
-                <div id="weather" style="padding-top: 50px">
+                <div id="weather">
                     <div id="description"></div>
                     <h1 id="temp"></h1>
                     <div id="location"></div>
@@ -48,12 +35,39 @@
                       </div>
                     </form>
                 </div>
+                <div class="interactive-buttons" style="padding-top: 50px">
+                    <div class="particles-btn-group" role="group">
+                        <button type="button" class="btn-lg btn-success" id="toggle-btn">Toggle Particle Animation</button>
+                        <button type="button" class="btn-lg btn-danger" id="restart-btn">Restart Particle Animation</button>
+                        <button type="button" class="btn-lg btn-warning" id="mute-btn">Toggle Sounds</button>
+                    </div>
+                    <div class="weather-btn-group " role="group" style="padding-top: 20px">
+                        <button type="button" class="btn-lg btn-primary" id="rain-btn">Rain</button>
+                        <button type="button" class="btn-lg btn-primary" id="snow-btn">Snow</button>
+                        <button type="button" class="btn-lg btn-primary" id="cloudy-btn">Clouds</button>
+                        <button type="button" class="btn-lg btn-primary" id="mist-btn">Mist</button>
+                        <button type="button" class="btn-lg btn-primary" id="clear-btn">Clear</button>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-10" >
                 <div id="tsparticles"></div>
             </div>
         </div>
     </div>
+    <audio id="sunnySound">
+      <source src="sounds/clear.wav" type="audio/wav">
+    </audio>
+    <audio id="rainSound">
+      <source src="sounds/rain.mp3" type="audio/mp3">
+    </audio>
+    <audio id="snowSound">
+      <source src="sounds/snow.wav" type="audio/wav">
+    </audio>
+    <audio id="cloudSound">
+      <source src="sounds/cloud.mp3" type="audio/mp3">
+    </audio>
+
 
     <script src="citymenu.js"></script>
     <script src="particles.js"></script>

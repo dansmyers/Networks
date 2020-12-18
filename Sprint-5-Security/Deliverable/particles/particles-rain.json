@@ -93,7 +93,7 @@
       "direction": "bottom",
       "enable": true,
       "outMode": "out",
-      "random": true,
+      "random": false,
       "speed": 30,
       "straight": true
     },
