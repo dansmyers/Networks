@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 400px">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="container" style="width: 400px, height: 400px">
+    <form class="form-data" autocomplete="on">
+      <div class="enter-claim">
+        Enter claim you wish to fact-check:
+      </div>
+      <div>
+        <input type="text" class="claim" />
+      </div>
+      <button class="search-btn">Search</button>
+    </form>
+    <div class="result">
+      <div class="loading">loading...</div>
+      <div class="errors"></div>
+      <div class="data"></div>
+      <div class="result-container" id="resultsContainer">
+        <p><strong>Results: </strong><span class="results"></span></p>
+		<p><strong></strong><span class="title"></span></p>
+      </div>
+    </div>
+
+	<script src="https://apis.google.com/js/api.js"></script>
+	<script src="https://apis.google.com/js/client.js?onload=init"></script>
+	<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+	<script src="https://apis.google.com/js/client.js?onload=gapiInit"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
+
