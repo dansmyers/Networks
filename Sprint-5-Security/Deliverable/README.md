@@ -32,3 +32,4 @@ of year, some weather conditions may become extremely rare. In that case, they w
 - [Creative Commons wind light desert day steady eerie with crickets.flac by kyles is licensed under CC BY 1.0 Universal (CC0 1.0)](https://freesound.org/people/kyles/sounds/454361/)
 - [Creative Commons Morning Blizzard.wav by ciccarelli is licensed under CC BY 3.0](https://freesound.org/people/ciccarelli/sounds/111156/)
 - [Creative Commons Rain on concrete sound by DBlover is licensed under CC BY 1.0 Universal (CC0 1.0)](https://freesound.org/people/InspectorJ/sounds/339326/)
+- [Creative Commons Jingle bells.wav by juskiddink is licensed under CC BY 3.0](https://freesound.org/people/juskiddink/sounds/110158/)
