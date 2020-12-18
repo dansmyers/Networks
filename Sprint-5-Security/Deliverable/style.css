@@ -10,3 +10,70 @@
   margin-right: 42%;
   height: 50px;
 }
+
+#talk3 {
+  background: transparent;
+  border: none !important;
+  font-size: 0;
+  width: 16%;
+  margin-left: 42%;
+  margin-right: 42%;
+  height: 50px;
+}
+
+#talk2 {
+  visibility: hidden;
+  width: 16%;
+  margin-left: 42%;
+  margin-right: 42%;
+  height: 50px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 90px;
+  visibility: hidden;
+}
+h1 {
+  text-align: center;
+  font-size: 40pt;
+  font-weight: 400;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.center2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 26%;
+  padding: 1.5%;
+}
+
+.center3 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 26%;
+  padding: 0.5%;
+}
+body {
+  background: rgb(246, 246, 246);
+  background: linear-gradient(
+    0deg,
+    rgba(246, 246, 246, 1) 0%,
+    rgba(204, 54, 38, 0.5242471988795518) 80%
+  );
+}
+
+html {
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0px;
+  min-height: 100%;
+  width: 100%;
+}
