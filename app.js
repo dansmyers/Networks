@@ -1,262 +1,164 @@
-const APIController = (function() {
+/* Atmosphere: GROUP 2 FINAL PROJECT */
+/* Jaysa, Eric, Kyle, Nikola */
     
-    const clientId = '4e1dfe8d970c488c899ac9147a4aa993';
-    const clientSecret = '3dc86b9d760c4ccfb51489d2fa9f9bad';
-
-    // private methods
-    const _getToken = async () => {
-
-        const result = await fetch('https://accounts.spotify.com/api/token', {
-            method: 'POST',
-            headers: {
-                'Content-Type' : 'application/x-www-form-urlencoded', 
-                'Authorization' : 'Basic ' + btoa(clientId + ':' + clientSecret)
-            },
-            body: 'grant_type=client_credentials'
+    "use strict";
+    
+    /* GLOBAL VARIABLES */
+    
+    // variable for the weather in given city
+    let currentWeather = "";
+    
+    // mappings for weather -> genre
+    let mappings = {
+        
+        "Thunderstorm":"metal",
+        "Drizzle":"focus",
+        "Rain":"sleep",
+        "Snow":"jazz",
+        "Clear":"pop",
+        "Clouds":"classical",
+        "Mist":"wellness",
+        "Smoke":"rock",
+        "Haze":"folk",
+        "Dust":"country",
+        "Fog":"indie",
+        "Sand":"edm",
+        "Ash":"soundtrack",
+        "Squall":"hip hop",
+        "Tornado":"workout"
+    };
+    
+    function getWeather() {
+        
+        let cityElement = document.getElementById("input-city");
+        let cityName = cityElement.value;
+        
+        // get weather for city name
+        let key = '511cdd7deea9175651ad977feec2c94e';
+        fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key)  
+        
+        .then(function(resp) { return resp.json() }) // convert data to json
+        
+        .then(function(data) {
+            console.log(data.weather[0].main); // output main description in console
+            currentWeather = data.weather[0].main; // current weather for given city
+            document.getElementById("curr-weather").innerHTML = currentWeather; // display weather
+            
+            showPlaylist();
+        })
+        .catch(function() {
+            // catch any errors
         });
-
-        const data = await result.json();
-        return data.access_token;
     }
     
-    const _getGenres = async (token) => {
-
-        const result = await fetch(`https://api.spotify.com/v1/browse/categories?locale=sv_US`, {
-            method: 'GET',
-            headers: { 'Authorization' : 'Bearer ' + token}
-        });
-
-        const data = await result.json();
-        return data.categories.items;
-    }
-
-    const _getPlaylistByGenre = async (token, genreId) => {
-
-        const limit = 10;
+    function showPlaylist() {
         
-        const result = await fetch(`https://api.spotify.com/v1/browse/categories/${genreId}/playlists?limit=${limit}`, {
-            method: 'GET',
-            headers: { 'Authorization' : 'Bearer ' + token}
-        });
-
-        const data = await result.json();
-        return data.playlists.items;
-    }
-
-    const _getTracks = async (token, tracksEndPoint) => {
-
-        const limit = 10;
-
-        const result = await fetch(`${tracksEndPoint}?limit=${limit}`, {
-            method: 'GET',
-            headers: { 'Authorization' : 'Bearer ' + token}
-        });
-
-        const data = await result.json();
-        return data.items;
-    }
-
-    const _getTrack = async (token, trackEndPoint) => {
-
-        const result = await fetch(`${trackEndPoint}`, {
-            method: 'GET',
-            headers: { 'Authorization' : 'Bearer ' + token}
-        });
-
-        const data = await result.json();
-        return data;
-    }
-
-    return {
-        getToken() {
-            return _getToken();
-        },
-        getGenres(token) {
-            return _getGenres(token);
-        },
-        getPlaylistByGenre(token, genreId) {
-            return _getPlaylistByGenre(token, genreId);
-        },
-        getTracks(token, tracksEndPoint) {
-            return _getTracks(token, tracksEndPoint);
-        },
-        getTrack(token, trackEndPoint) {
-            return _getTrack(token, trackEndPoint);
-        }
-    }
-})();
-
-
-// UI Module
-const UIController = (function() {
-
-    //object to hold references to html selectors
-    const DOMElements = {
-        selectGenre: '#select_genre',
-        selectPlaylist: '#select_playlist',
-        buttonSubmit: '#btn_submit',
-        divSongDetail: '#song-detail',
-        hfToken: '#hidden_token',
-        divSonglist: '.song-list'
-    }
-
-    //public methods
-    return {
-
-        //method to get input fields
-        inputField() {
-            return {
-                genre: document.querySelector(DOMElements.selectGenre),
-                playlist: document.querySelector(DOMElements.selectPlaylist),
-                tracks: document.querySelector(DOMElements.divSonglist),
-                submit: document.querySelector(DOMElements.buttonSubmit),
-                songDetail: document.querySelector(DOMElements.divSongDetail)
-            }
-        },
-
-        // need methods to create select list option
-        createGenre(text, value) {
-            const html = `<option value="${value}">${text}</option>`;
-            document.querySelector(DOMElements.selectGenre).insertAdjacentHTML('beforeend', html);
-        }, 
-
-        createPlaylist(text, value) {
-            const html = `<option value="${value}">${text}</option>`;
-            document.querySelector(DOMElements.selectPlaylist).insertAdjacentHTML('beforeend', html);
-        },
-
-        // need method to create a track list group item 
-        createTrack(id, name) {
-            const html = `<a href="#" class="list-group-item list-group-item-action list-group-item-light" id="${id}">${name}</a>`;
-            document.querySelector(DOMElements.divSonglist).insertAdjacentHTML('beforeend', html);
-        },
-
-        // need method to create the song detail
-        createTrackDetail(img, title, artist) {
-
-            const detailDiv = document.querySelector(DOMElements.divSongDetail);
-            // any time user clicks a new song, we need to clear out the song detail div
-            detailDiv.innerHTML = '';
-
-            const html = 
-            `
-            <div class="row col-sm-12 px-0">
-                <img src="${img}" alt="">        
-            </div>
-            <div class="row col-sm-12 px-0">
-                <label for="Genre" class="form-label col-sm-12">${title}:</label>
-            </div>
-            <div class="row col-sm-12 px-0">
-                <label for="artist" class="form-label col-sm-12">By ${artist}:</label>
-            </div> 
-            `;
-
-            detailDiv.insertAdjacentHTML('beforeend', html)
-        },
-
-        resetTrackDetail() {
-            this.inputField().songDetail.innerHTML = '';
-        },
-
-        resetTracks() {
-            this.inputField().tracks.innerHTML = '';
-            this.resetTrackDetail();
-        },
-
-        resetPlaylist() {
-            this.inputField().playlist.innerHTML = '';
-            this.resetTracks();
-        },
+        console.log("showPlaylist has been called");
         
-        storeToken(value) {
-            document.querySelector(DOMElements.hfToken).value = value;
-        },
-
-        getStoredToken() {
-            return {
-                token: document.querySelector(DOMElements.hfToken).value
-            }
-        }
-    }
-
-})();
-
-const APPController = (function(UICtrl, APICtrl) {
-
-    // get input field object ref
-    const DOMInputs = UICtrl.inputField();
-
-    // get genres on page load
-    const loadGenres = async () => {
-        //get the token
-        const token = await APICtrl.getToken();           
-        //store the token onto the page
-        UICtrl.storeToken(token);
-        //get the genres
-        const genres = await APICtrl.getGenres(token);
-        //populate our genres select element
-        genres.forEach(element => UICtrl.createGenre(element.name, element.id));
-    }
-
-    // create genre change event listener
-    DOMInputs.genre.addEventListener('change', async () => {
-        //reset the playlist
-        UICtrl.resetPlaylist();
-        //get the token that's stored on the page
-        const token = UICtrl.getStoredToken().token;        
-        // get the genre select field
-        const genreSelect = UICtrl.inputField().genre;       
-        // get the genre id associated with the selected genre
-        const genreId = genreSelect.options[genreSelect.selectedIndex].value;             
-        // ge the playlist based on a genre
-        const playlist = await APICtrl.getPlaylistByGenre(token, genreId);       
-        // create a playlist list item for every playlist returned
-        playlist.forEach(p => UICtrl.createPlaylist(p.name, p.tracks.href));
-    });
-     
-
-    // create submit button click event listener
-    DOMInputs.submit.addEventListener('click', async (e) => {
-        // prevent page reset
-        e.preventDefault();
-        // clear tracks
-        UICtrl.resetTracks();
-        //get the token
-        const token = UICtrl.getStoredToken().token;        
-        // get the playlist field
-        const playlistSelect = UICtrl.inputField().playlist;
-        // get track endpoint based on the selected playlist
-        const tracksEndPoint = playlistSelect.options[playlistSelect.selectedIndex].value;
-        // get the list of tracks
-        const tracks = await APICtrl.getTracks(token, tracksEndPoint);
-        // create a track list item
-        tracks.forEach(el => UICtrl.createTrack(el.track.href, el.track.name))
+        // get reference to playlist image object
+        let playlistDiv = document.getElementById('playlist-art');
         
-    });
-
-    // create song selection click event listener
-    DOMInputs.tracks.addEventListener('click', async (e) => {
-        // prevent page reset
-        e.preventDefault();
-        UICtrl.resetTrackDetail();
-        // get the token
-        const token = UICtrl.getStoredToken().token;
-        // get the track endpoint
-        const trackEndpoint = e.target.id;
-        //get the track object
-        const track = await APICtrl.getTrack(token, trackEndpoint);
-        // load the track details
-        UICtrl.createTrackDetail(track.album.images[2].url, track.name, track.artists[0].name);
-    });    
-
-    return {
-        init() {
-            console.log('App is starting');
-            loadGenres();
+        // get reference to playlist name
+        let nameDiv = document.getElementById('playlist-name');
+        
+        // get reference to button
+        let goButton = document.getElementById('goDiv');
+        
+        // "Thunderstorm"
+        if (currentWeather === "Thunderstorm") {
+            playlistDiv.src = "metal.png"; // change icon
+            nameDiv.innerHTML = "metal essentials"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DWWOaP4H0w5b0"; // add playlist link
+        } 
+        // "Drizzle"
+        else if (currentWeather === "Drizzle") {
+            playlistDiv.src = "focus.png"; // change icon
+            nameDiv.innerHTML = "lo-fi beats"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DWWQRwui0ExPn"; // add playlist link
         }
+        // "Rain"
+        else if (currentWeather === "Rain") {
+            playlistDiv.src = "sleep.png"; // change icon
+            nameDiv.innerHTML = "Deep Sleep"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DWYcDQ1hSjOpY"; // add playlist link
+        }
+        // "Snow"
+        else if (currentWeather === "Snow") {
+            playlistDiv.src = "jazz.png"; // change icon
+            nameDiv.innerHTML = "jazz class"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DWTR4ZOXTfd9K"; // add playlist link
+        }
+        // "Clear"
+        else if (currentWeather === "Clear") {
+            playlistDiv.src = "pop.png"; // change icon
+            nameDiv.innerHTML = "top pop"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DX92MLsP3K1fI"; // add playlist link
+        }
+        // "Clouds"
+        else if (currentWeather === "Clouds") {
+            playlistDiv.src = "classical.png"; // change icon
+            nameDiv.innerHTML = "classical essentials"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DWWEJlAGA9gs0?si=q1RkJ7C4S02cLyJ1f1OyUA"; // add playlist link
+        }
+        // "Mist"
+        else if (currentWeather === "Mist") {
+            playlistDiv.src = "wellness.png"; // change icon
+            nameDiv.innerHTML = "spa treatment"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DX4Q2SnB3glnP"; // add playlist link
+        }
+        // "Smoke"
+        else if (currentWeather === "Smoke") {
+            playlistDiv.src = "rock.png"; // change icon
+            nameDiv.innerHTML = "rock classics"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DWXRqgorJj26U"; // add playlist link
+        }
+        // "Haze"
+        else if (currentWeather === "Haze") {
+            playlistDiv.src = "folk.png"; // change icon
+            nameDiv.innerHTML = "essential folk"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DWVmps5U8gHNv"; // add playlist link
+        }
+        // "Dust"
+        else if (currentWeather === "Dust") {
+            playlistDiv.src = "country.png"; // change icon
+            nameDiv.innerHTML = "forever country"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DX9hWdQ46pHPo"; // add playlist link
+        }
+        // "Fog"
+        else if (currentWeather === "Fog") {
+            playlistDiv.src = "indie.png"; // change icon
+            nameDiv.innerHTML = "indie mixtape"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DWZ36WmBvUunS"; // add playlist link
+        }
+        // "Sand"
+        else if (currentWeather === "Sand") {
+            playlistDiv.src = "edm.png"; // change icon
+            nameDiv.innerHTML = "mint"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DX4dyzvuaRJ0n"; // add playlist link
+        }
+        // "Ash"
+        else if (currentWeather === "Ash") {
+            playlistDiv.src = "ska.png"; // change icon
+            nameDiv.innerHTML = "essential ska"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DX7WJ4yDmRK8R"; // add playlist link
+        }
+        // "Squall"
+        else if (currentWeather === "Squall") {
+            playlistDiv.src = "hiphop.png"; // change icon
+            nameDiv.innerHTML = "hip-hop mixtape"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DWVdgXTbYm2r0"; // add playlist link
+        }
+        // "Tornado"
+        else if (currentWeather === "Tornado") {
+            playlistDiv.src = "workout.png"; // change icon
+            nameDiv.innerHTML = "workout hits"; // add playlist name
+            goButton.href = "https://open.spotify.com/playlist/37i9dQZF1DWVciwe52Zt0R"; // add playlist link
+        }
+        // Unknown Weather/No Entry
+        else {
+            nameDiv.innerHTML = "something went wrong"; // add playlist name
+        }
+        
     }
-
-})(UIController, APIController);
-
-// will need to call a method to load the genres on page load
-APPController.init();
+    
+    
