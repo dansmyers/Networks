@@ -1,0 +1,52 @@
+/* style sheet for gadfly clicker game */
+
+    body {
+        font-size: 15pt;
+        font-family: Helvetica, Arial, sans-serif;
+        background-color: #d4bf85;
+        
+        cursor: url('nat833.cur'), default;	
+    }
+    
+    /* import title font */
+    @font-face {
+        font-family: "DalekPinpointBold";
+        src:  url("DalekPinpointBold.ttf");
+    }
+ 
+    /* Change upgrade blocks when the user mouses over them */
+    .upgrade-block:hover {
+        color: #0275d8;  /* Bootstrap primary blue */
+        cursor: pointer;  /* Make mouse into a finger */
+    }
+    
+    h1 {
+        font-family: "DalekPinpointBold";
+        font-size: 90px;
+    }
+    
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    
+   /*
+    .float-left {
+        float: left;
+    }
+
+    .float-right {
+        float: right;
+    }
+    
+*/
+   
+    .small-text {
+        font-size: .85em;
+    }
+  
+    #achievements {
+        height: 250px;
+    }

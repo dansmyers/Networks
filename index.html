@@ -1,0 +1,175 @@
+<!-- Atmosphere: GROUP 2 FINAL PROJECT -->
+<!-- Jaysa, Eric, Kyle, Nikola -->
+
+<!DOCTYPE html>
+
+<head>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    <!-- link to style sheet -->
+   <link rel="stylesheet" type="text/css" href="./main.css"/>
+   
+   <!-- link to javascript -->
+   <script src="app.js" type="text/javascript"></script>
+
+   <style>
+       
+       /* imported font */
+       @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
+       
+       body {
+            font-family: 'Work Sans', sans-serif;
+       }
+       
+       h1 {
+           font-size: 100px;
+       }
+       
+       .button {
+            background-color: #00b547;
+            border: none;
+            color: white;
+            padding: 5px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+       
+       .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        
+        .top {
+            background: linear-gradient(127deg, rgba(116,115,255,1) 10%, rgba(85,255,115,1) 100%);
+            padding-top: 50px;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 50%;
+        }
+        
+        .preview {
+            width: 30%;
+        }
+        
+        .middle {
+            background: #2b2b2b;
+            height: 200px;
+            text-align: center;
+            padding-top: 50px;
+            color: #fcfcfc;
+        }
+        
+        .left-bottom {
+            padding-top: 35px;
+            background: #ededed;
+            text-align: center;
+            
+            height: 400px;
+        }
+        
+        .right-bottom {
+            padding-top: 35px;
+            background: #d4d4d4;
+            text-align: center;
+            
+            height: 400px;
+        }
+       
+   </style>
+  
+</head>
+
+<body>
+    
+    <div class="container-fluid">
+        
+        <!-- hidden API token -->
+        <input type="hidden" id='hidden_token'>
+        
+        <!-- first row: title -->
+        <div class="row top">
+            
+            <div class="col-lg-12 center">
+                
+                <p>
+                    <img src="atmos-logo.png" class="logo"/>
+                </p>
+                
+            </div>
+            
+        </div>
+        
+        <!-- second row: input box -->
+        <div class="row middle">
+            
+            <div class="col-lg-12 center">
+                
+                <p>Enter the name of your city.</p>
+                
+                <input type="text" id="input-city"/>
+                
+                <button id="get-btn" class="button" onclick="getWeather();">Give me a playlist!</button>
+                
+            </div>
+            
+        </div>
+        
+        <!-- third row: weather + playlist -->
+        <div class="row">
+            
+            <!-- weather -->
+            <div class="col-lg-6 left-bottom">
+                
+                <h2>current weather:</h2>
+                <h1 id="curr-weather"></h1>
+                
+            </div>
+            
+            <!-- playlist -->
+            <div class="col-lg-6 right-bottom">
+                
+                <h2>playlist:</h2>
+                
+                <!-- playlist image -->
+                <p>
+                   <img id="playlist-art" src="unknown.png" class="preview"/> 
+                </p>
+                
+                <!-- playlist name -->
+                <h3 id="playlist-name"></h3>
+                
+                <!-- button that takes you to playlist in web player -->
+                <a id="goDiv" href="index2.html">
+                    <button id="go-btn" class="button">Take me to this playlist!</button>
+                </a>
+                
+                
+            </div>
+            
+            
+        </div>
+        
+        
+    </div>
+    
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+</body>
