@@ -182,7 +182,6 @@ console.log(result);
 If you forget `var`, however, JS still allows you to create a new variable (overly permissive!), but that variable is instead **promoted to global scope**.
 
 ```
-/** Print the contents of the input array a **/
 function sum(a, b) {
     result = a + b; // <--- forgot to use var
     return result;
