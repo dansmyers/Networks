@@ -36,7 +36,7 @@ implementing object-oriented programming in JS. Older versions of OOP are now ob
 but [here's a link to the MDN documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) on `this`.
 
 - The `greeting` function shows off **template strings**, a convenient way to assemble string output out of multiple string variables. Note that the template string is 
-enclosed in backticks (`\` \``) rather than single quotes.
+enclosed in backticks (\``) rather than single quotes.
 
 - You don't need the `function` keyword when declaring class methods.
 
