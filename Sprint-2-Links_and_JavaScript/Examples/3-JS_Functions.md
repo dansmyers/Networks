@@ -168,7 +168,6 @@ Up to this point, we've used `var` to declare all of our variables. Variables de
 the function where they're declared, but not outside of it.
 
 ```
-/** Print the contents of the input array a **/
 function sum(a, b) {
     var result = a + b;
     return result;
