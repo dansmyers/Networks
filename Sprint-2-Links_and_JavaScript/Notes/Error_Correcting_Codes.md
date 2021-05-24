@@ -35,7 +35,7 @@ For example, suppose we want to transmit the following 32-bit sequence:
 The sequence contains twenty 1 bits, so the parity is **0**. To transmit the sequence, we would send the twenty bits of data plus the single parity bit:
 
 ```
-1000 1001 1010 1011 1100 1101 1110 1111 1
+1000 1001 1010 1011 1100 1101 1110 1111 0
                                         ^
                                         |
                                       parity
@@ -47,7 +47,7 @@ assumes that the transmission was successful. If they don't match, the receiver 
 For example, suppose that the first bit in the sequence flips from 1 to 0 during transmission.
 
 ```
-0000 1001 1010 1011 1100 1101 1110 1111 1
+0000 1001 1010 1011 1100 1101 1110 1111 0
 ^                                       ^
 |                                       |
 flip                                  parity
