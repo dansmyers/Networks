@@ -28,6 +28,8 @@ void
 send_response(int fd, char *response, int response_length) {
 
   // Fill in code to write the response to the descriptor
+  write(fd, response, response_length + 1);
+  //printf("%s", response);
 
 }
 
@@ -85,11 +87,13 @@ send_error_response(int socket_fd, char *error_num, char *short_msg, char *long_
 /** Process a single HTTP request **/
 void 
 handle_request(int socket_fd, char *request) {
-  int len, i, rc, filesize;
+  int len, i, rc, filesize, fd;
   char method[MAX_LINE];
   char uri[MAX_LINE];
   char version[MAX_LINE];
   char filename[MAX_LINE];
+  char cwd[MAX_LINE];
+  char s;
   char *ptr;
 
   // Parse out the HTTP method, the URI, and the version
@@ -105,15 +109,34 @@ handle_request(int socket_fd, char *request) {
 
   // If the method is not GET, return an error
   if (strcmp(method, "GET")) {
+    printf("%s", "GetErr");
     send_error_response(socket_fd, "501", "Not implemented", "Server does not implement this method");
     pthread_exit(0);
   }
+  
+  getcwd(cwd, sizeof(cwd));
+  char * path = strncat(cwd, uri, 99);
+  //printf("%s", path);
 
   // Open the file for reading
-
+  
+  if( access(path, F_OK) != -1 ) {
+    fd = open(path, O_RDONLY);
+    rc = 200;
+  } else {
   // If the file does not exist, return a 404 error message
+    printf("%s", "FileErr");
+    send_error_response(socket_fd, "404", "File not Found", "The file your are attempting to access cannot be found");
+    pthread_exit(0);
+  }
 
   // Stat the file to learn its size
+  struct stat *buf;
+  buf = malloc(sizeof(struct stat));
+  stat(path, buf);
+  
+  filesize = buf->st_size;
+  
 
   // Memory-map the file so that its contents are in a buffer in memory
   // File descriptor is stored in variable named fd
@@ -121,16 +144,32 @@ handle_request(int socket_fd, char *request) {
     perror("mmap");
     exit(1);
   }
-
+  
+//   s = getc(ptr);
+//   while (s != EOF) { 
+//     printf("%c", s);
+//     s = getc(ptr);
+//   }
+    
+  char header[MAX_LINE];
   // Form HTTP response message header
   // The return code must be 200 OK
+  if(rc == 200) {
+    sprintf(header, "HTTP/1.0 %d OK\r\nServer: CMS-450 Web Server\r\nContent Length: %d\r\nContent Type: %s \r\n", rc, filesize, get_filetype(filename));
+  }
 
   // Write the response message header to the descriptor
+  
+  send_response(socket_fd, header, strlen(header));
+  printf("%s", header);
 
   // Write the file contents to the descriptor
+  
+  send_response(socket_fd, ptr, strlen(ptr));
 
   // Unmap file
   munmap(ptr, filesize);
+  free(buf);
   close(fd);
 }
 
