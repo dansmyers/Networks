@@ -1,0 +1,103 @@
+This project is a sudoku solver web application. 
+
+When a input is given, the solver will:
+
+-Determine if the input is valid
+
+-Determine if the input is contradictory (The only type of contradiction it can check is if two of the same number occupy the same row, col, or box. It cannot immediately detect a puzzle where a given space could not be any number, or detect a puzzle without a unique solution. It will attempt to solve puzzles like this and inevitably fail.
+
+- Simple rule out: This function will rule out numbers based on the numbers that have already been filled in 
+
+-Hidden single: if there is only one space in a row, col, block that could be a given number, that number can be filled in the space
+
+-Naked single: if a space can only be one number (the eight others have been ruled out) that number can be filled in in that space
+
+-Pointing pair: in a given block, a number is restricted to one column or row of that block, the number can be ruled out from the col/row outside of the block.
+
+-Claiming pair: In a given row or col, a given number is restricted to two or three spaes, all of which are inside of one block, the number can be ruled out of every other space in the block.
+
+-Naked N: if n spaces in a row, col, block have had their possibilities reduced to a subset of a set S containing n numbers, then any appearance of an element of S in a space in the row/col/block that is not a subset of S can be ruled out.
+
+-Hidden pair: In a row/col/block, if only two numbers have been restricted to the same two spaces, all other numbers in those two spaces can be ruled out.
+
+-X-wing: let i and j be two arbirtrary rows, and let m and n be two arbitrary columns. If a number n has been restricted to col m and n in both row i and j, the number can be ruled out from every other space in columns i and j. The same rule applies the other way around, where rows are ruled out be columns.
+
+
+Some test puzzles:
+
+
+An example easy puzzle:
+ 9 832 57
+218  5   
+ 5  9    
+53 9   72
+    5    
+  7      
+1        
+9 2 7 41 
+ 7 56 9 8
+
+An example hard puzzle:
+87      3
+ 9   8   
+5  2    4
+  6 1  7 
+   3 7   
+   8  56 
+  54     
+2 1  374 
+     1  2
+
+
+An example expert puzzle:
+ 8   1 69
+         
+ 164     
+  42 6   
+   13    
+      8 2
+ 38      
+ 4   7 5 
+    29 47
+
+This puzzle can only be solved using X-wing:
+6   9   7
+ 4   71  
+  28   5 
+8      9 
+    7    
+ 3      8
+ 5   23  
+  45   2 
+9   3   4
+
+An expert puzzle the solver couldn't solve:
+5  92  7 
+     1   
+1      56
+4 2 9    
+7  3 2   
+  965    
+    8 1 2
+ 6 7     
+        4
+
+
+
+Potential Improvements:
+-Add more methods for solving and ruling out. The methods that have been implemented are the most common, but there definetly are more.
+
+-Do more extensive debugging. Even though I have tested every function to make sure they generally do what they are supposed to, it is possible that there are more very cases that could cause errors. 
+
+-Make the code more efficent and easy to edit. This project was very much a case of me trying to get everything to work as opposed to writing the most clean and efficient code. There is a lot of repeat code that could probably be modified or removed (for example, with most functions, going through columns and rows are very similar operations, there may be cases where additional parameters could be added to make it so the row and column operations can be executed using the same block of code).
+
+-Improve the log outputs. Figuring out how to output the results was an unexpected challenge in this project, and admittedly some of the outputs are difficult to understand or are formatted strangely. Also my method for outputting was not consistent throughout the project, which is something that would have to be improved in the future.
+
+
+
+Conclusions:
+This project was a victory in the sense that I implemented everything I wanted to, and a failure in the sense that my implementaion wasn't able to fully realize my goals. I was hoping that all of the strategies I implemented would be able to solve and expert level sudoku puzzle. When testing expert puzzles, the solver was able to solve every 'evil' level puzzle form websudoku.com that I tested. However, it was only able to get about 40% of 'expert' level puzzles from sudoku.com. These are rough estimates as I had no way of testing a very large sample of puzzles.
+
+On the positive side, this solver seems to have a very easy time solving anything less than the most difficult puzzles, as it can easily solve easy, meduim, hard and many expert puzzles. 
+
+While this is by no means a complete sudoku puzzle solver, I have completed everything I intended to for this project, and as someone who like sudoku, I think it's pretty neat.

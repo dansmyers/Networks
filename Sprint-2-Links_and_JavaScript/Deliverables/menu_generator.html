@@ -34,7 +34,10 @@
             }
             
             .section {
+              padding-left: 30px;
+              padding-right: 30px;
               margin-bottom: 3rem;
+              
             }
             
             .name {
@@ -47,6 +50,12 @@
 
             .clear {
               clear: both;
+            }
+            
+            .menu{
+            	padding-left: 30px;
+            	padding-left: 30px;
+            	background-color: #efffc8;
             }
             
         </style>
@@ -72,20 +81,20 @@
                 <!-- col-md-6 makes a column that spans all 6 units -->
                 <!-- Covers the middle half of the page -->
                 <div class="col-md-6">
-                    <h1 id="restaurant_name">The Yellow Sign</h1>
-                    
-                    <h2>Appetizers</h2>
-                    <div class="section" id="appetizers"></div>
-                    <div style="clear: both;"></div>
-                    
-                    <h2>Main Courses</h2>
-                    <div class="section" id="main_courses"></div>
-                    <div style="clear: both;"></div>
-
-                    <h2>Desserts</h2>
-                    <div class="section" id="desserts"></div>
-                    <div style="clear: both;"></div>
-                                      
+                    <h1 id="restaurant_name" style="background-color: #1FA035">King's Vegan Resturaunt</h1>
+                    <div class = "menu">
+	                    <h2>Appetizers</h2>
+	                    <div class="section" id="appetizers"></div>
+	                    <div style="clear: both;"></div>
+	                    
+	                    <h2>Main Courses</h2>
+	                    <div class="section" id="main_courses"></div>
+	                    <div style="clear: both;"></div>
+	
+	                    <h2>Desserts</h2>
+	                    <div class="section" id="desserts"></div>
+	                    <div style="clear: both;"></div>
+                    </div>
                 </div>   <!-- /col-md-12 -->  
             
                 <!-- Empty 3-unit column on the right side of the page -->
@@ -105,20 +114,40 @@
         <script>
         
           // Declare lists of menu components
-          let appIngredients = ['sea scallop', 'reindeer', 'chicken bone', 'haricots vertes',
-                                  'langoustine', 'ham', 'cuttlefish', 'kale', 'pommes',
-                                  'aubergine', 'bone marrow', 'rocket'];
+          let appIngredients = ['soy', 'quinoa', 'cous cous', 'black bean',
+                                  'veggie', 'impossible meat', 'spinach', 'kale', 'pinto bean',
+                                  'red bean', 'tofu', 'lentil', 'mushroom'];
                                  
           let appPreparations = ['globules', 'cubes', 'granules', 'pasta', 'risotto',
-                                   'sashimi', 'crunchwrap', 'snowcone', 'tacos', 
-                                   'mist', 'hash', 'wellington', 'mush', 'graupel'];
+                                   'stew', 'crunchwrap', 'tacos', 'sushi',
+                                   'soup', 'hash', 'fries', 'mush', 'salad'];
                                   
           let appAdjectives = ['eldritch', 'frightened', 'farm-to-table', 'sea-salt',
                                  'ominous', 'non-euclidean', 'carbonized', 'spectral',
                                  'argyle', 'korean bbq', 'cilantro-lime', 'oblique',
                                  'ketchuped', 'curried', 'inverted', 'digitized'];
+                                 
+          let mainIngredients = ['soy', 'quinoa', 'cous cous', 'black bean',
+                                  'veggie', 'impossible meat', 'spinach', 'kale', 'pinto bean',
+                                  'red bean', 'tofu', 'lentil', 'potato', 'brown rice', 'white rice',
+                                  'barley', 'farro', 'avocado', 'mushroom'];
+          
+          let mainPreperations = ['sandwich', 'burger', 'burrito', 'curry', 'risotto', 'wrap', 'mix',
+        							'platter', 'teriyaki', 'dish'];
+          
+          let mainAdjectives = ['fried', 'buffalo', 'ethical', 'animal-friendly', 'dairy free',
+        						'mediterranean', 'tex-mex style', 'indian', 'japanese', 'chinese',
+        						'fresh', 'our world-renowned', 'vegan', 'vegetarian', 'herbal' ];
+          
+          let dessertIngredients = ['dark chocolate', 'apple', 'peach', 'banana', 'blueberry'];
+          
+          let dessertPreperations = ['pie', 'cake', 'flavored-coffee', 'dairy-free ice cream', 'vegan pudding'];
+          
+          let dessertAdjectives = ['rich', 'sweet', 'our famous', 'our classic', 'sugar-coated'];
                           
-          const MAX_APP_PRICE = 20;
+          const MAX_APP_PRICE = 14;
+          const MAX_MAIN_PRICE = 25;
+          const MAX_DESSERT_PRICE = 10;
                        
           function choose(arr) {
               
@@ -145,11 +174,11 @@
           }
             
           function generateAppetizers() {
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 6; i++) {
               
               // Generate a random item and price
               let result = generateAppetizer();
-              let price = Math.floor(Math.random() * (MAX_APP_PRICE - 1)) + 1;
+              let price = Math.floor(Math.random() * (MAX_APP_PRICE - 3)) + 3;
                   
               // Insert the new item into the appetizers div
               //
@@ -182,9 +211,71 @@
               section.appendChild(para);
             }
           }
+          
+          function generateMain() {
+            let result = choose(mainAdjectives) + ' ';
+            result += choose(mainIngredients) + ' and ';
+            result += choose(mainIngredients) + ' '
+            result += choose(mainPreperations);
+                
+            return result;
+          }
+            
+          function generateMains() {
+            for (let i = 0; i < 9; i++) {
+              
+              // Generate a random item and price
+              let result = generateMain();
+              let price = Math.floor(Math.random() * (MAX_MAIN_PRICE - 9)) + 9;
+                  
+              
+              let section = document.getElementById('main_courses');
+                    
+              let para = document.createElement('p');
+                   
+              para.innerHTML = '<span class="name">' + result + '</span>';
+              para.innerHTML += '<span class="price">' + price + '</span>';
+              
+              
+              para.innerHTML += '<div class="clear"></div>'
+              section.appendChild(para);
+            }
+          }
+          
+          function generateDessert() {
+            let result = choose(dessertAdjectives) + ' ';
+            result += choose(dessertIngredients) + ' ';
+            result += choose(dessertPreperations);
+                
+            return result;
+          }
+          
+          function generateDesserts() {
+            for (let i = 0; i < 5; i++) {
+              
+              // Generate a random item and price
+              let result = generateDessert();
+              let price = Math.floor(Math.random() * (MAX_DESSERT_PRICE - 5)) + 5;
+                  
+              
+              let section = document.getElementById('desserts');
+                    
+              let para = document.createElement('p');
+                   
+              para.innerHTML = '<span class="name">' + result + '</span>';
+              para.innerHTML += '<span class="price">' + price + '</span>';
+              
+              
+              para.innerHTML += '<div class="clear"></div>'
+              section.appendChild(para);
+            }
+          }
+            
             
           function main() {
             generateAppetizers();
+            generateMains();
+            generateDesserts();
           }
             
           // The onload property sets a function that will run once

@@ -1,0 +1,717 @@
+<!doctype HTML>
+
+<html>
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="style.css">
+		
+	</head>
+	
+	<body onload = "init()">
+		
+		<div class = "container">
+			
+			<!-- HEADER -->
+			<div class = "row mt-5">
+				<div class = "col-lg-12">
+					<div class = "header">
+						<h1>Water Bottle Company Sim 2020</h1>
+					</div>
+				</div>
+			</div>
+			
+			
+			<!-- Message Box -->
+			<div class = "row">
+				<div class = "col-lg-12">
+					<div class = "message_box">
+						<p id = "message"></p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Stats -->
+			<div class = "row no-gutters">
+				<div class = "col-lg-4">
+					<div class = "stat_box">
+						<h5>Empty Bottles:</h5>
+						<p id = "empty_bottles" style = "text-align: right"></p>
+					</div>
+				</div>
+				
+				<div class = "col-lg-4">
+					<div class = "stat_box">
+						<h5>Filled Bottles:</h5>
+						<p id = "filled_bottles" style = "text-align: right"></p>
+					</div>
+				</div>
+				
+				<div class = "col-lg-4">
+					<div class = "stat_box">
+						<h5>Money:</h5>
+						<p id = "money" style = "text-align: right"></p>
+					</div>
+				</div>
+			</div>
+			
+			
+			<!--
+			THE GRID: AN EXPLAINER
+			
+			The grid has 10 columns, the first is just a label and the last is just stats, the
+			8 in the middle are the levels
+			
+			Column 1 is completely static, hence there are no ids for coumln 1 grid spaces.
+			Column 2 will be unlocked at the beginning of the game, but for the sake of 
+			avoiding repeat code and cofusion, it is initialized in the javascript file.
+			Every other column will be highly dynamic.
+			
+			There are 8 rows:
+			Row 1 is all just labels, it ony needs the div and a text label
+			Rows 2, 4, and 6 are clickers, they need a div, a label and a button
+			Rows 3, 5, and 7 are auto clickers, they need a div, 2 labels and a button
+			Row 8 is the remaining resources, it just need a div and a label.
+			
+			
+			-->
+			
+			<!-- Grid Top Row-->
+			
+			<div class = "row no-gutters">
+								
+				<div class = "col-lg-1">
+					<div class = "grid">
+						<h5>Level</h5>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r1c2_div">
+						<h5 id = "r1c2_text">Tap Water</h5>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r1c3_div">
+						<h5 id = "r1c3_text">Water Well</h5>
+						<button type ="button" id = "level2_unlock" onclick="unlockLevel(2)">Unlock $5000</button>
+					</div>
+				</div>
+								
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r1c4_div">
+						<h5 id = "r1c4_text">Water Spring</h5>
+						<button type ="button" id = "level3_unlock" onclick="unlockLevel(3)">Unlock $75000</button>
+					</div>
+				</div>
+								
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r1c5_div">
+						<h5 id = "r1c5_text">Freshwater Bodies</h5>
+						<button type ="button" id = "level4_unlock" onclick="unlockLevel(4)">Unlock $200000</button>
+					</div>
+				</div>
+								
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r1c6_div">
+						<h5 id = "r1c6_text"></h5>
+						<button type ="button" id = "level5_unlock" onclick="unlockLevel(5)">Unlock $x</button>
+					</div>
+				</div>
+								
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r1c7_div">
+						<h5 id = "r1c7_text"></h5>
+						<button type ="button" id = "level6_unlock" onclick="unlockLevel(6)">Unlock $x</button>
+					</div>
+				</div>
+								
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r1c8_div">
+						<h5 id = "r1c8_text"></h5>
+						<button type ="button" id = "level7_unlock" onclick="unlockLevel(7)">Unlock $x</button>
+					</div>
+				</div>
+								
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r1c9_div">
+						<h5 id = "r1c9_text"></h5>
+						<button type ="button" id = "level8_unlock" onclick="unlockLevel(8)">Unlock $x</button>
+					</div>
+				</div>
+								
+				<div class = "col-lg-3">
+					<div class = "grid" id = "r1c10_div">
+						<h5 id = "r1c10_text"></h5>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Row 2: Bottle Clickers -->
+			
+			<div class = "row no-gutters">
+								
+				<div class = "col-lg-1">
+					<div class = "grid">
+						<h5>Bottle Clickers:</h5>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r2c2_div">
+						<p id = "r2c2_text">Make a Bottle</p>
+						<button type ="button" id = "r2c2_button" onclick="act(this)">+1</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r2c3_div">
+						<p id = "r2c3_text">Make a Pack of Bottles</p>
+						<button type ="button" id = "r2c3_button" onclick="act(this)">+24</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r2c4_div">
+						<p id = "r2c4_text">Make a Crate of Bottles</p>
+						<button type ="button" id = "r2c4_button" onclick="act(this)">+100</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r2c5_div">
+						<p id = "r2c5_text">Make a 5 Crates of Bottles</p>
+						<button type ="button" id = "r2c5_button" onclick="act(this)">+500</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r2c6_div">
+						<p id = "r2c6_text"></p>
+						<button type ="button" id = "r2c6_button"  onclick="act(this)"></button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r2c7_div">
+						<p id = "r2c7_text"></p>
+						<button type ="button" id = "r2c7_button"  onclick="act(this)">n</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r2c8_div">
+						<p id = "r2c8_text"></p>
+						<button type ="button" id = "r2c8_button"  onclick="act(this)"></button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r2c9_div">
+						<p id = "r2c9_text"></p>
+						<button type ="button" id = "r2c9_button"  onclick="act(this)"></button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-3">
+					<div class = "grid" id = "r2c10_div">
+						<h4>Total Bottles Created:</h4>
+						<h5 id = "r2c10_text"></h5>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<!-- Row 3 -->
+			
+			<div class = "row no-gutters">
+				<div class = "col-lg-1">
+					<div class = "grid">
+						<h5>Bottle Auto:</h5>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r3c2_div">
+						<p id = "r3c2_text">Hire a Friend, $200</p>
+						<p id = "r3c2_text2">Friend Count:</p>
+						<p id = "r3c2_text3">0</p>
+						<button type ="button" id = "r3c2_button"  onclick="act(this)">+3 Bottles/sec</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r3c3_div">
+						<p id = "r3c3_text">Hire an Employee, $3000</p>
+						<p id = "r3c3_text2">Employee Count:</p>
+						<p id = "r3c3_text3">0</p>
+						<button type ="button" id = "r3c3_button"  onclick="act(this)">+12 Bottles/sec</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r3c4_div">
+						<p id = "r3c4_text">Build a Bottle Machine, $20000</p>
+						<p id = "r3c4_text2">Machine Count:</p>
+						<p id = "r3c4_text3">0</p>
+						<button type ="button" id = "r3c4_button" onclick="act(this)">+45 Bottles/sec</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r3c5_div">
+						<p id = "r3c5_text">Build an Advanced Bottle Machine, $70000</p>
+						<p id = "r3c5_text2">Machine Count:</p>
+						<p id = "r3c5_text3">0</p>
+						<button type ="button" id = "r3c5_button" onclick="act(this)">+1000 Bottles/sec </button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r3c6_div">
+						<p id = "r3c6_text"></p>
+						<p id = "r3c6_text2"></p>
+						<p id = "r3c6_text3">0</p>
+						<button type ="button" id = "r3c6_button" onclick="act(this)">+1</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r3c7_div">
+						<p id = "r3c7_text"></p>
+						<p id = "r3c7_text2"></p>
+						<p id = "r3c7_text3">0</p>
+						<button type ="button" id = "r3c7_button" onclick="act(this)">+1</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r3c8_div">
+						<p id = "r3c8_text"></p>
+						<p id = "r3c8_text2"></p>
+						<p id = "r3c8_text3">0</p>
+						<button type ="button" id = "r3c8_button" onclick="act(this)">+1</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r3c9_div">
+						<p id = "r3c9_text"></p>
+						<p id = "r3c9_text2"></p>
+						<p id = "r3c9_text3">0</p>
+						<button type ="button" id = "r3c9_button" onclick="act(this)">+1</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-3">
+					<div class = "grid" id = "r3c10_div">
+						<h4>Bottle Production Rate:</h4>
+						<h5 id = "r3c10_text"></h5>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Row 4 -->
+			
+			<div class = "row no-gutters">
+								
+				<div class = "col-lg-1">
+					<div class = "grid">
+						<h5>Water Clickers:</h5>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r4c2_div">
+						<p id = "r4c2_text">Fill a Bottle with Tap Water</p>
+						<button type ="button" id = "r4c2_button" onclick="act(this)">+1</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r4c3_div">
+						<p id = "r4c3_text">Fill 10 Bottles</p>
+						<button type ="button" id = "r4c3_button" onclick="act(this)">+10</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r4c4_div">
+						<p id = "r4c4_text">Fill 300 Bottles</p>
+						<button type ="button" id = "r4c4_button" onclick="act(this)">+300</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r4c5_div">
+						<p id = "r4c5_text">Fill 700 Bottles</p>
+						<button type ="button" id = "r4c5_button" onclick="act(this)">+700</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r4c6_div">
+						<p id = "r4c6_text"></p>
+						<button type ="button" id = "r4c6_button" onclick="act(this)"></button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r4c7_div">
+						<p id = "r4c7_text"></p>
+						<button type ="button" id = "r4c7_button" onclick="act(this)"></button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r4c8_div">
+						<p id = "r4c8_text"></p>
+						<button type ="button" id = "r4c8_button" onclick="act(this)"></button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r4c9_div">
+						<p id = "r4c9_text"></p>
+						<button type ="button" id = "r4c9_button" onclick="act(this)"></button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-3">
+					<div class = "grid" id = "r4c10_div">
+						<h4>Total Water Bottled:</h4>
+						<h5 id = "r4c10_text"></h5>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			<!-- Row 5 -->
+			
+			<div class = "row no-gutters">
+				<div class = "col-lg-1">
+					<div class = "grid">
+						<h5>Water Auto:</h5>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r5c2_div">
+						<p id = "r5c2_text">Hire a Friend, $200</p>
+						<p id = "r5c2_text2">Friend Count:</p>
+						<p id = "r5c2_text3">0</p>
+						<button type ="button" id = "r5c2_button"  onclick="act(this)">+2 bottles/sec</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r5c3_div">
+						<p id = "r5c3_text">Hire an Employee, $3000</p>
+						<p id = "r5c3_text2">Employee Count:</p>
+						<p id = "r5c3_text3">0</p>
+						<button type ="button" id = "r5c3_button" onclick="act(this)">+24 bottles/sec</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r5c4_div">
+						<p id = "r5c4_text">Buy a Bottling Machine, $50000</p>
+						<p id = "r5c4_text2">Machine Count:</p>
+						<p id = "r5c4_text3">0</p>
+						<button type ="button" id = "r5c4_button" onclick="act(this)">+300 bottles/sec</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r5c5_div">
+						<p id = "r5c5_text">Buy a Water Pump, $80000</p>
+						<p id = "r5c5_text2">Pump Count:</p>
+						<p id = "r5c5_text3">0</p>
+						<button type ="button" id = "r5c5_button" onclick="act(this)">+3000 bottles/sec</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r5c6_div">
+						<p id = "r5c6_text"></p>
+						<p id = "r5c6_text2"></p>
+						<p id = "r5c6_text3">0</p>
+						<button type ="button" id = "r5c6_button" onclick="act(this)">+1</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r5c7_div">
+						<p id = "r5c7_text"></p>
+						<p id = "r5c7_text2"></p>
+						<p id = "r5c7_text3">0</p>
+						<button type ="button" id = "r5c7_button" onclick="act(this)">+1</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r5c8_div">
+						<p id = "r5c8_text"></p>
+						<p id = "r5c8_text2"></p>
+						<p id = "r5c8_text3">0</p>
+						<button type ="button" id = "r5c8_button" onclick="act(this)">+1</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r5c9_div">
+						<p id = "r5c9_text"></p>
+						<p id = "r5c9_text2"></p>
+						<p id = "r5c9_text3">0</p>
+						<button type ="button" id = "r5c9_button" onclick="act(this)">+1</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-3">
+					<div class = "grid" id = "r5c10_div">
+						<h4>Bottles Filling Rate:</h4>
+						<h5 id = "r5c10_text"></h5>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			<!-- Row 6 -->
+			
+			<div class = "row no-gutters">
+								
+				<div class = "col-lg-1">
+					<div class = "grid">
+						<h5>Sales Clickers:</h5>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r6c2_div">
+						<p id = "r6c2_text">Sell a Bottle</p>
+						<button type ="button" id = "r6c2_button"  onclick="act(this)">+$3</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r6c3_div">
+						<p id = "r6c3_text">Sell 12 Bottles</p>
+						<button type ="button" id = "r6c3_button" onclick="act(this)">+$36</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r6c4_div">
+						<p id = "r6c4_text">Sell 167 Bottles</p>
+						<button type ="button" id = "r6c4_button" onclick="act(this)">+$501</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r6c5_div">
+						<p id = "r6c5_text">Sell 1000 Bottles</p>
+						<button type ="button" id = "r6c5_button" onclick="act(this)">+$3000</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r6c6_div">
+						<p id = "r6c6_text"></p>
+						<button type ="button" id = "r6c6_button" onclick="act(this)"></button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r6c7_div">
+						<p id = "r6c7_text"></p>
+						<button type ="button" id = "r6c7_button" onclick="act(this)"></button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r6c8_div">
+						<p id = "r6c8_text"></p>
+						<button type ="button" id = "r6c8_button" onclick="act(this)"></button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r6c9_div">
+						<p id = "r6c9_text"></p>
+						<button type ="button" id = "r6c9_button" onclick="act(this)"></button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-3">
+					<div class = "grid" id = "r6c10_div">
+						<h4>Total Money Made:</h4>
+						<h5 id = "r6c10_text"></h5>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			<!-- Row 7 -->
+			
+			<div class = "row no-gutters">
+				<div class = "col-lg-1">
+					<div class = "grid">
+						<h5>Sales Auto:</h5>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r7c2_div">
+						<p id = "r7c2_text">Hire a Local Salesman, $200</p>
+						<p id = "r7c2_text2">Salesman Count:</p>
+						<p id = "r7c2_text3">0</p>
+						<button type ="button" id = "r7c2_button" onclick="act(this)"> Sell 1 bottles/sec</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r7c3_div">
+						<p id = "r7c3_text">Hire a Regional Salesman, $5000</p>
+						<p id = "r7c3_text2">Salesman Count:</p>
+						<p id = "r7c3_text3">0</p>
+						<button type ="button" id = "r7c3_button" onclick="act(this)">Sell 8 bottles/sec</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r7c4_div">
+						<p id = "r7c4_text">Hire a National Salesman, $35000</p>
+						<p id = "r7c4_text2">Salesman Count:</p>
+						<p id = "r7c4_text3">0</p>
+						<button type ="button" id = "r7c4_button" onclick="act(this)">Sell 50 bottles/sec</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r7c5_div">
+						<p id = "r7c5_text">Create an Online Marketplace, $50000</p>
+						<p id = "r7c5_text2">Marketplace Count:</p>
+						<p id = "r7c5_text3">0</p>
+						<button type ="button" id = "r7c5_button" onclick="act(this)">Sell $4000 bottles/sec</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r7c6_div">
+						<p id = "r7c6_text"></p>
+						<p id = "r7c6_text2"></p>
+						<p id = "r7c6_text3">0</p>
+						<button type ="button" id = "r7c6_button" onclick="act(this)">+1</button>
+					</div>
+				</div>
+			
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r7c7_div">
+						<p id = "r7c7_text"></p>
+						<p id = "r7c7_text2"></p>
+						<p id = "r7c7_text3">0</p>
+						<button type ="button" id = "r7c7_button" onclick="act(this)">+1</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r7c8_div">
+						<p id = "r7c8_text"></p>
+						<p id = "r7c8_text2"></p>
+						<p id = "r7c8_text3">0</p>
+						<button type ="button" id = "r7c8_button" onclick="act(this)">+1</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-1">
+					<div class = "grid" id = "r7c9_div">
+						<p id = "r7c9_text"></p>
+						<p id = "r7c9_text2"></p>
+						<p id = "r7c9_text3">0</p>
+						<button type ="button" id = "r7c9_button" onclick="act(this)">+1</button>
+					</div>
+				</div>
+				
+				<div class = "col-lg-3">
+					<div class = "grid" id = "r7c10_div">
+						<h4>Income Rate:</h4>
+						<h5 id = "r7c10_text"></h5>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			<!-- Stats -->
+			<div class = "row no-gutters">
+				<div class = "col-lg-4">
+					<div class = "stat_box">
+						<h5>Empty Bottles:</h5>
+						<p id = "empty_bottles2" style = "text-align: right"></p>
+					</div>
+				</div>
+				
+				<div class = "col-lg-4">
+					<div class = "stat_box">
+						<h5>Filled Bottles:</h5>
+						<p id = "filled_bottles2" style = "text-align: right"></p>
+					</div>
+				</div>
+				
+				<div class = "col-lg-4">
+					<div class = "stat_box">
+						<h5>Money:</h5>
+						<p id = "money2" style = "text-align: right"></p>
+					</div>
+				</div>
+			</div>
+			
+			
+		<div class = "row no-gutters">
+			<div class = "col-lg-12">
+				<h2>Achivements</h2>
+				<p id = "achivements"></p>
+			
+			</div>
+		</div>
+			
+			
+		</div> <!-- Container -->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<script src="/app.js"></script>
+		
+		<!-- JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	</body>
+	
+</html>
