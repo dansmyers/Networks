@@ -12,7 +12,7 @@ The OSI model is not a real guideline for building networks. Rather, it provides
 
 1. It gives you a holistic overview of how networks are implemented. If you start by understanding the entire model at a high level, you'll be better prepared to dig into the details of the protocols at each level. 
 
-2. It provides a common frame of reference for talking about the purpose of different protocols that make up a modern network. If I tell you, for example, and 802.11 (the technical name for Wi-Fi) is a link layer protocol, I'm telling you something specific about its role and purpose in a network. The terminology defined by the OSI model is a 
+2. It provides a common frame of reference for talking about the purpose of different protocols that make up a modern network. If I tell you, for example, that 802.11 (the technical name for Wi-Fi) is a link layer protocol, I'm telling you something specific about its role and purpose in a network. The terminology defined by the OSI model is a 
 standard part of the field.
 
 3. We can map the protocols of the modern Internet onto the layers of the OSI model in a straighforward way.
