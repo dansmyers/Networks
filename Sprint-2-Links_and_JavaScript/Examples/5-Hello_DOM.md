@@ -143,5 +143,5 @@ Here is the basic strategy for creating interactive web pages.
 
 - In your JS functions, use `document.getElementById()` to get references to DOM nodes, then access or set their properties, like `innerHTML`, to make things happen on the page.
 
-As you're practicing, you'll probably need to do some research to look up the events and element properties that you need to use for a particular effect. This is normal. Keeo
+As you're practicing, you'll probably need to do some research to look up the events and element properties that you need to use for a particular effect. This is normal. Keep
 playing around and experimenting!
