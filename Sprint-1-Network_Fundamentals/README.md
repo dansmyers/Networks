@@ -74,7 +74,7 @@ Internet architecture. The video does include an extensive list of different pro
 
 After that, you can look at [Chapters 1.1 and 1.3 in the Peterson and Davie text](https://book.systemsapproach.org/foundation/architecture.html). The 7-layer model is introduced about halfway through the chapter. I suggest starting there, then backing up a little bit to read the beginning of the chapter, which is more abstract. What you want to emphasize in your reading is how the common protocols of the modern Internet (TCP, IP, etc.) map to the layers of the reference model.
 
-## Network Performance
+### Network Performance
 
 Read [Chapter 1.5 of Peterson and Davie](https://book.systemsapproach.org/foundation/performance.html). As you read, focus on the following questions:
 
@@ -85,6 +85,11 @@ Read [Chapter 1.5 of Peterson and Davie](https://book.systemsapproach.org/founda
 - How do you calculate the transfer time for a file of a given size on a link with a given bandwidth and latency?
 
 You'll get the chance to practice these calculations on the deliverable assignment and there will also be a calculation question on the quiz.
+
+### Perspective
+
+Read the final section of Chapter 1, "Perspective", which introduces the idea of software-defined networking. We'll return to this concept a few different times throughout the semester.
+
 
 ## Front-End Web Development
 
