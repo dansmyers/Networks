@@ -1,7 +1,7 @@
 # Sprint 1 &ndash; Network Fundamentals
 
-## Starts Monday 9/14
-## Deliverables and quiz are due on Wednesday 9/30
+## Starts Monday 8/21
+## Deliverables are due on Friday 9/1
 
 ## Overview and Goals
 
@@ -26,19 +26,9 @@ focus on getting into the rhythm of Scrumage and developing good working habits 
 Complete the four problems in `Deliverables`. Remember that you may work freely with the members of your team and you may use any resources that you find helpful to
 complete the project. **Please list the names of you collaborators in the project document**.
 
-The quiz and reflective write-up will be done **online** on **Wednesday, September 30**, which will also be the release day for the next sprint's material. The quiz will be 
-**individual** (not team) but will be **open everything**: you can use the sprint resources, your notes, and online resources. Remember to abide by the Honor Code 
-and ask me if you have questions about what is an acceptable resource!
-
 ## Submission Instructions
 
-- Fork this repo (dansmyers/Networks) using the "Fork" button on the repo homepage. Forking creates a copy of the repo under your own GitHub account.
-
-- Do your work, uploading your files into your repo.
-
-- Submit a pull request to me using the "Pull Request" button on the front page of your repo. The pull request will create an entry that allows me to review your new files.
-
-- I'll use the pull request commenting feature to provide feedback on your work.
+Complete your work in Sprint 1 repository that I've created on Repl.it. For the written problems, create a clearly labeled text document containing your solutions.
 
 ## Learning Outcomes
 
@@ -63,7 +53,7 @@ but you should be able to explain why they exist and what purpose they serve in 
 
 - The concepts of **network bandwidth** (also called throughput) and **latency**. Be able to the transmission time of a file given the bandwidth and latency of a link.
 
-- Be able to create **basic web pages using HTML** and serve them on Mimir.
+- Be able to create **basic web pages using HTML**.
 
 - Be able to apply **CSS styling** to page elements using a `<style>` block. Be able to style standard typographical elements like page colors, fonts, font sizes, and text alignment.
 
@@ -82,7 +72,7 @@ Start with my notes in the `Notes` directory giving you an overview of the 7-lay
 Next, watch [this video](https://www.youtube.com/watch?v=kCuyS7ihr_E), which does a good job explaining the connection between the OSI 7-layer reference model and the TCP/IP
 Internet architecture. The video does include an extensive list of different protocols that exist at each level: you don't need to memorize these.
 
-After that, you can look at [Chapter 1.3 in the Peterson and Davie text](https://book.systemsapproach.org/foundation/architecture.html). The 7-layer model is introduced about halfway through the chapter. I suggest starting there, then backing up a little bit to read the beginning of the chapter, which is more abstract. What you want to emphasize in your reading is how the common protocols of the modern Internet (TCP, IP, etc.) map to the layers of the reference model.
+After that, you can look at [Chapters 1.1 and 1.3 in the Peterson and Davie text](https://book.systemsapproach.org/foundation/architecture.html). The 7-layer model is introduced about halfway through the chapter. I suggest starting there, then backing up a little bit to read the beginning of the chapter, which is more abstract. What you want to emphasize in your reading is how the common protocols of the modern Internet (TCP, IP, etc.) map to the layers of the reference model.
 
 ## Network Performance
 
@@ -100,7 +90,7 @@ You'll get the chance to practice these calculations on the deliverable assignme
 
 Your goal in this unit is to create static web pages using HTML, CSS, and the Bootstrap framework.
 
-Start by working through the lab in the `Notes` directory. It will show you to create a simple web page, style it, and serve it from Mimir. Nothing in this lab should be particularly difficult.
+Start by working through the lab in the `Notes` directory. It will show you to create a simple web page, style it, and serve it. Nothing in this lab should be particularly difficult.
 
 Next, take a look at [CSS Basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics) from the Mozilla developer network. You don't have to do their specific examples, but pay attention to the concepts of CSS rulesets, selectors, and the idea of CSS elements as boxes stacked on top of boxes with margins and padding.
 
@@ -117,8 +107,6 @@ container, one or more rows, and columns within the rows.
 CSS, then move on to using selectors. Read the notes on the 7-layer model and watch a few videos if you need to.
 
 - **Week 2**: Complete the Bootstrap practice lab, then begin working on your web page project. Review the material on network performance and complete the homework problems.
-
-- **Week 3 before the quiz**: Finish your web page.
 
 - **Don't wait until the last minute**! You won't have time to finish everything if you wait until right before the deadline.
 
