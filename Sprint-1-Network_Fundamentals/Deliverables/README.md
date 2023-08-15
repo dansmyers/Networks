@@ -33,7 +33,7 @@ Repeat the example from Part 2, but now assume that there is a total of 512 KB o
 
 What is the complete estimated time &ndash; including transmission times, latency, and queueing delays &ndash; required to send the file now?
 
-## Educational Plagiarism
+## Startup Landing Page
 
 Let's make your own startup!
 
