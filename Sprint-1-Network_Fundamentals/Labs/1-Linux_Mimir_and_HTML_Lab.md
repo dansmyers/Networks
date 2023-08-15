@@ -4,9 +4,6 @@
 
 This short lab will let you practice jamming on simple HTML and CSS, two of the core technologies of front-end web programming. By the end of it, you should feel comfortable with the idea of representing web page content using tagged text and simple styling.
 
-## Setup
-
-Create a **new** repl.it workspace. Select the **HTML/CSS/JavaScript** template and name your workspace `CMS120-Web`.
 
 ## Write and Serve a Basic Web Page
 
@@ -14,7 +11,7 @@ Create a **new** repl.it workspace. Select the **HTML/CSS/JavaScript** template 
 
 Let's make a basic web page. 
 
-Open up your new HTML/CSS/JS repl environment.
+Open up your HTML/CSS/JS repl environment.
 
 Put the following text in `index.html`. I'll tell you more about how this file is put together in the next section, after you've had the
 chance to run and display it.
