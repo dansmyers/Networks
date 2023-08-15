@@ -1,12 +1,12 @@
 # Sprint 1 &ndash; Deliverables
 
-## Honor Code
-
-Edit this section to include a statement of the Honor Code.
-
 ## Team Members
 
-List the other members of your team here.
+Include a file in your repository named `team.txt` listing your team members.
+
+## AI Usage
+
+You are allowed to use AI tools, including ChatGPT, in any way that you want for this assignment. In particular, you **should** use them for the web development part to create a compelling page.
 
 ## Performance
 
@@ -63,25 +63,51 @@ Here's what I want you to do for this project:
 
 ### Examples to Use as Starting Points
 
-- [Clare](https://www.clare.com/): Paint for millenials!
+- [Hubspot](https://www.hubspot.com/) (inbound marketing and customer-relationship management tools)
+- [Snowflake](https://www.snowflake.com/en/) (major cloud data platform)
+- [Clare](https://www.clare.com/) (buying paint online, good example of how site design enhances a fundamentally boring product)
+- [Harry's](https://www.harrys.com/en/us) (direct-to-consumer razors)
+- [Warby Parker](https://www.warbyparker.com/) (glasses, the OG direct-to-consumer example brand)
+- [visvim](https://www.visvim.tv/) (more minimalist, but the basic elements are still there)
 
-- [Butcher Box](https://www.butcherbox.com/): Meat for millenials!
+### Guidelines
 
-- [Away](https://www.awaytravel.com/): Suitcases for millenials!
+Your page should look like a **professional, well-designed modern web page**. The 1990's were awesome (I was there), but not the greatest era for web design, so I don't want to see some janky Web 1.0 basic-CSS looking piece of garbage.
 
-- [Hello Fresh](https://www.hellofresh.com/): Food in boxes for millenials!
+This means that you'll need to **do some research** on how to create a compelling page. You may want to start with [this lab](https://github.com/dansmyers/IntroToCS/blob/main/Labs/B-Modern_Web_Page.md), which will give you some tips.
 
-- [Anchor](https://anchor.fm/): Radio for millenials!
+I expect that you'll use AI tools freely to help you with this project. A few tips:
 
-- [The Bootstrap homepage](https://getbootstrap.com/)
+- Use either Bing AI in Creative mode or Anthropic's Claude as your main model. Both are better than the free version of ChatGPT. Remember that Bing can search the Internet, so it can often return better responses, but it's still not a substitute for a real search engine.
 
-These are all more complicated than what you will likely create for your own site, but they will give you examples of the look and feel you should be going for. You can easily poke around the web and find more sites.
+- Perplexity.ai is another AI-powered search engine. It's an alternative to Bing if you want to pull information from the Internet and synthesize it into an answer.
 
-### Disclaimer
+- Start by having a conversation with the AI about your project, your idea, and what you want to create. Don't try to get the answer faster; instead, think about getting **the right question** faster.
 
-Plagiarism is bad, okay? I think we've covered that a bunch of times. In general, you should treat the content of web pages and their unique styling as being the intellectual property of the creators, the same as you would for written works, music, and other pieces of visual art. As computing professionals, these rules are in your best interests, because they help give value to your skills and intellectual labor.
+- Ask for advice about things other than code: color schemes, fonts, copy for the different sections.
 
-However, there is a long tradition of building skills by studying the work of professionals that have come before you, and this kind of work is allowed as educational fair use under copyright law. Therefore, what I'm asking you to do here should be construed as an educational exercise that's being done purely for learning with no intent to profit.
+- AI is a tool to help you execute your own vision. That means you need to **have a vision**. Always ask yourself: Is this good? Is it doing what I want? Can it be improved? Cultivate **taste and judgment**.
+
+
+## Reflection
+
+After you finish the web page project, have a reflective conversation with an AI chatbot acting as your coach. The goal of this step is for you to better integrate what you learned from working with the AI tool, so that you can take those lessons forward into future projects.
+
+Use the following prompt:
+
+*Imagine you are my coach. I just completed a project using AI tools to assist me in developing a landing page for a new startup company. Please have a reflective discussion with me as my coach to help me synthesize my learnings. Ask me questions like:*
+
+- *What parts of the process went well or poorly when using the AI tools?*
+- *Were there times when relying on my own ideas would have been better?*
+- *How did I balance integrating AI input with maintaining my own perspective and voice?*
+- *What criteria did I use to evaluate the AI's suggestions and determine what to incorporate or reject?*
+- *How has this experience shaped my views on using AI tools moving forward?*
+- *What advice would I give peers about getting the most out of AI tools while avoiding potential pitfalls?*
+
+*You can prompt me with follow-up questions and prompts to push my reflection deeper. The goal is to synthesize my learnings and think critically about integrating AI thoughtfully. Please act as my coach guiding me through this reflective discussion.*
+
+Record the transcript of your conversation in a file called `reflection.txt`, then add a few sentences summarizing your take-aways and lessons learned after completing the chat.
+
 
 ### Tips
 
