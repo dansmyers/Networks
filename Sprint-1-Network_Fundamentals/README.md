@@ -12,19 +12,12 @@ This is it: the first sprint. We're going to do four things:
 3. Get started with front-end web design using HTML and CSS.
 4. Learn to use the Bootstrap framework to make web pages that don't automatically look like garbage.
 
-At the end of the sprint, you'll have three things to complete:
-
-1. The deliverables described in this project.
-2. An individual quiz.
-3. A short individual reflective write-up.
-
 The content for this sprint is not particularly difficult, although you will need to get started with web development, which may be new for you. As you're working,
 focus on getting into the rhythm of Scrumage and developing good working habits with your teams that will carry you through the more content-heavy sprints that are coming up.
 
-## Deliverables and Quiz
+## Deliverables
 
-Complete the four problems in `Deliverables`. Remember that you may work freely with the members of your team and you may use any resources that you find helpful to
-complete the project. **Please list the names of you collaborators in the project document**.
+Complete the problems and project in `Deliverables`. Remember that you may work freely with the members of your team and you may use any resources that you find helpful to complete the project. **Please list the names of you collaborators in the project document**.
 
 ## Submission Instructions
 
