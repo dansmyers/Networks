@@ -65,7 +65,7 @@ Your example page uses two other tags
 
 ### Jam
 
-Before going further, experiment with making some changes to your page and visualizing the results. Run the server using `srv`, reload the page, then stop the server using CTRL + c (or COMMAND + c on Mac) when you need to make changes.
+Before going further, experiment with making some changes to your page and visualizing the results. Run the server, reload the page, then stop the server using CTRL + c (or COMMAND + c on Mac) when you need to make changes.
 
 
 Try creating an unordered list of items using the `<ul>` and `<li>` tags:
