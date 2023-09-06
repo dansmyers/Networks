@@ -2,11 +2,10 @@
 
 ## Run the Node Prompt
 
-Our main tool for running JS programs on Mimir will be Node.js, one of the most popular back-end web development frameworks. Node allows you to write server-side
-programs using JS and it supports a large ecosystem of packages and frameworks. The project was created by taking the JavaScript interpreter in Chrome, known as V8, stripping
-it out of the browser, and making a stand-alone server interface.
+Our main tool for running JS programs on Replit will be Node.js, one of the most popular back-end web development frameworks. Node allows you to write server-side
+programs using JS and it supports a large ecosystem of packages and frameworks. The project was created by taking the JavaScript interpreter in Chrome, known as V8, stripping it out of the browser, and making a stand-alone server interface.
 
-Run the `node` command on Mimir and you'll get a prompt:
+Create a Node.js workspace on Replit and then run the `node` command in the shell and you'll get a prompt:
 
 ```
 % node
