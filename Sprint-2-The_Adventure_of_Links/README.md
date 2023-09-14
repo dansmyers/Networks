@@ -4,8 +4,8 @@
 
 *Should have implemented parity checking*.
 
-## Starts Wednesday, 9/30
-## Deliverables and quiz are due on Wednesday, 10/14
+## Starts Thursday, 9/14
+## Deliverables due Friday, 9/29
 
 ## Overview and Goals
 
@@ -17,32 +17,16 @@ This sprint has two main pieces of content:
 1. Learning about the lower levels of the network stack: the physical and link layers.
 2. Incorporating JavaScript to make your web pages interactive.
 
-Like the last sprint, you'll have three things to complete:
-
-1. The deliverables described in this project.
-2. An individual quiz.
-3. A short individual reflective write-up.
-
-## Deliverables and Quiz
+## Deliverables
 
 Complete the problems in `Deliverables`. Remember that you may work freely with the members of your team and you may use any resources that you find helpful to
 complete the project. **Please list the names of you collaborators in the project document**.
 
-The quiz and reflective write-up will be done **online** on **Wednesday, October 14**, which will also be the release day for the next sprint's material. The quiz will be 
-**individual** (not team) but will be **open everything**: you can use the sprint resources, your notes, and online resources. Remember to abide by the Honor Code 
-and ask me if you have questions about what is an acceptable resource!
-
-**Remember that you have only two weeks to complete this sprint, so don't procrastinate!**
+**This unit has more material than the last one, so don't procrastinate!**
 
 ## Submission Instructions
 
-- Fork this repo (dansmyers/Networks) using the "Fork" button on the repo homepage. Forking creates a copy of the repo under your own GitHub account.
-
-- Do your work, uploading your files into your repo.
-
-- Submit a pull request to me using the "Pull Request" button on the front page of your repo. The pull request will create an entry that allows me to review your new files.
-
-- I'll use the pull request commenting feature to provide feedback on your work.
+Complete your work in the Assignment 2 repository on Replit. Upload any written problems in a clearly labeled file in your workspace.
 
 ## Learning Outcomes
 
