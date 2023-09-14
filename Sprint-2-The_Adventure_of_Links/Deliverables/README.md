@@ -65,7 +65,7 @@ Tips:
 
 - Numbers have a `toFixed` method that will round to a given number of decimal places.
 
-- Put your code in a file named `smoots.html`. If you run your page, it will bring up `index.html` by default. You can then navigate to `smoots.html` to view your page.
+- Put your code in `index.html`. You can put your JS code directly into the HTML file.
   
 - Use the developer console to help with debugging.
 
