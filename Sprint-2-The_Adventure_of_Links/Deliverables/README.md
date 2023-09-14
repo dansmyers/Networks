@@ -1,12 +1,5 @@
 # Sprint 2 &ndash; Deliverables
 
-## Honor Code
-
-Edit this section to include a statement of the Honor Code.
-
-## Team Members
-
-List the other members of your team here.
 
 ## Parity
 
@@ -20,19 +13,41 @@ Determine the extra bits you would need to transmit if you chose to use a two-di
 
 ## Link-Layer Protocols
 
-The Ethernet protocol allows multiple hosts to share a connection to one physical link. Explain briefly how Ethernet manages access to the link to ensure that simultaneous transmissions from multiple hosts do not interfere with each other.
+- The Ethernet protocol allows multiple hosts to share a connection to one physical link. Explain briefly how Ethernet manages access to the link to ensure that simultaneous transmissions from multiple hosts do not interfere with each other.
 
-Describe at least two factors that make collision avoidance more challenging in 802.11 networks than in multiple-access wired Ethernets. How is collision avoidance implemented in wireless networks?
+- Describe at least two factors that make collision avoidance more challenging in 802.11 networks than in multiple-access wired Ethernets. How is collision avoidance implemented in wireless networks?
+
+- Give, in your own words, an explanation for why the maximum size of an Ethernet link is limited to 2500 meters.
 
 ## MAC Addresses
 
 Explain the significance of media access control (MAC) addresses in link-layer networks. How is a device's MAC address set?
 
+## JavaScript
+
+Create one file with short JavaScript functions to implement each of the following algorithms. Look up the algorithms if you need to.
+
+- Write a function called `sieve` that takes an integer number `n` as input and uses the Sieve of Erastothenes to determine the prime numbers less than `n`.
+
+- Write a function called `mergesort` that takes an array as input and sorts it using recursive Mergesort. Don't use any built-in sorting functions.
+
+- Write a function called `vigenere` that takes a string `message` and string `key` as input and performs a Vigenère cipher on the string using the key. Tip: JS strings have a method called `charCodeAt` that you can use to convert a string to its undelying numeric character code.
+
+## Interview question
+
+Write a JavaScript program to answer [this first-round interview problem](https://otcatchup.util.repl.co/) from Replit. Use the test cases given at the end of the post.
+
+Tip: The third input to your method is a JSON string. "JSON" stands for *JavaScript Object Notation*, a way of representing JS objects as text strings. JSON is frequenty used as a data exchange format: push the data in your program to its text representation, send it over a network, and the receiver can then convert it from text back into an object for further processing.
+
+The example string
+```
+'[{"op": "skip", "count": 45}, {"op": "delete", "count": 47}]'
+```
+defines an array that contains two objects, each having fields called `op` and `count`.  There are standard functions that you can use to parse JSON strings and convert them into objects. Do a little research.
+
 ## Smoot Converter
 
-Oliver R. Smoot is an MIT graduate and former head of the American National Standards Institute (ANSI) and the International Organization for Standards (ISO).
-
-In 1958, as part of his initiation into ΛXA, Smoot and his brothers measured the entire length of Harvard Bridge over the Charles River in Cambridge, MA, using Smoot’s body as the ruler. He was at the time 170 cm tall (5 feet, 7 inches), and the bridge was declared to be 364.4 Smoots, "plus or minus one ear" (about 2035 feet or 650.7 meters). Since that time, the measurement of Harvard Bridge has always been denominated in Smoots, with the markings repainted each year by the incoming ΛXA pledge class at MIT. The Cambridge police use the Smoot markings to identify the location of accidents on the bridge.
+Oliver R. Smoot is an MIT graduate and former head of the American National Standards Institute (ANSI) and the International Organization for Standards (ISO). In 1958, as part of his initiation into ΛXA, Smoot and his brothers measured the entire length of Harvard Bridge over the Charles River in Cambridge, MA, using Smoot’s body as the ruler. He was at the time 170 cm tall (5 feet, 7 inches), and the bridge was declared to be 364.4 Smoots, "plus or minus one ear" (about 2035 feet or 650.7 meters). Since that time, the measurement of Harvard Bridge has always been denominated in Smoots, with the markings repainted each year by the incoming ΛXA pledge class at MIT. The Cambridge police use the Smoot markings to identify the location of accidents on the bridge.
 
 <img src="https://alum.mit.edu/sites/default/files/styles/article_desktop/public/images/SMOOT.jpg?itok=jMC7rC_T" width="35%" />
 
