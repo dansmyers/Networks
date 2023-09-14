@@ -51,6 +51,10 @@ Oliver R. Smoot is an MIT graduate and former head of the American National Stan
 
 <img src="https://alum.mit.edu/sites/default/files/styles/article_desktop/public/images/SMOOT.jpg?itok=jMC7rC_T" width="35%" />
 
+*Guy in the back getting off a top-tier 50s engineering fit.*
+
+</br>
+
 Create a web page that can be used to convert lengths from feet to Smoots and vice versa. Users should have a select box to choose which conversion they want (feet-to-Smoots or
 Smoots-to-feet) with a box to accept input and a convert button. Output the conversion to two decimal places in a `<div>` and include the string `plus or minus one ear` in your
 output.
