@@ -70,8 +70,7 @@ out that article.
 
 ### Starter Code
 
-Start by saving the code below to a file named `index.html`. You can save it on Mimir and then serve it using `srv`, or save it locally on your computer and then
-load it in your web browser.
+Start by saving the code below to a file named `index.html`.
 
 ```
 <!doctype html>
