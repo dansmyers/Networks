@@ -52,7 +52,7 @@ don't have to implement ascensions.
 - Finally, add at at least one special element that isn't already part of the example program. There's all kinds of options and you can get ideas by checking out more games.
   
   Many games have more than one resource and introduce dependencies between them: you might start off chopping wood, then unlock the ability to burn wood to smelt iron, but now
-you have to balance your wood and iron production to keep the numbers going up. [Kittens Game](https://bloodrizer.ru/games/kittens/) has a time mechanic: the years advance as you play and some activities are easier 
+you have to balance your wood and iron production to keep the numbers going up. [Kittens Game](https://kittensgame.com/web/) has a time mechanic: the years advance as you play and some activities are easier 
 or harder in different seasons. *Universal Paperclips* actually changes the goal and mechanics of the game as you advance through different phases. 
 [Clicker Heroes](https://www.clickerheroes.com/) has boss battles.
 
