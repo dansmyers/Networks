@@ -59,8 +59,7 @@ or harder in different seasons. *Universal Paperclips* actually changes the goal
 
 ## Grading
 
-If your game meets the specs you'll receive **1 point** towards your final grade. This is the equivalent of a quiz or a deliverable assignment and will raise your grade
-by **one part of one letter** (e.g., B to B+).
+This project is **optional**. If you complete it, you'll raise your grade by **one part of one letter** (e.g., B to B+).
 
 ## Getting Started
 
