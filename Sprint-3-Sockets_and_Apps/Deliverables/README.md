@@ -21,7 +21,7 @@ Finish working through the two examples in the `Examples` directory, which will 
 
 ### *“Once more search with me.” - The Merry Wives of Windsor: IV, ii*
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Edwin_Landseer_-_Scene_from_A_Midsummer_Night%27s_Dream._Titania_and_Bottom_-_Google_Art_Project.jpg/2880px-Edwin_Landseer_-_Scene_from_A_Midsummer_Night%27s_Dream._Titania_and_Bottom_-_Google_Art_Project.jpg" width="50%" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Edwin_Landseer_-_Scene_from_A_Midsummer_Night%27s_Dream._Titania_and_Bottom_-_Google_Art_Project.jpg/2880px-Edwin_Landseer_-_Scene_from_A_Midsummer_Night%27s_Dream._Titania_and_Bottom_-_Google_Art_Project.jpg" width="40%" />
 
 Here is your main JS programming challenge for this unit: write a search engine for the works of William Shakespeare.
 
@@ -41,7 +41,7 @@ The fourth line of the output is the line taken from the play's script that cont
 
 ### *“And here an engine fit for my proceeding.”- The Two Gentlemen of Verona: III, i*
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Romeo_and_juliet_brown.jpg" width="30%" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Romeo_and_juliet_brown.jpg" width="25%" />
 
 **Front-End**
 
@@ -59,8 +59,9 @@ Most of the work will be on the back-end. Take a look at `app.js` as a starting 
 - I've given you some starter code that reads in the example texts. You need to add all of the additional text processing to extract the information
 that you want from each line. 
 
-- Write a route on the server that can receive a request from the front-end, extract the necessary information from the index structure, and
-then return the results as in JSON format.
+- Write a route on the server called `/search` that can receive a request from the front-end containing a search term. Your route should have a function that extracts the necessary information from the index structure, and then return the results as in JSON format.
+
+- Return the search results in JSON format, then format them into the page on the front-end to show the list of results.
 
 **Texts**
 
@@ -74,9 +75,36 @@ All of the lines in the example files have a regular structure.
 
 Using these facts, you should be able to parse out the acts, scenes, and character names as you read through each line in the file.
 
+**The Index**
+
+The index data structure is a *hash table of lists*. Each key in the table is a word found in the texts. Each word has an associated list of objects, where each object stores information about one occurrence of a word.
+
+```
+Index
+-----
+ -------------
+| "wherefore" |-------> [ List of objects containing locations where "wherefore" occurs ]
+ -------------
+| "sword"     |-------> [ List of objects containing locations where "sword" occurs ]
+ -------------
+|             |
+
+```
+
+To constuct the index, scan through each text one line at a time, keeping track of the current Play, Act, Scene, Speaker, and the full text of the line. For each word in the line, construct an object containing those values as fields, then add it to the appropriate list in the index.
+
+Tips:
+
+- Look at the scripts and observe how to identify changes in ACT and SCENE and the speaking character.
+- Start with only one script, or maybe just part of one script, then add the others.
+- Look up how to split a string on whitespace to separate it into words. You'll also need to remove punctuation from each word before you insert it into the index.
+- You don't have to make any adjustments for plurals or different endings. For example, "sword" and "swords" can be separate entries.
+
+Part of the project is practicing combining JS's built-in data structures into a more complex structure. Again, start with a small example that you can test carefully one step at a time.
+
 ### *"Exit, pursued by a bear." - The Winter's Tale: III, iii*
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/John_Everett_Millais_-_Ophelia_-_Google_Art_Project.jpg/2560px-John_Everett_Millais_-_Ophelia_-_Google_Art_Project.jpg" width="50%" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/John_Everett_Millais_-_Ophelia_-_Google_Art_Project.jpg/2560px-John_Everett_Millais_-_Ophelia_-_Google_Art_Project.jpg" width="40%" />
 
 No individual part of this project is very hard, but you need to tie together lots of different elements to create the full application.
 
