@@ -140,4 +140,6 @@ app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 The updated `app.get` line sends `index.html` in response to a request for the root of the site, `/`. `path.join` creates
 an absolute path to `index.html`'s location. Express does not allow relative paths to files.
 
-Re-run your app with `node app.js` and reload the web page. You should see the content of the HTML file.
+Re-run your app with `node app.js`. You should see a "Webview" pane appear on your workspace. Click on the "Open in a new tab" button at the top-right of the Webview to see `index.html` in a new tab.
+
+Make some edits to `index.html`. Verify that you can see them by refreshing the page. You don't need to stop and restart the node app if you make only changes to the HTML page.
