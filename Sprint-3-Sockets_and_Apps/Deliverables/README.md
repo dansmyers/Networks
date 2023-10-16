@@ -1,5 +1,9 @@
 # Deliverables
 
+## REST
+
+Summarize the principles of a REST API. Explain how an application that sends JSON formatted text over HTTP satisfies each of the principles.
+
 ## SDN
 
 Do some reading in the textbook on software-defined networking. The key phrase that must be memorized and chanted by all SDN acolytes is
