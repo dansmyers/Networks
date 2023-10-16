@@ -8,14 +8,7 @@ client-server interactions and application logic.
 
 ## Express Setup
 
-Change to your `CMS_450` directory and make a new directory called `Back_End`, which will hold all of the applications we'll develop
-in this part of the class.
-
-```
-prompt$ cd ~/CMS_450
-prompt$ mkdir Back_End
-prompt$ cd Back_End
-```
+Use the `Express Practice` workspace on Repl.it.
 
 Make a directory named `hello_app` and `cd` into it:
 
