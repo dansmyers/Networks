@@ -87,8 +87,8 @@ Index
  -------------
 | "sword"     |-------> [ List of objects containing locations where "sword" occurs ]
  -------------
-|             |
 
+etc.
 ```
 
 To constuct the index, scan through each text one line at a time, keeping track of the current Play, Act, Scene, Speaker, and the full text of the line. For each word in the line, construct an object containing those values as fields, then add it to the appropriate list in the index.
