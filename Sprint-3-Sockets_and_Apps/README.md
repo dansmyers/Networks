@@ -1,6 +1,6 @@
 # Sockets and Apps
 
-<img src="https://preview.redd.it/wixamyrqxra01.png?auto=webp&s=98a0fbff565e2347baba7f5dd508b505988a8a71" width="50% />
+<img src="https://preview.redd.it/wixamyrqxra01.png?auto=webp&s=98a0fbff565e2347baba7f5dd508b505988a8a71" width="50%" />
 
 ## Deliverables are due
 
