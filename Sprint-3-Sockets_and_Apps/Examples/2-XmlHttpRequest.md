@@ -15,13 +15,13 @@ Create a new directory (the name doesn't matter) and create a new node project:
 ```
 npm init
 
-(accept default names except for changing index.js to app.js)
+(accept default names)
 
 npm install express --save
 npm install body-parser --save (we'll use this later)
 ```
 
-Create a basic `app.js` file with the following code:
+Create a basic `index.js` file with the following code:
 
 ```
 const express = require('express');
