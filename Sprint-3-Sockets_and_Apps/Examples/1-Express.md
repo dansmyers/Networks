@@ -8,23 +8,14 @@ client-server interactions and application logic.
 
 ## Express Setup
 
-Use the `Express Practice` workspace on Repl.it.
-
-Make a directory named `hello_app` and `cd` into it:
-
-```
-prompt$ mkdir hello_app
-prompt$ cd hello_app
-```
-
 Run `npm init` to create a basic node application. When the command executes it will prompt you to enter information about the app you're
-creating. You can press `ENTER` to accept all the defaults **EXCEPT** the line that says
+creating. You can press `ENTER` to accept all the defaults. Observe the line that says
 
 ```
 entry point (index.js)
 ```
 
-Enter `app.js` for the entry point file, which will be the main Express application code.
+This specifies that `index.js` will be the main file for your application. Repl.it recently changed their hosting system so that you can only view pages if your run them using the big green Run button at the top of the page, which by default runs `index.js`.
 
 When `init` finishes, install Express in your application with
 
@@ -34,7 +25,7 @@ prompt$ npm install express --save
 
 ## Hello, Express World
 
-You are now ready to `touch app.js` and open it in the editor. Put the following code in and save the file:
+You are now ready to open `index.js`. Put the following code in and save the file:
 
 ```
 const express = require('express')
@@ -65,13 +56,13 @@ side of the arrow) sends back the text string `Hello, World!`.
 
 - The final line actually creates the listening server on port 80.
 
-To run the app, use
+To run the app, use the big green run button at the top of the page. This is equivalent to typing
 
 ```
-prompt$ node app.js
+prompt$ node .js
 ```
 
-Open another terminal and type
+You should see the "Web View" pane open and display "Hello World!". You can also open another terminal and type
 
 ```
 prompt$ curl http://localhost:80
@@ -79,8 +70,6 @@ prompt$ curl http://localhost:80
 
 You should see `Hello, World!` print on the terminal. `curl` is a command for generating HTTP requests. The URL specifies the target of
 the request is the local machine at port 80.
-
-To view the app through your own web browser, use the "View" menu on Mimir and view port 80.
 
 Return to the terminal and terminate the app by pressing `CTRL + c`. As a general rule, don't leave an app running if you aren't
 actively testing it.
@@ -124,7 +113,7 @@ Create an HTML file using `touch index.html`, then open it. Put the following co
 </html>
 ```
 
-Update your `app.js` to serve the new index page:
+Update your `index.js` to serve the new index page:
 
 ```
 const express = require('express');
