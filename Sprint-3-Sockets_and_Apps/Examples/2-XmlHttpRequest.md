@@ -121,7 +121,7 @@ Now add some code on the client to send an `XMLHttpRequest`. Replace the existin
                     alert(data.message);
                 };
 
-                xmlhttp.open("GET", "/submit");  // Use POST method
+                xmlhttp.open("GET", "/submit");  // Use GET method
                 xmlhttp.send();
             }
         </script>
